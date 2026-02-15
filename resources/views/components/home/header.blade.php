@@ -7,13 +7,13 @@
             </div>
 
             <nav class="hidden items-center gap-6 md:flex">
-                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="#mission">
+                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="{{ route('home') }}#mission">
                     /MISSION
                 </a>
-                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="#eventi">
+                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="{{ route('events') }}">
                     /EVENTS
                 </a>
-                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="#documenti">
+                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="{{ route('documents-slides') }}">
                     /DOCS
                 </a>
             </nav>
