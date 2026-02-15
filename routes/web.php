@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\DocumentsPage;
+use App\Livewire\EventDetailPage;
 use App\Livewire\EventsPage;
 use App\Livewire\HomePage;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ Route::view('/cosa-facciamo', 'pages.static', [
 ])->name('services');
 
 Route::get('/eventi', EventsPage::class)->name('events');
+Route::get('/eventi/{event:slug}', EventDetailPage::class)->name('events.show');
 
 Route::get('/documenti-slide', DocumentsPage::class)->name('documents-slides');
 

@@ -22,7 +22,7 @@
 
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @forelse ($events as $event)
-                    <x-home.event-card :event="$event" />
+                    <x-home.event-card :event="$event" :href="route('events.show', $event)" />
                 @empty
                     <p class="text-sm text-primary/60">Nessun evento pubblicato al momento.</p>
                 @endforelse

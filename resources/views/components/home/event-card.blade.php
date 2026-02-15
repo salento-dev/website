@@ -1,4 +1,7 @@
-@props(['event'])
+@props([
+    'event',
+    'href' => null,
+])
 
 <article class="cyber-panel group flex h-full flex-col gap-4 border border-cyber-border bg-cyber-card p-6 transition-all hover:border-primary">
     <div class="flex items-start justify-between gap-3">
@@ -14,8 +17,18 @@
             <span class="material-symbols-outlined text-sm">location_on</span>
             {{ $event->location }}
         </div>
-        <span class="flex size-8 items-center justify-center border border-cyber-border transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-background-dark">
-            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-        </span>
+        @if ($href)
+            <a
+                href="{{ $href }}"
+                class="flex size-8 items-center justify-center border border-cyber-border transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-background-dark"
+                aria-label="Vai al dettaglio evento"
+            >
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+        @else
+            <span class="flex size-8 items-center justify-center border border-cyber-border transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-background-dark">
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </span>
+        @endif
     </div>
 </article>
