@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DocumentSlide>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Document>
  */
-class DocumentSlideFactory extends Factory
+class DocumentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -27,7 +27,7 @@ class DocumentSlideFactory extends Factory
             'image_path' => null,
             'source_type' => $sourceType,
             'external_url' => $sourceType === 'link' ? fake()->url() : null,
-            'file_path' => $sourceType === 'file' ? 'document-slides/files/sample.pdf' : null,
+            'file_path' => $sourceType === 'file' ? 'documents/files/sample.pdf' : null,
             'is_published' => fake()->boolean(85),
         ];
     }

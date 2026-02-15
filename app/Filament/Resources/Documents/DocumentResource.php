@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\Resources\DocumentSlides;
+namespace App\Filament\Resources\Documents;
 
-use App\Filament\Resources\DocumentSlides\Pages\CreateDocumentSlide;
-use App\Filament\Resources\DocumentSlides\Pages\EditDocumentSlide;
-use App\Filament\Resources\DocumentSlides\Pages\ListDocumentSlides;
-use App\Filament\Resources\DocumentSlides\Schemas\DocumentSlideForm;
-use App\Filament\Resources\DocumentSlides\Tables\DocumentSlidesTable;
-use App\Models\DocumentSlide;
+use App\Filament\Resources\Documents\Pages\CreateDocument;
+use App\Filament\Resources\Documents\Pages\EditDocument;
+use App\Filament\Resources\Documents\Pages\ListDocuments;
+use App\Filament\Resources\Documents\Schemas\DocumentForm;
+use App\Filament\Resources\Documents\Tables\DocumentsTable;
+use App\Models\Document;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -15,9 +15,9 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
 
-class DocumentSlideResource extends Resource
+class DocumentResource extends Resource
 {
-    protected static ?string $model = DocumentSlide::class;
+    protected static ?string $model = Document::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
@@ -31,12 +31,12 @@ class DocumentSlideResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return DocumentSlideForm::configure($schema);
+        return DocumentForm::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return DocumentSlidesTable::configure($table);
+        return DocumentsTable::configure($table);
     }
 
     public static function getRelations(): array
@@ -49,9 +49,9 @@ class DocumentSlideResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListDocumentSlides::route('/'),
-            'create' => CreateDocumentSlide::route('/create'),
-            'edit' => EditDocumentSlide::route('/{record}/edit'),
+            'index' => ListDocuments::route('/'),
+            'create' => CreateDocument::route('/create'),
+            'edit' => EditDocument::route('/{record}/edit'),
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\DocumentSlides\Schemas;
+namespace App\Filament\Resources\Documents\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -9,7 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
-class DocumentSlideForm
+class DocumentForm
 {
     public static function configure(Schema $schema): Schema
     {
@@ -47,7 +47,7 @@ class DocumentSlideForm
                     ->image()
                     ->required()
                     ->disk('public')
-                    ->directory('document-slides/images')
+                    ->directory('documents/images')
                     ->visibility('public')
                     ->columnSpanFull(),
                 TextInput::make('external_url')
@@ -60,7 +60,7 @@ class DocumentSlideForm
                 FileUpload::make('file_path')
                     ->label('File')
                     ->disk('public')
-                    ->directory('document-slides/files')
+                    ->directory('documents/files')
                     ->visibility('public')
                     ->visible(fn ($get): bool => $get('source_type') === 'file')
                     ->required(fn ($get): bool => $get('source_type') === 'file')

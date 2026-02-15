@@ -1,11 +1,9 @@
 <?php
 
+use App\Livewire\HomePage;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'pages.static', [
-    'pageTitle' => 'Home',
-    'metaDescription' => 'Home',
-])->name('home');
+Route::get('/', HomePage::class)->name('home');
 
 Route::view('/chi-siamo', 'pages.static', [
     'pageTitle' => 'Chi siamo',

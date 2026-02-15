@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,12 +20,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             EventSeeder::class,
-            DocumentSlideSeeder::class,
+            DocumentSeeder::class,
         ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        Artisan::call('make:filament-user', [
+            '--name' => 'Admin User',
+            '--email' => 'admin@salento.dev',
+            '--password' => 'password123',
+            '--no-interaction' => true,
         ]);
     }
 }
