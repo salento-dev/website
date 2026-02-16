@@ -4,7 +4,9 @@ namespace App\Filament\Resources\Events\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
@@ -39,10 +41,9 @@ class EventForm
                     ->label('Data fine')
                     ->seconds(false)
                     ->afterOrEqual('starts_at'),
-                Textarea::make('description')
+                MarkdownEditor::make('description')
                     ->label('Descrizione')
                     ->required()
-                    ->rows(6)
                     ->columnSpanFull(),
                 FileUpload::make('image_path')
                     ->label('Immagine')
@@ -55,6 +56,70 @@ class EventForm
                 Toggle::make('is_published')
                     ->label('Pubblicato')
                     ->default(true),
+                Select::make('categories')
+                    ->label('Categorie')
+                    ->relationship('categories', 'name', fn ($query) => $query->where('is_active', true)->orderBy('sort_order')->orderBy('name'))
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
+                    ->columnSpanFull(),
+                Repeater::make('media')
+                    ->label('Galleria media')
+                    ->relationship('media')
+                    ->orderColumn('sort_order')
+                    ->collapsed()
+                    ->cloneable()
+                    ->itemLabel(fn (array $state): ?string => $state['caption'] ?? null)
+                    ->schema([
+                        Select::make('media_type')
+                            ->label('Tipo media')
+                            ->options([
+                                'image' => 'Foto',
+                                'video' => 'Video',
+                            ])
+                            ->default('image')
+                            ->required()
+                            ->native(false),
+                        Select::make('source_type')
+                            ->label('Sorgente')
+                            ->options([
+                                'file' => 'File',
+                                'url' => 'URL video',
+                            ])
+                            ->default('file')
+                            ->required()
+                            ->native(false)
+                            ->live(),
+                        FileUpload::make('file_path')
+                            ->label('File media')
+                            ->disk('public')
+                            ->directory('events/media')
+                            ->visibility('public')
+                            ->acceptedFileTypes([
+                                'image/jpeg',
+                                'image/png',
+                                'image/webp',
+                                'image/gif',
+                                'video/mp4',
+                                'video/webm',
+                            ])
+                            ->visible(fn ($get): bool => $get('source_type') === 'file')
+                            ->required(fn ($get): bool => $get('source_type') === 'file')
+                            ->columnSpanFull(),
+                        TextInput::make('external_url')
+                            ->label('URL video')
+                            ->url()
+                            ->maxLength(2048)
+                            ->visible(fn ($get): bool => $get('source_type') === 'url')
+                            ->required(fn ($get): bool => $get('source_type') === 'url')
+                            ->columnSpanFull(),
+                        TextInput::make('caption')
+                            ->label('Didascalia')
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(2)
+                    ->columnSpanFull(),
             ])
             ->columns(2);
     }

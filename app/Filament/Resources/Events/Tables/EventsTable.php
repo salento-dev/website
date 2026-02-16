@@ -9,6 +9,7 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 
@@ -30,6 +31,11 @@ class EventsTable
                     ->label('Luogo')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('categories.name')
+                    ->label('Categorie')
+                    ->badge()
+                    ->separator(', ')
+                    ->toggleable(),
                 TextColumn::make('starts_at')
                     ->label('Data inizio')
                     ->dateTime('d/m/Y H:i')
@@ -51,6 +57,9 @@ class EventsTable
             ->filters([
                 TernaryFilter::make('is_published')
                     ->label('Pubblicato'),
+                SelectFilter::make('categories')
+                    ->label('Categoria')
+                    ->relationship('categories', 'name'),
             ])
             ->defaultSort('starts_at', 'desc')
             ->recordActions([

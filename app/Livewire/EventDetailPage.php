@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Event;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -14,7 +16,48 @@ class EventDetailPage extends Component
     {
         abort_unless($event->is_published, 404);
 
-        $this->event = $event;
+        $relations = [];
+
+        if (Schema::hasTable('event_media')) {
+            $relations[] = 'media';
+        }
+
+        if (Schema::hasTable('event_categories') && Schema::hasTable('event_category_event')) {
+            $relations[] = 'categories';
+        }
+
+        $this->event = $event->load($relations);
+
+        if (! in_array('media', $relations, true)) {
+            $this->event->setRelation('media', new Collection);
+        }
+
+        if (! in_array('categories', $relations, true)) {
+            $this->event->setRelation('categories', new Collection);
+        }
+    }
+
+    public function toEmbedUrl(?string $url): ?string
+    {
+        if (blank($url)) {
+            return null;
+        }
+
+        $trimmedUrl = trim((string) $url);
+
+        if (preg_match('~youtube\.com/watch\?v=([\w-]+)~', $trimmedUrl, $matches) === 1) {
+            return 'https://www.youtube.com/embed/'.$matches[1];
+        }
+
+        if (preg_match('~youtu\.be/([\w-]+)~', $trimmedUrl, $matches) === 1) {
+            return 'https://www.youtube.com/embed/'.$matches[1];
+        }
+
+        if (preg_match('~vimeo\.com/(\d+)~', $trimmedUrl, $matches) === 1) {
+            return 'https://player.vimeo.com/video/'.$matches[1];
+        }
+
+        return null;
     }
 
     public function render(): View
@@ -22,6 +65,7 @@ class EventDetailPage extends Component
         $relatedEvents = Event::query()
             ->where('is_published', true)
             ->whereKeyNot($this->event->getKey())
+            ->with('categories:id,name,slug')
             ->orderBy('starts_at')
             ->limit(3)
             ->get();
