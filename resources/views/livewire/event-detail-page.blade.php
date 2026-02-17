@@ -1,4 +1,4 @@
-<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<div class="relative flex min-h-screen flex-col">
     <x-home.header />
 
     <main class="flex-1">
