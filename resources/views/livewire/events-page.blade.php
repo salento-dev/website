@@ -26,7 +26,7 @@
                         <h2 class="text-sm font-bold tracking-widest text-primary uppercase">Filter_System</h2>
                     </div>
 
-                    <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
+                    <div class="flex gap-8 flex-wrap items-center">
                         <input
                             type="text"
                             wire:model.live.debounce.300ms="search"
@@ -89,55 +89,17 @@
                                 @endforeach
                             </div>
                         @endif
-
-                        @if ($hasEventMediaTable)
-                            <div class="flex flex-wrap gap-2">
-                                <button
-                                    type="button"
-                                    wire:click="$set('mediaFilter', 'all')"
-                                    @class([
-                                        'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
-                                        'bg-primary text-background-dark shadow-neon' => $mediaFilter === 'all',
-                                        'border border-border-cyan text-primary hover:bg-primary/10' => $mediaFilter !== 'all',
-                                    ])
-                                >ALL_MEDIA</button>
-                                <button
-                                    type="button"
-                                    wire:click="$set('mediaFilter', 'with_media')"
-                                    @class([
-                                        'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
-                                        'bg-primary text-background-dark shadow-neon' => $mediaFilter === 'with_media',
-                                        'border border-border-cyan text-primary hover:bg-primary/10' => $mediaFilter !== 'with_media',
-                                    ])
-                                >HAS_GALLERY</button>
-                                <button
-                                    type="button"
-                                    wire:click="$set('mediaFilter', 'with_video')"
-                                    @class([
-                                        'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
-                                        'bg-primary text-background-dark shadow-neon' => $mediaFilter === 'with_video',
-                                        'border border-border-cyan text-primary hover:bg-primary/10' => $mediaFilter !== 'with_video',
-                                    ])
-                                >HAS_VIDEO</button>
-                            </div>
-                        @endif
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Events Grid -->
-        <section class="container py-24">
-            <div class="mb-12 flex items-center justify-between">
-                <div>
-                    <h2 class="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-4">QUERY_RESULTS</h2>
-                    <h3 class="text-4xl font-bold uppercase tracking-tighter text-white">Event Database</h3>
-                </div>
-                <div class="text-sm font-bold tracking-widest text-primary/60 uppercase">
-                    {{ $events->count() }} Records
-                </div>
-            </div>
-
+        <x-home.section-header 
+            eyebrow="QUERY_RESULTS" 
+            title='Event Database'
+            info="{{ $events->count() }} Records"
+        >
             <div class="grid grid-cols-1 gap-8">
                 @forelse ($events as $event)
                     <div class="group relative flex flex-col md:flex-row bg-surface-dark/40 border border-primary/20 hover:border-primary/60 transition-all rounded-sm overflow-hidden glitch-hover">
@@ -236,7 +198,7 @@
                     </div>
                 @endforelse
             </div>
-        </section>
+        </x-home.section-header>
     </main>
 
     <x-home.footer />

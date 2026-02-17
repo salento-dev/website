@@ -3,6 +3,7 @@
     'title',
     'description' => null,
     'link' => null,
+    'info' => null,
     'bordered' => false,
 ])
 
@@ -16,6 +17,11 @@
                         {!! $title !!}<span class="animate-pulse text-primary">_</span>
                     </h3>
                 </div>
+                @if ($info)
+                <div class="text-sm font-bold tracking-widest text-primary/60 uppercase">
+                    {{ $info }}
+                </div>
+                @endif
                 @if($link)
                 <a class="text-xs font-bold uppercase tracking-widest text-primary hover:underline" href="{{ $link['href'] }}">{{ $link['text'] }} →</a>
                 @endif

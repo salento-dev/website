@@ -75,7 +75,7 @@ class EventDetailPage extends Component
             ->whereKeyNot($this->event->getKey())
             ->with('categories:id,name,slug')
             ->orderBy('starts_at')
-            ->limit(3)
+            ->limit(2)
             ->get();
 
         return view('livewire.event-detail-page', [

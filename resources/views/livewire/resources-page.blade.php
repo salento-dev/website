@@ -18,11 +18,10 @@
         </section>
 
         <!-- Documents Section -->
-        <section class="container py-24 lg:px-20">
-            <div class="mb-12">
-                <h2 class="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-4">FETCHING_RESOURCES</h2>
-                <h3 class="text-4xl font-bold uppercase tracking-tighter text-white">Document Archive</h3>
-            </div>
+        <x-home.section-header 
+            eyebrow="FETCHING_RESOURCES" 
+            title='Resource Archive'
+        >
             <div class="overflow-hidden border border-border-cyan bg-background-dark">
                 <!-- Header -->
                 <div class="flex items-center justify-between border-b border-border-cyan bg-card-dark px-6 py-3">
@@ -60,7 +59,7 @@
                     @endforelse
                 </div>
             </div>
-        </section>
+        </x-home.section-header>
     </main>
 
     <x-home.footer />

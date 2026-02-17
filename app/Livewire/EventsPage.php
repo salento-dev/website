@@ -16,17 +16,14 @@ class EventsPage extends Component
 
     public string $period = 'all';
 
-    public string $mediaFilter = 'all';
-
     public string $category = 'all';
 
     public function render(): View
     {
-        $hasEventMediaTable = Schema::hasTable('event_media');
         $hasEventCategoryTables = Schema::hasTable('event_categories') && Schema::hasTable('event_category_event');
 
         $events = Schema::hasTable('events')
-            ? $this->buildEventsQuery($hasEventMediaTable, $hasEventCategoryTables)->get()
+            ? $this->buildEventsQuery($hasEventCategoryTables)->get()
             : new Collection;
 
         $categories = $hasEventCategoryTables
@@ -39,7 +36,6 @@ class EventsPage extends Component
 
         return view('livewire.events-page', [
             'events' => $events,
-            'hasEventMediaTable' => $hasEventMediaTable,
             'hasEventCategoryTables' => $hasEventCategoryTables,
             'categories' => $categories,
         ])->layout('layouts.app', [
@@ -48,7 +44,7 @@ class EventsPage extends Component
         ]);
     }
 
-    protected function buildEventsQuery(bool $hasEventMediaTable, bool $hasEventCategoryTables): Builder
+    protected function buildEventsQuery(bool $hasEventCategoryTables): Builder
     {
         $query = Event::query()
             ->where('is_published', true)
@@ -79,23 +75,6 @@ class EventsPage extends Component
                         'categories',
                         fn (Builder $categoryQuery): Builder => $categoryQuery->where('slug', $this->category),
                     ),
-                );
-        }
-
-        if ($hasEventMediaTable) {
-            $query
-                ->withCount('media')
-                ->withCount([
-                    'media as video_media_count' => fn (Builder $builder): Builder => $builder->where('media_type', 'video'),
-                    'media as image_media_count' => fn (Builder $builder): Builder => $builder->where('media_type', 'image'),
-                ])
-                ->when(
-                    $this->mediaFilter === 'with_media',
-                    fn (Builder $builder): Builder => $builder->whereHas('media'),
-                )
-                ->when(
-                    $this->mediaFilter === 'with_video',
-                    fn (Builder $builder): Builder => $builder->whereHas('media', fn (Builder $mediaQuery): Builder => $mediaQuery->where('media_type', 'video')),
                 );
         }
 

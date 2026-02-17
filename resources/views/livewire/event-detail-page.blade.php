@@ -41,7 +41,7 @@
         </section>
 
         <!-- Content Section -->
-        <section class="container py-24 lg:px-20">
+        <section class="container py-24">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <!-- Main Content -->
                 <article class="lg:col-span-2">
@@ -137,69 +137,66 @@
 
         <!-- Resources Section -->
         @if ($event->resources->isNotEmpty())
-            <section class="container py-24 lg:px-20">
-                <div class="mb-12">
-                    <h2 class="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-4">EVENT_RESOURCES</h2>
-                    <h3 class="text-4xl font-bold uppercase tracking-tighter text-white">Risorse Disponibili</h3>
-                </div>
-                <div class="overflow-hidden border border-border-cyan bg-background-dark">
-                    <!-- Header -->
-                    <div class="flex items-center justify-between border-b border-border-cyan bg-card-dark px-6 py-3">
-                        <div class="flex gap-2">
-                            <div class="size-2 rounded-full bg-red-500/50"></div>
-                            <div class="size-2 rounded-full bg-yellow-500/50"></div>
-                            <div class="size-2 rounded-full bg-green-500/50"></div>
-                        </div>
-                        <span class="text-[10px] font-mono text-primary/60 tracking-widest uppercase">root@salentodev:~/event/{{ $event->id }}/resources</span>
+        <x-home.section-header 
+            eyebrow="EVENT_RESOURCES" 
+            title='Risorse Disponibili'
+        >
+            <div class="overflow-hidden border border-border-cyan bg-background-dark">
+                <!-- Header -->
+                <div class="flex items-center justify-between border-b border-border-cyan bg-card-dark px-6 py-3">
+                    <div class="flex gap-2">
+                        <div class="size-2 rounded-full bg-red-500/50"></div>
+                        <div class="size-2 rounded-full bg-yellow-500/50"></div>
+                        <div class="size-2 rounded-full bg-green-500/50"></div>
                     </div>
-                    <!-- Terminal Body -->
-                    <div class="divide-y divide-border-cyan/50 font-mono text-xs">
-                        @foreach ($event->resources->where('is_published', true) as $resource)
-                            <div class="group flex items-center justify-between px-6 py-4 hover:bg-primary/5 transition-colors">
-                                <div class="flex items-center gap-4">
-                                    <span class="material-symbols-outlined text-primary">
-                                        @if ($resource->source_type === 'file')
-                                            @if (str_ends_with($resource->file_path ?? '', '.pdf'))
-                                                description
-                                            @elseif (str_ends_with($resource->file_path ?? '', '.zip') || str_ends_with($resource->file_path ?? '', '.rar'))
-                                                folder_zip
-                                            @else
-                                                description
-                                            @endif
+                    <span class="text-[10px] font-mono text-primary/60 tracking-widest uppercase">root@salentodev:~/event/{{ $event->id }}/resources</span>
+                </div>
+                <!-- Terminal Body -->
+                <div class="divide-y divide-border-cyan/50 font-mono text-xs">
+                    @foreach ($event->resources->where('is_published', true) as $resource)
+                        <div class="group flex items-center justify-between px-6 py-4 hover:bg-primary/5 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary">
+                                    @if ($resource->source_type === 'file')
+                                        @if (str_ends_with($resource->file_path ?? '', '.pdf'))
+                                            description
+                                        @elseif (str_ends_with($resource->file_path ?? '', '.zip') || str_ends_with($resource->file_path ?? '', '.rar'))
+                                            folder_zip
                                         @else
-                                            link
+                                            description
                                         @endif
-                                    </span>
-                                    <span class="text-white">{{ $resource->title }}</span>
-                                    <span class="hidden sm:inline text-white/20">|</span>
-                                    <span class="hidden md:inline text-white/20">{{ $resource->source_type === 'file' ? 'File' : 'Link' }}</span>
-                                </div>
-                                @if ($resource->source_type === 'file' && $resource->file_path)
-                                    <a class="text-primary hover:underline uppercase tracking-widest text-[10px] font-bold" href="{{ asset('storage/' . ltrim($resource->file_path, '/')) }}" download>Download</a>
-                                @elseif ($resource->source_type === 'link' && $resource->external_url)
-                                    <a class="text-primary hover:underline uppercase tracking-widest text-[10px] font-bold" href="{{ $resource->external_url }}" target="_blank" rel="noreferrer noopener">Apri</a>
-                                @endif
+                                    @else
+                                        link
+                                    @endif
+                                </span>
+                                <span class="text-white">{{ $resource->title }}</span>
+                                <span class="hidden sm:inline text-white/20">|</span>
+                                <span class="hidden md:inline text-white/20">{{ $resource->source_type === 'file' ? 'File' : 'Link' }}</span>
                             </div>
-                        @endforeach
-                    </div>
+                            @if ($resource->source_type === 'file' && $resource->file_path)
+                                <a class="text-primary hover:underline uppercase tracking-widest text-[10px] font-bold" href="{{ asset('storage/' . ltrim($resource->file_path, '/')) }}" download>Download</a>
+                            @elseif ($resource->source_type === 'link' && $resource->external_url)
+                                <a class="text-primary hover:underline uppercase tracking-widest text-[10px] font-bold" href="{{ $resource->external_url }}" target="_blank" rel="noreferrer noopener">Apri</a>
+                            @endif
+                        </div>
+                    @endforeach
                 </div>
-            </section>
+            </div>
+        </x-home.section-header>
         @endif
 
         <!-- Related Events Section -->
         @if ($relatedEvents->isNotEmpty())
-            <section class="container py-24">
-                <div class="mb-12">
-                    <h2 class="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-4">RELATED_EVENTS</h2>
-                    <h3 class="text-4xl font-bold uppercase tracking-tighter text-white">Altri Eventi</h3>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    @foreach ($relatedEvents as $relatedEvent)
-                        <x-home.event-card :event="$relatedEvent" :href="route('events.show', $relatedEvent)" />
-                    @endforeach
-                </div>
-            </section>
+        <x-home.section-header 
+            eyebrow="RELATED_EVENTS" 
+            title='Altri Eventi'
+        >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                @foreach ($relatedEvents as $relatedEvent)
+                    <x-home.event-card-preview :event="$relatedEvent" />
+                @endforeach
+            </div>
+        </x-home.section-header>
         @endif
     </main>
 
