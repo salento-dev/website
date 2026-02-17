@@ -1,48 +1,23 @@
-<header class="sticky top-0 z-40 border-b border-primary/30 bg-background-dark/80 px-6 py-4 backdrop-blur-md lg:px-20">
-    <div class="flex items-center justify-between gap-4">
-        <div class="flex items-center gap-6">
-            <div class="flex items-center gap-2 text-primary">
-                <span class="material-symbols-outlined text-3xl">terminal</span>
-                <h2 class="text-xl font-bold tracking-tighter uppercase">SALENTO_DEV_OS_v1.0</h2>
+<header class="sticky top-0 z-50 w-full border-b border-border-cyan bg-background-dark/95 backdrop-blur-md px-6 py-4 lg:px-20">
+    <div class="container">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <a href="{{ route('home') }}">
+                    <x-logo animated />
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-medium uppercase tracking-widest {{ request()->routeIs('events') ? 'text-primary' : 'text-white/70' }} hover:text-primary transition-colors" href="{{ route('events') }}">Events</a>
+                    <a class="text-sm font-medium uppercase tracking-widest {{ request()->routeIs('resources') ? 'text-primary' : 'text-white/70' }} hover:text-primary transition-colors" href="{{ route('resources') }}">Resources</a>
+                </nav>
             </div>
-
-            <nav class="hidden items-center gap-6 md:flex">
-                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="{{ route('home') }}#mission">
-                    /MISSION
-                </a>
-                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="{{ route('events') }}">
-                    /EVENTS
-                </a>
-                <a class="border-b border-transparent pb-1 text-xs font-bold tracking-[0.2em] text-primary/70 transition-colors hover:border-primary hover:text-primary" href="{{ route('documents-slides') }}">
-                    /DOCS
-                </a>
-            </nav>
-        </div>
-
-        <div class="flex items-center gap-3">
-            <a
-                href="{{ route('about') }}"
-                class="flex size-9 items-center justify-center border border-primary/40 text-primary transition-all hover:bg-primary hover:text-background-dark"
-                aria-label="Chi siamo"
-            >
-                <span class="material-symbols-outlined text-xl">groups</span>
-            </a>
-            <a
-                href="{{ route('contacts') }}"
-                class="flex size-9 items-center justify-center border border-primary/40 text-primary transition-all hover:bg-primary hover:text-background-dark"
-                aria-label="Contatti"
-            >
-                <span class="material-symbols-outlined text-xl">alternate_email</span>
+            <a href="https://chat.whatsapp.com/Hj9JyfVHUOE2g7dqoql1OB" target="_blank" rel="noopener noreferrer" class="group relative flex h-10 items-center justify-center gap-2 overflow-hidden rounded border border-primary bg-primary/10 px-3 md:px-6 text-xs font-bold uppercase tracking-widest text-primary shadow-neon hover:bg-primary hover:text-background-dark transition-all">
+                <span class="material-symbols-outlined text-lg">forum</span>
+                <span class="relative z-10 hidden md:inline">Join WhatsApp</span>
             </a>
         </div>
-    </div>
-
-    <div class="mt-2 flex items-center gap-4">
-        <div class="flex items-center gap-1">
-            <div class="size-1.5 rounded-full bg-primary animate-pulse"></div>
-            <span class="text-[10px] tracking-widest text-primary/50 uppercase">SYS_ACTIVE</span>
-        </div>
-        <div class="text-[10px] tracking-widest text-primary/50 uppercase">LOC: SALENTO_NODE_01</div>
-        <div class="ml-auto text-[10px] tracking-widest text-primary/50 uppercase">COMMUNITY_MODE: ON</div>
+        <nav class="flex md:hidden items-center justify-center gap-6 mt-4 pt-4 border-t border-border-cyan/50">
+            <a class="text-sm font-medium uppercase tracking-widest {{ request()->routeIs('events') ? 'text-primary' : 'text-white/70' }} hover:text-primary transition-colors" href="{{ route('events') }}">Events</a>
+            <a class="text-sm font-medium uppercase tracking-widest {{ request()->routeIs('resources') ? 'text-primary' : 'text-white/70' }} hover:text-primary transition-colors" href="{{ route('resources') }}">Resources</a>
+        </nav>
     </div>
 </header>

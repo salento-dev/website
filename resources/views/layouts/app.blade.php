@@ -16,8 +16,26 @@
             @vite(['resources/css/app.css', 'resources/js/app.js'])
         @endif
         @livewireStyles
+
+        <style>
+            @keyframes scanline {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(100vh); }
+            }
+            .scanline {
+                width: 100%;
+                height: 2px;
+                background: rgba(13, 231, 242, 0.1);
+                position: fixed;
+                z-index: 50;
+                pointer-events: none;
+                opacity: 0.1;
+                animation: scanline 8s linear infinite;
+            }
+        </style>
     </head>
-    <body class="bg-background-light font-display text-white selection:bg-primary selection:text-background-dark dark:bg-background-dark">
+    <body class="bg-background-dark text-white font-display selection:bg-primary/30 selection:text-primary">
+        <div class="scanline"></div>
         {{ $slot }}
 
         @livewireScripts

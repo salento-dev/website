@@ -1,136 +1,239 @@
-<div class="relative flex min-h-screen flex-col overflow-x-hidden bg-grid">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
     <x-home.header />
 
-    <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-10 px-6 py-10 lg:px-20">
-        <section class="relative overflow-hidden border border-primary/20 bg-cyber-card/50 p-8">
-            <h1 class="mb-3 text-4xl font-black tracking-tighter text-primary uppercase md:text-5xl">Eventi</h1>
-            <p class="max-w-3xl text-sm leading-relaxed text-primary/70 md:text-base">
-                Meetup, workshop e momenti di confronto della community. Qui trovi tutti gli eventi pubblicati, ordinati per data.
-            </p>
+    <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="relative flex min-h-[40vh] items-center justify-center px-6 py-20 lg:px-20 bg-primary/5 border-b border-border-cyan">
+            <div class="relative z-10 mx-auto max-w-[1000px] text-center">
+                <div class="inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-6">
+                    Event Archive // Access Protocol
+                </div>
+                <h1 class="mb-6 text-5xl font-black uppercase leading-tight tracking-tighter sm:text-6xl lg:text-7xl text-white">
+                    Eventi <span class="text-primary text-glow">Community</span>
+                </h1>
+                <p class="mx-auto max-w-2xl text-lg font-light leading-relaxed text-white/60">
+                    Meetup, workshop e momenti di confronto della community. Esplora tutti gli eventi pubblicati.
+                </p>
+            </div>
         </section>
 
-        <section class="border-l-4 border-primary bg-primary/5 py-3 pr-4 pl-4">
-            <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary">tune</span>
-                    <h2 class="text-sm font-black tracking-widest text-primary uppercase">System_Archive_Filters</h2>
-                </div>
-
-                <div class="grid grid-cols-1 gap-3 md:grid-cols-4 md:items-center">
-                    <input
-                        type="text"
-                        wire:model.live.debounce.300ms="search"
-                        placeholder="SEARCH_EVENT"
-                        class="w-full border border-primary/30 bg-background-dark px-3 py-2 text-xs font-bold tracking-wider text-primary uppercase placeholder:text-primary/40 focus:border-primary focus:ring-primary/30"
-                    >
-
-                    <div class="flex flex-wrap gap-2">
-                        <button
-                            type="button"
-                            wire:click="$set('period', 'all')"
-                            @class([
-                                'px-3 py-1 text-[10px] font-bold tracking-widest uppercase border transition-colors',
-                                'border-primary bg-primary text-background-dark' => $period === 'all',
-                                'border-primary/30 text-primary hover:bg-primary/10' => $period !== 'all',
-                            ])
-                        >ALL</button>
-                        <button
-                            type="button"
-                            wire:click="$set('period', 'upcoming')"
-                            @class([
-                                'px-3 py-1 text-[10px] font-bold tracking-widest uppercase border transition-colors',
-                                'border-primary bg-primary text-background-dark' => $period === 'upcoming',
-                                'border-primary/30 text-primary hover:bg-primary/10' => $period !== 'upcoming',
-                            ])
-                        >UPCOMING</button>
-                        <button
-                            type="button"
-                            wire:click="$set('period', 'past')"
-                            @class([
-                                'px-3 py-1 text-[10px] font-bold tracking-widest uppercase border transition-colors',
-                                'border-primary bg-primary text-background-dark' => $period === 'past',
-                                'border-primary/30 text-primary hover:bg-primary/10' => $period !== 'past',
-                            ])
-                        >ARCHIVE</button>
+        <!-- Filters Section -->
+        <section class="border-b border-border-cyan bg-background-dark">
+            <div class="container py-8">
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">tune</span>
+                        <h2 class="text-sm font-bold tracking-widest text-primary uppercase">Filter_System</h2>
                     </div>
 
-                    @if ($hasEventCategoryTables)
+                    <div class="grid grid-cols-1 gap-4 lg:grid-cols-4">
+                        <input
+                            type="text"
+                            wire:model.live.debounce.300ms="search"
+                            placeholder="SEARCH_DATABASE..."
+                            class="w-full border border-border-cyan bg-background-dark px-4 py-3 text-xs tracking-widest text-primary placeholder:text-primary/40 focus:border-primary focus:ring-0"
+                        >
+
                         <div class="flex flex-wrap gap-2">
                             <button
                                 type="button"
-                                wire:click="$set('category', 'all')"
+                                wire:click="$set('period', 'all')"
                                 @class([
-                                    'px-3 py-1 text-[10px] font-bold tracking-widest uppercase border transition-colors',
-                                    'border-primary bg-primary text-background-dark' => $category === 'all',
-                                    'border-primary/30 text-primary hover:bg-primary/10' => $category !== 'all',
+                                    'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
+                                    'bg-primary text-background-dark shadow-neon' => $period === 'all',
+                                    'border border-border-cyan text-primary hover:bg-primary/10' => $period !== 'all',
                                 ])
-                            >ALL_TYPES</button>
+                            >ALL</button>
+                            <button
+                                type="button"
+                                wire:click="$set('period', 'upcoming')"
+                                @class([
+                                    'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
+                                    'bg-primary text-background-dark shadow-neon' => $period === 'upcoming',
+                                    'border border-border-cyan text-primary hover:bg-primary/10' => $period !== 'upcoming',
+                                ])
+                            >UPCOMING</button>
+                            <button
+                                type="button"
+                                wire:click="$set('period', 'past')"
+                                @class([
+                                    'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
+                                    'bg-primary text-background-dark shadow-neon' => $period === 'past',
+                                    'border border-border-cyan text-primary hover:bg-primary/10' => $period !== 'past',
+                                ])
+                            >ARCHIVE</button>
+                        </div>
 
-                            @foreach ($categories as $eventCategory)
+                        @if ($hasEventCategoryTables)
+                            <div class="flex flex-wrap gap-2">
                                 <button
                                     type="button"
-                                    wire:click="$set('category', '{{ $eventCategory->slug }}')"
+                                    wire:click="$set('category', 'all')"
                                     @class([
-                                        'px-3 py-1 text-[10px] font-bold tracking-widest uppercase border transition-colors',
-                                        'border-primary bg-primary text-background-dark' => $category === $eventCategory->slug,
-                                        'border-primary/30 text-primary hover:bg-primary/10' => $category !== $eventCategory->slug,
+                                        'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
+                                        'bg-primary text-background-dark shadow-neon' => $category === 'all',
+                                        'border border-border-cyan text-primary hover:bg-primary/10' => $category !== 'all',
                                     ])
-                                >{{ str_replace(' ', '_', strtoupper($eventCategory->name)) }}</button>
-                            @endforeach
-                        </div>
-                    @endif
+                                >ALL_TYPES</button>
 
-                    @if ($hasEventMediaTable)
-                        <div class="flex flex-wrap gap-2">
-                            <button
-                                type="button"
-                                wire:click="$set('mediaFilter', 'all')"
-                                @class([
-                                    'px-3 py-1 text-[10px] font-bold tracking-widest uppercase border transition-colors',
-                                    'border-primary bg-primary text-background-dark' => $mediaFilter === 'all',
-                                    'border-primary/30 text-primary hover:bg-primary/10' => $mediaFilter !== 'all',
-                                ])
-                            >ALL_MEDIA</button>
-                            <button
-                                type="button"
-                                wire:click="$set('mediaFilter', 'with_media')"
-                                @class([
-                                    'px-3 py-1 text-[10px] font-bold tracking-widest uppercase border transition-colors',
-                                    'border-primary bg-primary text-background-dark' => $mediaFilter === 'with_media',
-                                    'border-primary/30 text-primary hover:bg-primary/10' => $mediaFilter !== 'with_media',
-                                ])
-                            >HAS_GALLERY</button>
-                            <button
-                                type="button"
-                                wire:click="$set('mediaFilter', 'with_video')"
-                                @class([
-                                    'px-3 py-1 text-[10px] font-bold tracking-widest uppercase border transition-colors',
-                                    'border-primary bg-primary text-background-dark' => $mediaFilter === 'with_video',
-                                    'border-primary/30 text-primary hover:bg-primary/10' => $mediaFilter !== 'with_video',
-                                ])
-                            >HAS_VIDEO</button>
-                        </div>
-                    @endif
+                                @foreach ($categories as $eventCategory)
+                                    <button
+                                        type="button"
+                                        wire:click="$set('category', '{{ $eventCategory->slug }}')"
+                                        @class([
+                                            'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
+                                            'bg-primary text-background-dark shadow-neon' => $category === $eventCategory->slug,
+                                            'border border-border-cyan text-primary hover:bg-primary/10' => $category !== $eventCategory->slug,
+                                        ])
+                                    >{{ str_replace(' ', '_', strtoupper($eventCategory->name)) }}</button>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if ($hasEventMediaTable)
+                            <div class="flex flex-wrap gap-2">
+                                <button
+                                    type="button"
+                                    wire:click="$set('mediaFilter', 'all')"
+                                    @class([
+                                        'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
+                                        'bg-primary text-background-dark shadow-neon' => $mediaFilter === 'all',
+                                        'border border-border-cyan text-primary hover:bg-primary/10' => $mediaFilter !== 'all',
+                                    ])
+                                >ALL_MEDIA</button>
+                                <button
+                                    type="button"
+                                    wire:click="$set('mediaFilter', 'with_media')"
+                                    @class([
+                                        'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
+                                        'bg-primary text-background-dark shadow-neon' => $mediaFilter === 'with_media',
+                                        'border border-border-cyan text-primary hover:bg-primary/10' => $mediaFilter !== 'with_media',
+                                    ])
+                                >HAS_GALLERY</button>
+                                <button
+                                    type="button"
+                                    wire:click="$set('mediaFilter', 'with_video')"
+                                    @class([
+                                        'px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all',
+                                        'bg-primary text-background-dark shadow-neon' => $mediaFilter === 'with_video',
+                                        'border border-border-cyan text-primary hover:bg-primary/10' => $mediaFilter !== 'with_video',
+                                    ])
+                                >HAS_VIDEO</button>
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <div class="mb-8 flex items-center justify-between">
-                <h2 class="flex items-center gap-2 text-2xl font-black tracking-tighter text-primary uppercase">
-                    <span class="material-symbols-outlined">event_note</span>
-                    Lista Eventi
-                </h2>
-                <div class="text-[10px] font-bold tracking-[0.2em] text-primary/40 uppercase">
-                    RESULTS: {{ $events->count() }}
+        <!-- Events Grid -->
+        <section class="container py-24">
+            <div class="mb-12 flex items-center justify-between">
+                <div>
+                    <h2 class="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-4">QUERY_RESULTS</h2>
+                    <h3 class="text-4xl font-bold uppercase tracking-tighter text-white">Event Database</h3>
+                </div>
+                <div class="text-sm font-bold tracking-widest text-primary/60 uppercase">
+                    {{ $events->count() }} Records
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid grid-cols-1 gap-8">
                 @forelse ($events as $event)
-                    <x-home.event-card :event="$event" :href="route('events.show', $event)" variant="archive" />
+                    <div class="group relative flex flex-col md:flex-row bg-surface-dark/40 border border-primary/20 hover:border-primary/60 transition-all rounded-sm overflow-hidden glitch-hover">
+                        <!-- Technical Corner Ornaments -->
+                        <div class="absolute top-0 right-0 p-1">
+                            <span class="material-symbols-outlined text-primary/40 text-xs">close_fullscreen</span>
+                        </div>
+                        
+                        <!-- Event Image -->
+                        <div 
+                            class="w-full md:w-80 h-48 md:h-auto bg-center bg-cover border-r border-primary/10 grayscale group-hover:grayscale-0 transition-all duration-500"
+                            style="background-image: url('{{ $event->image_path ? asset('storage/' . ltrim($event->image_path, '/')) : asset('storage/placeholders/events/event-placeholder.jpg') }}');"
+                        >
+                            <div class="h-full w-full bg-primary/10 opacity-40"></div>
+                        </div>
+                        
+                        <!-- Event Content -->
+                        <div class="flex flex-1 flex-col p-6 gap-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="font-mono text-[10px] text-primary/60 uppercase tracking-widest block mb-1">
+                                        ID: LOG_{{ $event->starts_at?->format('Y_m_d') }}_{{ strtoupper(substr($event->slug ?? 'event', 0, 1)) }}
+                                    </span>
+                                    <h3 class="text-white text-2xl font-bold tracking-tight group-hover:text-primary transition-colors uppercase italic">
+                                        {{ $event->title }}
+                                    </h3>
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-mono text-xl text-primary font-bold neon-text-glow">
+                                        {{ $event->starts_at?->format('Y.m.d') }}
+                                    </span>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-tighter">Event_Timestamp</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col gap-2">
+                                <p class="text-slate-400 text-sm leading-relaxed max-w-2xl">
+                                    {{ \Illuminate\Support\Str::limit(strip_tags($event->description), 200) }}
+                                </p>
+                                @if ($event->speaker)
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span class="material-symbols-outlined text-sm text-primary">person</span>
+                                        <span class="text-xs font-mono text-primary/80 uppercase">SPEAKER: {{ str_replace(' ', '_', strtoupper($event->speaker)) }}</span>
+                                    </div>
+                                @endif
+                                @if ($event->location)
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm text-primary">location_on</span>
+                                        <span class="text-xs font-mono text-primary/80 uppercase">{{ strtoupper($event->location) }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                            
+                            <div class="mt-auto pt-6 flex flex-wrap items-center justify-between border-t border-primary/10 gap-4">
+                                <div class="flex gap-4">
+                                    @if (($event->media_count ?? 0) > 0)
+                                        <div class="flex flex-col items-center gap-1 group/icon">
+                                            <div class="p-2 rounded-sm bg-primary/5 border border-primary/20 group-hover/icon:bg-primary group-hover/icon:text-background-dark transition-all text-primary">
+                                                <span class="material-symbols-outlined text-base">description</span>
+                                            </div>
+                                            <span class="text-[9px] font-mono font-bold uppercase tracking-tighter text-slate-500">Slides</span>
+                                        </div>
+                                    @endif
+                                    
+                                    @if (($event->video_media_count ?? 0) > 0)
+                                        <div class="flex flex-col items-center gap-1 group/icon">
+                                            <div class="p-2 rounded-sm bg-primary/5 border border-primary/20 group-hover/icon:bg-primary group-hover/icon:text-background-dark transition-all text-primary">
+                                                <span class="material-symbols-outlined text-base">video_library</span>
+                                            </div>
+                                            <span class="text-[9px] font-mono font-bold uppercase tracking-tighter text-slate-500">Video</span>
+                                        </div>
+                                    @endif
+                                    
+                                    @if (($event->image_media_count ?? 0) > 0)
+                                        <div class="flex flex-col items-center gap-1 group/icon">
+                                            <div class="p-2 rounded-sm bg-primary/5 border border-primary/20 group-hover/icon:bg-primary group-hover/icon:text-background-dark transition-all text-primary">
+                                                <span class="material-symbols-outlined text-base">imagesmode</span>
+                                            </div>
+                                            <span class="text-[9px] font-mono font-bold uppercase tracking-tighter text-slate-500">Gallery</span>
+                                        </div>
+                                    @endif
+                                </div>
+                                
+                                <a 
+                                    href="{{ route('events.show', $event) }}"
+                                    class="flex items-center gap-2 px-6 py-2 bg-primary text-background-dark text-xs font-black uppercase tracking-tighter rounded-sm hover:bg-white transition-all"
+                                >
+                                    VIEW_FULL_LOG_REPORT <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 @empty
-                    <p class="text-sm text-primary/60">Nessun evento trovato con i filtri selezionati.</p>
+                    <div class="text-center py-12">
+                        <p class="text-primary/60">Nessun evento trovato con i filtri selezionati.</p>
+                    </div>
                 @endforelse
             </div>
         </section>

@@ -49,4 +49,9 @@ class Event extends Model
             ->orderBy('sort_order')
             ->orderBy('name');
     }
+
+    public function resources(): BelongsToMany
+    {
+        return $this->belongsToMany(Resource::class)->withTimestamps();
+    }
 }

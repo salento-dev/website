@@ -1,29 +1,33 @@
-<footer class="relative mt-20 overflow-hidden border-t border-primary/20 bg-cyber-card px-6 py-12 lg:px-20">
-    <div class="mx-auto flex max-w-7xl flex-col justify-between gap-12 md:flex-row">
-        <div class="space-y-4">
-            <div class="flex items-center gap-2 text-primary">
-                <span class="material-symbols-outlined text-2xl">terminal</span>
-                <h2 class="text-lg font-bold tracking-tighter uppercase">SALENTO_DEV_COMMUNITY</h2>
+<footer class="border-t border-border-cyan bg-background-dark px-6 py-16 lg:px-20">
+    <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-2">
+                <x-logo class="mb-6" />
+                <p class="max-w-md text-sm text-white/40 leading-relaxed mb-8">
+                    Join the technological revolution in Southern Italy. Our community is open to developers, designers, and tech enthusiasts who believe in building the future together.
+                </p>
             </div>
-            <p class="max-w-xs text-xs leading-relaxed tracking-wider text-primary/50 uppercase">
-                Building digital sovereignty in the Salento Peninsula. Open Source. Decentralized. High-Performance.
-            </p>
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white mb-6">Protocols</h4>
+                <ul class="space-y-3 text-sm text-white/40">
+                    <li><a class="hover:text-primary transition-colors" href="{{ route('events') }}">Events Schedule</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="{{ route('resources') }}">Resource Library</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-white mb-6">Connect</h4>
+                <ul class="space-y-3 text-sm text-white/40">
+                    <li><a class="hover:text-primary transition-colors" href="https://chat.whatsapp.com/Hj9JyfVHUOE2g7dqoql1OB" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="https://www.instagram.com/salento.dev/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="https://it.linkedin.com/company/salento-dev" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                </ul>
+            </div>
         </div>
-
-        <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            <div class="space-y-4">
-                <h4 class="text-xs font-black tracking-widest text-primary uppercase">/Resources</h4>
-                <ul class="space-y-2 text-[10px] tracking-widest text-primary/50 uppercase">
-                    <li><a class="hover:text-primary" href="{{ route('documents-slides') }}">Documentazione</a></li>
-                    <li><a class="hover:text-primary" href="{{ route('events') }}">Eventi</a></li>
-                </ul>
-            </div>
-            <div class="space-y-4">
-                <h4 class="text-xs font-black tracking-widest text-primary uppercase">/Community</h4>
-                <ul class="space-y-2 text-[10px] tracking-widest text-primary/50 uppercase">
-                    <li><a class="hover:text-primary" href="{{ route('about') }}">Chi siamo</a></li>
-                    <li><a class="hover:text-primary" href="{{ route('contacts') }}">Contatti</a></li>
-                </ul>
+        <div class="flex flex-col md:flex-row items-center justify-between border-t border-white/5 pt-8 text-[10px] uppercase tracking-[0.3em] text-white/30">
+            <p>© {{ date('Y') }} SALENTO.DEV // ALL RIGHTS RESERVED.</p>
+            <div class="mt-4 md:mt-0 flex gap-8">
+                <a class="hover:text-primary" href="#">Privacy_Policy</a>
+                <a class="hover:text-primary" href="#">Cookie_Settings</a>
             </div>
         </div>
     </div>

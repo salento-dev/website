@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Document extends Model
+class Resource extends Model
 {
     use HasFactory;
 
@@ -31,5 +32,10 @@ class Document extends Model
         return [
             'is_published' => 'boolean',
         ];
+    }
+
+    public function events(): BelongsToMany
+    {
+        return $this->belongsToMany(Event::class)->withTimestamps();
     }
 }

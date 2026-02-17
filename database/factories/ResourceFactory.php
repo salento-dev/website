@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Document>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Resource>
  */
-class DocumentFactory extends Factory
+class ResourceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -27,7 +27,7 @@ class DocumentFactory extends Factory
             'image_path' => null,
             'source_type' => $sourceType,
             'external_url' => $sourceType === 'link' ? fake()->url() : null,
-            'file_path' => $sourceType === 'file' ? 'documents/files/sample.pdf' : null,
+            'file_path' => $sourceType === 'file' ? 'resources/files/sample.pdf' : null,
             'is_published' => fake()->boolean(85),
         ];
     }

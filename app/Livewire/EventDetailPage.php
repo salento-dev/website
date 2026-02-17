@@ -26,6 +26,10 @@ class EventDetailPage extends Component
             $relations[] = 'categories';
         }
 
+        if (Schema::hasTable('event_resource')) {
+            $relations[] = 'resources';
+        }
+
         $this->event = $event->load($relations);
 
         if (! in_array('media', $relations, true)) {
@@ -34,6 +38,10 @@ class EventDetailPage extends Component
 
         if (! in_array('categories', $relations, true)) {
             $this->event->setRelation('categories', new Collection);
+        }
+
+        if (! in_array('resources', $relations, true)) {
+            $this->event->setRelation('resources', new Collection);
         }
     }
 

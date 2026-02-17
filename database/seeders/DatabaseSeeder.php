@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             EventCategorySeeder::class,
             EventSeeder::class,
-            DocumentSeeder::class,
+            ResourceSeeder::class,
         ]);
 
         Artisan::call('make:filament-user', [

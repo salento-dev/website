@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
-use App\Models\Document;
 use App\Models\Event;
+use App\Models\Resource;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
@@ -18,12 +18,12 @@ class HomePage extends Component
                 ->where('is_published', true)
                 ->where('starts_at', '>=', now())
                 ->orderBy('starts_at')
-                ->limit(3)
+                ->limit(2)
                 ->get()
             : new Collection;
 
-        $documents = Schema::hasTable('documents')
-            ? Document::query()
+        $resources = Schema::hasTable('resources')
+            ? Resource::query()
                 ->where('is_published', true)
                 ->latest()
                 ->limit(5)
@@ -32,7 +32,7 @@ class HomePage extends Component
 
         return view('livewire.home-page', [
             'events' => $events,
-            'documents' => $documents,
+            'resources' => $resources,
         ])->layout('layouts.app', [
             'pageTitle' => 'Home',
             'metaDescription' => 'Community di sviluppatori nel Salento: eventi, documenti e iniziative.',

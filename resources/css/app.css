@@ -11,10 +11,24 @@
     --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
 
     --color-primary: #0de7f2;
+    --color-accent-purple: #a855f7;
     --color-background-light: #f5f8f8;
-    --color-background-dark: #0a0c0c;
-    --color-cyber-card: #121d1e;
-    --color-cyber-border: #224749;
+    --color-background-dark: #050505;
+    --color-surface-dark: #102122;
+    --color-card-dark: #0a1617;
+    --color-border-cyan: rgba(13, 231, 242, 0.3);
+    --color-cyber-card: #0a1617;
+    --color-cyber-border: rgba(13, 231, 242, 0.3);
+    
+    --radius: 0.125rem;
+    --radius-lg: 0.25rem;
+    --radius-xl: 0.5rem;
+    --radius-full: 0.75rem;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
 }
 
 @layer utilities {
@@ -29,7 +43,32 @@
         text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
     }
 
+    .text-glow {
+        text-shadow: 0 0 8px rgba(13, 231, 242, 0.6);
+    }
+
+    .neon-text-glow {
+        text-shadow: 0 0 8px rgba(13, 231, 242, 0.6);
+    }
+
+    .border-glow {
+        border: 1px solid rgba(13, 231, 242, 0.4);
+        box-shadow: inset 0 0 10px rgba(13, 231, 242, 0.1);
+    }
+
+    .shadow-neon {
+        box-shadow: 0 0 5px #0de7f2, 0 0 20px rgba(13, 231, 242, 0.2);
+    }
+
+    .shadow-neon-purple {
+        box-shadow: 0 0 5px #a855f7, 0 0 20px rgba(168, 85, 247, 0.2);
+    }
+
     .cyber-panel {
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    }
+
+    .glitch-hover:hover {
+        box-shadow: -2px 0 0 #ff00ff, 2px 0 0 #0de7f2;
     }
 }
