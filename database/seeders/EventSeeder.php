@@ -14,21 +14,36 @@ class EventSeeder extends Seeder
      */
     public function run(): void
     {
-        $publishedEvents = Event::factory()
-            ->count(8)
-            ->state([
-                'is_published' => true,
-                'image_path' => 'placeholders/events/event-placeholder.jpg',
-            ])
-            ->create();
+        $placeholders = [
+            'placeholders/events/event-placeholder.jpg',
+            'placeholders/events/event-placeholder-2.jpg',
+            'placeholders/events/event-placeholder-3.jpg',
+            'placeholders/events/event-placeholder-4.jpg',
+        ];
 
-        $unpublishedEvents = Event::factory()
-            ->count(4)
-            ->state([
-                'is_published' => false,
-                'image_path' => 'placeholders/events/event-placeholder.jpg',
-            ])
-            ->create();
+        $publishedEvents = collect();
+        for ($i = 0; $i < 8; $i++) {
+            $publishedEvents->push(
+                Event::factory()
+                    ->state([
+                        'is_published' => true,
+                        'image_path' => fake()->randomElement($placeholders),
+                    ])
+                    ->create()
+            );
+        }
+
+        $unpublishedEvents = collect();
+        for ($i = 0; $i < 4; $i++) {
+            $unpublishedEvents->push(
+                Event::factory()
+                    ->state([
+                        'is_published' => false,
+                        'image_path' => fake()->randomElement($placeholders),
+                    ])
+                    ->create()
+            );
+        }
 
         if (! Schema::hasTable('event_categories') || ! Schema::hasTable('event_category_event')) {
             return;
