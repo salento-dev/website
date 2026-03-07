@@ -1,6 +1,4 @@
 <div class="relative flex min-h-screen flex-col">
-    <x-home.header />
-
     <main class="flex-1">
         <!-- Hero Section -->
         <section class="relative bg-primary/5 border-b border-border-cyan px-6 py-20 lg:px-20">
@@ -137,7 +135,7 @@
 
         <!-- Resources Section -->
         @if ($event->resources->isNotEmpty())
-        <x-home.section-header 
+        <x-ui.section-header 
             eyebrow="EVENT_RESOURCES" 
             title='Risorse Disponibili'
         >
@@ -182,23 +180,21 @@
                     @endforeach
                 </div>
             </div>
-        </x-home.section-header>
+        </x-ui.section-header>
         @endif
 
         <!-- Related Events Section -->
         @if ($relatedEvents->isNotEmpty())
-        <x-home.section-header 
+        <x-ui.section-header 
             eyebrow="RELATED_EVENTS" 
             title='Altri Eventi'
         >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 @foreach ($relatedEvents as $relatedEvent)
-                    <x-home.event-card-preview :event="$relatedEvent" />
+                    <x-cards.event-preview :event="$relatedEvent" />
                 @endforeach
             </div>
-        </x-home.section-header>
+        </x-ui.section-header>
         @endif
     </main>
-
-    <x-home.footer />
 </div>

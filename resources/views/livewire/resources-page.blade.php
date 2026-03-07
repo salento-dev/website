@@ -1,6 +1,4 @@
 <div class="relative flex min-h-screen flex-col">
-    <x-home.header />
-
     <main class="flex-1">
         <!-- Hero Section -->
         <section class="relative flex min-h-[40vh] items-center justify-center px-6 py-20 lg:px-20 bg-primary/5 border-b border-border-cyan">
@@ -18,7 +16,7 @@
         </section>
 
         <!-- Documents Section -->
-        <x-home.section-header 
+        <x-ui.section-header 
             eyebrow="FETCHING_RESOURCES" 
             title='Resource Archive'
         >
@@ -59,8 +57,6 @@
                     @endforelse
                 </div>
             </div>
-        </x-home.section-header>
+        </x-ui.section-header>
     </main>
-
-    <x-home.footer />
 </div>

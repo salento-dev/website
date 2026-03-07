@@ -20,10 +20,10 @@
         <path d="M31.6999 8.2H39.1999V0H19.8999V8.2H31.1999H31.6999Z" fill="white"/>
         <path d="M50.3999 0H47.0999V8.2H50.3999V0Z" fill="white"/>
     </svg>
-    <h2 class="{{ $textClass }}">
+    {{-- <h2 class="{{ $textClass }}">
         SALENTO.DEV
         @if ($animated)
         <span class="animate-pulse text-primary">_</span>
         @endif
-    </h2>
+    </h2> --}}
 </div>

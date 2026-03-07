@@ -1,25 +1,23 @@
 <div class="relative flex min-h-screen flex-col">
-    <x-home.header />
-
     <main class="flex-1">
-        <x-home.hero />
+        <x-sections.hero />
 
         <!-- Upcoming Events -->
         @if($events->isNotEmpty())
-            <x-home.section-header 
+            <x-ui.section-header 
                 eyebrow="SCHEDULED_OPERATIONS" 
                 title="Upcoming Events"
                 :link="['href' => route('events'), 'text' => 'Full Schedule']">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     @foreach ($events as $event)
-                    <x-home.event-card-preview :event="$event" />
+                    <x-cards.event-preview :event="$event" />
                     @endforeach
                 </div>
-            </x-home.section-header>
+            </x-ui.section-header>
         @endif
 
         <!-- Documents Feed / Resources -->
-        <x-home.section-header 
+        <x-ui.section-header 
             eyebrow="FETCHING_RESOURCES" 
             title="Latest Documents"
             :link="['href' => route('resources'), 'text' => 'View All Resources']"
@@ -53,16 +51,14 @@
                     @endforelse
                 </div>
             </div>
-        </x-home.section-header>
+        </x-ui.section-header>
 
-        <x-home.principles />
+        <x-sections.principles />
 
-        <x-home.activities />
+        <x-sections.activities />
 
-        <x-home.scopes />
+        <x-sections.scopes />
 
-        <x-home.code-of-conduct />
+        <x-sections.code-of-conduct />
     </main>
-
-    <x-home.footer />
 </div>
