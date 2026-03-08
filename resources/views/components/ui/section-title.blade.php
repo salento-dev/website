@@ -7,7 +7,7 @@
 
 <div class="mb-8 flex items-center justify-between" id="eventi">
     <h2 class="flex items-center gap-2 text-2xl font-black tracking-tighter text-primary uppercase">
-        <span class="material-symbols-outlined">{{ $icon }}</span>
+        @svg('heroicon-o-' . $icon, 'size-6')
         {{ $title }}
     </h2>
     <div class="mx-6 hidden h-px flex-1 bg-cyber-border md:block"></div>

@@ -9,9 +9,11 @@
 
 <a class="group flex items-center justify-between p-4 transition-colors hover:bg-primary/5" href="{{ $url }}" target="_blank" rel="noreferrer noopener" id="documenti">
     <div class="flex items-center gap-4">
-        <span class="material-symbols-outlined text-primary/40 transition-colors group-hover:text-primary">
-            {{ $isFile ? 'description' : 'link' }}
-        </span>
+        @if($isFile)
+            <x-heroicon-o-document-text class="size-4 text-primary/40 transition-colors group-hover:text-primary" />
+        @else
+            <x-heroicon-o-link class="size-4 text-primary/40 transition-colors group-hover:text-primary" />
+        @endif
         <span class="text-sm transition-colors group-hover:text-primary">{{ $resource->title }}</span>
     </div>
     <div class="flex items-center gap-8 text-[10px]">

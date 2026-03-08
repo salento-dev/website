@@ -43,6 +43,16 @@
     <main class="mx-auto w-full max-w-350 overflow-x-clip border-x border-b border-border bg-surface">
         <x-partials.header />
 
+        
+        <section data-triangle-decoration="bottom" class="relative overflow-hidden border-b border-border">
+            <div class="px-6 py-24 sm:px-12 lg:px-20 lg:py-32">
+                <div class="mx-auto max-w-4xl text-center">
+                    @yield('hero')
+                </div>
+            </div>
+            @yield('hero-footer')
+        </section>
+
         {{ $slot }}
 
         <x-partials.footer />

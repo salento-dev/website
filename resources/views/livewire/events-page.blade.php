@@ -1,22 +1,18 @@
+@section('hero')
+    <div
+        class="mb-6 inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
+        Event Archive // Access Protocol
+    </div>
+    <h1 class="mb-6 text-5xl font-black uppercase leading-tight tracking-tighter text-white sm:text-6xl lg:text-7xl">
+        Eventi <span class="text-glow text-primary">Community</span>
+    </h1>
+    <p class="mx-auto max-w-2xl text-lg font-light leading-relaxed text-white/60">
+        Meetup, workshop e momenti di confronto della community. Esplora tutti gli eventi pubblicati.
+    </p>
+@endsection
+
 <div class="relative flex min-h-screen flex-col">
     <main class="flex-1">
-        <section
-            class="relative flex min-h-[40vh] items-center justify-center border-b border-border-cyan bg-primary/5 px-6 py-20 lg:px-20">
-            <div class="relative z-10 mx-auto max-w-[1000px] text-center">
-                <div
-                    class="mb-6 inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
-                    Event Archive // Access Protocol
-                </div>
-                <h1
-                    class="mb-6 text-5xl font-black uppercase leading-tight tracking-tighter text-white sm:text-6xl lg:text-7xl">
-                    Eventi <span class="text-glow text-primary">Community</span>
-                </h1>
-                <p class="mx-auto max-w-2xl text-lg font-light leading-relaxed text-white/60">
-                    Meetup, workshop e momenti di confronto della community. Esplora tutti gli eventi pubblicati.
-                </p>
-            </div>
-        </section>
-
         <section class="scroll-mt-11 px-5 py-8 xs:px-8 md:p-10">
 
             <div class="mb-5">
@@ -50,8 +46,10 @@
                             </label>
                             <button id="sort-select" type="button" @click="open = !open" :aria-expanded="open"
                                 aria-haspopup="listbox" class="btn btn-sm group" aria-expanded="false">
-                                <span x-text="({ @foreach ($sortOptions as $value => $label) '{{ $value }}': '{{ $label }}', @endforeach })[$wire.sortBy]">{{ $sortOptions[$sortBy] }}</span>
-                                <div class="transition-transform duration-300 ease-out" :class="open && 'rotate-180'" aria-hidden="true">
+                                <span
+                                    x-text="({ @foreach ($sortOptions as $value => $label) '{{ $value }}': '{{ $label }}', @endforeach })[$wire.sortBy]">{{ $sortOptions[$sortBy] }}</span>
+                                <div class="transition-transform duration-300 ease-out" :class="open && 'rotate-180'"
+                                    aria-hidden="true">
                                     <x-heroicon-o-chevron-down class="size-3.5" />
                                 </div>
                             </button>
@@ -69,7 +67,8 @@
                                         :aria-selected="$wire.sortBy === '{{ $value }}'"
                                         @click="$wire.set('sortBy', '{{ $value }}'); open = false"
                                         class="flex w-full items-center gap-2 px-3 py-2 text-left transition-colors duration-150 hover:bg-surface-900/70"
-                                        :class="$wire.sortBy === '{{ $value }}' && 'bg-surface-900 font-medium text-mist-200'">
+                                        :class="$wire.sortBy === '{{ $value }}' &&
+                                            'bg-surface-900 font-medium text-mist-200'">
                                         <span class="size-3.5"
                                             :class="$wire.sortBy === '{{ $value }}' ? 'opacity-100' : 'opacity-0'">
                                             <x-heroicon-o-check class="size-3.5" />
