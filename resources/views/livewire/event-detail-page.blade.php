@@ -191,7 +191,7 @@
         >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 @foreach ($relatedEvents as $relatedEvent)
-                    <x-cards.event-preview :event="$relatedEvent" />
+                    <x-cards.event :event="$relatedEvent" />
                 @endforeach
             </div>
         </x-ui.section-header>
