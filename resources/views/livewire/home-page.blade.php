@@ -10,7 +10,7 @@
                 :link="['href' => route('events'), 'text' => 'Full Schedule']">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     @foreach ($events as $event)
-                    <x-cards.event-preview :event="$event" />
+                    <x-cards.event :event="$event" />
                     @endforeach
                 </div>
             </x-ui.section-header>

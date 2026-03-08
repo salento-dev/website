@@ -9,21 +9,59 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class EventsPage extends Component
 {
+    use WithPagination;
+
     public string $search = '';
 
     public string $period = 'all';
 
     public string $category = 'all';
 
+    public string $sortBy = 'newest';
+
+    /**
+     * @return array<string, string>
+     */
+    public static function sortOptions(): array
+    {
+        return [
+            'newest' => 'Newest',
+            'oldest' => 'Oldest',
+            'title-asc' => 'Title A-Z',
+            'title-desc' => 'Title Z-A',
+        ];
+    }
+
+    public function updatedSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedPeriod(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedCategory(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedSortBy(): void
+    {
+        $this->resetPage();
+    }
+
     public function render(): View
     {
         $hasEventCategoryTables = Schema::hasTable('event_categories') && Schema::hasTable('event_category_event');
 
         $events = Schema::hasTable('events')
-            ? $this->buildEventsQuery($hasEventCategoryTables)->get()
+            ? $this->buildEventsQuery($hasEventCategoryTables)->paginate(12)
             : new Collection;
 
         $categories = $hasEventCategoryTables
@@ -38,6 +76,7 @@ class EventsPage extends Component
             'events' => $events,
             'hasEventCategoryTables' => $hasEventCategoryTables,
             'categories' => $categories,
+            'sortOptions' => self::sortOptions(),
         ])->layout('layouts.app', [
             'pageTitle' => 'Eventi',
             'metaDescription' => 'Calendario eventi della community Salento.dev.',
@@ -78,6 +117,11 @@ class EventsPage extends Component
                 );
         }
 
-        return $query->orderByDesc('starts_at');
+        return match ($this->sortBy) {
+            'oldest' => $query->orderBy('starts_at'),
+            'title-asc' => $query->orderBy('title'),
+            'title-desc' => $query->orderByDesc('title'),
+            default => $query->orderByDesc('starts_at'),
+        };
     }
 }

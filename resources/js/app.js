@@ -1,4 +1,5 @@
 import './bootstrap';
+import autoAnimate from '@formkit/auto-animate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { SplitText } from 'gsap/SplitText';
@@ -80,3 +81,4 @@ window.Draggable = Draggable;
 window.SplitText = SplitText;
 window.motion = { inView, hover };
 window.FilamentAnimations = { horizontalLoop };
+window.autoAnimate = autoAnimate;

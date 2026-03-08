@@ -43,7 +43,7 @@
     --color-tertiary-dark: var(--color-fuchsia-700);
     --color-tertiary-light: var(--color-fuchsia-300);
 
-    --color-surface-50:  var(--color-mist-50);
+    --color-surface-50: var(--color-mist-50);
     --color-surface-100: var(--color-mist-100);
     --color-surface-200: var(--color-mist-200);
     --color-surface-300: var(--color-mist-300);
@@ -110,6 +110,10 @@
 
 @layer utilities {
 
+    .bg-x-pattern {
+        background-image: url(../images/x-pattern-15.png);
+        background-size: 12rem;
+    }
 
     .bg-dots-pattern {
         @apply bg-repeat;
@@ -189,35 +193,34 @@
             0 4px 16px -4px rgba(249, 115, 22, 0.15);
     }
 
-    .btn {
-        @apply inline-flex h-12 items-center justify-center rounded-lg border px-8 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 transition-all duration-200;
-        @apply border-border bg-surface-900/50 text-stone-50 hover:bg-border/20 focus-visible:ring-border
-    }
-
-    /* Legacy support for existing components */
-    .btn.btn-primary {
-        @apply border-primary bg-primary text-white hover:bg-primary-dark focus-visible:ring-primary/50;
-    }
-
-    .btn.btn-secondary {
-        @apply border-secondary bg-secondary text-white hover:bg-secondary-dark focus-visible:ring-secondary/50;
-    }
-
-    .btn.btn-tertiary {
-        @apply border-tertiary bg-tertiary text-white hover:bg-tertiary-dark focus-visible:ring-tertiary/50;
+    .item {
+        @apply inline-grid h-8 min-w-9 place-items-center rounded-xs bg-surface-900 px-1.5 font-medium text-mist-200;
     }
 
     .btn {
-        @apply inline-flex items-center gap-1.75;
-        @apply h-10 px-3 rounded-xs;
-        @apply bg-surface-800 text-surface-50;
+        @apply cursor-pointer select-none;
+        @apply inline-flex items-center justify-center gap-1.75 text-center;
+        @apply h-10 min-w-10 px-3 rounded-xs;
         @apply transition-all duration-300 ease-out will-change-transform;
+        @apply bg-surface-900 text-mist-50;
+        @apply hover:bg-surface-800;
+        @apply active:scale-95;
         @apply focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset;
-        @apply active:scale-95 bg-surface-900 hover:bg-surface-900/90;
+
+        /* Disabled state */
+        @apply disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-surface-900;
+    }
+
+    .btn.btn-sm {
+        @apply h-8 min-w-8 px-2 text-xs;
     }
 
     .btn.btn-large {
-        @apply h-12 px-8;
+        @apply h-12 min-w-12 px-8 text-lg;
+    }
+
+    .btn.active {
+        @apply bg-surface-700 hover:bg-surface-700/90;
     }
 
 }
