@@ -24,30 +24,7 @@
 
     <div class="relative p-0 grid size-16 shrink-0 place-items-center bg-surface-800 {{ $v['icon'] }}">
         @if ($variant === 'danger')
-            <div class="absolute top-0 left-0" aria-hidden="true">
-                <svg class="h-2.5 {{ $v['corner'] }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11"
-                    fill="none">
-                    <path d="M9.5 0.5H0.5V9.5" class="stroke-current" stroke-linecap="round"></path>
-                </svg>
-            </div>
-            <div class="absolute top-0 right-0" aria-hidden="true">
-                <svg class="h-2.5 -scale-x-100 {{ $v['corner'] }}" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 11 11" fill="none">
-                    <path d="M9.5 0.5H0.5V9.5" class="stroke-current" stroke-linecap="round"></path>
-                </svg>
-            </div>
-            <div class="absolute bottom-0 left-0" aria-hidden="true">
-                <svg class="h-2.5 -scale-y-100 {{ $v['corner'] }}" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 11 11" fill="none">
-                    <path d="M9.5 0.5H0.5V9.5" class="stroke-current" stroke-linecap="round"></path>
-                </svg>
-            </div>
-            <div class="absolute right-0 bottom-0" aria-hidden="true">
-                <svg class="h-2.5 -scale-x-100 -scale-y-100 {{ $v['corner'] }}" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 11 11" fill="none">
-                    <path d="M9.5 0.5H0.5V9.5" class="stroke-current" stroke-linecap="round"></path>
-                </svg>
-            </div>
+            <x-ui.corners :color="$v['corner']" :hover="false" size="h-2.5" offset="4" />
         @endif
 
         @svg('heroicon-' . $icon, 'size-7')

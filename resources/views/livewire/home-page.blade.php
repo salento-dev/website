@@ -7,19 +7,30 @@
 @endsection
 
 <div class="flex flex-col gap-24 md:gap-32 lg:gap-40">
-    <!-- Upcoming Events -->
-    @if ($events->isNotEmpty())
-        <x-ui.section-header eyebrow="SCHEDULED_OPERATIONS" title="Upcoming Events" :link="['href' => route('events'), 'text' => 'Full Schedule']">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                @foreach ($events as $event)
-                    <x-cards.event :event="$event" />
-                @endforeach
-            </div>
-        </x-ui.section-header>
+
+    <!-- Upcoming Event -->
+    @if ($nextEvent || $pastEvents->isNotEmpty())
+        <div class="flex flex-col gap-12">
+            @if ($nextEvent)
+            <x-cards.event-featured :event="$nextEvent" />
+            @endif
+
+            @if ($pastEvents->isNotEmpty())
+                <x-ui.section-header eyebrow="Eventi passati" :link="['href' => route('events'), 'text' => 'Full Schedule']">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        @foreach ($pastEvents as $event)
+                            <x-cards.event :event="$event" :variant="'simple'" />
+                        @endforeach
+                    </div>
+                </x-ui.section-header>
+            @endif
+        </div>
     @endif
 
+
+
     <!-- Documents Feed / Resources -->
-    <x-ui.section-header eyebrow="FETCHING_RESOURCES" title="Latest Documents" :link="['href' => route('resources'), 'text' => 'View All Resources']">
+    <x-ui.section-header eyebrow="FETCHING_RESOURCES" title="Le ultime risorse" :link="['href' => route('resources'), 'text' => 'View All Resources']">
         <div class="overflow-hidden border border-border-cyan bg-background-dark">
             <!-- Header -->
             <div class="flex items-center justify-between border-b border-border-cyan bg-card-dark px-6 py-3">
@@ -48,7 +59,7 @@
                         @endif
                     </div>
                 @empty
-                    <p class="p-4 text-sm text-primary/60">Nessun documento pubblicato al momento.</p>
+                    <p class="p-4 text-sm text-primary/60">Nessuna risorsa pubblicata al momento.</p>
                 @endforelse
             </div>
         </div>

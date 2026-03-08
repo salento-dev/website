@@ -1,0 +1,95 @@
+@props(['event'])
+
+@php
+    $image_url = $event->image_path
+        ? asset('storage/' . ltrim($event->image_path, '/'))
+        : asset('storage/placeholders/events/event-placeholder.jpg');
+
+    $dateFormatted = $event->starts_at->translatedFormat('l j F Y');
+    $timeFormatted = $event->starts_at->format('H:i');
+    $daysUntil = (int) now()->startOfDay()->diffInDays($event->starts_at->startOfDay(), false);
+@endphp
+
+<a href="{{ route('events.show', $event) }}" aria-label="Scopri l'evento {{ $event->title }}"
+    class="group relative block border border-border bg-surface-900 transition-all duration-500 ease-out">
+
+    {{-- Background image with overlay --}}
+    <div class="absolute inset-0 overflow-hidden">
+        <img src="{{ $image_url }}" alt="{{ $event->title }}" class="size-full object-cover opacity-20 transition-all duration-700 ease-out group-hover:opacity-30 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-surface-900 via-surface-900/90 to-surface-900/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-surface-900/80 via-transparent to-transparent"></div>
+    </div>
+
+    {{-- Corner accents --}}
+    <x-ui.corners color="text-primary" :hover="true" size="h-3" />
+
+    <div class="relative flex flex-col gap-6 p-8 md:p-10 lg:p-12">
+
+        {{-- Top bar --}}
+        <div class="flex items-center justify-between">
+            <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
+                <span class="relative flex h-1.5 w-1.5">
+                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary"></span>
+                </span>
+                Prossimo evento
+            </span>
+
+            @if ($daysUntil >= 0)
+                <div class="text-right font-mono">
+                    <span class="block text-3xl font-bold tabular-nums text-mist-50 md:text-4xl">
+                        {{ $daysUntil === 0 ? 'Oggi' : $daysUntil }}
+                    </span>
+                    @if ($daysUntil > 0)
+                        <span class="block text-[10px] uppercase tracking-widest text-primary/60">
+                            {{ $daysUntil === 1 ? 'giorno al via' : 'giorni al via' }}
+                        </span>
+                    @endif
+                </div>
+            @endif
+        </div>
+
+        {{-- Title + description --}}
+        <div class="max-w-2xl">
+            <h3 class="mb-3 font-outfit text-3xl font-bold leading-tight text-mist-50 transition-colors duration-300 group-hover:text-primary md:text-4xl lg:text-5xl">
+                {{ $event->title }}
+            </h3>
+            @if ($event->description)
+                <p class="line-clamp-2 text-sm leading-relaxed text-mist-400 md:text-base">
+                    {{ strip_tags($event->description) }}
+                </p>
+            @endif
+        </div>
+
+        {{-- Meta details --}}
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs text-mist-400">
+            <span class="flex items-center gap-2">
+                <x-heroicon-o-calendar-days class="h-3.5 text-primary/70" />
+                {{ $dateFormatted }} {{ $timeFormatted !== '00:00' ? '· ' . $timeFormatted : '' }}
+            </span>
+            @if ($event->location)
+                <span class="flex items-center gap-2">
+                    <x-heroicon-o-map-pin class="h-3.5 text-primary/70" />
+                    {{ $event->location }}
+                </span>
+            @endif
+        </div>
+
+        {{-- Footer: categories + CTA --}}
+        <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-1.5">
+                @foreach ($event->categories as $category)
+                    <span class="inline-flex h-6 items-center rounded-xs bg-surface-800/80 px-2 text-[10px] font-medium uppercase tracking-wider text-mist-200/70">
+                        {{ $category->name }}
+                    </span>
+                @endforeach
+            </div>
+
+            <span class="inline-flex h-11 items-center gap-3 border border-primary bg-primary/10 px-6 font-medium text-primary transition-all duration-300 ease-out group-hover:bg-primary group-hover:text-surface-900">
+                Scopri e partecipa
+                <x-heroicon-o-arrow-right class="h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+        </div>
+
+    </div>
+</a>

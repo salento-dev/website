@@ -5,7 +5,7 @@
 
 @php $isActive = request()->routeIs($route) @endphp
 <a href="{{ route($route) }}" aria-current="{{ $isActive ? 'page' : null }}" x-on:click="showMobileMenu = false"
-    class="block py-2 transition duration-300 ease-out {{ $isActive ? 'font-medium text-stone-200' : 'hover:scale-110 hover:font-medium hover:text-stone-200'  }}">
+    class="block py-2 transition duration-300 ease-out {{ $isActive ? 'font-medium text-mist-200' : 'hover:scale-110 hover:font-medium hover:text-mist-200'  }}">
     <span class="relative inline-flex items-center gap-1.5">
         {{ $routeName }}
         @if ($isActive)
@@ -13,7 +13,7 @@
                 style="opacity: 0; transform: scale(0)">
                 <div x-init="$nextTick(() => initBadgeAnimation($el, 'rotate'))">
                     <div
-                        class="ml-2.5 -rotate-5 rounded-tl-md rounded-tr-md rounded-br-md bg-surface-800 px-2 py-1 text-xs whitespace-nowrap text-stone-100">
+                        class="ml-2.5 -rotate-5 rounded-tl-md rounded-tr-md rounded-br-md bg-surface-800 px-2 py-1 text-xs whitespace-nowrap text-mist-100">
                         You're here
                     </div>
                 </div>

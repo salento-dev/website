@@ -67,12 +67,6 @@
     --color-serenade-dark: #0f0f0f;
     --color-background-dark: #0a0a0a;
 
-    /* Text matching Filament's stone palette */
-    --color-stone-50: #fafaf9;
-    --color-stone-300: #d6d3d1;
-    --color-stone-400: #a8a29e;
-    --color-stone-600: #78716c;
-
     /* Simplified for usage */
     --color-text-primary: #fafaf9;
     --color-text-secondary: #a8a29e;

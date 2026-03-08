@@ -13,11 +13,19 @@ class HomePage extends Component
 {
     public function render(): View
     {
-        $events = Schema::hasTable('events')
+        $nextEvent = Schema::hasTable('events')
             ? Event::query()
                 ->where('is_published', true)
                 ->where('starts_at', '>=', now())
                 ->orderBy('starts_at')
+                ->first()
+            : null;
+
+        $pastEvents = Schema::hasTable('events')
+            ? Event::query()
+                ->where('is_published', true)
+                ->where('starts_at', '<', now())
+                ->orderByDesc('starts_at')
                 ->limit(2)
                 ->get()
             : new Collection;
@@ -31,7 +39,8 @@ class HomePage extends Component
             : new Collection;
 
         return view('livewire.home-page', [
-            'events' => $events,
+            'nextEvent' => $nextEvent,
+            'pastEvents' => $pastEvents,
             'resources' => $resources,
         ])->layout('layouts.app', [
             'pageTitle' => 'Home',

@@ -4,13 +4,13 @@
 @endcomponent
 
 <!-- Hero Title - Filament style -->
-<h1 class="mb-6 text-5xl font-bold leading-[1.1] tracking-tight text-stone-50 sm:text-6xl lg:text-7xl">
+<h1 class="mb-6 text-5xl font-bold leading-[1.1] tracking-tight text-mist-50 sm:text-6xl lg:text-7xl">
     <span class="block text-primary">Salento.dev</span>
     <span class="block">la comunity di sviluppatori</span>
 </h1>
 
 <!-- Description -->
-<p class="mx-auto max-w-2xl text-lg leading-relaxed text-stone-400">
+<p class="mx-auto max-w-2xl text-lg leading-relaxed text-mist-400">
     Una comunità di sviluppatori, designer e innovatori che trasformano idee in realtà attraverso la collaborazione, il
     codice open-source e la condivisione delle conoscenze.
 </p>

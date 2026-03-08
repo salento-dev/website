@@ -12,7 +12,7 @@
     x-on:click="toggleTag('{{ $safeTag }}')"
     :aria-pressed="isTagSelected('{{ $safeTag }}')"
     class="inline-flex h-8 shrink-0 cursor-pointer items-center gap-1.25 rounded-xs pr-1.75 pl-2.5 text-sm transition-all duration-300 ease-out select-none focus:outline-none focus-visible:ring focus-visible:ring-black/50 focus-visible:ring-inset active:scale-95"
-    :class="isTagSelected('{{ $safeTag }}') ? 'bg-honey-100 font-medium text-stone-800' : 'bg-cream-100 hover:bg-honey-100/50'"
+    :class="isTagSelected('{{ $safeTag }}') ? 'bg-honey-100 font-medium text-mist-800' : 'bg-cream-100 hover:bg-honey-100/50'"
 >
     <span>{{ $label }}</span>
 
