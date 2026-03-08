@@ -35,10 +35,12 @@ class EventForm
                     ->maxLength(255),
                 DateTimePicker::make('starts_at')
                     ->label('Data inizio')
+                    ->timezone('Europe/Rome')
                     ->required()
                     ->seconds(false),
                 DateTimePicker::make('ends_at')
                     ->label('Data fine')
+                    ->timezone('Europe/Rome')
                     ->seconds(false)
                     ->afterOrEqual('starts_at'),
                 MarkdownEditor::make('description')

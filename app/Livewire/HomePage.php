@@ -16,7 +16,14 @@ class HomePage extends Component
         $nextEvent = Schema::hasTable('events')
             ? Event::query()
                 ->where('is_published', true)
-                ->where('starts_at', '>=', now())
+                ->where(function ($query): void {
+                    $query->whereNotNull('ends_at')
+                        ->where('ends_at', '>=', now())
+                        ->orWhere(function ($query): void {
+                            $query->whereNull('ends_at')
+                                ->where('starts_at', '>=', now()->startOfDay());
+                        });
+                })
                 ->orderBy('starts_at')
                 ->first()
             : null;
@@ -24,7 +31,14 @@ class HomePage extends Component
         $pastEvents = Schema::hasTable('events')
             ? Event::query()
                 ->where('is_published', true)
-                ->where('starts_at', '<', now())
+                ->where(function ($query): void {
+                    $query->whereNotNull('ends_at')
+                        ->where('ends_at', '<', now())
+                        ->orWhere(function ($query): void {
+                            $query->whereNull('ends_at')
+                                ->where('starts_at', '<', now()->startOfDay());
+                        });
+                })
                 ->orderByDesc('starts_at')
                 ->limit(2)
                 ->get()
