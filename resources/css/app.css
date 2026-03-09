@@ -112,7 +112,7 @@
     .bg-dots-pattern {
         @apply bg-repeat;
         /* position: relative; */
-        background-image: url(../images/dots-pattern-30.png);
+        background-image: url(../images/dots-pattern-15.png);
         background-size: 9rem;
     }
 

@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Event;
-use App\Models\EventCategory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Schema;
@@ -16,10 +15,6 @@ class EventsPage extends Component
     use WithPagination;
 
     public string $search = '';
-
-    public string $period = 'all';
-
-    public string $category = 'all';
 
     public string $sortBy = 'newest';
 
@@ -41,16 +36,6 @@ class EventsPage extends Component
         $this->resetPage();
     }
 
-    public function updatedPeriod(): void
-    {
-        $this->resetPage();
-    }
-
-    public function updatedCategory(): void
-    {
-        $this->resetPage();
-    }
-
     public function updatedSortBy(): void
     {
         $this->resetPage();
@@ -58,24 +43,12 @@ class EventsPage extends Component
 
     public function render(): View
     {
-        $hasEventCategoryTables = Schema::hasTable('event_categories') && Schema::hasTable('event_category_event');
-
         $events = Schema::hasTable('events')
-            ? $this->buildEventsQuery($hasEventCategoryTables)->paginate(12)
-            : new Collection;
-
-        $categories = $hasEventCategoryTables
-            ? EventCategory::query()
-                ->where('is_active', true)
-                ->orderBy('sort_order')
-                ->orderBy('name')
-                ->get()
+            ? $this->buildEventsQuery()->paginate(12)
             : new Collection;
 
         return view('livewire.events-page', [
             'events' => $events,
-            'hasEventCategoryTables' => $hasEventCategoryTables,
-            'categories' => $categories,
             'sortOptions' => self::sortOptions(),
         ])->layout('layouts.app', [
             'pageTitle' => 'Eventi',
@@ -83,7 +56,7 @@ class EventsPage extends Component
         ]);
     }
 
-    protected function buildEventsQuery(bool $hasEventCategoryTables): Builder
+    protected function buildEventsQuery(): Builder
     {
         $query = Event::query()
             ->where('is_published', true)
@@ -95,27 +68,7 @@ class EventsPage extends Component
                         ->orWhere('location', 'like', '%'.$this->search.'%')
                         ->orWhere('description', 'like', '%'.$this->search.'%');
                 }),
-            )
-            ->when(
-                $this->period === 'upcoming',
-                fn (Builder $builder): Builder => $builder->where('starts_at', '>=', now()),
-            )
-            ->when(
-                $this->period === 'past',
-                fn (Builder $builder): Builder => $builder->where('starts_at', '<', now()),
             );
-
-        if ($hasEventCategoryTables) {
-            $query
-                ->with('categories:id,name,slug')
-                ->when(
-                    $this->category !== 'all',
-                    fn (Builder $builder): Builder => $builder->whereHas(
-                        'categories',
-                        fn (Builder $categoryQuery): Builder => $categoryQuery->where('slug', $this->category),
-                    ),
-                );
-        }
 
         return match ($this->sortBy) {
             'oldest' => $query->orderBy('starts_at'),
