@@ -12,17 +12,7 @@
 @endsection
 
 
-<div class="overflow-hidden border border-border-cyan bg-background-dark">
-    <!-- Header -->
-    <div class="flex items-center justify-between border-b border-border-cyan bg-card-dark px-6 py-3">
-        <div class="flex gap-2">
-            <div class="size-2 rounded-full bg-red-500/50"></div>
-            <div class="size-2 rounded-full bg-yellow-500/50"></div>
-            <div class="size-2 rounded-full bg-green-500/50"></div>
-        </div>
-        <span class="text-[10px] font-mono text-primary/60 tracking-widest uppercase">root@salentodev:~/resources</span>
-    </div>
-    <!-- Terminal Body -->
+<x-ui.terminal :path="'~/resources'">
     <div class="divide-y divide-border-cyan/50 font-mono text-xs">
         @forelse ($resources as $resource)
             <div class="group flex items-center justify-between px-6 py-4 hover:bg-primary/5 transition-colors">
@@ -46,4 +36,4 @@
             <p class="p-4 text-sm text-primary/60">Nessun documento pubblicato al momento.</p>
         @endforelse
     </div>
-</div>
+</x-ui.terminal>

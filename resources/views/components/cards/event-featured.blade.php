@@ -13,7 +13,7 @@
 @endphp
 
 <a href="{{ route('events.show', $event) }}" aria-label="Scopri l'evento {{ $event->title }}"
-    class="group relative block border border-border bg-surface-900 transition-all duration-500 ease-out">
+    class="group relative block bg-surface-900 transition-all duration-500 ease-out">
 
     {{-- Background image with overlay --}}
     <div class="absolute inset-0 overflow-hidden">
