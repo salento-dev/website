@@ -11,7 +11,7 @@
     </p>
 @endsection
 
-<div class="flex flex-col gap-5">
+<div class="flex flex-col gap-6">
     <x-ui.input-search wire-model="search" placeholder="Cerca eventi..." sr-label="Cerca eventi per titolo, luogo o descrizione" />
 
     <div class="flex flex-wrap items-center justify-between gap-4">
@@ -25,7 +25,7 @@
     <div class="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] items-start gap-7 transition-opacity duration-300"
         x-init="autoAnimate($el, { duration: 250 })" aria-label="Event list">
         @forelse ($events as $event)
-            <x-cards.event :event="$event" :href="route('events.show', $event)" />
+            <x-cards.event :event="$event" />
         @empty
             <div class="py-12 text-center">
                 <p class="text-primary/60">Nessun evento trovato con i filtri selezionati.</p>

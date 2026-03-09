@@ -11,7 +11,7 @@
     </p>
 @endsection
 
-<div class="flex flex-col gap-5">
+<div class="flex flex-col gap-6">
     <x-ui.input-search wire-model="search" placeholder="Cerca risorse..." sr-label="Cerca risorse per titolo" />
 
     <div class="flex flex-wrap items-center justify-between gap-4">

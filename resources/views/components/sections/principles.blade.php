@@ -1,6 +1,6 @@
 <x-ui.section-header eyebrow="I Nostri Valori" title='Principi Fondamentali'
     description="Una community che intende innescare un circolo virtuoso, sancito da principi fondanti.">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         <!-- Principio 1: Qualità e rigore -->
         <x-cards.principle image_path="assets/quality.svg" title="Qualità & Rigore"
             description="Diffondiamo le best practice dell'IT perché chi partecipa oggi scriva codice migliore domani: esempi riproducibili, test, documentazione essenziale, feedback onesto." />
