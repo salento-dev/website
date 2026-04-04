@@ -44,8 +44,6 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <!-- Main Content -->
             <article class="lg:col-span-2">
-                <h2 class="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-4">EVENT_DESCRIPTION
-                </h2>
                 <div
                     class="prose prose-invert max-w-none prose-p:text-white/80 prose-li:text-white/80 prose-strong:text-primary prose-headings:text-white prose-headings:uppercase prose-headings:tracking-tighter">
                     {!! \Illuminate\Support\Str::markdown($event->description, [
