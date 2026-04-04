@@ -1,14 +1,9 @@
 @section('hero')
-    <div
-        class="mb-6 inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-primary">
-        Event Archive // Access Protocol
-    </div>
-    <h1 class="mb-6 text-5xl font-black uppercase leading-tight tracking-tighter text-white sm:text-6xl lg:text-7xl">
+    <x-sections.page-hero 
+        :badge="'Event Archive // Access Protocol'" 
+        :description="'Meetup, workshop e momenti di confronto della community. Esplora tutti gli eventi pubblicati.'">
         Eventi <span class="text-glow text-primary">Community</span>
-    </h1>
-    <p class="mx-auto max-w-2xl text-lg font-light leading-relaxed text-white/60">
-        Meetup, workshop e momenti di confronto della community. Esplora tutti gli eventi pubblicati.
-    </p>
+    </x-sections.page-hero>
 @endsection
 
 <div class="flex flex-col gap-6">

@@ -61,4 +61,9 @@ class Event extends Model
     {
         return $this->belongsToMany(Resource::class)->withTimestamps();
     }
+
+    public function partners(): BelongsToMany
+    {
+        return $this->belongsToMany(Partner::class)->orderBy('name');
+    }
 }

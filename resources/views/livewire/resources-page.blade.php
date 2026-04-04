@@ -1,14 +1,9 @@
 @section('hero')
-    <div
-        class="inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-6">
-        Resource Library // Documentation Access
-    </div>
-    <h1 class="mb-6 text-5xl font-black uppercase leading-tight tracking-tighter sm:text-6xl lg:text-7xl text-white">
+    <x-sections.page-hero 
+        :badge="'Resource Library // Documentation Access'" 
+        :description="'Materiali condivisi dalla community: guide, slide e risorse utili per approfondire temi tecnici.'">
         Documenti & <span class="text-primary text-glow">Slide</span>
-    </h1>
-    <p class="mx-auto max-w-2xl text-lg font-light leading-relaxed text-white/60">
-        Materiali condivisi dalla community: guide, slide e risorse utili per approfondire temi tecnici.
-    </p>
+    </x-sections.page-hero>
 @endsection
 
 <div class="flex flex-col gap-6">

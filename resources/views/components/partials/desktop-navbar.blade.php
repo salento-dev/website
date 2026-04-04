@@ -6,6 +6,9 @@
         <x-partials.desktop-navbar-item route="events" route-name="Eventi" />
     </div>
     <div>
-        <x-partials.desktop-navbar-item route="resources" route-name="Resources" />
+        <x-partials.desktop-navbar-item route="resources" route-name="Risorse" />
+    </div>
+    <div>
+        <x-partials.desktop-navbar-item route="partners" route-name="Partner" />
     </div>
 </nav>

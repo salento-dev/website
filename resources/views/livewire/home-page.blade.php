@@ -1,5 +1,5 @@
 @section('hero')
-    <x-sections.hero />
+    <x-sections.home-hero />
 @endsection
 
 @section('hero-footer')

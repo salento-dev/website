@@ -25,9 +25,14 @@
     <div>
         <h4 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Naviga</h4>
         <ul class="space-y-3 text-sm text-surface-400">
-            <li><a class="hover:text-primary transition-colors duration-200" href="{{ route('events') }}">Eventi</a>
+            <li>
+                <a class="hover:text-primary transition-colors duration-200" href="{{ route('events') }}">Eventi</a>
             </li>
-            <li><a class="hover:text-primary transition-colors duration-200" href="{{ route('resources') }}">Risorse</a>
+            <li>
+                <a class="hover:text-primary transition-colors duration-200" href="{{ route('resources') }}">Risorse</a>
+            </li>
+            <li>
+                <a class="hover:text-primary transition-colors duration-200" href="{{ route('partners') }}">Partner</a>
             </li>
         </ul>
     </div>

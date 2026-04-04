@@ -167,6 +167,32 @@
             </x-ui.section-header>
         @endif
 
+        <!-- Partners Section -->
+        @if ($event->partners->isNotEmpty())
+            <x-ui.section-header eyebrow="EVENT_PARTNERS" title='Partner'>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    @foreach ($event->partners as $partner)
+                        <div class="border border-border-cyan bg-card-dark p-4 flex flex-col items-center gap-3 text-center">
+                            @if ($partner->logo_path)
+                                <img src="{{ asset('storage/' . ltrim($partner->logo_path, '/')) }}"
+                                    alt="{{ $partner->name }}"
+                                    class="h-12 w-auto object-contain opacity-80">
+                            @else
+                                <x-heroicon-o-building-storefront class="size-10 text-primary/40" />
+                            @endif
+                            <span class="text-xs font-bold uppercase tracking-widest text-white/80">{{ $partner->name }}</span>
+                            @if ($partner->website_url)
+                                <a href="{{ $partner->website_url }}" target="_blank" rel="noreferrer noopener"
+                                    class="text-[10px] text-primary hover:underline uppercase tracking-widest font-bold">
+                                    Sito web
+                                </a>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            </x-ui.section-header>
+        @endif
+
         <!-- Related Events Section -->
         @if ($relatedEvents->isNotEmpty())
             <x-ui.section-header eyebrow="RELATED_EVENTS" title='Altri Eventi'>

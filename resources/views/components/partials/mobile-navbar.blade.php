@@ -67,7 +67,10 @@
                             <x-partials.mobile-navbar-item route="events" route-name="Events" />
                         </li>
                         <li>
-                            <x-partials.mobile-navbar-item route="resources" route-name="Resources" />
+                            <x-partials.mobile-navbar-item route="resources" route-name="Risorse" />
+                        </li>
+                        <li>
+                            <x-partials.mobile-navbar-item route="partners" route-name="Partner" />
                         </li>
                     </ul>
 

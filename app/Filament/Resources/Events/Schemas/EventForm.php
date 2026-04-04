@@ -69,6 +69,13 @@ class EventForm
                     ->preload()
                     ->searchable()
                     ->columnSpanFull(),
+                Select::make('partners')
+                    ->label('Partner')
+                    ->relationship('partners', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
+                    ->columnSpanFull(),
                 Repeater::make('media')
                     ->label('Galleria media')
                     ->relationship('media')
