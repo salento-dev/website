@@ -24,6 +24,7 @@ class Event extends Model
         'description',
         'image_path',
         'is_published',
+        'work_in_progress',
     ];
 
     /**
@@ -35,7 +36,13 @@ class Event extends Model
             'starts_at' => 'datetime',
             'ends_at' => 'datetime',
             'is_published' => 'boolean',
+            'work_in_progress' => 'boolean',
         ];
+    }
+
+    public function isPast(): bool
+    {
+        return $this->ends_at <= now();
     }
 
     public function media(): HasMany

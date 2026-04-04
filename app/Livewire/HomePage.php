@@ -16,6 +16,7 @@ class HomePage extends Component
         $nextEvent = Schema::hasTable('events')
             ? Event::query()
                 ->where('is_published', true)
+                ->where('work_in_progress', false)
                 ->where(function ($query): void {
                     $query->whereNotNull('ends_at')
                         ->where('ends_at', '>=', now())
@@ -31,6 +32,7 @@ class HomePage extends Component
         $pastEvents = Schema::hasTable('events')
             ? Event::query()
                 ->where('is_published', true)
+                ->where('work_in_progress', false)
                 ->where(function ($query): void {
                     $query->whereNotNull('ends_at')
                         ->where('ends_at', '<', now())

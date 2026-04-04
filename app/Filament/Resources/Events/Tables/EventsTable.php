@@ -48,6 +48,13 @@ class EventsTable
                 IconColumn::make('is_published')
                     ->label('Pubblicato')
                     ->boolean(),
+                IconColumn::make('work_in_progress')
+                    ->label('Work in Progress')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-wrench-screwdriver')
+                    ->falseIcon('heroicon-o-check-circle')
+                    ->trueColor('warning')
+                    ->falseColor('gray'),
                 TextColumn::make('updated_at')
                     ->label('Aggiornato')
                     ->since()
@@ -57,6 +64,8 @@ class EventsTable
             ->filters([
                 TernaryFilter::make('is_published')
                     ->label('Pubblicato'),
+                TernaryFilter::make('work_in_progress')
+                    ->label('Work in Progress'),
                 SelectFilter::make('categories')
                     ->label('Categoria')
                     ->relationship('categories', 'name'),

@@ -58,6 +58,10 @@ class EventForm
                 Toggle::make('is_published')
                     ->label('Pubblicato')
                     ->default(true),
+                Toggle::make('work_in_progress')
+                    ->label('Work in Progress')
+                    ->default(false)
+                    ->helperText('Gli eventi work in progress sono visibili nella lista ma non accessibili nel dettaglio'),
                 Select::make('categories')
                     ->label('Categorie')
                     ->relationship('categories', 'name', fn ($query) => $query->where('is_active', true)->orderBy('sort_order')->orderBy('name'))

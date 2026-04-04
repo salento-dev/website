@@ -15,6 +15,7 @@ class EventDetailPage extends Component
     public function mount(Event $event): void
     {
         abort_unless($event->is_published, 404);
+        abort_unless(! $event->work_in_progress, 404);
 
         $relations = [];
 
