@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             EventCategorySeeder::class,
             EventSeeder::class,
             ResourceSeeder::class,
+            StoryCategorySeeder::class,
+            StorySeeder::class,
         ]);
 
         Artisan::call('make:filament-user', [

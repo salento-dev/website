@@ -5,6 +5,8 @@ use App\Livewire\EventsPage;
 use App\Livewire\HomePage;
 use App\Livewire\PartnersPage;
 use App\Livewire\ResourcesPage;
+use App\Livewire\StoriesPage;
+use App\Livewire\StoryDetailPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class)->name('home');
@@ -20,3 +22,6 @@ Route::get('/events/{event:slug}', EventDetailPage::class)->name('events.show');
 Route::get('/resources', ResourcesPage::class)->name('resources');
 
 Route::get('/partners', PartnersPage::class)->name('partners');
+
+Route::get('/stories', StoriesPage::class)->name('stories');
+Route::get('/stories/{story:slug}', StoryDetailPage::class)->name('stories.show');
