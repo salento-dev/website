@@ -1,9 +1,16 @@
 {
     "agents": [
-        "copilot"
+        "copilot",
+        "claude_code"
     ],
     "guidelines": true,
     "herd_mcp": false,
     "mcp": true,
-    "sail": false
+    "packages": [
+        "filament/filament"
+    ],
+    "sail": true,
+    "skills": [
+        "tailwindcss-development"
+    ]
 }
