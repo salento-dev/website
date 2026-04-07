@@ -14,7 +14,7 @@ class StoryDetailPage extends Component
     {
         abort_unless($story->is_published, 404);
 
-        $this->story = $story->load('category');
+        $this->story = $story->load(['category', 'authors']);
     }
 
     public function render(): View
@@ -22,7 +22,7 @@ class StoryDetailPage extends Component
         $relatedStories = Story::query()
             ->where('is_published', true)
             ->whereKeyNot($this->story->getKey())
-            ->with('category')
+            ->with(['category', 'authors'])
             ->when(
                 $this->story->story_category_id !== null,
                 fn ($q) => $q->where('story_category_id', $this->story->story_category_id),

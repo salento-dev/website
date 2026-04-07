@@ -56,21 +56,63 @@
                     </div>
                 @endif
 
-                {{-- Author card --}}
-                <div class="border border-border bg-surface-900 p-6 flex flex-col gap-4">
-                    <h3 class="font-mono text-2xs uppercase tracking-widest text-primary">Autore</h3>
-                    <div class="flex items-center gap-4">
-                        <div class="size-12 rounded-full bg-surface-700 border border-primary/20 flex items-center justify-center shrink-0">
-                            <x-heroicon-o-user class="size-6 text-primary/60" />
-                        </div>
-                        <div>
-                            <p class="font-outfit font-bold text-surface-50">{{ $story->author }}</p>
-                            @if ($story->author_role)
-                                <p class="font-mono text-2xs uppercase tracking-widest text-surface-500 mt-0.5">{{ $story->author_role }}</p>
+                {{-- Authors card --}}
+                @if ($story->authors->isNotEmpty())
+                    <div class="border border-border bg-surface-900 p-6 flex flex-col gap-4">
+                        <h3 class="font-mono text-2xs uppercase tracking-widest text-primary">
+                            {{ $story->authors->count() > 1 ? 'Autori' : 'Autore' }}
+                        </h3>
+                        @foreach ($story->authors as $author)
+                            <div class="flex items-center gap-4">
+                                <div class="size-12 rounded-full overflow-hidden bg-surface-700 border border-primary/20 flex items-center justify-center shrink-0">
+                                    @if ($author->avatarUrl())
+                                        <img src="{{ $author->avatarUrl() }}" alt="{{ $author->name }}" class="size-full object-cover">
+                                    @else
+                                        <x-heroicon-o-user class="size-6 text-primary/60" />
+                                    @endif
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="font-outfit font-bold text-surface-50">{{ $author->name }}</p>
+                                    @if (filled($author->role))
+                                        <p class="font-mono text-2xs uppercase tracking-widest text-surface-500 mt-0.5">{{ $author->role }}</p>
+                                    @endif
+                                    {{-- Social links --}}
+                                    @if (filled($author->github_username) || filled($author->linkedin_url) || filled($author->twitter_url) || filled($author->website_url))
+                                        <div class="flex items-center gap-3 mt-2">
+                                            @if (filled($author->github_username))
+                                                <a href="https://github.com/{{ $author->github_username }}" target="_blank" rel="noreferrer noopener"
+                                                   class="text-surface-400 hover:text-primary transition-colors" title="GitHub">
+                                                    <x-heroicon-o-code-bracket class="size-4" />
+                                                </a>
+                                            @endif
+                                            @if (filled($author->linkedin_url))
+                                                <a href="{{ $author->linkedin_url }}" target="_blank" rel="noreferrer noopener"
+                                                   class="text-surface-400 hover:text-primary transition-colors" title="LinkedIn">
+                                                    <x-heroicon-o-briefcase class="size-4" />
+                                                </a>
+                                            @endif
+                                            @if (filled($author->twitter_url))
+                                                <a href="{{ $author->twitter_url }}" target="_blank" rel="noreferrer noopener"
+                                                   class="text-surface-400 hover:text-primary transition-colors" title="X / Twitter">
+                                                    <x-heroicon-o-chat-bubble-left class="size-4" />
+                                                </a>
+                                            @endif
+                                            @if (filled($author->website_url))
+                                                <a href="{{ $author->website_url }}" target="_blank" rel="noreferrer noopener"
+                                                   class="text-surface-400 hover:text-primary transition-colors" title="Sito web">
+                                                    <x-heroicon-o-globe-alt class="size-4" />
+                                                </a>
+                                            @endif
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            @if (!$loop->last)
+                                <hr class="border-border/50">
                             @endif
-                        </div>
+                        @endforeach
                     </div>
-                </div>
+                @endif
 
                 {{-- Meta --}}
                 <div class="border border-border bg-surface-900 p-6 flex flex-col gap-3">

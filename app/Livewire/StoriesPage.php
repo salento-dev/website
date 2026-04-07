@@ -65,7 +65,7 @@ class StoriesPage extends Component
 
         $featuredStory = Story::query()
             ->where('is_published', true)
-            ->with('category')
+            ->with(['category', 'authors'])
             ->latest('published_at')
             ->first();
 
@@ -90,7 +90,7 @@ class StoriesPage extends Component
     {
         $query = Story::query()
             ->where('is_published', true)
-            ->with('category')
+            ->with(['category', 'authors'])
             ->when($excludeId !== null, fn (Builder $q) => $q->whereKeyNot($excludeId))
             ->when(
                 filled($this->search),

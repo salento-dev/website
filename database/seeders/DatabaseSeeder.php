@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             EventSeeder::class,
             ResourceSeeder::class,
             StoryCategorySeeder::class,
-            StorySeeder::class,
+            StorySeeder::class, // creates Authors internally
         ]);
 
         Artisan::call('make:filament-user', [

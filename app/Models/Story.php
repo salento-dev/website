@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Story extends Model
 {
@@ -20,8 +21,6 @@ class Story extends Model
         'slug',
         'excerpt',
         'body',
-        'author',
-        'author_role',
         'image_path',
         'read_time_minutes',
         'is_published',
@@ -42,5 +41,10 @@ class Story extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(StoryCategory::class, 'story_category_id');
+    }
+
+    public function authors(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class);
     }
 }

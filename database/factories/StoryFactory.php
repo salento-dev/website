@@ -27,8 +27,6 @@ class StoryFactory extends Factory
             'slug' => Str::slug($title).'-'.fake()->unique()->numberBetween(100, 999),
             'excerpt' => fake()->paragraph(2),
             'body' => implode("\n\n", fake()->paragraphs(fake()->numberBetween(4, 8))),
-            'author' => fake()->name(),
-            'author_role' => fake()->randomElement(['Full Stack Dev', 'Frontend Dev', 'Backend Dev', 'DevOps Engineer', 'Tech Lead']),
             'image_path' => null,
             'read_time_minutes' => fake()->numberBetween(3, 20),
             'is_published' => fake()->boolean(80),

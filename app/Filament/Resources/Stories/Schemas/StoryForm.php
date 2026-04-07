@@ -25,13 +25,6 @@ class StoryForm
                     ->required()
                     ->maxLength(255)
                     ->unique(ignoreRecord: true),
-                TextInput::make('author')
-                    ->label('Autore')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('author_role')
-                    ->label('Ruolo autore')
-                    ->maxLength(255),
                 Select::make('story_category_id')
                     ->label('Categoria')
                     ->relationship('category', 'name', fn ($query) => $query->where('is_active', true)->orderBy('sort_order')->orderBy('name'))
@@ -42,6 +35,25 @@ class StoryForm
                     ->numeric()
                     ->minValue(1)
                     ->maxValue(120),
+                Select::make('authors')
+                    ->label('Autori')
+                    ->relationship('authors', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
+                    ->createOptionForm([
+                        TextInput::make('name')
+                            ->label('Nome')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('role')
+                            ->label('Ruolo')
+                            ->maxLength(255),
+                        TextInput::make('github_username')
+                            ->label('GitHub Username')
+                            ->maxLength(255),
+                    ])
+                    ->columnSpanFull(),
                 MarkdownEditor::make('excerpt')
                     ->label('Estratto')
                     ->required()

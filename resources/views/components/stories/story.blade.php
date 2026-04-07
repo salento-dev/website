@@ -49,14 +49,30 @@
 
         {{-- Footer --}}
         <div class="flex items-center justify-between pt-4 border-t border-border/50">
-            <div class="flex items-center gap-2">
-                <div class="size-7 rounded-full bg-surface-700 border border-border flex items-center justify-center">
-                    <x-heroicon-o-user class="size-3.5 text-surface-400" />
+            @if ($story->authors->isNotEmpty())
+                <div class="flex items-center gap-2">
+                    <div class="flex -space-x-1.5">
+                        @foreach ($story->authors->take(3) as $author)
+                            @php $avatarUrl = $author->avatarUrl(); @endphp
+                            <div class="size-7 rounded-full border-2 border-surface-900 overflow-hidden bg-surface-700 flex items-center justify-center shrink-0"
+                                 title="{{ $author->name }}">
+                                @if ($avatarUrl)
+                                    <img src="{{ $avatarUrl }}" alt="{{ $author->name }}" class="size-full object-cover" loading="lazy">
+                                @else
+                                    <x-heroicon-o-user class="size-3 text-surface-400" />
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                    <span class="text-xs font-bold text-surface-200 line-clamp-1">
+                        {{ $story->authors->pluck('name')->join(', ') }}
+                    </span>
                 </div>
-                <span class="text-xs font-bold text-surface-200">{{ $story->author }}</span>
-            </div>
+            @else
+                <span></span>
+            @endif
             <a href="{{ route('stories.show', $story) }}"
-                class="font-mono text-2xs uppercase tracking-widest text-primary/60 transition-colors duration-300 hover:text-primary"
+                class="font-mono text-2xs uppercase tracking-widest text-primary/60 transition-colors duration-300 hover:text-primary shrink-0"
                 aria-label="Leggi {{ $story->title }}">
                 Leggi
                 <x-heroicon-o-arrow-top-right-on-square class="inline h-3 ml-0.5" />

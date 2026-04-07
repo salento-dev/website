@@ -18,7 +18,7 @@
             <div class="lg:w-1/2 h-64 lg:h-auto relative overflow-hidden">
                 <img src="{{ $imageUrl }}" alt="{{ $story->title }}"
                     class="w-full h-full object-cover opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-surface-900 via-surface-900/40 to-transparent hidden lg:block"></div>
+                <div class="absolute inset-0 bg-linear-to-r from-surface-900 via-surface-900/40 to-transparent hidden lg:block"></div>
             </div>
         @else
             <div class="lg:w-1/2 h-64 lg:h-auto bg-surface-800 flex items-center justify-center">
@@ -53,19 +53,34 @@
                 {{ strip_tags($story->excerpt) }}
             </p>
 
-            {{-- Author + CTA --}}
+            {{-- Authors + CTA --}}
             <div class="flex items-center justify-between mt-auto flex-wrap gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="size-9 rounded-full bg-surface-700 border border-primary/20 flex items-center justify-center">
-                        <x-heroicon-o-user class="size-4 text-primary/60" />
+                @if ($story->authors->isNotEmpty())
+                    <div class="flex items-center gap-3">
+                        {{-- Stacked avatars --}}
+                        <div class="flex -space-x-2">
+                            @foreach ($story->authors->take(3) as $author)
+                                @php $avatarUrl = $author->avatarUrl(); @endphp
+                                <div class="size-9 rounded-full border-2 border-surface-900 overflow-hidden bg-surface-700 flex items-center justify-center shrink-0"
+                                     title="{{ $author->name }}">
+                                    @if ($avatarUrl)
+                                        <img src="{{ $avatarUrl }}" alt="{{ $author->name }}" class="size-full object-cover">
+                                    @else
+                                        <x-heroicon-o-user class="size-4 text-primary/60" />
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-surface-50">
+                                {{ $story->authors->pluck('name')->join(', ') }}
+                            </p>
+                            @if ($story->authors->count() === 1 && filled($story->authors->first()->role))
+                                <p class="font-mono text-2xs uppercase tracking-widest text-surface-500">{{ $story->authors->first()->role }}</p>
+                            @endif
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-sm font-bold text-surface-50">{{ $story->author }}</p>
-                        @if ($story->author_role)
-                            <p class="font-mono text-2xs uppercase tracking-widest text-surface-500">{{ $story->author_role }}</p>
-                        @endif
-                    </div>
-                </div>
+                @endif
 
                 <span class="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-primary transition-all duration-300 group-hover:gap-3">
                     Leggi la storia
