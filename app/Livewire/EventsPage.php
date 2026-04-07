@@ -43,12 +43,39 @@ class EventsPage extends Component
 
     public function render(): View
     {
-        $events = Schema::hasTable('events')
-            ? $this->buildEventsQuery()->paginate(12)
-            : new Collection;
+        if (! Schema::hasTable('events')) {
+            return view('livewire.events-page', [
+                'upcomingEvents' => new Collection,
+                'wipEvents' => new Collection,
+                'pastEvents' => new Collection,
+                'sortOptions' => self::sortOptions(),
+            ])->layout('layouts.app', [
+                'pageTitle' => 'Eventi',
+                'metaDescription' => 'Calendario eventi della community Salento.dev.',
+            ]);
+        }
+
+        $upcomingEvents = Event::query()
+            ->where('is_published', true)
+            ->where('work_in_progress', false)
+            ->where('starts_at', '>', now())
+            ->orderBy('starts_at')
+            ->with(['categories'])
+            ->get();
+
+        $wipEvents = Event::query()
+            ->where('is_published', true)
+            ->where('work_in_progress', true)
+            ->orderBy('starts_at')
+            ->with(['categories'])
+            ->get();
+
+        $pastEvents = $this->buildPastEventsQuery()->paginate(12);
 
         return view('livewire.events-page', [
-            'events' => $events,
+            'upcomingEvents' => $upcomingEvents,
+            'wipEvents' => $wipEvents,
+            'pastEvents' => $pastEvents,
             'sortOptions' => self::sortOptions(),
         ])->layout('layouts.app', [
             'pageTitle' => 'Eventi',
@@ -56,10 +83,13 @@ class EventsPage extends Component
         ]);
     }
 
-    protected function buildEventsQuery(): Builder
+    protected function buildPastEventsQuery(): Builder
     {
         $query = Event::query()
             ->where('is_published', true)
+            ->where('work_in_progress', false)
+            ->where('starts_at', '<=', now())
+            ->with(['categories'])
             ->when(
                 filled($this->search),
                 fn (Builder $builder): Builder => $builder->where(function (Builder $subQuery): void {
