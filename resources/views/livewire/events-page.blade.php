@@ -18,7 +18,7 @@
                 <h2 class="font-outfit text-3xl font-extrabold tracking-tight text-surface-50">Prossimi Eventi</h2>
             </header>
             <div class="hidden gap-3 md:flex">
-                <span class="rounded-xs border border-outline-variant/20 bg-surface-800 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
+                <span class="rounded-xs border border-border bg-surface-800 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
                     Upcoming: {{ $upcomingEvents->count() }}
                 </span>
             </div>

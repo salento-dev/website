@@ -77,7 +77,7 @@
                         x-on:click="resetFilters()"
                         :inert="activeFilterCount === 0"
                         :aria-hidden="activeFilterCount === 0"
-                        class="group custom-dashed-border inline-flex h-10 min-w-27 items-center justify-center gap-1.5 rounded-xs bg-surface-800 text-surface-50 pr-3 pl-2.5 transition-all duration-500 ease-out will-change-transform hover:bg-secondary-200/70 active:scale-95"
+                        class="group border border-border border-dashed inline-flex h-10 min-w-27 items-center justify-center gap-1.5 rounded-xs bg-surface-800 text-surface-50 pr-3 pl-2.5 transition-all duration-500 ease-out will-change-transform hover:bg-secondary-200/70 active:scale-95"
                         :style="`opacity: ${activeFilterCount > 0 ? '1' : '0'}; visibility: ${activeFilterCount > 0 ? 'visible' : 'hidden'}; pointer-events: ${activeFilterCount > 0 ? 'auto' : 'none'};`"
                     >
                         <span class="text-sm">Reset</span>
