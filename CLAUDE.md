@@ -113,6 +113,10 @@ Accessibile via `/admin` — gestione di eventi, risorse e partner.
 - Per ispezionare il DB usa il tool `database-schema` / `database-query` di Laravel Boost
 - Esegui sempre Pint dopo le modifiche al codice PHP
 
+---
+
+@.claude/design.md
+
 ===
 
 <laravel-boost-guidelines>
