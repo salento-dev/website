@@ -133,17 +133,17 @@ Logo del sito. Nessuna prop.
 
 ## Componenti Card (`resources/views/components/cards/`)
 
-### `<x-cards.event>`
+### `<x-events.event>`
 Card evento — wrappa un modello `Event`. Gestisce automaticamente stati WIP, passato, futuro.
 ```blade
-<x-cards.event :event="$event" variant="default" />
+<x-events.event :event="$event" variant="default" />
 {{-- variant: default (con immagine) | simple (solo testo, per griglia compatta) --}}
 ```
 
-### `<x-cards.event-featured>`
+### `<x-events.featured-event>`
 Card evento in evidenza — più grande, usata nello slideshow hero.
 ```blade
-<x-cards.event-featured :event="$event" />
+<x-events.featured-event :event="$event" />
 ```
 
 ### `<x-cards.alert>`

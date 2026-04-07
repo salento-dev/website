@@ -186,7 +186,7 @@
             <x-ui.section-header eyebrow="RELATED_EVENTS" title='Altri Eventi'>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     @foreach ($relatedEvents as $relatedEvent)
-                        <x-cards.event :event="$relatedEvent" :variant="'simple'" />
+                        <x-events.event :event="$relatedEvent" :variant="'simple'" />
                     @endforeach
                 </div>
             </x-ui.section-header>

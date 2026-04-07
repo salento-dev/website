@@ -12,14 +12,14 @@
     @if ($nextEvent || $pastEvents->isNotEmpty())
         <div class="flex flex-col gap-12">
             @if ($nextEvent)
-            <x-cards.event-featured :event="$nextEvent" />
+            <x-events.featured-event :event="$nextEvent" />
             @endif
 
             @if ($pastEvents->isNotEmpty())
                 <x-ui.section-header eyebrow="Eventi passati" :link="['href' => route('events'), 'text' => 'Full Schedule']">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         @foreach ($pastEvents as $event)
-                            <x-cards.event :event="$event" :variant="'simple'" />
+                            <x-events.event :event="$event" :variant="'simple'" />
                         @endforeach
                     </div>
                 </x-ui.section-header>
