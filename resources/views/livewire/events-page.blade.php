@@ -33,10 +33,7 @@
                 @endforeach
             </x-ui.slideshow>
         @else
-            <div class="flex flex-col items-center justify-center gap-4 border border-dashed border-surface-700 py-20 text-center">
-                <x-heroicon-o-calendar-days class="h-10 text-surface-600" />
-                <p class="font-mono text-sm text-surface-500">Nessun evento in programma al momento.</p>
-            </div>
+            <x-ui.empty-state message="Nessun evento in programma al momento." icon="o-calendar-days" />
         @endif
     </section>
 
@@ -54,7 +51,7 @@
                 @foreach ($wipEvents as $event)
                     <div class="group relative flex flex-col justify-between border-2 border-dashed border-surface-700 bg-surface-900 p-8 transition-colors hover:border-primary/30">
                         <div class="absolute right-6 top-6">
-                            <span class="border border-primary/30 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.2em] text-primary">WIP</span>
+                            <x-ui.status-badge status="wip" label="WIP" />
                         </div>
 
                         <div>
@@ -116,9 +113,7 @@
                 @forelse ($pastEvents as $event)
                     <x-cards.event :event="$event" />
                 @empty
-                    <div class="col-span-full py-12 text-center">
-                        <p class="text-primary/60">Nessun evento trovato con i filtri selezionati.</p>
-                    </div>
+                    <x-ui.empty-state class="col-span-full" message="Nessun evento trovato con i filtri selezionati." />
                 @endforelse
             </div>
 

@@ -15,27 +15,15 @@
         @if ($event->categories->isNotEmpty())
             <div class="mb-6 flex flex-wrap gap-2">
                 @foreach ($event->categories as $category)
-                    <span
-                        class="px-3 py-1 rounded bg-white/5 border border-white/10 text-[10px] uppercase text-white/60 font-bold tracking-widest">
-                        {{ $category->name }}
-                    </span>
+                    <x-ui.category-tag :name="$category->name" />
                 @endforeach
             </div>
         @endif
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-white/60">
-            <div class="flex items-center gap-2">
-                <x-heroicon-o-calendar-days class="size-5 text-primary" />
-                <span>{{ $event->starts_at?->format('d/m/Y H:i') }}</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <x-heroicon-o-map-pin class="size-5 text-primary" />
-                <span>{{ $event->location }}</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <x-heroicon-o-map-pin class="size-5 text-primary" />
-                <span>{{ $event->address ?: 'Indirizzo da definire' }}</span>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <x-ui.event-meta icon="calendar-days" :text="$event->starts_at?->format('d/m/Y H:i')" />
+            <x-ui.event-meta icon="map-pin" :text="$event->location" />
+            <x-ui.event-meta icon="map-pin" :text="$event->address ?: 'Indirizzo da definire'" />
         </div>
     </section>
 

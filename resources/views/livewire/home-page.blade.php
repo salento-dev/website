@@ -32,21 +32,9 @@
     <!-- Documents Feed / Resources -->
     <x-ui.section-header eyebrow="FETCHING_RESOURCES" title="Le ultime risorse" :link="['href' => route('resources'), 'text' => 'View All Resources']">
         <x-ui.terminal :path="'~/resources/latest'">
-            <div class="divide-y divide-border/50 font-mono text-xs">
+            <div class="divide-y divide-border/50">
                 @forelse ($resources as $resource)
-                    <div class="group flex items-center justify-between px-6 py-4 hover:bg-primary/5 transition-colors">
-                        <div class="flex items-center gap-4">
-                            <x-heroicon-o-document-text class="size-4 text-primary" />
-                            <span class="text-white">{{ $resource->title }}</span>
-                            <span class="hidden sm:inline text-white/20">|</span>
-                            <span class="hidden md:inline text-white/20">Uploaded:
-                                {{ $resource->created_at->diffForHumans() }}</span>
-                        </div>
-                        @if ($resource->file_path)
-                            <a class="text-primary hover:underline uppercase tracking-widest text-[10px] font-bold"
-                                href="{{ asset('storage/' . ltrim($resource->file_path, '/')) }}" download>Download</a>
-                        @endif
-                    </div>
+                    <x-cards.resource-row :resource="$resource" />
                 @empty
                     <p class="p-4 text-sm text-primary/60">Nessuna risorsa pubblicata al momento.</p>
                 @endforelse
