@@ -1,14 +1,7 @@
 <nav class="hidden items-center gap-2 pl-3.5 nav:flex">
-    <div>
-        <x-partials.desktop-navbar-item route="home" route-name="Home" />
-    </div>
-    <div>
-        <x-partials.desktop-navbar-item route="events" route-name="Eventi" />
-    </div>
-    <div>
-        <x-partials.desktop-navbar-item route="resources" route-name="Risorse" />
-    </div>
-    <div>
-        <x-partials.desktop-navbar-item route="partners" route-name="Partner" />
-    </div>
+    @foreach (config('navigation.items') as $item)
+        <div>
+            <x-partials.desktop-navbar-item :route="$item['route']" :route-name="$item['label']" />
+        </div>
+    @endforeach
 </nav>

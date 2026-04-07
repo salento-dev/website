@@ -60,18 +60,11 @@
 
 
                     <ul x-ref="navItems" class="flex flex-col items-stretch px-5 text-center text-lg">
-                        <li>
-                            <x-partials.mobile-navbar-item route="home" route-name="Home" />
-                        </li>
-                        <li>
-                            <x-partials.mobile-navbar-item route="events" route-name="Events" />
-                        </li>
-                        <li>
-                            <x-partials.mobile-navbar-item route="resources" route-name="Risorse" />
-                        </li>
-                        <li>
-                            <x-partials.mobile-navbar-item route="partners" route-name="Partner" />
-                        </li>
+                        @foreach (config('navigation.items') as $item)
+                            <li>
+                                <x-partials.mobile-navbar-item :route="$item['route']" :route-name="$item['label']" />
+                            </li>
+                        @endforeach
                     </ul>
 
 
