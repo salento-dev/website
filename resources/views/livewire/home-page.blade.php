@@ -32,7 +32,7 @@
     <!-- Documents Feed / Resources -->
     <x-ui.section-header eyebrow="FETCHING_RESOURCES" title="Le ultime risorse" :link="['href' => route('resources'), 'text' => 'View All Resources']">
         <x-ui.terminal :path="'~/resources/latest'">
-            <div class="divide-y divide-border-cyan/50 font-mono text-xs">
+            <div class="divide-y divide-border/50 font-mono text-xs">
                 @forelse ($resources as $resource)
                     <div class="group flex items-center justify-between px-6 py-4 hover:bg-primary/5 transition-colors">
                         <div class="flex items-center gap-4">

@@ -29,7 +29,7 @@
                     <button
                         @click="current = {{ $i }}; stop(); start()"
                         class="h-1.5 rounded-full transition-all duration-300"
-                        :class="current === {{ $i }} ? 'w-6 bg-primary' : 'w-1.5 bg-mist-600 hover:bg-mist-400'"
+                        :class="current === {{ $i }} ? 'w-6 bg-primary' : 'w-1.5 bg-surface-600 hover:bg-surface-400'"
                         aria-label="Vai alla slide {{ $i + 1 }}"
                     ></button>
                 @endfor
@@ -39,14 +39,14 @@
             <div class="flex items-center gap-2">
                 <button
                     @click="prev()"
-                    class="flex h-9 w-9 items-center justify-center border border-surface-600 text-mist-400 transition hover:border-primary hover:text-primary"
+                    class="flex h-9 w-9 items-center justify-center border border-surface-600 text-surface-400 transition hover:border-primary hover:text-primary"
                     aria-label="Precedente"
                 >
                     <x-heroicon-o-chevron-left class="h-4" />
                 </button>
                 <button
                     @click="next()"
-                    class="flex h-9 w-9 items-center justify-center border border-surface-600 text-mist-400 transition hover:border-primary hover:text-primary"
+                    class="flex h-9 w-9 items-center justify-center border border-surface-600 text-surface-400 transition hover:border-primary hover:text-primary"
                     aria-label="Successivo"
                 >
                     <x-heroicon-o-chevron-right class="h-4" />

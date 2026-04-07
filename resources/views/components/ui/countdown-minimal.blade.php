@@ -24,20 +24,20 @@
         <span class="text-xs uppercase tracking-widest text-primary">Oggi</span>
     </template>
     <template x-if="!finished">
-        <div class="flex items-baseline gap-3 tabular-nums text-mist-50">
+        <div class="flex items-baseline gap-3 tabular-nums text-surface-50">
             <template x-if="days > 0">
                 <span>
-                    <span class="text-xl font-semibold" x-text="days"></span><span class="text-xs uppercase text-mist-400">g</span>
+                    <span class="text-xl font-semibold" x-text="days"></span><span class="text-xs uppercase text-surface-400">g</span>
                 </span>
             </template>
             <template x-if="hours > 0">
                 <span>
-                    <span class="text-xl font-semibold" x-text="pad(hours)"></span><span class="text-xs uppercase text-mist-400">h</span>
+                    <span class="text-xl font-semibold" x-text="pad(hours)"></span><span class="text-xs uppercase text-surface-400">h</span>
                 </span>
             </template>
             <template x-if="minutes > 0">
                 <span>
-                    <span class="text-xl font-semibold" x-text="pad(minutes)"></span><span class="text-xs uppercase text-mist-400">m</span>
+                    <span class="text-xl font-semibold" x-text="pad(minutes)"></span><span class="text-xs uppercase text-surface-400">m</span>
                 </span>
             </template>
         </div>

@@ -8,13 +8,13 @@
                 <h2 class="text-xs font-semibold uppercase tracking-wider text-primary m-0">{{ $eyebrow }}</h2>
                 @endif
                 @if ($title)
-                    <h3 class="text-4xl md:text-5xl font-bold text-mist-50">
+                    <h3 class="text-4xl md:text-5xl font-bold text-surface-50">
                         {!! $title !!}
                     </h3>
                 @endif
             </div>
             @if ($info)
-                <div class="text-sm font-medium text-mist-400">
+                <div class="text-sm font-medium text-surface-400">
                     {{ $info }}
                 </div>
             @endif
@@ -28,7 +28,7 @@
         </div>
 
         @if ($description)
-            <p class="mt-3 text-mist-400 leading-relaxed">
+            <p class="mt-3 text-surface-400 leading-relaxed">
                 {{ $description }}
             </p>
         @endif

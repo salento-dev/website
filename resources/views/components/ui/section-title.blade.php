@@ -10,7 +10,7 @@
         @svg('heroicon-o-' . $icon, 'size-6')
         {{ $title }}
     </h2>
-    <div class="mx-6 hidden h-px flex-1 bg-cyber-border md:block"></div>
+    <div class="mx-6 hidden h-px flex-1 bg-border md:block"></div>
     @if ($actionLabel)
         <a class="text-xs font-bold tracking-widest text-primary/60 transition-colors hover:text-primary" href="{{ $actionHref }}">
             {{ $actionLabel }}

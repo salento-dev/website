@@ -9,7 +9,7 @@
     $variants = [
         'default' => [
             'card'      => 'hover:bg-primary-800/25',
-            'corner'    => 'text-mist-400',
+            'corner'    => 'text-surface-400',
             'iconText'  => 'text-primary',
             'iconHover' => 'group-hover:bg-primary-900',
         ],
@@ -33,6 +33,6 @@
         @svg('heroicon-' . $icon, 'size-6')
     </div>
 
-    <p class="font-outfit text-xl font-medium text-mist-200 mb-2">{{ $title }}</p>
-    <p class="text-sm text-mist-400 leading-relaxed">{{ $description }}</p>
+    <p class="font-outfit text-xl font-medium text-surface-200 mb-2">{{ $title }}</p>
+    <p class="text-sm text-surface-400 leading-relaxed">{{ $description }}</p>
 </div>

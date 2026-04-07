@@ -23,39 +23,39 @@
     x-cloak
 >
     <template x-if="finished">
-        <span class="block text-2xl font-bold tabular-nums text-mist-50">Oggi</span>
+        <span class="block text-2xl font-bold tabular-nums text-surface-50">Oggi</span>
     </template>
     <template x-if="!finished">
         <div class="flex items-end gap-4">
             <template x-if="days > 0">
                 <div class="flex flex-col gap-1">
-                    <span class="text-2xl font-bold tabular-nums leading-none text-mist-50 md:text-3xl" x-text="days"></span>
+                    <span class="text-2xl font-bold tabular-nums leading-none text-surface-50 md:text-3xl" x-text="days"></span>
                     <div class="h-px w-full bg-surface-700">
                         <div class="h-px bg-primary transition-all duration-1000" :style="`width: ${Math.min((days % 30) / 29 * 100, 100)}%`"></div>
                     </div>
-                    <span class="text-[9px] uppercase tracking-widest text-mist-500">giorni</span>
+                    <span class="text-[9px] uppercase tracking-widest text-surface-500">giorni</span>
                 </div>
             </template>
             <div class="flex flex-col gap-1">
-                <span class="text-2xl font-bold tabular-nums leading-none text-mist-50 md:text-3xl" x-text="pad(hours)"></span>
+                <span class="text-2xl font-bold tabular-nums leading-none text-surface-50 md:text-3xl" x-text="pad(hours)"></span>
                 <div class="h-px w-full bg-surface-700">
                     <div class="h-px bg-primary transition-all duration-1000" :style="`width: ${hours / 23 * 100}%`"></div>
                 </div>
-                <span class="text-[9px] uppercase tracking-widest text-mist-500">ore</span>
+                <span class="text-[9px] uppercase tracking-widest text-surface-500">ore</span>
             </div>
             <div class="flex flex-col gap-1">
-                <span class="text-2xl font-bold tabular-nums leading-none text-mist-50 md:text-3xl" x-text="pad(minutes)"></span>
+                <span class="text-2xl font-bold tabular-nums leading-none text-surface-50 md:text-3xl" x-text="pad(minutes)"></span>
                 <div class="h-px w-full bg-surface-700">
                     <div class="h-px bg-primary transition-all duration-1000" :style="`width: ${minutes / 59 * 100}%`"></div>
                 </div>
-                <span class="text-[9px] uppercase tracking-widest text-mist-500">min</span>
+                <span class="text-[9px] uppercase tracking-widest text-surface-500">min</span>
             </div>
             <div class="flex flex-col gap-1">
-                <span class="text-2xl font-bold tabular-nums leading-none text-mist-50 md:text-3xl" x-text="pad(seconds)"></span>
+                <span class="text-2xl font-bold tabular-nums leading-none text-surface-50 md:text-3xl" x-text="pad(seconds)"></span>
                 <div class="h-px w-full bg-surface-700">
                     <div class="h-px bg-primary transition-all duration-1000" :style="`width: ${seconds / 59 * 100}%`"></div>
                 </div>
-                <span class="text-[9px] uppercase tracking-widest text-mist-500">sec</span>
+                <span class="text-[9px] uppercase tracking-widest text-surface-500">sec</span>
             </div>
         </div>
     </template>

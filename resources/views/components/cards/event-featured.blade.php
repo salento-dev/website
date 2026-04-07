@@ -54,18 +54,18 @@
 
         {{-- Title + description --}}
         <div class="max-w-2xl">
-            <h3 class="mb-3 font-outfit text-3xl font-bold leading-tight text-mist-50 transition-colors duration-300 md:text-4xl lg:text-5xl">
+            <h3 class="mb-3 font-outfit text-3xl font-bold leading-tight text-surface-50 transition-colors duration-300 md:text-4xl lg:text-5xl">
                 {{ $event->title }}
             </h3>
             @if ($event->description)
-                <p class="line-clamp-2 text-sm leading-relaxed text-mist-400 md:text-base">
+                <p class="line-clamp-2 text-sm leading-relaxed text-surface-400 md:text-base">
                     {{ strip_tags($event->description) }}
                 </p>
             @endif
         </div>
 
         {{-- Meta details --}}
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs text-mist-400">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs text-surface-400">
             <span class="flex items-center gap-2">
                 <x-heroicon-o-calendar-days class="h-3.5 text-primary/70" />
                 {{ $dateFormatted }} {{ $timeFormatted !== '00:00' ? '· ' . $timeFormatted : '' }}
@@ -82,7 +82,7 @@
         <div class="flex flex-wrap items-center justify-between gap-4">
             <div class="flex flex-wrap gap-1.5">
                 @foreach ($event->categories as $category)
-                    <span class="inline-flex h-6 items-center rounded-xs bg-surface-800/80 px-2 text-[10px] font-medium uppercase tracking-wider text-mist-200/70">
+                    <span class="inline-flex h-6 items-center rounded-xs bg-surface-800/80 px-2 text-[10px] font-medium uppercase tracking-wider text-surface-200/70">
                         {{ $category->name }}
                     </span>
                 @endforeach

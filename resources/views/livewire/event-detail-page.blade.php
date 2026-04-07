@@ -55,13 +55,13 @@
 
             <!-- Sidebar -->
             <aside class="lg:col-span-1">
-                <div class="border border-border-cyan bg-card-dark overflow-hidden mb-6">
+                <div class="border border-border bg-surface-900 overflow-hidden mb-6">
                     <img src="{{ $event->image_path ? asset('storage/' . ltrim($event->image_path, '/')) : asset('storage/placeholders/events/event-placeholder.jpg') }}"
                         alt="{{ $event->title }}" class="w-full aspect-video object-cover">
                 </div>
 
                 <a href="{{ route('events') }}"
-                    class="w-full flex items-center justify-center gap-2 border border-border-cyan bg-background-dark px-6 py-3 text-xs font-bold tracking-widest text-primary uppercase transition-all hover:bg-primary/10">
+                    class="w-full flex items-center justify-center gap-2 border border-border bg-surface px-6 py-3 text-xs font-bold tracking-widest text-primary uppercase transition-all hover:bg-primary/10">
                     <x-heroicon-o-arrow-left class="size-4" />
                     Back to Events
                 </a>
@@ -81,7 +81,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     @foreach ($event->media as $media)
-                        <div class="border border-border-cyan bg-background-dark overflow-hidden">
+                        <div class="border border-border bg-surface overflow-hidden">
                             @if ($media->source_type === 'file' && filled($media->file_path))
                                 @if ($media->media_type === 'video')
                                     <video controls class="w-full aspect-video bg-black object-cover">
@@ -107,7 +107,7 @@
                             @endif
 
                             @if (filled($media->caption))
-                                <div class="border-t border-border-cyan px-6 py-3 text-sm text-white/60">
+                                <div class="border-t border-border px-6 py-3 text-sm text-white/60">
                                     {{ $media->caption }}
                                 </div>
                             @endif
@@ -120,9 +120,9 @@
         <!-- Resources Section -->
         @if ($event->resources->isNotEmpty())
             <x-ui.section-header eyebrow="EVENT_RESOURCES" title='Risorse Disponibili'>
-                <div class="overflow-hidden border border-border-cyan bg-background-dark">
+                <div class="overflow-hidden border border-border bg-surface">
                     <!-- Header -->
-                    <div class="flex items-center justify-between border-b border-border-cyan bg-card-dark px-6 py-3">
+                    <div class="flex items-center justify-between border-b border-border bg-surface-900 px-6 py-3">
                         <div class="flex gap-2">
                             <div class="size-2 rounded-full bg-red-500/50"></div>
                             <div class="size-2 rounded-full bg-yellow-500/50"></div>
@@ -132,7 +132,7 @@
                             class="text-[10px] font-mono text-primary/60 tracking-widest uppercase">root@salentodev:~/event/{{ $event->id }}/resources</span>
                     </div>
                     <!-- Terminal Body -->
-                    <div class="divide-y divide-border-cyan/50 font-mono text-xs">
+                    <div class="divide-y divide-border/50 font-mono text-xs">
                         @foreach ($event->resources->where('is_published', true) as $resource)
                             <div
                                 class="group flex items-center justify-between px-6 py-4 hover:bg-primary/5 transition-colors">
@@ -172,7 +172,7 @@
             <x-ui.section-header eyebrow="EVENT_PARTNERS" title='Partner'>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                     @foreach ($event->partners as $partner)
-                        <div class="border border-border-cyan bg-card-dark p-4 flex flex-col items-center gap-3 text-center">
+                        <div class="border border-border bg-surface-900 p-4 flex flex-col items-center gap-3 text-center">
                             @if ($partner->logo_path)
                                 <img src="{{ asset('storage/' . ltrim($partner->logo_path, '/')) }}"
                                     alt="{{ $partner->name }}"

@@ -8,12 +8,12 @@
 ])
 
 @php
-    $baseClasses = 'group inline-flex items-center justify-between rounded-full font-medium whitespace-nowrap text-mist-900 transition duration-300 ease-out will-change-transform hover:scale-y-102 focus:outline-none focus-visible:ring focus-visible:ring-black/50 focus-visible:ring-inset h-13 gap-2.5';
-    
+    $baseClasses = 'group inline-flex items-center justify-between rounded-full font-medium whitespace-nowrap text-surface-900 transition duration-300 ease-out will-change-transform hover:scale-y-102 focus:outline-none focus-visible:ring focus-visible:ring-black/50 focus-visible:ring-inset h-13 gap-2.5';
+
     $variantClasses = match($variant) {
         'primary' => 'bg-primary-100/20 hover:bg-primary-200',
-        'secondary' => 'bg-surface hover:bg-cream-100',
-        default => 'bg-cream-100 hover:bg-honey-100',
+        'secondary' => 'bg-surface hover:bg-surface-100',
+        default => 'bg-surface-100 hover:bg-surface-100',
     };
     
     $paddingClasses = $icon ? 'pr-1.25 pl-5' : 'px-5';
@@ -41,7 +41,7 @@
         </span>
 
         @if($icon)
-            <div data-icon="" class="relative isolate grid shrink-0 place-items-center overflow-hidden rounded-full size-11 bg-primary-50 text-mist-900">
+            <div data-icon="" class="relative isolate grid shrink-0 place-items-center overflow-hidden rounded-full size-11 bg-primary-50 text-surface-900">
                 <x-heroicon-o-arrow-right class="h-3.25" />
             </div>
         @endif

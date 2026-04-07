@@ -40,7 +40,7 @@
                     @click="$wire.set('{{ $wireProperty }}', '{{ $value }}'); open = false"
                     class="flex w-full items-center gap-2 px-3 py-2 text-left transition-colors duration-150 hover:bg-surface-900/70"
                     :class="$wire.{{ $wireProperty }} === '{{ $value }}' &&
-                        'bg-surface-900 font-medium text-mist-200'">
+                        'bg-surface-900 font-medium text-surface-200'">
                     <span class="size-3.5"
                         :class="$wire.{{ $wireProperty }} === '{{ $value }}' ? 'opacity-100' : 'opacity-0'">
                         <x-heroicon-o-check class="size-3.5" />

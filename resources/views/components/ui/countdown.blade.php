@@ -23,10 +23,10 @@
     x-cloak
 >
     <template x-if="finished">
-        <span class="block text-3xl font-bold tabular-nums text-mist-50 md:text-4xl">Oggi</span>
+        <span class="block text-3xl font-bold tabular-nums text-surface-50 md:text-4xl">Oggi</span>
     </template>
     <template x-if="!finished">
-        <div class="flex items-end justify-end gap-2 text-mist-50">
+        <div class="flex items-end justify-end gap-2 text-surface-50">
             <template x-if="days > 0">
                 <div class="flex flex-col items-center">
                     <span class="text-2xl font-bold tabular-nums md:text-3xl" x-text="days"></span>

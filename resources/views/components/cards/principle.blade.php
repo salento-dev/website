@@ -77,13 +77,13 @@
             <x-ui.title-indicator />
 
 
-            <p class="font-outfit text-xl font-medium text-mist-200 transition duration-300 ease-out will-change-transform group-hover:translate-x-0.5 md:text-2xl">
+            <p class="font-outfit text-xl font-medium text-surface-200 transition duration-300 ease-out will-change-transform group-hover:translate-x-0.5 md:text-2xl">
                 {{ $title }}
             </p>
         </div>
 
 
-        <p class="text-mist-400">{{ $description }}</p>
+        <p class="text-surface-400">{{ $description }}</p>
     </div>
 
 

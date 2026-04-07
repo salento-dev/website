@@ -1,6 +1,6 @@
 @props([
     'hover' => false,
-    'color' => 'text-mist-400',
+    'color' => 'text-surface-400',
     'size' => 'h-2.5',
     'offset' => 8,
 ])

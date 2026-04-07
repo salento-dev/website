@@ -68,7 +68,7 @@
         aria-label="Clear search"
         :aria-hidden="search.length === 0"
         :tabindex="search.length === 0 ? -1 : 0"
-        class="absolute top-1.5 right-1.5 flex h-7 items-center justify-center gap-0.75 rounded-xs bg-surface-900 pr-1.75 pl-2 text-xs opacity-0 transition-all duration-300 ease-out will-change-transform hover:bg-flamingo/60"
+        class="absolute top-1.5 right-1.5 flex h-7 items-center justify-center gap-0.75 rounded-xs bg-surface-900 pr-1.75 pl-2 text-xs opacity-0 transition-all duration-300 ease-out will-change-transform hover:bg-secondary/60"
         :class="{ 'pointer-events-auto opacity-100 hover:scale-95': search.length > 0, 'opacity-0 scale-50 pointer-events-none': search.length === 0 }"
     >
         <span>Clear</span>

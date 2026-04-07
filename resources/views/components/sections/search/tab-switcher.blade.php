@@ -15,7 +15,7 @@
     <legend class="float-left text-sm" id="{{ $legendId }}">{{ $legend }}</legend>
 
     <div
-        class="tab-switcher relative grid auto-cols-fr grid-flow-col rounded-xs bg-cream-100 has-[input:nth-of-type(2)]:[--count:2] has-[input:nth-of-type(3)]:[--count:3] has-[input:nth-of-type(4)]:[--count:4] has-[input:nth-of-type(5)]:[--count:5] has-[input:nth-of-type(6)]:[--count:6] has-[input:nth-of-type(7)]:[--count:7] has-[input:nth-of-type(8)]:[--count:8] has-[:checked:nth-of-type(1)]:[--active:0] has-[:checked:nth-of-type(2)]:[--active:1] has-[:checked:nth-of-type(3)]:[--active:2] has-[:checked:nth-of-type(4)]:[--active:3] has-[:checked:nth-of-type(5)]:[--active:4] has-[:checked:nth-of-type(6)]:[--active:5] has-[:checked:nth-of-type(7)]:[--active:6] has-[:checked:nth-of-type(8)]:[--active:7]"
+        class="tab-switcher relative grid auto-cols-fr grid-flow-col rounded-xs bg-surface-100 has-[input:nth-of-type(2)]:[--count:2] has-[input:nth-of-type(3)]:[--count:3] has-[input:nth-of-type(4)]:[--count:4] has-[input:nth-of-type(5)]:[--count:5] has-[input:nth-of-type(6)]:[--count:6] has-[input:nth-of-type(7)]:[--count:7] has-[input:nth-of-type(8)]:[--count:8] has-[:checked:nth-of-type(1)]:[--active:0] has-[:checked:nth-of-type(2)]:[--active:1] has-[:checked:nth-of-type(3)]:[--active:2] has-[:checked:nth-of-type(4)]:[--active:3] has-[:checked:nth-of-type(5)]:[--active:4] has-[:checked:nth-of-type(6)]:[--active:5] has-[:checked:nth-of-type(7)]:[--active:6] has-[:checked:nth-of-type(8)]:[--active:7]"
         aria-labelledby="{{ $legendId }}"
         role="radiogroup"
     >
@@ -43,13 +43,13 @@
 
             <label
                 for="{{ $inputId }}"
-                :class="{ 'font-medium text-mist-800': {{ $model }} === '{{ $escapedValue }}', 'hover:bg-primary-400/50 hover:font-medium hover:text-mist-800': {{ $model }} !== '{{ $escapedValue }}' }"
+                :class="{ 'font-medium text-surface-800': {{ $model }} === '{{ $escapedValue }}', 'hover:bg-primary-400/50 hover:font-medium hover:text-surface-800': {{ $model }} !== '{{ $escapedValue }}' }"
                 class="relative z-10 flex h-9 cursor-pointer items-center justify-center px-3 text-sm transition-all duration-400 ease-out select-none peer-focus-visible:ring peer-focus-visible:ring-black/50 peer-focus-visible:ring-inset first:rounded-l-xs last:rounded-r-xs"
             >
                 @if (! $loop->last)
                     <svg
                         aria-hidden="true"
-                        class="pointer-events-none absolute top-1/2 right-0 h-full w-px -translate-y-1/2 text-bone-300"
+                        class="pointer-events-none absolute top-1/2 right-0 h-full w-px -translate-y-1/2 text-surface-300"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 1 16"
                         fill="currentColor"

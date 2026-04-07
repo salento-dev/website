@@ -8,7 +8,7 @@
 @php
     $variants = [
         'default' => [
-            'corner' => 'text-mist-400',
+            'corner' => 'text-surface-400',
             'icon' => 'text-primary',
         ],
         'danger' => [
@@ -31,8 +31,8 @@
     </div>
 
     <div class="space-y-1 text-center sm:space-y-0 sm:text-left">
-        <p class="text-lg text-mist-100">{{ $title }}</p>
-        <p class="text-mist-400">
+        <p class="text-lg text-surface-100">{{ $title }}</p>
+        <p class="text-surface-400">
             {{ $description }}
         </p>
     </div>

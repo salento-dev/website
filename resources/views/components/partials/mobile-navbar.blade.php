@@ -31,7 +31,7 @@
 
                 <div x-ref="closeBtn">
                     <button type="button" x-on:click="showMobileMenu = false"
-                        class="group pointer-events-auto flex h-10 items-center justify-center rounded-md bg-surface pr-3.5 pl-3 text-mist-200 transition duration-300 ease-out hover:bg-cream-100 focus:outline-none"
+                        class="group pointer-events-auto flex h-10 items-center justify-center rounded-md bg-surface pr-3.5 pl-3 text-surface-200 transition duration-300 ease-out hover:bg-surface-100 focus:outline-none"
                         aria-label="Close menu">
                         <x-heroicon-o-x-mark class="mr-1.25 size-3.5 shrink-0 transition duration-300 ease-out will-change-transform group-hover:rotate-90" />
                         <span>Close</span>
@@ -70,7 +70,7 @@
 
                     <div x-ref="plusDecoration" class="flex items-center gap-5 px-5 pt-3 pb-4">
                         <div data-plus-line="" class="h-px w-full bg-border"></div>
-                        <div data-plus-symbol="" class="text-sm text-bone-500">
+                        <div data-plus-symbol="" class="text-sm text-surface-500">
                             +
                         </div>
                         <div data-plus-line="" class="h-px w-full bg-border"></div>

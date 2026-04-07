@@ -15,7 +15,7 @@
         <div class="mb-8 flex items-end justify-between">
             <header>
                 <span class="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-primary">Confirmed_Active</span>
-                <h2 class="font-outfit text-3xl font-extrabold tracking-tight text-mist-50">Prossimi Eventi</h2>
+                <h2 class="font-outfit text-3xl font-extrabold tracking-tight text-surface-50">Prossimi Eventi</h2>
             </header>
             <div class="hidden gap-3 md:flex">
                 <span class="rounded-xs border border-outline-variant/20 bg-surface-800 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
@@ -34,8 +34,8 @@
             </x-ui.slideshow>
         @else
             <div class="flex flex-col items-center justify-center gap-4 border border-dashed border-surface-700 py-20 text-center">
-                <x-heroicon-o-calendar-days class="h-10 text-mist-600" />
-                <p class="font-mono text-sm text-mist-500">Nessun evento in programma al momento.</p>
+                <x-heroicon-o-calendar-days class="h-10 text-surface-600" />
+                <p class="font-mono text-sm text-surface-500">Nessun evento in programma al momento.</p>
             </div>
         @endif
     </section>
@@ -46,7 +46,7 @@
     @if ($wipEvents->isNotEmpty())
         <section>
             <div class="mb-8 flex items-center gap-6">
-                <h2 class="font-outfit text-2xl font-bold text-mist-50">In Planning</h2>
+                <h2 class="font-outfit text-2xl font-bold text-surface-50">In Planning</h2>
                 <div class="h-px flex-1 bg-surface-700"></div>
             </div>
 
@@ -59,9 +59,9 @@
 
                         <div>
                             <x-heroicon-o-clock class="mb-5 h-8 text-surface-600" />
-                            <h4 class="mb-2 font-outfit text-xl font-bold text-mist-200">{{ $event->title }}</h4>
+                            <h4 class="mb-2 font-outfit text-xl font-bold text-surface-200">{{ $event->title }}</h4>
                             @if ($event->description)
-                                <p class="line-clamp-3 text-sm leading-relaxed text-mist-500">
+                                <p class="line-clamp-3 text-sm leading-relaxed text-surface-500">
                                     {{ strip_tags($event->description) }}
                                 </p>
                             @endif
@@ -73,11 +73,11 @@
                                     Target: {{ $event->starts_at->translatedFormat('M Y') }}
                                 </span>
                             @else
-                                <span class="font-mono text-xs italic text-mist-600">Data TBD</span>
+                                <span class="font-mono text-xs italic text-surface-600">Data TBD</span>
                             @endif
 
                             @if ($event->location)
-                                <span class="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-mist-500">
+                                <span class="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-surface-500">
                                     <x-heroicon-o-map-pin class="h-3" />
                                     {{ $event->location }}
                                 </span>
@@ -95,8 +95,8 @@
     <section>
         <div class="mb-8 flex items-end justify-between">
             <header>
-                <h2 class="font-outfit text-2xl font-bold text-mist-50">Storico Eventi</h2>
-                <p class="mt-1 font-mono text-[10px] uppercase tracking-widest text-mist-500">Archivio storico delle attività</p>
+                <h2 class="font-outfit text-2xl font-bold text-surface-50">Storico Eventi</h2>
+                <p class="mt-1 font-mono text-[10px] uppercase tracking-widest text-surface-500">Archivio storico delle attività</p>
             </header>
         </div>
 

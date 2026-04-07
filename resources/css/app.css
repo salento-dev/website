@@ -14,11 +14,9 @@
     --font-outfit: "Outfit", "Albert Sans", sans-serif;
     --font-roboto-mono: "Roboto Mono Variable", monospace;
 
-    /* Filament Dark Theme - Matching structure */
-    --color-primary: #f59e0b;
-    --color-primary-dark: #d97706;
-    --color-primary-light: #fbbf24;
-    --color-accent: #60a5fa;
+    /* Font aliases */
+    --font-headline: var(--font-outfit);
+    --font-label: var(--font-albert-sans);
 
     --color-primary-50: var(--color-cyan-50);
     --color-primary-100: var(--color-cyan-100);
@@ -60,35 +58,8 @@
 
     --color-border: var(--color-surface-800);
 
-    /* Blue-400 for corner decorations */
-    --color-accent-orange: #f97316;
-
-    /* Dark Backgrounds matching Filament structure */
-    --color-bone-dark: #1a1a1a;
-    --color-serenade-dark: #0f0f0f;
-    --color-background-dark: #0a0a0a;
-
-    /* Simplified for usage */
-    --color-text-primary: #fafaf9;
-    --color-text-secondary: #a8a29e;
-    --color-text-tertiary: #78716c;
-
-    /* Max width matching Filament */
     --breakpoint-max: 87.5rem;
     --breakpoint-nav: 50rem;
-    /* 1400px - Filament's max-w-350 */
-
-    /* Legacy support */
-    --color-background-light: #f5f8f8;
-    --color-accent-purple: #f97316;
-    --color-border-cyan: rgba(38, 38, 38, 0.8);
-    --color-cyber-card: #1f1f1f;
-    --color-cyber-border: rgba(38, 38, 38, 0.8);
-    --color-surface-dark: #171717;
-    --color-card-dark: #1f1f1f;
-    --color-card-hover: #262626;
-    --color-border-light: #2a2a2a;
-    --color-text-muted: #57534e;
 
     /* Border Radius */
     --radius: 0.25rem;
@@ -101,6 +72,14 @@
 @utility container {
     margin-inline: auto;
     padding-inline: 1rem;
+}
+
+@utility mask-y-from-80% {
+    mask-image: linear-gradient(to bottom, black 80%, transparent);
+}
+
+@utility mask-x-from-35% {
+    mask-image: linear-gradient(to right, black 35%, transparent);
 }
 
 @layer utilities {
@@ -189,7 +168,7 @@
     }
 
     .item {
-        @apply inline-grid h-8 min-w-9 place-items-center rounded-xs bg-surface-900 px-1.5 font-medium text-mist-200;
+        @apply inline-grid h-8 min-w-9 place-items-center rounded-xs bg-surface-900 px-1.5 font-medium text-surface-200;
     }
 
     .btn {
@@ -197,7 +176,7 @@
         @apply inline-flex items-center justify-center gap-1.75 text-center;
         @apply h-10 min-w-10 px-3 rounded-xs;
         @apply transition-all duration-300 ease-out will-change-transform;
-        @apply bg-surface-900 text-mist-50;
+        @apply bg-surface-900 text-surface-50;
         @apply hover:bg-surface-800;
         @apply active:scale-95;
         @apply focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset;
@@ -235,7 +214,7 @@
     .heading-5,
     .heading-6 {
         font-family: var(--font-outfit);
-        color: var(--color-mist-200)
+        color: var(--color-surface-200)
     }
 }
 
