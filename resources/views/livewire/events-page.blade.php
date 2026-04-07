@@ -1,7 +1,5 @@
 @section('hero')
-    <x-sections.page-hero
-        :badge="'Events // Community'"
-        :description="'Meetup, workshop e momenti di confronto. Esplora i prossimi appuntamenti e lo storico degli eventi Salento.dev.'">
+    <x-sections.page-hero :badge="'Events // Community'" :description="'Meetup, workshop e momenti di confronto. Esplora i prossimi appuntamenti e lo storico degli eventi Salento.dev.'">
         Eventi <span class="text-glow text-primary">Community</span>
     </x-sections.page-hero>
 @endsection
@@ -11,20 +9,9 @@
     {{-- ─────────────────────────────────────────────
          SECTION 1 — PROSSIMI EVENTI
     ───────────────────────────────────────────── --}}
-    <section>
-        <div class="mb-8 flex items-end justify-between">
-            <header>
-                <span class="mb-2 block font-mono text-xs uppercase tracking-[0.2em] text-primary">Confirmed_Active</span>
-                <h2 class="font-outfit text-3xl font-extrabold tracking-tight text-surface-50">Prossimi Eventi</h2>
-            </header>
-            <div class="hidden gap-3 md:flex">
-                <span class="rounded-xs border border-border bg-surface-800 px-3 py-1 font-mono text-2xs uppercase tracking-widest text-primary">
-                    Upcoming: {{ $upcomingEvents->count() }}
-                </span>
-            </div>
-        </div>
-
-        @if ($upcomingEvents->isNotEmpty())
+    @if ($upcomingEvents->isNotEmpty())
+        <x-ui.section-header eyebrow="Confirmed_Active" title="Prossimi Eventi"
+            tag="Upcoming: {{ $upcomingEvents->count() }}">
             <x-ui.slideshow :count="$upcomingEvents->count()">
                 @foreach ($upcomingEvents as $event)
                     <x-ui.slideshow-slide :index="$loop->index">
@@ -32,24 +19,18 @@
                     </x-ui.slideshow-slide>
                 @endforeach
             </x-ui.slideshow>
-        @else
-            <x-ui.empty-state message="Nessun evento in programma al momento." icon="o-calendar-days" />
-        @endif
-    </section>
+        </x-ui.section-header>
+    @endif
 
     {{-- ─────────────────────────────────────────────
          SECTION 2 — WORK IN PROGRESS
     ───────────────────────────────────────────── --}}
     @if ($wipEvents->isNotEmpty())
-        <section>
-            <div class="mb-8 flex items-center gap-6">
-                <h2 class="font-outfit text-2xl font-bold text-surface-50">In Planning</h2>
-                <div class="h-px flex-1 bg-surface-700"></div>
-            </div>
-
+        <x-ui.section-header title="In Planning" size="small">
             <div class="grid gap-8 md:grid-cols-2">
                 @foreach ($wipEvents as $event)
-                    <div class="group relative flex flex-col justify-between border-2 border-dashed border-surface-700 bg-surface-900 p-8 transition-colors hover:border-primary/30">
+                    <div
+                        class="group relative flex flex-col justify-between border-2 border-dashed border-surface-700 bg-surface-900 p-8 transition-colors hover:border-primary/30">
                         <div class="absolute right-6 top-6">
                             <x-ui.status-badge status="wip" label="WIP" />
                         </div>
@@ -74,7 +55,8 @@
                             @endif
 
                             @if ($event->location)
-                                <span class="flex items-center gap-1 font-mono text-2xs uppercase tracking-widest text-surface-500">
+                                <span
+                                    class="flex items-center gap-1 font-mono text-2xs uppercase tracking-widest text-surface-500">
                                     <x-heroicon-o-map-pin class="h-3" />
                                     {{ $event->location }}
                                 </span>
@@ -83,46 +65,40 @@
                     </div>
                 @endforeach
             </div>
-        </section>
+        </x-ui.section-header>
     @endif
 
     {{-- ─────────────────────────────────────────────
          SECTION 3 — STORICO EVENTI
     ───────────────────────────────────────────── --}}
-    <section>
-        <div class="mb-8 flex items-end justify-between">
-            <header>
-                <h2 class="font-outfit text-2xl font-bold text-surface-50">Storico Eventi</h2>
-                <p class="mt-1 font-mono text-2xs uppercase tracking-widest text-surface-500">Archivio storico delle attività</p>
-            </header>
-        </div>
+    @if ($pastEvents->isNotEmpty())
+        <x-ui.section-header title="Storico Eventi" tag="Passed: {{ $pastEvents->count() }}" size="small">
+            <div class="flex flex-col gap-6">
+                <x-ui.input-search wire-model="search" placeholder="Cerca nello storico..."
+                    sr-label="Cerca eventi per titolo, luogo o descrizione" />
 
-        <div class="flex flex-col gap-6">
-            <x-ui.input-search wire-model="search" placeholder="Cerca nello storico..." sr-label="Cerca eventi per titolo, luogo o descrizione" />
-
-            <div class="flex flex-wrap items-center justify-between gap-4">
-                <div class="flex flex-wrap items-center gap-4">
+                <div class="flex flex-wrap items-center justify-between gap-4">
                     <x-ui.sort-select :options="$sortOptions" :current-value="$sortBy" wire-property="sortBy" />
-                    <x-ui.item-count :collection="$pastEvents" label="events found" />
-                </div>
-                <x-ui.paginator :paginator="$pastEvents" />
-            </div>
-
-            <div class="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] items-start gap-7 transition-opacity duration-300"
-                x-init="autoAnimate($el, { duration: 250 })" aria-label="Storico eventi">
-                @forelse ($pastEvents as $event)
-                    <x-cards.event :event="$event" />
-                @empty
-                    <x-ui.empty-state class="col-span-full" message="Nessun evento trovato con i filtri selezionati." />
-                @endforelse
-            </div>
-
-            @if ($pastEvents->hasPages())
-                <div class="flex justify-end">
                     <x-ui.paginator :paginator="$pastEvents" />
                 </div>
-            @endif
-        </div>
-    </section>
+
+                <div class="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] items-start gap-7 transition-opacity duration-300"
+                    x-init="autoAnimate($el, { duration: 250 })" aria-label="Storico eventi">
+                    @forelse ($pastEvents as $event)
+                        <x-cards.event :event="$event" />
+                    @empty
+                        <x-ui.empty-state class="col-span-full"
+                            message="Nessun evento trovato con i filtri selezionati." />
+                    @endforelse
+                </div>
+
+                @if ($pastEvents->hasPages())
+                    <div class="flex justify-end">
+                        <x-ui.paginator :paginator="$pastEvents" />
+                    </div>
+                @endif
+            </div>
+        </x-ui.section-header>
+    @endif
 
 </div>
