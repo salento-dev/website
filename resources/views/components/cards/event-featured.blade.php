@@ -30,7 +30,7 @@
         {{-- Top bar --}}
         <div class="flex flex-wrap gap-4 items-start justify-between">
             @if ($isLive)
-                <span class="inline-flex items-center gap-2 rounded-full border border-green-500/40 bg-green-500/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-green-400">
+                <span class="inline-flex items-center gap-2 rounded-full border border-green-500/40 bg-green-500/10 px-3 py-1 font-mono text-2xs uppercase tracking-widest text-green-400">
                     <span class="relative flex h-1.5 w-1.5">
                         <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-400"></span>
@@ -38,7 +38,7 @@
                     In corso
                 </span>
             @else
-                <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
+                <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-2xs uppercase tracking-widest text-primary">
                     <span class="relative flex h-1.5 w-1.5">
                         <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
                         <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary"></span>
@@ -82,7 +82,7 @@
         <div class="flex flex-wrap items-center justify-between gap-4">
             <div class="flex flex-wrap gap-1.5">
                 @foreach ($event->categories as $category)
-                    <span class="inline-flex h-6 items-center rounded-xs bg-surface-800/80 px-2 text-[10px] font-medium uppercase tracking-wider text-surface-200/70">
+                    <span class="inline-flex h-6 items-center rounded-xs bg-surface-800/80 px-2 text-2xs font-medium uppercase tracking-wider text-surface-200/70">
                         {{ $category->name }}
                     </span>
                 @endforeach

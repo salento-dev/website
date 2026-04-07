@@ -6,7 +6,7 @@
     <x-partials.skills-loop />
 @endsection
 
-<div class="flex flex-col gap-24 md:gap-32 lg:gap-40">
+<div class="flex flex-col gap-20">
 
     <!-- Upcoming Event -->
     @if ($nextEvent || $pastEvents->isNotEmpty())

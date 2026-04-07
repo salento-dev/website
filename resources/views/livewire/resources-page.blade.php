@@ -34,7 +34,7 @@
                             {{ $resource->created_at->diffForHumans() }}</span>
                     </div>
                     @if ($resource->file_path)
-                        <a class="text-primary hover:underline uppercase tracking-widest text-[10px] font-bold"
+                        <a class="text-primary hover:underline uppercase tracking-widest text-2xs font-bold"
                             href="{{ asset('storage/' . ltrim($resource->file_path, '/')) }}" download>Download</a>
                     @endif
                 </div>

@@ -16,7 +16,7 @@
         @endif
         <span class="text-sm transition-colors group-hover:text-primary">{{ $resource->title }}</span>
     </div>
-    <div class="flex items-center gap-8 text-[10px]">
+    <div class="flex items-center gap-8 text-2xs">
         <span class="hidden text-primary/30 uppercase sm:inline">{{ $resource->created_at?->diffForHumans() }}</span>
         <span class="font-bold text-primary">{{ $isFile ? 'APRI' : 'VAI' }}</span>
     </div>

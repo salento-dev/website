@@ -4,7 +4,7 @@
     </x-sections.page-hero>
 @endsection
 
-<div class="flex flex-col gap-24 md:gap-32 lg:gap-40">
+<div class="flex flex-col gap-20">
 
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($partners as $partner)

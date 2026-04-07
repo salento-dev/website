@@ -21,7 +21,7 @@
     };
 @endphp
 
-<span {{ $attributes->class(['inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-widest', $classes]) }}>
+<span {{ $attributes->class(['inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-2xs uppercase tracking-widest', $classes]) }}>
     @if ($status === 'upcoming' || $status === 'ongoing')
         <span class="relative flex h-1.5 w-1.5 shrink-0">
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75

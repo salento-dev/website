@@ -1,6 +1,6 @@
 @section('hero')
     <div
-        class="inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-6">
+        class="inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary mb-6">
         Event Detail // ID: {{ $event->id }}
     </div>
 
@@ -62,7 +62,7 @@
         @if ($event->media->isNotEmpty())
             <section class="bg-primary/5 p-6">
                 <div class="mb-12">
-                    <h2 class="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-4">MEDIA_GALLERY
+                    <h2 class="text-2xs font-bold uppercase tracking-[0.5em] text-primary mb-4">MEDIA_GALLERY
                     </h2>
                     <h3 class="text-4xl font-bold uppercase tracking-tighter text-white">Event Gallery</h3>
                 </div>
@@ -117,7 +117,7 @@
                             <div class="size-2 rounded-full bg-green-500/50"></div>
                         </div>
                         <span
-                            class="text-[10px] font-mono text-primary/60 tracking-widest uppercase">root@salentodev:~/event/{{ $event->id }}/resources</span>
+                            class="text-2xs font-mono text-primary/60 tracking-widest uppercase">root@salentodev:~/event/{{ $event->id }}/resources</span>
                     </div>
                     <!-- Terminal Body -->
                     <div class="divide-y divide-border/50 font-mono text-xs">
@@ -140,11 +140,11 @@
                                         class="hidden md:inline text-white/20">{{ $resource->source_type === 'file' ? 'File' : 'Link' }}</span>
                                 </div>
                                 @if ($resource->source_type === 'file' && $resource->file_path)
-                                    <a class="text-primary hover:underline uppercase tracking-widest text-[10px] font-bold"
+                                    <a class="text-primary hover:underline uppercase tracking-widest text-2xs font-bold"
                                         href="{{ asset('storage/' . ltrim($resource->file_path, '/')) }}"
                                         download>Download</a>
                                 @elseif ($resource->source_type === 'link' && $resource->external_url)
-                                    <a class="text-primary hover:underline uppercase tracking-widest text-[10px] font-bold"
+                                    <a class="text-primary hover:underline uppercase tracking-widest text-2xs font-bold"
                                         href="{{ $resource->external_url }}" target="_blank"
                                         rel="noreferrer noopener">Apri</a>
                                 @endif
@@ -171,7 +171,7 @@
                             <span class="text-xs font-bold uppercase tracking-widest text-white/80">{{ $partner->name }}</span>
                             @if ($partner->website_url)
                                 <a href="{{ $partner->website_url }}" target="_blank" rel="noreferrer noopener"
-                                    class="text-[10px] text-primary hover:underline uppercase tracking-widest font-bold">
+                                    class="text-2xs text-primary hover:underline uppercase tracking-widest font-bold">
                                     Sito web
                                 </a>
                             @endif

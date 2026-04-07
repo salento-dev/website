@@ -18,7 +18,7 @@
                 <h2 class="font-outfit text-3xl font-extrabold tracking-tight text-surface-50">Prossimi Eventi</h2>
             </header>
             <div class="hidden gap-3 md:flex">
-                <span class="rounded-xs border border-border bg-surface-800 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-primary">
+                <span class="rounded-xs border border-border bg-surface-800 px-3 py-1 font-mono text-2xs uppercase tracking-widest text-primary">
                     Upcoming: {{ $upcomingEvents->count() }}
                 </span>
             </div>
@@ -74,7 +74,7 @@
                             @endif
 
                             @if ($event->location)
-                                <span class="flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-surface-500">
+                                <span class="flex items-center gap-1 font-mono text-2xs uppercase tracking-widest text-surface-500">
                                     <x-heroicon-o-map-pin class="h-3" />
                                     {{ $event->location }}
                                 </span>
@@ -93,7 +93,7 @@
         <div class="mb-8 flex items-end justify-between">
             <header>
                 <h2 class="font-outfit text-2xl font-bold text-surface-50">Storico Eventi</h2>
-                <p class="mt-1 font-mono text-[10px] uppercase tracking-widest text-surface-500">Archivio storico delle attività</p>
+                <p class="mt-1 font-mono text-2xs uppercase tracking-widest text-surface-500">Archivio storico delle attività</p>
             </header>
         </div>
 

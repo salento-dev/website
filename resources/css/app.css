@@ -74,6 +74,11 @@
     padding-inline: 1rem;
 }
 
+@utility text-2xs {
+    font-size: 0.625rem;
+    line-height: 1rem;
+}
+
 @utility mask-y-from-80% {
     mask-image: linear-gradient(to bottom, black 80%, transparent);
 }
