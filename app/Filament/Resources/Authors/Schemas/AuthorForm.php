@@ -6,7 +6,9 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Image;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Text;
 use Filament\Schemas\Schema;
 
 class AuthorForm
@@ -43,20 +45,17 @@ class AuthorForm
                             ->disk('public')
                             ->directory('authors')
                             ->visibility('public'),
-                        Placeholder::make('github_avatar_preview')
-                            ->label('Anteprima avatar GitHub')
-                            ->content(function ($get): string {
+                        Image::make(
+                            url: function ($get) {
                                 $username = $get('github_username');
                                 if (blank($username)) {
-                                    return 'Inserisci un username GitHub per vedere l\'anteprima.';
+                                    return null;
                                 }
-
-                                $url = 'https://github.com/'.htmlspecialchars((string) $username, ENT_QUOTES).'.png?size=200';
-
-                                return '<img src="'.$url.'" alt="GitHub avatar" class="h-20 w-20 rounded-full object-cover" onerror="this.style.display=\'none\'">';
-                            })
-                            ->extraAttributes(['class' => 'flex items-center'])
-                            ->live(),
+                                return 'https://github.com/' . htmlspecialchars((string) $username, ENT_QUOTES) . '.png?size=200';
+                            },
+                            alt: 'GitHub avatar'
+                        )
+                        ->live(),
                     ]),
 
                 Section::make('Profili Social')
