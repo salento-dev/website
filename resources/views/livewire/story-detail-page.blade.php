@@ -22,21 +22,14 @@
             <article class="lg:col-span-2">
 
                 {{-- Excerpt --}}
+                @if(!empty($story->excerpt))
                 <p class="mb-8 text-lg leading-relaxed text-surface-300 border-l-2 border-primary pl-5">
                     {{ strip_tags($story->excerpt) }}
                 </p>
+                @endif
 
                 {{-- Body --}}
-                <div class="prose prose-invert max-w-none
-                    prose-p:text-surface-300
-                    prose-li:text-surface-300
-                    prose-strong:text-primary
-                    prose-headings:text-white
-                    prose-headings:uppercase
-                    prose-headings:tracking-tighter
-                    prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                    prose-code:text-primary prose-code:bg-surface-800 prose-code:rounded-xs prose-code:px-1
-                    prose-pre:bg-surface-800 prose-pre:border prose-pre:border-border">
+                <div class="prose prose-invert max-w-none">
                     {!! \Illuminate\Support\Str::markdown($story->body, [
                         'html_input' => 'strip',
                         'allow_unsafe_links' => false,
@@ -52,7 +45,7 @@
                     <div class="border border-border bg-surface-900 overflow-hidden">
                         <img src="{{ asset('storage/' . ltrim($story->image_path, '/')) }}"
                             alt="{{ $story->title }}"
-                            class="w-full aspect-video object-cover">
+                            class="w-full h-auto">
                     </div>
                 @endif
 

@@ -69,7 +69,7 @@
                     </span>
                 </div>
             @else
-                <span></span>
+                <span class="min-h-7"></span>
             @endif
             <a href="{{ route('stories.show', $story) }}"
                 class="font-mono text-2xs uppercase tracking-widest text-primary/60 transition-colors duration-300 hover:text-primary shrink-0"
