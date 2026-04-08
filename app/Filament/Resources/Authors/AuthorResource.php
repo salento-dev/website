@@ -27,8 +27,6 @@ class AuthorResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Autori';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Contenuti';
-
     public static function form(Schema $schema): Schema
     {
         return AuthorForm::configure($schema);

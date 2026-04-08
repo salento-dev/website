@@ -28,8 +28,6 @@ class ResourceResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Risorse';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Contenuti';
-
     public static function form(Schema $schema): Schema
     {
         return ResourceForm::configure($schema);

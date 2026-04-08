@@ -23,15 +23,12 @@ class StoryCategoriesTable
                 TextColumn::make('slug')
                     ->label('Slug')
                     ->searchable(),
-                TextColumn::make('stories_count')
-                    ->label('Storie')
-                    ->counts('stories')
-                    ->sortable(),
                 IconColumn::make('is_active')
                     ->label('Attiva')
                     ->boolean(),
-                TextColumn::make('sort_order')
-                    ->label('Ordine')
+                TextColumn::make('stories_count')
+                    ->label('Storie')
+                    ->counts('stories')
                     ->sortable(),
             ])
             ->filters([
@@ -46,6 +43,7 @@ class StoryCategoriesTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->reorderable('sort_order');
     }
 }

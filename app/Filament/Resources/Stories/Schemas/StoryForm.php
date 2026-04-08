@@ -30,11 +30,6 @@ class StoryForm
                     ->relationship('category', 'name', fn ($query) => $query->where('is_active', true)->orderBy('sort_order')->orderBy('name'))
                     ->preload()
                     ->searchable(),
-                TextInput::make('read_time_minutes')
-                    ->label('Minuti di lettura')
-                    ->numeric()
-                    ->minValue(1)
-                    ->maxValue(120),
                 Select::make('authors')
                     ->label('Autori')
                     ->relationship('authors', 'name')

@@ -21,13 +21,13 @@ class EventCategoryResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTag;
 
-    protected static ?string $navigationLabel = 'Categorie Eventi';
+    protected static ?string $navigationLabel = 'Categorie';
 
-    protected static ?string $modelLabel = 'Categoria Evento';
+    protected static ?string $modelLabel = 'Categoria';
 
-    protected static ?string $pluralModelLabel = 'Categorie Evento';
+    protected static ?string $pluralModelLabel = 'Categorie';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Contenuti';
+    protected static string|UnitEnum|null $navigationGroup = 'Gestione eventi';
 
     public static function form(Schema $schema): Schema
     {

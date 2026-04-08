@@ -27,7 +27,7 @@ class StoryResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Storie';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Contenuti';
+    protected static string|UnitEnum|null $navigationGroup = 'Gestione storie';
 
     public static function form(Schema $schema): Schema
     {

@@ -28,7 +28,7 @@ class EventResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Eventi';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Contenuti';
+    protected static string|UnitEnum|null $navigationGroup = 'Gestione eventi';
 
     public static function form(Schema $schema): Schema
     {

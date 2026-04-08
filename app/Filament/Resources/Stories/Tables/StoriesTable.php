@@ -38,7 +38,6 @@ class StoriesTable
                 TextColumn::make('read_time_minutes')
                     ->label('Lettura (min)')
                     ->suffix(' min')
-                    ->sortable()
                     ->toggleable(),
                 IconColumn::make('is_published')
                     ->label('Pubblicato')

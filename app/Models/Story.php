@@ -22,7 +22,6 @@ class Story extends Model
         'excerpt',
         'body',
         'image_path',
-        'read_time_minutes',
         'is_published',
         'published_at',
     ];
@@ -46,5 +45,21 @@ class Story extends Model
     public function authors(): BelongsToMany
     {
         return $this->belongsToMany(Author::class);
+    }
+
+    /**
+     * Get the human-friendly estimated reading time of a given text.
+     *
+     * @return string
+     */
+    public function getReadTimeMinutesAttribute(): float
+    {
+        $texts = $this->body;
+
+        // Only count words in our estimation
+        $words = str_word_count(strip_tags($texts));
+
+        // Divide by the average number of words per minute
+        return ceil($words / 250);
     }
 }

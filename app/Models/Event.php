@@ -66,4 +66,20 @@ class Event extends Model
     {
         return $this->belongsToMany(Partner::class)->orderBy('name');
     }
+
+    /**
+     * Get the human-friendly estimated reading time of a given text.
+     *
+     * @return string
+     */
+    public function getReadTimeMinutesAttribute(): float
+    {
+        $texts = $this->description;
+
+        // Only count words in our estimation
+        $words = str_word_count(strip_tags($texts));
+
+        // Divide by the average number of words per minute
+        return ceil($words / 250);
+    }
 }

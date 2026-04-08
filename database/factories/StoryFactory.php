@@ -28,7 +28,6 @@ class StoryFactory extends Factory
             'excerpt' => fake()->paragraph(2),
             'body' => implode("\n\n", fake()->paragraphs(fake()->numberBetween(4, 8))),
             'image_path' => null,
-            'read_time_minutes' => fake()->numberBetween(3, 20),
             'is_published' => fake()->boolean(80),
             'published_at' => $publishedAt,
         ];
