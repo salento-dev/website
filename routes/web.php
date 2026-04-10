@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\CookiePolicyPage;
 use App\Livewire\EventDetailPage;
 use App\Livewire\EventsPage;
 use App\Livewire\HomePage;
@@ -28,3 +29,4 @@ Route::get('/stories', StoriesPage::class)->name('stories');
 Route::get('/stories/{story:slug}', StoryDetailPage::class)->name('stories.show');
 
 Route::get('/privacy-policy', PrivacyPolicyPage::class)->name('privacy-policy');
+Route::get('/cookie-policy', CookiePolicyPage::class)->name('cookie-policy');
