@@ -44,7 +44,7 @@
     <div class="flex flex-col md:flex-row items-center justify-between text-sm text-surface-400">
         <p>© {{ date('Y') }} {{ config('community.name') }} - Tutti i diritti riservati</p>
         <div class="mt-4 md:mt-0 flex gap-6">
-            <a class="hover:text-primary transition-colors duration-200" href="#">Privacy Policy</a>
+            <a class="hover:text-primary transition-colors duration-200" href="{{ route('privacy-policy') }}">Privacy Policy</a>
             <a class="hover:text-primary transition-colors duration-200" href="#">Cookie</a>
         </div>
     </div>
