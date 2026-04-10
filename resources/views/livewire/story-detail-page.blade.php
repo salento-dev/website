@@ -58,8 +58,8 @@
                         @foreach ($story->authors as $author)
                             <div class="flex items-center gap-4">
                                 <div class="size-12 rounded-full overflow-hidden bg-surface-700 border border-primary/20 flex items-center justify-center shrink-0">
-                                    @if ($author->avatarUrl())
-                                        <img src="{{ $author->avatarUrl() }}" alt="{{ $author->name }}" class="size-full object-cover">
+                                    @if ($author->avatar_url)
+                                        <img src="{{ $author->avatar_url }}" alt="{{ $author->name }}" class="size-full object-cover">
                                     @else
                                         <x-heroicon-o-user class="size-6 text-primary/60" />
                                     @endif
@@ -70,10 +70,10 @@
                                         <p class="font-mono text-2xs uppercase tracking-widest text-surface-500 mt-0.5">{{ $author->role }}</p>
                                     @endif
                                     {{-- Social links --}}
-                                    @if (filled($author->github_username) || filled($author->linkedin_url) || filled($author->twitter_url) || filled($author->website_url))
+                                    @if (filled($author->github_url) || filled($author->linkedin_url) || filled($author->twitter_url) || filled($author->website_url))
                                         <div class="flex items-center gap-3 mt-2">
                                             @if (filled($author->github_username))
-                                                <a href="https://github.com/{{ $author->github_username }}" target="_blank" rel="noreferrer noopener"
+                                                <a href="{{ $author->github_url }}" target="_blank" rel="noreferrer noopener"
                                                    class="text-surface-400 hover:text-primary transition-colors" title="GitHub">
                                                     <x-heroicon-o-code-bracket class="size-4" />
                                                 </a>

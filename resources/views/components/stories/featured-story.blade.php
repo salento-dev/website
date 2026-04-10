@@ -15,7 +15,7 @@
 
         {{-- Image --}}
         @if ($imageUrl)
-            <div class="lg:w-1/2 h-64 lg:h-auto relative overflow-hidden">
+            <div class="lg:w-1/2 h-64 lg:h-auto lg:max-h-128 relative overflow-hidden">
                 <img src="{{ $imageUrl }}" alt="{{ $story->title }}"
                     class="w-full h-full object-cover opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105">
                 <div class="absolute inset-0 bg-linear-to-r from-surface-900 via-surface-900/40 to-transparent hidden lg:block"></div>
@@ -60,7 +60,7 @@
                         {{-- Stacked avatars --}}
                         <div class="flex -space-x-2">
                             @foreach ($story->authors->take(3) as $author)
-                                @php $avatarUrl = $author->avatarUrl(); @endphp
+                                @php $avatarUrl = $author->avatar_url; @endphp
                                 <div class="size-9 rounded-full border-2 border-surface-900 overflow-hidden bg-surface-700 flex items-center justify-center shrink-0"
                                      title="{{ $author->name }}">
                                     @if ($avatarUrl)

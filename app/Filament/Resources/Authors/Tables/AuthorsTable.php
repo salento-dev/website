@@ -16,11 +16,11 @@ class AuthorsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('avatar_path')
+                ImageColumn::make('avatar_url')
                     ->label('Avatar')
-                    ->disk('public')
-                    ->circular()
-                    ->defaultImageUrl(fn ($record): string => $record->avatarUrl() ?? 'https://ui-avatars.com/api/?name='.urlencode((string) $record->name).'&background=0a0a0a&color=06b6d4'),
+                    ->circular(),
+                    // ->url(fn ($record): string => $record->avatarUrl()),
+                    // ->defaultImageUrl(fn ($record): string => $record->avatarUrl() ?? 'https://ui-avatars.com/api/?name='.urlencode((string) $record->name).'&background=0a0a0a&color=06b6d4'),
                 TextColumn::make('name')
                     ->label('Nome')
                     ->searchable()
@@ -33,7 +33,7 @@ class AuthorsTable
                     ->label('GitHub')
                     ->prefix('@')
                     ->placeholder('—')
-                    ->url(fn ($record): ?string => filled($record->github_username) ? 'https://github.com/'.$record->github_username : null)
+                    ->url(fn ($record): ?string => $record->github_url)
                     ->openUrlInNewTab(),
                 TextColumn::make('stories_count')
                     ->label('Storie')

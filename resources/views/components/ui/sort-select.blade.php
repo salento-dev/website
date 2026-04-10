@@ -10,7 +10,7 @@
 @endphp
 
 <div class="flex items-center gap-1 text-xs">
-    <span>{{ $label }}</span>
+    <span class="hidden md:inline">{{ $label }}</span>
     <div class="relative" x-data="{ open: false }" @click.outside="open = false"
         @keydown.escape.window="open = false">
         <label for="{{ $selectId }}" class="sr-only">

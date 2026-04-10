@@ -19,7 +19,7 @@
         </a>
     @endif
 
-    <div class="flex flex-col flex-1 gap-4 p-6">
+    <div class="flex flex-col flex-1 gap-4 p-5">
 
         {{-- Category badge --}}
         <div class="flex items-center gap-2">
@@ -53,7 +53,7 @@
                 <div class="flex items-center gap-2">
                     <div class="flex -space-x-1.5">
                         @foreach ($story->authors->take(3) as $author)
-                            @php $avatarUrl = $author->avatarUrl(); @endphp
+                            @php $avatarUrl = $author->avatar_url; @endphp
                             <div class="size-7 rounded-full border-2 border-surface-900 overflow-hidden bg-surface-700 flex items-center justify-center shrink-0"
                                  title="{{ $author->name }}">
                                 @if ($avatarUrl)

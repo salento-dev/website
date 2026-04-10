@@ -6,7 +6,7 @@
         : $collection->count();
 @endphp
 
-<div class="flex items-center gap-1 text-xs">
+<div class="hidden md:d-flex items-center gap-1 text-xs">
     <span aria-hidden="true">{{ ucfirst($label) }}:</span>
     <span class="item min-w-9 font-medium" aria-label="{{ $count }} {{ $label }}" role="status">
         {{ $count }}

@@ -56,16 +56,16 @@
 
     <div class="relative z-1 grid place-items-center">
         <div
-            class="relative top-1 z-3 inline-grid size-22 place-items-center self-center justify-self-center rounded-full bg-surface-800 transition duration-400 ease-out [grid-area:1/-1] group-hover:bg-primary-900">
+            class="relative top-1 z-3 inline-grid size-18 md:size-22 place-items-center self-center justify-self-center rounded-full bg-surface-800 transition duration-400 ease-out [grid-area:1/-1] group-hover:bg-primary-900">
             <img x-ref="featureImage" src="{{ $image_path ? asset(ltrim($image_path, '/')) : '' }}"
-                alt="Filament {{ $title }}" loading="lazy" width="351" height="300" aria-hidden="true"
-                class="h-auto max-h-15 w-auto max-w-15"
+                alt="Filament {{ $title }}" loading="lazy" aria-hidden="true"
+                class="h-auto max-h-10 md:max-h-15 w-auto max-w-10 md:max-w-15"
                 style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
         </div>
 
 
         <div class="relative z-1 self-center justify-self-center mask-y-from-80% [grid-area:1/-1]">
-            <div x-ref="patternBackground" class="bg-x-pattern h-45 w-40 mask-x-from-35% bg-repeat"
+            <div x-ref="patternBackground" class="bg-x-pattern h-30 md:h-45 w-40 mask-x-from-35% bg-repeat"
                 style="background-position-y: 77px;"></div>
         </div>
     </div>

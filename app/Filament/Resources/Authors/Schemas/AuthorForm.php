@@ -43,16 +43,9 @@ class AuthorForm
                             ->helperText('Se non caricata, verrà usato l\'avatar GitHub.')
                             ->image()
                             ->disk('public')
-                            ->directory('authors')
-                            ->visibility('public'),
+                            ->directory('authors'),
                         Image::make(
-                            url: function ($get) {
-                                $username = $get('github_username');
-                                if (blank($username)) {
-                                    return null;
-                                }
-                                return 'https://github.com/' . htmlspecialchars((string) $username, ENT_QUOTES) . '.png?size=200';
-                            },
+                            url: fn ($record) => $record?->avatar_url ?? 'https://ui-avatars.com/api/?name=&background=0a0a0a&color=06b6d4',
                             alt: 'GitHub avatar'
                         )
                         ->live(),

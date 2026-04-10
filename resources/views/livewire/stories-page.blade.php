@@ -28,7 +28,7 @@
 
                 {{-- Category filter --}}
                 @if ($categories->isNotEmpty())
-                    <div class="flex flex-wrap gap-2">
+                    <div class="hidden md:flex flex-wrap gap-2">
                         <button wire:click="$set('categoryId', null)"
                             class="rounded-xs border px-3 py-1.5 font-mono text-2xs uppercase tracking-widest transition-colors duration-200 {{ $categoryId === null ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-surface-800 text-surface-400 hover:border-primary/30 hover:text-surface-200' }}">
                             Tutte
