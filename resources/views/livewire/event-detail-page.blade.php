@@ -37,14 +37,11 @@
             </article>
 
             {{-- Sidebar --}}
-            <aside class="lg:col-span-1 flex flex-col gap-6">
+            <aside class="lg:col-span-1 flex flex-col gap-6 lg:sticky lg:top-22 lg:self-start">
 
-                {{-- Cover image --}}
-                <div class="border border-border bg-surface-900 overflow-hidden">
-                    <img src="{{ $event->image_path ? asset('storage/' . ltrim($event->image_path, '/')) : asset('storage/placeholders/events/event-placeholder.jpg') }}"
-                        alt="{{ $event->title }}"
-                        class="w-full aspect-video object-cover">
-                </div>
+                {{-- Cover image (lightbox) --}}
+                @php $coverUrl = $event->image_path ? asset('storage/' . ltrim($event->image_path, '/')) : asset('storage/placeholders/events/event-placeholder.jpg'); @endphp
+                <x-ui.lightbox :src="$coverUrl" :alt="$event->title" />
 
                 {{-- Meta card --}}
                 <div class="border border-border bg-surface-900 p-6 flex flex-col gap-3">

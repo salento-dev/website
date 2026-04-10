@@ -38,15 +38,15 @@
             </article>
 
             {{-- Sidebar --}}
-            <aside class="lg:col-span-1 flex flex-col gap-6">
+            <aside class="lg:col-span-1 flex flex-col gap-6 lg:sticky lg:top-6 lg:self-start">
 
                 {{-- Cover image --}}
                 @if ($story->image_path)
-                    <div class="border border-border bg-surface-900 overflow-hidden">
-                        <img src="{{ asset('storage/' . ltrim($story->image_path, '/')) }}"
-                            alt="{{ $story->title }}"
-                            class="w-full h-auto">
-                    </div>
+                    <x-ui.lightbox
+                        :src="asset('storage/' . ltrim($story->image_path, '/'))"
+                        :alt="$story->title"
+                        thumbnail="h-auto"
+                    />
                 @endif
 
                 {{-- Authors card --}}
