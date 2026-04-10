@@ -29,7 +29,7 @@
             </p>
         </div>
         <a class="relative z-10 flex items-center gap-4 bg-transparent border-2 border-primary text-primary px-8 py-4 font-label font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95 group"
-            href="mailto:salento.dev@gmail.com">
+            href="mailto:{{ config('community.email') }}">
             Contattaci
             <x-heroicon-c-arrow-right class="size-6 group-hover:translate-x-1 transition-transform" />
         </a>
