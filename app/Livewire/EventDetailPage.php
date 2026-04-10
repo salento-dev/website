@@ -84,7 +84,7 @@ class EventDetailPage extends Component
             'relatedEvents' => $relatedEvents,
         ])->layout('layouts.app', [
             'pageTitle' => $this->event->title,
-            'metaDescription' => $this->event->description,
+            'metaDescription' => $this->event->excerpt ?? $this->event->body,
         ]);
     }
 }

@@ -15,7 +15,7 @@
 @endif
 <div class="bg-surface-900 {{ $event->work_in_progress ? 'cursor-not-allowed' : '' }}">
     <article
-        class="group row-span-5 grid grid-rows-subgrid gap-0 rounded-xs p-5 hover:bg-primary-500/5 transition-colors duration-300 ease-out {{ $event->isPast() ? 'opacity-60' : '' }}">
+        class="group row-span-5 grid grid-rows-subgrid gap-0 rounded-xs p-5 hover:bg-primary-500/5 transition-colors duration-300 ease-out">
 
         <div class="flex flex-col gap-1">
 
@@ -25,8 +25,6 @@
                     <path d="M9.5 0.5H0.5V9.5" class="stroke-current" stroke-linecap="round"></path>
                 </svg>
             </div>
-
-
 
             <div class="px-3">
                 @if ($variant === 'default')
@@ -45,8 +43,6 @@
                 @endif
             </div>
 
-
-
             <div class="shrink-0 self-end" aria-hidden="true">
                 <svg class="h-2.25 -scale-x-100 -scale-y-100 text-surface-600" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 11 11" fill="none">
@@ -54,7 +50,6 @@
                 </svg>
             </div>
         </div>
-
 
         @if ($variant === 'default')
             <div class="mt-3 flex flex-col gap-1">
@@ -64,14 +59,14 @@
                     <x-ui.title-indicator />
 
 
-                    <p class="line-clamp-1 font-outfit font-medium text-surface-200">
+                    <p class="line-clamp-1 font-outfit font-bold text-white group-hover:text-primary">
                         {{ $event->title }}
                     </p>
                 </div>
 
 
                 <p class="line-clamp-2 text-sm">
-                    {{ strip_tags($event->description) }}
+                    {{ strip_tags($event->excerpt ?: $event->body) }}
                 </p>
             </div>
         @endif

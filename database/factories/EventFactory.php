@@ -18,7 +18,8 @@ class EventFactory extends Factory
     public function definition(): array
     {
         $title = fake()->sentence(4);
-        $startsAt = fake()->dateTimeBetween('now', '+6 months');
+        $startsAt = fake()->dateTimeBetween('-6 months', '+2 months');
+        $work_in_progress = ($startsAt > now()) ? fake()->boolean(20) : false;
 
         return [
             'title' => $title,
@@ -27,9 +28,11 @@ class EventFactory extends Factory
             'address' => fake()->address(),
             'starts_at' => $startsAt,
             'ends_at' => (clone $startsAt)->modify('+2 hours'),
-            'description' => fake()->paragraphs(3, true),
+            'excerpt' => fake()->paragraph(),
+            'body' => fake()->paragraphs(3, true),
             'image_path' => null,
             'is_published' => fake()->boolean(85),
+            'work_in_progress' => $work_in_progress,
         ];
     }
 }

@@ -7,6 +7,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
@@ -43,8 +44,14 @@ class EventForm
                     ->timezone('Europe/Rome')
                     ->seconds(false)
                     ->afterOrEqual('starts_at'),
-                MarkdownEditor::make('description')
-                    ->label('Descrizione')
+                Textarea::make('excerpt')
+                    ->label('Estratto')
+                    ->helperText('Breve descrizione mostrata nelle anteprime (card, slideshow). Se vuoto, viene usata la descrizione.')
+                    ->rows(3)
+                    ->maxLength(500)
+                    ->columnSpanFull(),
+                MarkdownEditor::make('body')
+                    ->label('Corpo')
                     ->required()
                     ->columnSpanFull(),
                 FileUpload::make('image_path')

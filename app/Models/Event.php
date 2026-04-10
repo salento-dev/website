@@ -21,7 +21,8 @@ class Event extends Model
         'address',
         'starts_at',
         'ends_at',
-        'description',
+        'body',
+        'excerpt',
         'image_path',
         'is_published',
         'work_in_progress',
@@ -74,7 +75,7 @@ class Event extends Model
      */
     public function getReadTimeMinutesAttribute(): float
     {
-        $texts = $this->description;
+        $texts = $this->body;
 
         // Only count words in our estimation
         $words = str_word_count(strip_tags($texts));

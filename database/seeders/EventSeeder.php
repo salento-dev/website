@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Event;
 use App\Models\EventCategory;
+use App\Models\Partner;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -22,7 +23,7 @@ class EventSeeder extends Seeder
         ];
 
         $publishedEvents = collect();
-        for ($i = 0; $i < 8; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $publishedEvents->push(
                 Event::factory()
                     ->state([
@@ -64,6 +65,24 @@ class EventSeeder extends Seeder
         $unpublishedEvents->each(function (Event $event) use ($categoryIds): void {
             $event->categories()->sync(
                 $categoryIds->random(random_int(1, min(2, $categoryIds->count())))->values()->all(),
+            );
+        });
+
+        if (! Schema::hasTable('event_partner')) {
+            return;
+        }
+
+        $partnerIds = Partner::query()->where('is_published', true)->pluck('id');
+
+        if ($partnerIds->isEmpty()) {
+            return;
+        }
+
+        $allEvents = $publishedEvents->merge($unpublishedEvents);
+
+        $allEvents->each(function (Event $event) use ($partnerIds): void {
+            $event->partners()->sync(
+                $partnerIds->random(random_int(1, min(3, $partnerIds->count())))->values()->all(),
             );
         });
     }
