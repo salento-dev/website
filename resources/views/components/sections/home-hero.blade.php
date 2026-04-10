@@ -5,7 +5,7 @@
 
 <!-- Hero Title - Filament style -->
 <h1 class="mb-6 text-5xl font-bold leading-[1.1] tracking-tight text-surface-50 sm:text-6xl lg:text-7xl">
-    <span class="block text-primary">Salento.dev</span>
+    <span class="block text-primary">{{ config('community.name') }}</span>
     <span class="block">la comunity di sviluppatori</span>
 </h1>
 

@@ -25,7 +25,7 @@
         <div class="relative z-10 text-center md:text-left">
             <h3 class="font-headline text-3xl font-bold text-white mb-3">Vuoi diventare partner?</h3>
             <p class="text-surface-300 max-w-md">
-                Unisciti all'ecosistema di salento.dev e contribuisci a far crescere la scena tech salentina.
+                Unisciti all'ecosistema di {{ config('community.name') }} e contribuisci a far crescere la scena tech salentina.
             </p>
         </div>
         <a class="relative z-10 flex items-center gap-4 bg-transparent border-2 border-primary text-primary px-8 py-4 font-label font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95 group"
