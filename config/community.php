@@ -5,7 +5,7 @@ return [
 
     'email' => 'salento.dev@gmail.com',
 
-    'description' => 'Unisciti alla rivoluzione tecnologica del Sud Italia. La nostra community è aperta a sviluppatori, designer e appassionati di tecnologia che credono nel costruire il futuro insieme.',
+    'description' => 'Unisciti alla rivoluzione tecnologica del Sud Italia. La nostra community è aperta a sviluppatori che credono nel costruire il futuro insieme.',
 
     'social' => [
         [

@@ -31,7 +31,7 @@
 
     <!-- Documents Feed / Resources -->
     <x-ui.section-header eyebrow="FETCHING_RESOURCES" title="Le ultime risorse" :link="['href' => route('resources'), 'text' => 'View All Resources']">
-        <x-ui.terminal :path="'~/resources/latest'">
+        <x-ui.terminal :path="'/resources/latest'">
             <div class="divide-y divide-border/50">
                 @forelse ($resources as $resource)
                     <x-cards.resource-row :resource="$resource" />

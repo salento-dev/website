@@ -16,7 +16,7 @@
         <x-ui.paginator :paginator="$resources" />
     </div>
 
-    <x-ui.terminal :path="'~/resources'">
+    <x-ui.terminal :path="'/resources'">
         <div class="divide-y divide-border/50 font-mono text-xs">
             @forelse ($resources as $resource)
                 <x-cards.resource-row :resource="$resource" />
