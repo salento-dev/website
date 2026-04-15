@@ -125,45 +125,13 @@
     @endif
 
     @if ($event->resources->isNotEmpty())
-        <x-ui.section-header eyebrow="Materiali" title="Risorse disponibili">
-            <div class="overflow-hidden border border-border bg-surface">
-                <div class="flex items-center justify-between border-b border-border bg-surface-900 px-4 py-3 gap-4">
-                    <div class="flex shrink-0 gap-2">
-                        <div class="size-2 rounded-full bg-red-500/50"></div>
-                        <div class="size-2 rounded-full bg-yellow-500/50"></div>
-                        <div class="size-2 rounded-full bg-green-500/50"></div>
-                    </div>
-                    <span class="truncate text-2xs font-mono text-primary/60 tracking-widest uppercase">root@salentodev:~/event/{{ $event->id }}/resources</span>
-                </div>
-                <div class="divide-y divide-border/50 font-mono text-xs">
-                    @foreach ($event->resources->where('is_published', true) as $resource)
-                        <div class="group flex items-center justify-between gap-4 px-4 py-4 hover:bg-primary/5 transition-colors">
-                            <div class="flex min-w-0 items-center gap-3">
-                                @if ($resource->source_type === 'file')
-                                    @if (str_ends_with($resource->file_path ?? '', '.zip') || str_ends_with($resource->file_path ?? '', '.rar'))
-                                        <x-heroicon-o-archive-box class="size-4 shrink-0 text-primary" />
-                                    @else
-                                        <x-heroicon-o-document-text class="size-4 shrink-0 text-primary" />
-                                    @endif
-                                @else
-                                    <x-heroicon-o-link class="size-4 shrink-0 text-primary" />
-                                @endif
-                                <span class="truncate text-white">{{ $resource->title }}</span>
-                            </div>
-                            @if ($resource->source_type === 'file' && $resource->file_path)
-                                <a class="shrink-0 text-primary hover:underline uppercase tracking-widest text-2xs font-bold"
-                                    href="{{ asset('storage/' . ltrim($resource->file_path, '/')) }}"
-                                    download>Download</a>
-                            @elseif ($resource->source_type === 'link' && $resource->external_url)
-                                <a class="shrink-0 text-primary hover:underline uppercase tracking-widest text-2xs font-bold"
-                                    href="{{ $resource->external_url }}" target="_blank"
-                                    rel="noreferrer noopener">Apri</a>
-                            @endif
-                        </div>
-                    @endforeach
-                </div>
+        <x-ui.terminal :path="'/resources'">
+            <div class="divide-y divide-border/50 font-mono text-xs">
+                @foreach ($event->resources->where('is_published', true) as $resource)
+                    <x-cards.resource-row :resource="$resource" />
+                @endforeach
             </div>
-        </x-ui.section-header>
+        </x-ui.terminal>
     @endif
 
     @if ($relatedEvents->isNotEmpty())

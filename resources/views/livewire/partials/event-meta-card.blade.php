@@ -25,14 +25,14 @@
 
     @if ($event->location)
         <div class="flex items-center gap-3 text-sm text-surface-400">
-            <x-heroicon-o-map-pin class="size-4 text-primary/50 shrink-0" />
+            <x-heroicon-o-building-office class="size-4 text-primary/50 shrink-0" />
             {{ $event->location }}
         </div>
     @endif
 
     @if ($event->address)
         <div class="flex items-center gap-3 text-sm text-surface-400">
-            <x-heroicon-o-building-office class="size-4 text-primary/50 shrink-0" />
+            <x-heroicon-o-map-pin class="size-4 text-primary/50 shrink-0" />
             {{ $event->address }}
         </div>
     @endif
