@@ -31,7 +31,7 @@ class RealPartnersSeeder extends Seeder
         Partner::create([
             'name' => 'Azure Meetup Puglia',
             'description' => '',
-            'logo_path' => $this->copyImage('azure-meetup-puglia.png'),
+            'logo_path' => $this->copyImage('azure-meetup-puglia.jpg'),
             'website_url' => 'https://azure-meetup-puglia.github.io/',
             'is_published' => true,
         ]);
@@ -39,7 +39,7 @@ class RealPartnersSeeder extends Seeder
         Partner::create([
             'name' => 'GDG Lecce',
             'description' => '',
-            // 'logo_path' => $this->copyImage('azure-meetup-puglia.png'),
+            'logo_path' => $this->copyImage('gdg-lecce.jpg'),
             'website_url' => 'https://gdg.community.dev/gdg-lecce/',
             'is_published' => true,
         ]);

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Event;
 use App\Models\EventCategory;
+use App\Models\Partner;
 use App\Models\Resource;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -29,6 +30,9 @@ class RealEventsSeeder extends Seeder
             $categoryNames = $data['categories'];
             unset($data['categories']);
 
+            $partner_names = $data['_partner_names'] ?? [];
+            unset($data['_partner_names']);
+
             $resources = $data['_resources'] ?? [];
             unset($data['_resources']);
 
@@ -36,7 +40,7 @@ class RealEventsSeeder extends Seeder
             unset($data['_source_image']);
 
             if ($sourceImage !== null) {
-                $copied = $this->copyToStorage($sourceImage, ''.pathinfo($sourceImage, PATHINFO_FILENAME).'-'.$data['slug'].'.'.pathinfo($sourceImage, PATHINFO_EXTENSION));
+                $copied = $this->copyToStorage($sourceImage, '' . pathinfo($sourceImage, PATHINFO_FILENAME) . '-' . $data['slug'] . '.' . pathinfo($sourceImage, PATHINFO_EXTENSION));
                 if ($copied !== '') {
                     $data['image_path'] = $copied;
                 }
@@ -48,7 +52,7 @@ class RealEventsSeeder extends Seeder
             );
 
             $categoryIds = collect($categoryNames)
-                ->map(fn (string $name) => $categories->get(Str::slug($name)))
+                ->map(fn(string $name) => $categories->get(Str::slug($name)))
                 ->filter()
                 ->values()
                 ->all();
@@ -57,10 +61,29 @@ class RealEventsSeeder extends Seeder
                 $event->categories()->sync($categoryIds);
             }
 
+            if(! empty($partner_names)) {
+                $this->seedPartners($event, $partner_names);
+            }
+
             if (! empty($resources)) {
                 $this->seedResources($event, $resources);
             }
         }
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $partner_names
+     */
+    private function seedPartners(Event $event, array $partner_names): void
+    {
+        $partnerIds = [];
+
+        $partnerIds = Partner::withoutGlobalScopes()
+            ->whereIn('name', $partner_names ?? [])
+            ->get()
+            ->pluck('id');
+
+        $event->partners()->sync($partnerIds);
     }
 
     /**
@@ -92,7 +115,7 @@ class RealEventsSeeder extends Seeder
 
     private function copyToStorage(string $relativeSource, string $storageDest): string
     {
-        $source = $this->seedersDir.DIRECTORY_SEPARATOR.$relativeSource;
+        $source = $this->seedersDir . DIRECTORY_SEPARATOR . $relativeSource;
 
         if (! file_exists($source)) {
             return '';
@@ -166,6 +189,26 @@ MD,
                 '_source_image' => 'lightning-night-ruffano.jpg',
                 '_resources' => [
                     [
+                        'title' => 'Diagram as code',
+                        'slug' => 'diagram-as-code',
+                        'description' => 'Diagram as Code è un approccio ingegneristico alla modellazione visiva che tratta i diagrammi come artefatti testuali versionabili, generati a partire da codice dichiarativo anziché disegnati manualmente. Attraverso linguaggi e tool testuali, i diagrammi diventano parte integrante del codice sorgente: evolvono insieme all’architettura, sono soggetti alle stesse pratiche di qualità e riducono il divario tra sistema reale e documentazione.',
+                        'source_type' => 'link',
+                        'external_url' => 'https://rizzello.dev/downloads/2025-12-29/diagram_as_code.pdf',
+                        'file_path' => null,
+                        'image_path' => null,
+                        'is_published' => true,
+                    ],
+                    [
+                        'title' => 'Reactylon: Sviluppare esperienze XR con React e Babylon.js',
+                        'slug' => 'reactylon-presentation',
+                        'description' => 'Multiplatform framework designed to create interactive and immersive XR experiences.',
+                        'source_type' => 'link',
+                        'external_url' => 'https://canva.link/dcvvj68ziuy0rg9',
+                        'file_path' => null,
+                        'image_path' => null,
+                        'is_published' => true,
+                    ],
+                    [
                         'title' => 'Droni e modellismo... dal punto di vista Tech',
                         'slug' => 'droni-e-modellismo-dal-punto-di-vista-tech',
                         'description' => 'Slide del lightning talk di Emanuele Paiano alla Lightning Night @ Ruffano (29 dicembre 2025).',
@@ -176,6 +219,7 @@ MD,
                         'is_published' => true,
                         '_source_file' => 'droni-e-modellismo.pdf',
                     ],
+                    
                 ],
             ],
 
@@ -249,6 +293,7 @@ MD,
                 'work_in_progress' => false,
                 'categories' => ['Networking'],
                 '_source_image' => 'bowling-meetup-lecce-digital-community.jpg',
+                '_partner_names' => ['Lecce Digital Community'],
             ],
 
             [
@@ -277,6 +322,7 @@ MD,
                 'work_in_progress' => false,
                 'categories' => ['Workshop', 'Talk'],
                 '_source_image' => 'github-copilot-dev-days-lecce.jpg',
+                '_partner_names' => ['GDG Lecce'],
             ],
 
             [
@@ -309,6 +355,7 @@ MD,
                 'work_in_progress' => false,
                 'categories' => ['Talk', 'Workshop'],
                 '_source_image' => 'global-azure-puglia-2026.jpg',
+                '_partner_names' => ['Azure Meetup Puglia'],
             ],
         ];
     }
