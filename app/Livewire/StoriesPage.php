@@ -69,10 +69,10 @@ class StoriesPage extends Component
             ->latest('published_at')
             ->first();
 
-        $stories = $this->buildStoriesQuery($featuredStory?->id)->paginate(9);
+        $stories = $this->buildStoriesQuery(null)->paginate(12);
 
         $categories = Schema::hasTable('story_categories')
-            ? StoryCategory::query()->where('is_active', true)->orderBy('sort_order')->orderBy('name')->get()
+            ? StoryCategory::query()->where('is_active', true)->whereHas('stories')->orderBy('sort_order')->orderBy('name')->get()
             : new Collection;
 
         return view('livewire.stories-page', [
