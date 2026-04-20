@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 
 class Event extends Model
@@ -40,6 +41,11 @@ class Event extends Model
             'is_published' => 'boolean',
             'work_in_progress' => 'boolean',
         ];
+    }
+
+    public function pageViews(): MorphMany
+    {
+        return $this->morphMany(PageView::class, 'viewable');
     }
 
     public function isPast(): bool
