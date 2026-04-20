@@ -11,7 +11,7 @@
 
 <!-- Description -->
 <p class="mx-auto max-w-2xl text-lg leading-relaxed text-surface-400">
-    Una comunità di sviluppatori, designer e innovatori che trasformano idee in realtà attraverso la collaborazione, il
+    Una comunità di sviluppatori che trasformano idee in realtà attraverso la collaborazione, il
     codice open-source e la condivisione delle conoscenze.
 </p>
 
