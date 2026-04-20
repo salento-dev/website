@@ -97,8 +97,8 @@
 
             <div class="grow"></div>
 
-            <span class="text-xs" title="{{ $event->starts_at->format('M d, Y') }}">
-                {{ $event->starts_at->diffForHumans() }}
+            <span class="text-xs" title="{{ $event->local_starts_at->format('M d, Y') }}">
+                {{ $event->local_starts_at->diffForHumans() }}
             </span>
 
         </div>

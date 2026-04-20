@@ -5,11 +5,11 @@
         ? asset('storage/' . ltrim($event->image_path, '/'))
         : asset('storage/placeholders/events/event-placeholder.jpg');
 
-    $dateFormatted = $event->starts_at->translatedFormat('l j F Y');
-    $timeFormatted = $event->starts_at->format('H:i');
-    $daysUntil = (int) now()->startOfDay()->diffInDays($event->starts_at->startOfDay(), false);
-    $endsAt = $event->ends_at ?? $event->starts_at->copy()->endOfDay();
-    $isLive = now()->between($event->starts_at, $endsAt);
+    $dateFormatted = $event->local_starts_at->translatedFormat('l j F Y');
+    $timeFormatted = $event->local_starts_at->format('H:i');
+    $daysUntil = (int) now('Europe/Rome')->startOfDay()->diffInDays($event->local_starts_at->startOfDay(), false);
+    $endsAt = $event->local_ends_at ?? $event->local_starts_at->copy()->endOfDay();
+    $isLive = now('Europe/Rome')->between($event->local_starts_at, $endsAt);
 @endphp
 
 <a href="{{ route('events.show', $event) }}" aria-label="Scopri l'evento {{ $event->title }}"

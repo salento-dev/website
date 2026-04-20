@@ -17,9 +17,9 @@
     </div>
 
     <div class="mt-8 flex items-center justify-between">
-        @if ($event->starts_at)
+        @if ($event->local_starts_at)
             <span class="font-mono text-xs italic text-primary/70">
-                Target: {{ $event->starts_at->translatedFormat('M Y') }}
+                Target: {{ $event->local_starts_at->translatedFormat('M Y') }}
             </span>
         @else
             <span class="font-mono text-xs italic text-surface-600">Data TBD</span>

@@ -6,17 +6,17 @@
         <div class="flex flex-col gap-1.5 text-sm">
             <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
                 <span class="font-mono text-2xs uppercase tracking-widest text-surface-600">Inizio</span>
-                <span class="text-surface-300">{{ $event->starts_at->translatedFormat('j F Y') }}</span>
-                @if ($event->starts_at->format('H:i') !== '00:00')
-                    <span class="font-mono text-xs text-primary/70">{{ $event->starts_at->format('H:i') }}</span>
+                <span class="text-surface-300">{{ $event->local_starts_at->translatedFormat('j F Y') }}</span>
+                @if ($event->local_starts_at->format('H:i') !== '00:00')
+                    <span class="font-mono text-xs text-primary/70">{{ $event->local_starts_at->format('H:i') }}</span>
                 @endif
             </div>
-            @if ($event->ends_at)
+            @if ($event->local_ends_at)
                 <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
                     <span class="font-mono text-2xs uppercase tracking-widest text-surface-600">Fine&nbsp;&nbsp;</span>
-                    <span class="text-surface-400">{{ $event->ends_at->translatedFormat('j F Y') }}</span>
-                    @if ($event->ends_at->format('H:i') !== '00:00')
-                        <span class="font-mono text-xs text-surface-500">{{ $event->ends_at->format('H:i') }}</span>
+                    <span class="text-surface-400">{{ $event->local_ends_at->translatedFormat('j F Y') }}</span>
+                    @if ($event->local_ends_at->format('H:i') !== '00:00')
+                        <span class="font-mono text-xs text-surface-500">{{ $event->local_ends_at->format('H:i') }}</span>
                     @endif
                 </div>
             @endif

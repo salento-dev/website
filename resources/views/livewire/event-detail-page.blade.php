@@ -21,28 +21,28 @@
             <x-heroicon-o-calendar-days class="size-5 shrink-0 text-primary" />
             <div class="text-left">
                 <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-mist-600">
-                    {{ $event->ends_at && !$event->starts_at->isSameDay($event->ends_at) ? 'Inizio' : 'Data' }}
+                    {{ $event->local_ends_at && !$event->local_starts_at->isSameDay($event->local_ends_at) ? 'Inizio' : 'Data' }}
                 </div>
                 <div class="font-outfit font-bold text-mist-50">
-                    {{ $event->starts_at->translatedFormat('j F Y') }}
+                    {{ $event->local_starts_at->translatedFormat('j F Y') }}
                 </div>
-                @if ($event->starts_at->format('H:i') !== '00:00')
-                    <div class="font-mono text-xs text-primary">{{ $event->starts_at->format('H:i') }}</div>
+                @if ($event->local_starts_at->format('H:i') !== '00:00')
+                    <div class="font-mono text-xs text-primary">{{ $event->local_starts_at->format('H:i') }}</div>
                 @endif
             </div>
         </div>
 
         {{-- Data fine (solo se diversa dall'inizio) --}}
-        @if ($event->ends_at && !$event->starts_at->isSameDay($event->ends_at))
+        @if ($event->local_ends_at && !$event->local_starts_at->isSameDay($event->local_ends_at))
             <div class="flex grow basis-56 items-center gap-3 bg-surface-950 px-6 py-5">
                 <x-heroicon-o-flag class="size-5 shrink-0 text-primary/60" />
                 <div class="text-left">
                     <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-mist-600">Fine</div>
                     <div class="font-outfit font-bold text-mist-200">
-                        {{ $event->ends_at->translatedFormat('j F Y') }}
+                        {{ $event->local_ends_at->translatedFormat('j F Y') }}
                     </div>
-                    @if ($event->ends_at->format('H:i') !== '00:00')
-                        <div class="font-mono text-xs text-mist-400">{{ $event->ends_at->format('H:i') }}</div>
+                    @if ($event->local_ends_at->format('H:i') !== '00:00')
+                        <div class="font-mono text-xs text-mist-400">{{ $event->local_ends_at->format('H:i') }}</div>
                     @endif
                 </div>
             </div>
