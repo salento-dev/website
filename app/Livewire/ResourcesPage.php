@@ -57,7 +57,7 @@ class ResourcesPage extends Component
         };
 
         $resources = Schema::hasTable('resources')
-            ? $query->paginate(15)
+            ? $query->with('authors')->paginate(15)
             : new Collection;
 
         return view('livewire.resources-page', [

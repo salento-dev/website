@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\Author;
 use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\Partner;
@@ -40,7 +41,7 @@ class RealEventsSeeder extends Seeder
             unset($data['_source_image']);
 
             if ($sourceImage !== null) {
-                $copied = $this->copyToStorage($sourceImage, '' . pathinfo($sourceImage, PATHINFO_FILENAME) . '-' . $data['slug'] . '.' . pathinfo($sourceImage, PATHINFO_EXTENSION));
+                $copied = $this->copyToStorage($sourceImage, ''.pathinfo($sourceImage, PATHINFO_FILENAME).'-'.$data['slug'].'.'.pathinfo($sourceImage, PATHINFO_EXTENSION));
                 if ($copied !== '') {
                     $data['image_path'] = $copied;
                 }
@@ -52,7 +53,7 @@ class RealEventsSeeder extends Seeder
             );
 
             $categoryIds = collect($categoryNames)
-                ->map(fn(string $name) => $categories->get(Str::slug($name)))
+                ->map(fn (string $name) => $categories->get(Str::slug($name)))
                 ->filter()
                 ->values()
                 ->all();
@@ -61,7 +62,7 @@ class RealEventsSeeder extends Seeder
                 $event->categories()->sync($categoryIds);
             }
 
-            if(! empty($partner_names)) {
+            if (! empty($partner_names)) {
                 $this->seedPartners($event, $partner_names);
             }
 
@@ -97,15 +98,23 @@ class RealEventsSeeder extends Seeder
             $sourceFile = $resourceData['_source_file'] ?? null;
             unset($resourceData['_source_file']);
 
+            $author_names = $resourceData['_author_names'] ?? null;
+            unset($resourceData['_author_names']);
+
             if ($sourceFile !== null) {
                 $copied = $this->copyToStorage($sourceFile, $resourceData['file_path']);
                 $resourceData['file_path'] = $copied !== '' ? $copied : null;
             }
 
             $resource = Resource::query()->updateOrCreate(
-                ['slug' => $resourceData['slug']],
+                ['title' => $resourceData['title']],
                 $resourceData,
             );
+
+            if(! empty($author_names)) {
+                $author_ids = Author::whereIn('name', $author_names)->get()->pluck('id') ?? [];
+                $resource->authors()->sync($author_ids);
+            }
 
             $resourceIds[] = $resource->id;
         }
@@ -115,7 +124,7 @@ class RealEventsSeeder extends Seeder
 
     private function copyToStorage(string $relativeSource, string $storageDest): string
     {
-        $source = $this->seedersDir . DIRECTORY_SEPARATOR . $relativeSource;
+        $source = $this->seedersDir.DIRECTORY_SEPARATOR.$relativeSource;
 
         if (! file_exists($source)) {
             return '';
@@ -190,36 +199,33 @@ MD,
                 '_resources' => [
                     [
                         'title' => 'Diagram as code',
-                        'slug' => 'diagram-as-code',
                         'description' => 'Diagram as Code è un approccio ingegneristico alla modellazione visiva che tratta i diagrammi come artefatti testuali versionabili, generati a partire da codice dichiarativo anziché disegnati manualmente. Attraverso linguaggi e tool testuali, i diagrammi diventano parte integrante del codice sorgente: evolvono insieme all’architettura, sono soggetti alle stesse pratiche di qualità e riducono il divario tra sistema reale e documentazione.',
                         'source_type' => 'link',
                         'external_url' => 'https://rizzello.dev/downloads/2025-12-29/diagram_as_code.pdf',
                         'file_path' => null,
-                        'image_path' => null,
                         'is_published' => true,
+                        '_author_names' => ['Paolo Rizzello'],
                     ],
                     [
                         'title' => 'Reactylon: Sviluppare esperienze XR con React e Babylon.js',
-                        'slug' => 'reactylon-presentation',
-                        'description' => 'Multiplatform framework designed to create interactive and immersive XR experiences.',
+                        'description' => 'Framework multipiattaforma basato su Babylon.js e React per creare esperienze 3D immersive e interattive. Permette di sviluppare una sola volta e distribuire su web, mobile e dispositivi VR/AR/MR.',
                         'source_type' => 'link',
                         'external_url' => 'https://canva.link/dcvvj68ziuy0rg9',
                         'file_path' => null,
-                        'image_path' => null,
                         'is_published' => true,
+                        '_author_names' => ['Simone De Vittorio'],
                     ],
                     [
                         'title' => 'Droni e modellismo... dal punto di vista Tech',
-                        'slug' => 'droni-e-modellismo-dal-punto-di-vista-tech',
-                        'description' => 'Slide del lightning talk di Emanuele Paiano alla Lightning Night @ Ruffano (29 dicembre 2025).',
+                        'description' => 'Panoramica sui droni dal punto di vista di uno sviluppatore: funzionamento, hardware e software, con focus su PX4, MAVLink e simulazioni. Include programmazione di missioni e integrazione con AI e robotica per scenari avanzati.',
                         'source_type' => 'file',
                         'external_url' => null,
                         'file_path' => 'resources/files/droni-e-modellismo.pdf',
-                        'image_path' => null,
                         'is_published' => true,
                         '_source_file' => 'droni-e-modellismo.pdf',
+                        '_author_names' => ['Emanuele Paiano'],
                     ],
-                    
+
                 ],
             ],
 

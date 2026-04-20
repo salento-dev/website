@@ -19,11 +19,15 @@ class ResourceForm
                     ->label('Titolo')
                     ->required()
                     ->maxLength(255),
-                TextInput::make('slug')
-                    ->label('Slug')
+                Textarea::make('description')
+                    ->label('Descrizione')
                     ->required()
-                    ->maxLength(255)
-                    ->unique(ignoreRecord: true),
+                    ->rows(6)
+                    ->columnSpanFull(),
+                Toggle::make('is_published')
+                    ->label('Pubblicato')
+                    ->inline(false)
+                    ->default(true),
                 Select::make('source_type')
                     ->label('Tipo contenuto')
                     ->options([
@@ -33,39 +37,32 @@ class ResourceForm
                     ->default('link')
                     ->required()
                     ->native(false)
-                    ->live(),
-                Toggle::make('is_published')
-                    ->label('Pubblicato')
-                    ->default(true),
-                Textarea::make('description')
-                    ->label('Descrizione')
-                    ->required()
-                    ->rows(6)
+                    ->live()
                     ->columnSpanFull(),
-                FileUpload::make('image_path')
-                    ->label('Immagine')
-                    ->image()
-                    ->required()
-                    ->disk('public')
-                    ->directory('resources/images')
-                    ->visibility('public')
-                    ->columnSpanFull(),
+
                 TextInput::make('external_url')
                     ->label('Link')
                     ->url()
                     ->maxLength(2048)
-                    ->visible(fn ($get): bool => $get('source_type') === 'link')
-                    ->required(fn ($get): bool => $get('source_type') === 'link')
+                    ->visible(fn($get): bool => $get('source_type') === 'link')
+                    ->required(fn($get): bool => $get('source_type') === 'link')
                     ->columnSpanFull(),
                 FileUpload::make('file_path')
                     ->label('File')
                     ->disk('public')
                     ->directory('resources/files')
                     ->visibility('public')
-                    ->visible(fn ($get): bool => $get('source_type') === 'file')
-                    ->required(fn ($get): bool => $get('source_type') === 'file')
+                    ->visible(fn($get): bool => $get('source_type') === 'file')
+                    ->required(fn($get): bool => $get('source_type') === 'file')
+                    ->columnSpanFull(),
+                Select::make('authors')
+                    ->label('Autori')
+                    ->relationship('authors', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
                     ->columnSpanFull(),
             ])
-            ->columns(2);
+            ->columns(1);
     }
 }

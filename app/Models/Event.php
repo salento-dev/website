@@ -60,7 +60,8 @@ class Event extends Model
 
     public function resources(): BelongsToMany
     {
-        return $this->belongsToMany(Resource::class)->withTimestamps();
+        return $this->belongsToMany(Resource::class)->withTimestamps()
+            ->with('authors');
     }
 
     public function partners(): BelongsToMany

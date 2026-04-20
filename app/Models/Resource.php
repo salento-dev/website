@@ -15,9 +15,7 @@ class Resource extends Model
      */
     protected $fillable = [
         'title',
-        'slug',
         'description',
-        'image_path',
         'source_type',
         'external_url',
         'file_path',
@@ -37,5 +35,10 @@ class Resource extends Model
     public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class)->withTimestamps();
+    }
+
+    public function authors(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class);
     }
 }

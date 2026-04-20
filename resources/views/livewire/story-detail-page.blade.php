@@ -44,54 +44,12 @@
         @endif
 
         @if ($story->authors->isNotEmpty())
-            <div class="border border-border bg-surface-900 p-5 flex flex-col gap-4">
+            <div class="flex flex-col gap-4 border border-border bg-surface-900 p-5">
                 <h3 class="font-mono text-2xs uppercase tracking-widest text-primary">
                     {{ $story->authors->count() > 1 ? 'Autori' : 'Autore' }}
                 </h3>
                 @foreach ($story->authors as $author)
-                    <div class="flex items-center gap-4">
-                        <div class="size-12 rounded-full overflow-hidden bg-surface-700 border border-primary/20 flex items-center justify-center shrink-0">
-                            @if ($author->avatar_url)
-                                <img src="{{ $author->avatar_url }}" alt="{{ $author->name }}" class="size-full object-cover">
-                            @else
-                                <x-heroicon-o-user class="size-6 text-primary/60" />
-                            @endif
-                        </div>
-                        <div class="min-w-0">
-                            <p class="font-outfit font-bold text-surface-50 truncate">{{ $author->name }}</p>
-                            @if (filled($author->role))
-                                <p class="font-mono text-2xs uppercase tracking-widest text-surface-500 mt-0.5">{{ $author->role }}</p>
-                            @endif
-                            @if (filled($author->github_url) || filled($author->linkedin_url) || filled($author->twitter_url) || filled($author->website_url))
-                                <div class="flex items-center gap-3 mt-2">
-                                    @if (filled($author->github_username))
-                                        <a href="{{ $author->github_url }}" target="_blank" rel="noreferrer noopener"
-                                           class="text-surface-400 hover:text-primary transition-colors" title="GitHub">
-                                            <x-heroicon-o-code-bracket class="size-4" />
-                                        </a>
-                                    @endif
-                                    @if (filled($author->linkedin_url))
-                                        <a href="{{ $author->linkedin_url }}" target="_blank" rel="noreferrer noopener"
-                                           class="text-surface-400 hover:text-primary transition-colors" title="LinkedIn">
-                                            <x-heroicon-o-briefcase class="size-4" />
-                                        </a>
-                                    @endif
-                                    @if (filled($author->twitter_url))
-                                        <a href="{{ $author->twitter_url }}" target="_blank" rel="noreferrer noopener"
-                                           class="text-surface-400 hover:text-primary transition-colors" title="X / Twitter">
-                                            <x-heroicon-o-chat-bubble-left class="size-4" />
-                                        </a>
-                                    @endif
-                                    @if (filled($author->website_url))
-                                        <a href="{{ $author->website_url }}" target="_blank" rel="noreferrer noopener"
-                                           class="text-surface-400 hover:text-primary transition-colors" title="Sito web">
-                                            <x-heroicon-o-globe-alt class="size-4" />
-                                        </a>
-                                    @endif
-                                </div>
-                            @endif
-                        </div>
-                    </div>
+                    <x-cards.author :author="$author" />
                     @if (!$loop->last)
                         <hr class="border-border/50">
                     @endif

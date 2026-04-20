@@ -4,7 +4,7 @@
     $whatsappIcon = '<svg fill="currentColor" viewBox="0 0 24 24" class="size-full"><path d="' . $whatsapp['icon_path'] . '"/></svg>';
 @endphp
 
-<nav class="sticky top-0 z-100 border-b border-border bg-surface">
+<nav class="sticky top-0 z-10 border-b border-border bg-surface">
     <header data-triangle-decoration="bottom" class="flex h-16 w-full items-stretch justify-between nav:gap-3">
 
         <div class="flex w-22 items-stretch border-r border-border min-[370px]:w-25 2xs:w-30 nav:hidden">

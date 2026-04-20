@@ -19,12 +19,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
+            RealAuthorsSeeder::class,
             EventCategorySeeder::class,
             RealPartnersSeeder::class,
             RealEventsSeeder::class,
             // ResourceSeeder::class,
             StoryCategorySeeder::class,
-            RealStoriesSeeder::class, // creates Authors internally
+            RealStoriesSeeder::class,
         ]);
 
         Artisan::call('make:filament-user', [

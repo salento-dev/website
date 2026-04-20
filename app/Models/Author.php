@@ -31,6 +31,11 @@ class Author extends Model
         return $this->belongsToMany(Story::class)->withTimestamps();
     }
 
+    public function resources(): BelongsToMany
+    {
+        return $this->belongsToMany(Resource::class);
+    }
+
     /**
      * Returns the avatar URL, preferring the stored image,
      * then falling back to the GitHub avatar if a username is set.
@@ -46,11 +51,11 @@ class Author extends Model
         }
 
         if (filled($this->github_username)) {
-            return 'https://github.com/' . urlencode((string) $this->github_username) . '.png?size=200';
+            return 'https://github.com/'.urlencode((string) $this->github_username).'.png?size=200';
         }
 
         if (filled($this->name)) {
-            return 'https://ui-avatars.com/api/?name=' . urlencode((string) $this->name) . '&background=0a0a0a&color=06b6d4';
+            return 'https://ui-avatars.com/api/?name='.urlencode((string) $this->name).'&background=0a0a0a&color=06b6d4';
         }
 
         return '';
@@ -59,7 +64,7 @@ class Author extends Model
     public function getGithubUrlAttribute(): ?string
     {
         if (filled($this->github_username)) {
-            return 'https://github.com/' . $this->github_username;
+            return 'https://github.com/'.$this->github_username;
         }
 
         return null;

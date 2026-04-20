@@ -29,6 +29,7 @@ class StoryCategoriesTable
                 TextColumn::make('stories_count')
                     ->label('Storie')
                     ->counts('stories')
+                    ->badge()
                     ->sortable(),
             ])
             ->filters([

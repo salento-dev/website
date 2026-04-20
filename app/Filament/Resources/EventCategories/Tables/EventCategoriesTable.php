@@ -29,6 +29,7 @@ class EventCategoriesTable
                 TextColumn::make('events_count')
                     ->label('Eventi')
                     ->counts('events')
+                    ->badge()
                     ->sortable(),
             ])
             ->defaultSort('sort_order')

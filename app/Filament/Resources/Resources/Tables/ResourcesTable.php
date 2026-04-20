@@ -18,30 +18,21 @@ class ResourcesTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image_path')
-                    ->label('Immagine')
-                    ->disk('public')
-                    ->square(),
                 TextColumn::make('title')
                     ->label('Titolo')
                     ->searchable()
                     ->sortable(),
+                ImageColumn::make('authors.avatar_url')
+                    ->imageHeight(36)
+                    ->circular()
+                    ->stacked(),
                 TextColumn::make('source_type')
                     ->label('Tipo')
                     ->badge()
                     ->formatStateUsing(fn (string $state): string => $state === 'file' ? 'File' : 'Link'),
-                TextColumn::make('external_url')
-                    ->label('Link')
-                    ->limit(40)
-                    ->toggleable(isToggledHiddenByDefault: true),
                 IconColumn::make('is_published')
                     ->label('Pubblicato')
                     ->boolean(),
-                TextColumn::make('updated_at')
-                    ->label('Aggiornato')
-                    ->since()
-                    ->sortable()
-                    ->toggleable(),
             ])
             ->filters([
                 TernaryFilter::make('is_published')

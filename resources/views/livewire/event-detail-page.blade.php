@@ -17,7 +17,7 @@
     <div class="flex flex-wrap justify-center gap-px border border-border/60 bg-border/40 overflow-hidden">
 
         {{-- Data inizio --}}
-        <div class="flex grow basis-48 items-center justify-center gap-3 bg-surface-950 px-6 py-5">
+        <div class="flex grow basis-56 items-center gap-3 bg-surface-950 px-6 py-5">
             <x-heroicon-o-calendar-days class="size-5 shrink-0 text-primary" />
             <div class="text-left">
                 <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-mist-600">
@@ -34,7 +34,7 @@
 
         {{-- Data fine (solo se diversa dall'inizio) --}}
         @if ($event->ends_at && !$event->starts_at->isSameDay($event->ends_at))
-            <div class="flex grow basis-48 items-center justify-center gap-3 bg-surface-950 px-6 py-5">
+            <div class="flex grow basis-56 items-center gap-3 bg-surface-950 px-6 py-5">
                 <x-heroicon-o-flag class="size-5 shrink-0 text-primary/60" />
                 <div class="text-left">
                     <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-mist-600">Fine</div>
@@ -50,7 +50,7 @@
 
         {{-- Luogo --}}
         @if ($event->location)
-            <div class="flex grow basis-48 items-center justify-center gap-3 bg-surface-950 px-6 py-5">
+            <div class="flex grow basis-56 items-center gap-3 bg-surface-950 px-6 py-5">
                 <x-heroicon-o-map-pin class="size-5 shrink-0 text-primary" />
                 <div class="text-left">
                     <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-mist-600">Luogo</div>
@@ -67,13 +67,17 @@
 
 <x-ui.detail-layout>
 
-    {{-- Meta mobile --}}
-    <x-slot:mobile-meta>
-        @include('livewire.partials.event-meta-card')
-    </x-slot:mobile-meta>
-
     {{-- Articolo --}}
     <x-slot:article>
+        @if ($event->read_time_minutes)
+            <div class="mb-6 flex items-center gap-4 font-mono text-xs text-mist-400">
+                <span class="flex items-center gap-1.5">
+                    <x-heroicon-o-clock class="size-3.5 text-primary/60" />
+                    {{ $event->read_time_minutes }} min lettura
+                </span>
+            </div>
+        @endif
+
         @if (!empty($event->excerpt))
             <p class="mb-8 text-base md:text-lg leading-relaxed text-surface-300 border-l-2 border-primary pl-5">
                 {{ strip_tags($event->excerpt) }}
@@ -92,8 +96,6 @@
     <x-slot:sidebar>
         @php $coverUrl = $event->image_path ? asset('storage/' . ltrim($event->image_path, '/')) : asset('storage/placeholders/events/event-placeholder.jpg'); @endphp
         <x-ui.lightbox :src="$coverUrl" :alt="$event->title" />
-
-        @include('livewire.partials.event-meta-card', ['classes' => 'hidden lg:flex'])
 
         @if ($event->partners->isNotEmpty())
             <div class="border border-border bg-surface-900 p-5 flex flex-col gap-4">

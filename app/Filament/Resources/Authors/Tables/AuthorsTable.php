@@ -19,8 +19,8 @@ class AuthorsTable
                 ImageColumn::make('avatar_url')
                     ->label('Avatar')
                     ->circular(),
-                    // ->url(fn ($record): string => $record->avatarUrl()),
-                    // ->defaultImageUrl(fn ($record): string => $record->avatarUrl() ?? 'https://ui-avatars.com/api/?name='.urlencode((string) $record->name).'&background=0a0a0a&color=06b6d4'),
+                // ->url(fn ($record): string => $record->avatarUrl()),
+                // ->defaultImageUrl(fn ($record): string => $record->avatarUrl() ?? 'https://ui-avatars.com/api/?name='.urlencode((string) $record->name).'&background=0a0a0a&color=06b6d4'),
                 TextColumn::make('name')
                     ->label('Nome')
                     ->searchable()
@@ -38,6 +38,12 @@ class AuthorsTable
                 TextColumn::make('stories_count')
                     ->label('Storie')
                     ->counts('stories')
+                    ->badge()
+                    ->sortable(),
+                TextColumn::make('resources_count')
+                    ->label('Risorse')
+                    ->counts('resources')
+                    ->badge()
                     ->sortable(),
                 TextColumn::make('updated_at')
                     ->label('Aggiornato')

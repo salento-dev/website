@@ -48,6 +48,7 @@ class HomePage extends Component
 
         $resources = Schema::hasTable('resources')
             ? Resource::query()
+                ->with('authors')
                 ->where('is_published', true)
                 ->latest()
                 ->limit(5)

@@ -26,17 +26,6 @@ class RealStoriesSeeder extends Seeder
     {
         $categoryEsperimento = StoryCategory::query()->where('slug', 'esperimento')->firstOrFail();
 
-        $simone = Author::query()->updateOrCreate(
-            ['name' => 'Simone De Vittorio'],
-            [
-                'role' => 'Creatore di Reactylon',
-                'bio' => 'Sviluppatore e creatore di Reactylon, un framework open source basato su Babylon.js e React per esperienze 3D e XR interattive.',
-                'github_username' => 'simonedevit',
-                'linkedin_url' => 'https://www.linkedin.com/in/simone-de-vittorio',
-                'website_url' => 'https://www.reactylon.com',
-            ],
-        );
-
         $story = Story::query()->updateOrCreate(
             ['slug' => 'storie-dalla-community-00'],
             [
@@ -83,7 +72,7 @@ MARKDOWN,
             ],
         );
 
-        $story->authors()->sync([$simone->id]);
+        $story->authors()->sync(Author::whereIn('name', ['Simone De Vittorio'])->get()->pluck('id'));
     }
 
     private function copyImage(string $filename): string

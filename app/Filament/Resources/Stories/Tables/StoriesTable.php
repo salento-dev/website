@@ -27,10 +27,10 @@ class StoriesTable
                     ->label('Titolo')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('authors.name')
-                    ->label('Autori')
-                    ->badge()
-                    ->separator(', '),
+                ImageColumn::make('authors.avatar_url')
+                    ->imageHeight(36)
+                    ->circular()
+                    ->stacked(),
                 TextColumn::make('category.name')
                     ->label('Categoria')
                     ->badge()
