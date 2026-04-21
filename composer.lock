@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d489addcebd43b2f81301eaac5502f0",
+    "content-hash": "23d4bebc3bb4e8814bd0cffa3a50bd8a",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -7965,6 +7965,71 @@
             "time": "2025-12-02T11:56:42+00:00"
         },
         {
+            "name": "ublabs/blade-simple-icons",
+            "version": "0.196.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ublabs/blade-simple-icons.git",
+                "reference": "87d88fc12a87ec6f3ac675f8d8af22e489dac42a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ublabs/blade-simple-icons/zipball/87d88fc12a87ec6f3ac675f8d8af22e489dac42a",
+                "reference": "87d88fc12a87ec6f3ac675f8d8af22e489dac42a",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.1",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ublabs\\BladeSimpleIcons\\BladeSimpleIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ublabs\\BladeSimpleIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrián UB",
+                    "homepage": "https://github.com/adrian-ub"
+                }
+            ],
+            "description": "A package to easily make use of Simple Icons in your Laravel Blade views.",
+            "homepage": "https://github.com/ublabs/blade-simple-icons",
+            "keywords": [
+                "blade-simple-icons",
+                "laravel",
+                "ublabs"
+            ],
+            "support": {
+                "issues": "https://github.com/ublabs/blade-simple-icons/issues",
+                "source": "https://github.com/ublabs/blade-simple-icons/tree/0.196.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/adrian-ub",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-04-19T14:34:26+00:00"
+        },
+        {
             "name": "ueberdosis/tiptap-php",
             "version": "2.1.0",
             "source": {
@@ -10779,5 +10844,5 @@
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
