@@ -53,6 +53,11 @@ class Story extends Model
         return $this->belongsToMany(Author::class);
     }
 
+    public function protagonists(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class, 'protagonist_story');
+    }
+
     /**
      * Get the human-friendly estimated reading time of a given text.
      *

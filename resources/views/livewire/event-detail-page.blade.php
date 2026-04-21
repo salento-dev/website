@@ -69,22 +69,7 @@
 
     {{-- Articolo --}}
     <x-slot:article>
-        @if ($event->read_time_minutes || $event->page_views_count)
-            <div class="mb-6 flex items-center gap-4 font-mono text-xs text-mist-400">
-                @if ($event->read_time_minutes)
-                    <span class="flex items-center gap-1.5">
-                        <x-heroicon-o-clock class="size-3.5 text-primary/60" />
-                        {{ $event->read_time_minutes }} min lettura
-                    </span>
-                @endif
-                @if ($event->page_views_count)
-                    <span class="flex items-center gap-1.5">
-                        <x-heroicon-o-eye class="size-3.5 text-primary/60" />
-                        {{ number_format($event->page_views_count) }} {{ Str::plural('lettura', $event->page_views_count) }}
-                    </span>
-                @endif
-            </div>
-        @endif
+        <x-ui.read-stats :read-time="$event->read_time_minutes" :page-views="$event->page_views_count" />
 
         @if (!empty($event->excerpt))
             <p class="mb-8 text-base md:text-lg leading-relaxed text-surface-300 border-l-2 border-primary pl-5">

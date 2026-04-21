@@ -1,7 +1,7 @@
 @php
     $whatsapp = collect(config('community.social'))->firstWhere('key', 'whatsapp');
     $whatsappUrl = $whatsapp['url'];
-    $whatsappIcon = '<svg fill="currentColor" viewBox="0 0 24 24" class="size-full"><path d="' . $whatsapp['icon_path'] . '"/></svg>';
+    $whatsappIcon = Blade::render('<x-simpleicon-whatsapp class="size-full" />');
 @endphp
 
 <nav class="sticky top-0 z-10 border-b border-border bg-surface">

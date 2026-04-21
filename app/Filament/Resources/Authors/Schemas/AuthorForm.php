@@ -2,13 +2,13 @@
 
 namespace App\Filament\Resources\Authors\Schemas;
 
+use App\Models\Author;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Image;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Text;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 
 class AuthorForm
@@ -27,12 +27,30 @@ class AuthorForm
                         TextInput::make('role')
                             ->label('Ruolo')
                             ->maxLength(255)
-                            ->placeholder('es. Full Stack Dev'),
+                            ->placeholder('es. Full Stack Dev')
+                            ->helperText(function (Get $get): ?string {
+                                $username = $get('github_username');
+                                if (blank($username)) {
+                                    return null;
+                                }
+                                $company = Author::fetchGithubProfile($username)['company'] ?? null;
+
+                                return filled($company) ? 'GitHub: '.ltrim((string) $company, '@') : null;
+                            }),
                         Textarea::make('bio')
                             ->label('Biografia')
                             ->rows(3)
                             ->maxLength(1000)
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->helperText(function (Get $get): ?string {
+                                $username = $get('github_username');
+                                if (blank($username)) {
+                                    return null;
+                                }
+                                $bio = Author::fetchGithubProfile($username)['bio'] ?? null;
+
+                                return filled($bio) ? 'GitHub: '.(string) $bio : null;
+                            }),
                     ]),
 
                 Section::make('Avatar')
@@ -48,7 +66,7 @@ class AuthorForm
                             url: fn ($record) => $record?->avatar_url ?? 'https://ui-avatars.com/api/?name=&background=0a0a0a&color=06b6d4',
                             alt: 'GitHub avatar'
                         )
-                        ->live(),
+                            ->live(),
                     ]),
 
                 Section::make('Profili Social')
@@ -68,12 +86,30 @@ class AuthorForm
                             ->label('X / Twitter URL')
                             ->url()
                             ->maxLength(2048)
-                            ->prefix('https://'),
+                            ->prefix('https://')
+                            ->helperText(function (Get $get): ?string {
+                                $username = $get('github_username');
+                                if (blank($username)) {
+                                    return null;
+                                }
+                                $twitter = Author::fetchGithubProfile($username)['twitter_username'] ?? null;
+
+                                return filled($twitter) ? 'GitHub: @'.(string) $twitter : null;
+                            }),
                         TextInput::make('website_url')
                             ->label('Sito web')
                             ->url()
                             ->maxLength(2048)
-                            ->prefix('https://'),
+                            ->prefix('https://')
+                            ->helperText(function (Get $get): ?string {
+                                $username = $get('github_username');
+                                if (blank($username)) {
+                                    return null;
+                                }
+                                $blog = Author::fetchGithubProfile($username)['blog'] ?? null;
+
+                                return filled($blog) ? 'GitHub: '.(string) $blog : null;
+                            }),
                     ]),
             ]);
     }

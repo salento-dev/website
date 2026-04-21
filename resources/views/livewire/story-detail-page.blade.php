@@ -19,35 +19,23 @@
 
     {{-- Articolo --}}
     <x-slot:article>
-        @if ($story->read_time_minutes || $story->page_views_count)
-            <div class="mb-6 flex items-center gap-4 font-mono text-xs text-mist-400">
-                @if ($story->read_time_minutes)
-                    <span class="flex items-center gap-1.5">
-                        <x-heroicon-o-clock class="size-3.5 text-primary/60" />
-                        {{ $story->read_time_minutes }} min lettura
-                    </span>
-                @endif
-                @if ($story->page_views_count)
-                    <span class="flex items-center gap-1.5">
-                        <x-heroicon-o-eye class="size-3.5 text-primary/60" />
-                        {{ number_format($story->page_views_count) }} {{ Str::plural('lettura', $story->page_views_count) }}
-                    </span>
-                @endif
-            </div>
-        @endif
+        <x-ui.read-stats :read-time="$story->read_time_minutes" :page-views="$story->page_views_count" />
 
         @if (!empty($story->excerpt))
-            <p class="mb-8 text-base md:text-lg leading-relaxed text-surface-300 border-l-2 border-primary pl-5">
+            <p class="mb-8 border-l-2 border-primary pl-5 text-base leading-relaxed text-surface-300 md:text-lg">
                 {{ strip_tags($story->excerpt) }}
             </p>
         @endif
 
-        <div class="prose prose-invert prose-sm md:prose-base max-w-none">
+        <div class="prose prose-invert prose-sm max-w-none md:prose-base">
             {!! \Illuminate\Support\Str::markdown($story->body, [
                 'html_input' => 'strip',
                 'allow_unsafe_links' => false,
             ]) !!}
         </div>
+
+        {{-- Autori: chip cliccabili con modale dettaglio --}}
+        <x-ui.author-chips :authors="$story->authors" label="Storia a cura di" />
     </x-slot:article>
 
     {{-- Sidebar --}}
@@ -60,13 +48,13 @@
             />
         @endif
 
-        @if ($story->authors->isNotEmpty())
+        @if ($story->protagonists->isNotEmpty())
             <div class="flex flex-col gap-4 border border-border bg-surface-900 p-5">
                 <h3 class="font-mono text-2xs uppercase tracking-widest text-primary">
-                    {{ $story->authors->count() > 1 ? 'Autori' : 'Autore' }}
+                    {{ $story->protagonists->count() > 1 ? 'Protagonisti' : 'Protagonista' }}
                 </h3>
-                @foreach ($story->authors as $author)
-                    <x-cards.author :author="$author" />
+                @foreach ($story->protagonists as $protagonist)
+                    <x-cards.author :author="$protagonist" />
                     @if (!$loop->last)
                         <hr class="border-border/50">
                     @endif
@@ -77,7 +65,7 @@
         @include('livewire.partials.story-meta-card', ['classes' => 'hidden lg:flex'])
 
         <a href="{{ route('stories') }}"
-            class="flex items-center justify-center gap-2 border border-border bg-surface px-6 py-3 text-xs font-bold tracking-widest text-primary uppercase transition-all hover:bg-primary/10">
+            class="flex items-center justify-center gap-2 border border-border bg-surface px-6 py-3 text-xs font-bold uppercase tracking-widest text-primary transition-all hover:bg-primary/10">
             <x-heroicon-o-arrow-left class="size-4" />
             Tutte le storie
         </a>
@@ -87,7 +75,7 @@
 
     @if ($relatedStories->isNotEmpty())
         <x-ui.section-header eyebrow="Scopri anche" title="Storie correlate" size="small">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                 @foreach ($relatedStories as $relatedStory)
                     <x-stories.story :story="$relatedStory" />
                 @endforeach

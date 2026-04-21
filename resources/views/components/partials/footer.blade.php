@@ -9,9 +9,7 @@
                 <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
                     aria-label="{{ $social['label'] }}"
                     class="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface-900 text-surface-400 hover:bg-border/20 hover:text-primary hover:border-primary/50 transition-all duration-200">
-                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="{{ $social['icon_path'] }}" />
-                    </svg>
+                    <x-dynamic-component :component="'simpleicon-' . $social['icon']" class="h-5 w-5" />
                 </a>
             @endforeach
         </div>

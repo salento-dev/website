@@ -36,18 +36,13 @@ class StoryForm
                     ->multiple()
                     ->preload()
                     ->searchable()
-                    ->createOptionForm([
-                        TextInput::make('name')
-                            ->label('Nome')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('role')
-                            ->label('Ruolo')
-                            ->maxLength(255),
-                        TextInput::make('github_username')
-                            ->label('GitHub Username')
-                            ->maxLength(255),
-                    ])
+                    ->columnSpanFull(),
+                Select::make('protagonists')
+                    ->label('Protagonisti')
+                    ->relationship('protagonists', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
                     ->columnSpanFull(),
                 MarkdownEditor::make('excerpt')
                     ->label('Estratto')
