@@ -81,6 +81,11 @@
         {{-- Footer: categories + CTA --}}
         <div class="flex flex-wrap items-center justify-between gap-4">
             <div class="flex flex-wrap gap-1.5">
+                @if ($event->is_community_event)
+                    <span class="inline-flex h-6 items-center rounded-xs bg-surface-800/80 px-2">
+                        <x-ui.logo class="h-3.5 w-auto text-primary-400" />
+                    </span>
+                @endif
                 @foreach ($event->categories as $category)
                     <span class="inline-flex h-6 items-center rounded-xs bg-surface-800/80 px-2 text-2xs font-medium uppercase tracking-wider text-surface-200/70">
                         {{ $category->name }}

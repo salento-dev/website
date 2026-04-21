@@ -55,6 +55,13 @@ class EventsTable
                     ->falseIcon('heroicon-o-check-circle')
                     ->trueColor('warning')
                     ->falseColor('gray'),
+                IconColumn::make('is_community_event')
+                    ->label('Community')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-star')
+                    ->falseIcon('heroicon-o-user-group')
+                    ->trueColor('success')
+                    ->falseColor('gray'),
                 TextColumn::make('updated_at')
                     ->label('Aggiornato')
                     ->since()
@@ -66,6 +73,8 @@ class EventsTable
                     ->label('Pubblicato'),
                 TernaryFilter::make('work_in_progress')
                     ->label('Work in Progress'),
+                TernaryFilter::make('is_community_event')
+                    ->label('Evento community'),
                 SelectFilter::make('categories')
                     ->label('Categoria')
                     ->relationship('categories', 'name'),

@@ -28,6 +28,7 @@ class Event extends Model
         'image_path',
         'is_published',
         'work_in_progress',
+        'is_community_event',
     ];
 
     /**
@@ -40,6 +41,7 @@ class Event extends Model
             'ends_at' => 'datetime',
             'is_published' => 'boolean',
             'work_in_progress' => 'boolean',
+            'is_community_event' => 'boolean',
         ];
     }
 

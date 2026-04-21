@@ -62,6 +62,17 @@
             </div>
         @endif
 
+        {{-- Organizzatore --}}
+        <div class="flex w-full items-center gap-3 bg-surface-950 px-6 py-2.5 border-t border-border/60">
+            @if ($event->is_community_event)
+                <x-ui.logo class="h-3 w-auto shrink-0 text-primary" />
+                <span class="font-mono text-2xs uppercase tracking-widest text-primary">Evento della community</span>
+            @else
+                <x-heroicon-o-user-group class="size-3.5 shrink-0 text-mist-600" />
+                <span class="font-mono text-2xs uppercase tracking-widest text-mist-600">Evento esterno</span>
+            @endif
+        </div>
+
     </div>
 @endsection
 

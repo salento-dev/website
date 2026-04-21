@@ -69,6 +69,10 @@ class EventForm
                     ->label('Work in Progress')
                     ->default(false)
                     ->helperText('Gli eventi work in progress sono visibili nella lista ma non accessibili nel dettaglio'),
+                Toggle::make('is_community_event')
+                    ->label('Evento della community')
+                    ->default(true)
+                    ->helperText('Attiva se l\'evento è organizzato direttamente da salento.dev'),
                 Select::make('categories')
                     ->label('Categorie')
                     ->relationship('categories', 'name', fn ($query) => $query->where('is_active', true)->orderBy('sort_order')->orderBy('name'))
