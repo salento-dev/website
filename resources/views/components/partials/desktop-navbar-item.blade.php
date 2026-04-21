@@ -50,7 +50,7 @@
             animation.progress(1)
         }
     }">
-    <div class="absolute top-0 left-0" x-ref="navbar-link-top-left" aria-hidden="true" :class="{'grayscale': !isActive}">
+    <div class="absolute top-0 left-0" x-ref="navbar-link-top-left" aria-hidden="true" :class="{'grayscale': !isActive}" style="opacity: 0">
         <svg class="h-2 text-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11" fill="none">
             <path d="M9.5 0.5H0.5V9.5" class="stroke-current" stroke-linecap="round"></path>
         </svg>
@@ -60,7 +60,7 @@
         {{ $routeName }}
     </span>
 
-    <div class="absolute right-0 bottom-0" x-ref="navbar-link-bottom-right" aria-hidden="true" :class="{'grayscale': !isActive}">
+    <div class="absolute right-0 bottom-0" x-ref="navbar-link-bottom-right" aria-hidden="true" :class="{'grayscale': !isActive}" style="opacity: 0">
         <svg class="h-2 -scale-x-100 -scale-y-100 text-primary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11"
             fill="none">
             <path d="M9.5 0.5H0.5V9.5" class="stroke-current" stroke-linecap="round"></path>
