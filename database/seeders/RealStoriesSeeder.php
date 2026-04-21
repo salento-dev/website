@@ -72,7 +72,9 @@ MARKDOWN,
             ],
         );
 
-        $story->authors()->sync(Author::whereIn('name', ['Simone De Vittorio'])->get()->pluck('id'));
+        $story->protagonists()->sync(Author::whereIn('name', ['Simone De Vittorio'])->get()->pluck('id'));
+
+        $story->authors()->sync(Author::whereIn('name', ['Paolo Rizzello'])->get()->pluck('id'));
     }
 
     private function copyImage(string $filename): string
