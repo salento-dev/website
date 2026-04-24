@@ -6,11 +6,11 @@
 
 @if (!$event->work_in_progress)
     <a href="{{ route('events.show', $event) }}" aria-label="View {{ $event->title }} event page"
-        class="block bg-surface-900">
+        class="block h-full bg-surface-900">
 @endif
-<div class="bg-surface-900 {{ $event->work_in_progress ? 'cursor-not-allowed' : '' }}">
+<div class="bg-surface-900 h-full {{ $event->work_in_progress ? 'cursor-not-allowed' : '' }}">
     <article
-        class="group row-span-5 grid grid-rows-subgrid gap-0 rounded-xs p-5 hover:bg-primary-500/5 transition-colors duration-300 ease-out">
+        class="group row-span-5 h-full flex flex-col gap-0 rounded-xs p-5 hover:bg-primary-500/5 transition-colors duration-300 ease-out">
 
         <div class="flex flex-col gap-1">
 
@@ -47,7 +47,7 @@
         </div>
 
         @if ($variant === 'default')
-            <div class="mt-3 flex flex-col gap-1">
+            <div class="mt-3 mb-auto flex flex-col gap-1">
                 <div
                     class="relative transition duration-300 ease-out will-change-transform group-hover:translate-x-4.5">
 
