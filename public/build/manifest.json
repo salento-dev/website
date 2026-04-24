@@ -1,0 +1,25 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-nRJeh8M-.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/images/dots-pattern-15.png": {
+    "file": "assets/dots-pattern-15-DFKBKF-Z.png",
+    "src": "resources/images/dots-pattern-15.png"
+  },
+  "resources/images/x-pattern-15.png": {
+    "file": "assets/x-pattern-15-BqXeCXcU.png",
+    "src": "resources/images/x-pattern-15.png"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-9k3Hld09.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
