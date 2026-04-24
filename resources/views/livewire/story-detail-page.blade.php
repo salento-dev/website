@@ -40,9 +40,9 @@
 
     {{-- Sidebar --}}
     <x-slot:sidebar>
-        @if ($story->image_path)
+        @if ($story->image_url)
             <x-ui.lightbox
-                :src="asset('storage/' . ltrim($story->image_path, '/'))"
+                :src="$story->image_url"
                 :alt="$story->title"
                 thumbnail="h-auto"
             />

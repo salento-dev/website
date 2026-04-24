@@ -98,8 +98,7 @@
 
     {{-- Sidebar --}}
     <x-slot:sidebar>
-        @php $coverUrl = $event->image_path ? asset('storage/' . ltrim($event->image_path, '/')) : asset('storage/placeholders/events/event-placeholder.jpg'); @endphp
-        <x-ui.lightbox :src="$coverUrl" :alt="$event->title" />
+        <x-ui.lightbox :src="$event->image_url" :alt="$event->title" />
 
         @if ($event->partners->isNotEmpty())
             <div class="border border-border bg-surface-900 p-5 flex flex-col gap-4">
@@ -107,8 +106,8 @@
                 @foreach ($event->partners as $partner)
                     <div class="flex items-center gap-4">
                         <div class="size-12 overflow-hidden bg-surface-800 border border-border flex items-center justify-center shrink-0">
-                            @if ($partner->logo_path)
-                                <img src="{{ asset('storage/' . ltrim($partner->logo_path, '/')) }}"
+                            @if ($partner->logo_url)
+                                <img src="{{ $partner->logo_url }}"
                                     alt="{{ $partner->name }}"
                                     class="size-full object-contain p-1.5">
                             @else
@@ -150,10 +149,10 @@
                         @if ($media->source_type === 'file' && filled($media->file_path))
                             @if ($media->media_type === 'video')
                                 <video controls class="w-full aspect-video bg-black object-cover">
-                                    <source src="{{ asset('storage/' . ltrim($media->file_path, '/')) }}">
+                                    <source src="{{ $media->file_url }}">
                                 </video>
                             @else
-                                <img src="{{ asset('storage/' . ltrim($media->file_path, '/')) }}"
+                                <img src="{{ $media->file_url }}"
                                     alt="{{ $media->caption ?: $event->title }}"
                                     class="w-full aspect-video object-cover">
                             @endif

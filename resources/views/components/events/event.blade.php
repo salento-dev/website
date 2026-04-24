@@ -3,11 +3,6 @@
     'variant' => 'default', // 'default' or 'simple'
 ])
 
-@php
-    $image_url = $event->image_path
-        ? asset('storage/' . ltrim($event->image_path, '/'))
-        : asset('storage/placeholders/events/event-placeholder.jpg');
-@endphp
 
 @if (!$event->work_in_progress)
     <a href="{{ route('events.show', $event) }}" aria-label="View {{ $event->title }} event page"
@@ -30,7 +25,7 @@
                 @if ($variant === 'default')
                     <div
                         class="aspect-video overflow-hidden rounded-xs ring ring-surface-700 transition duration-300 ease-out group-hover:scale-101">
-                        <img src="{{ $image_url }}" alt="{{ $event->title }} event thumbnail"
+                        <img src="{{ $event->image_url }}" alt="{{ $event->title }} event thumbnail"
                             class="size-full object-cover" loading="lazy">
                     </div>
                 @else

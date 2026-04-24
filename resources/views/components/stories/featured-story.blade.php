@@ -1,11 +1,5 @@
 @props(['story'])
 
-@php
-    $imageUrl = $story->image_path
-        ? asset('storage/' . ltrim($story->image_path, '/'))
-        : null;
-@endphp
-
 <article class="group relative">
     {{-- Corner accents --}}
     <x-ui.corners color="text-primary" :hover="true" size="h-3" />
@@ -14,9 +8,9 @@
         class="flex flex-col lg:flex-row bg-surface-900 border border-border overflow-hidden transition-all duration-300 hover:border-primary/30 hover:bg-surface-800">
 
         {{-- Image --}}
-        @if ($imageUrl)
+        @if ($story->image_url)
             <div class="lg:w-1/2 h-64 lg:h-auto lg:max-h-128 relative overflow-hidden">
-                <img src="{{ $imageUrl }}" alt="{{ $story->title }}"
+                <img src="{{ $story->image_url }}" alt="{{ $story->title }}"
                     class="w-full h-full object-cover opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105">
                 <div class="absolute inset-0 bg-linear-to-r from-surface-900 via-surface-900/40 to-transparent hidden lg:block"></div>
             </div>

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 class EventMedia extends Model
 {
@@ -36,5 +37,19 @@ class EventMedia extends Model
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
+    }
+
+    public function getFileUrlAttribute(): ?string
+    {
+        if (filled($this->file_path)) {
+            $path = ltrim((string) $this->file_path, '/');
+            /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+            $storage = Storage::disk('public');
+            if ($storage->exists($path)) {
+                return $storage->url($path);
+            }
+        }
+
+        return null;
     }
 }

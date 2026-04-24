@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Storage;
 
 class Partner extends Model
 {
@@ -34,5 +35,19 @@ class Partner extends Model
     public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class);
+    }
+
+    public function getLogoUrlAttribute(): ?string
+    {
+        if (filled($this->logo_path)) {
+            $path = ltrim((string) $this->logo_path, '/');
+            /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+            $storage = Storage::disk('public');
+            if ($storage->exists($path)) {
+                return $storage->url($path);
+            }
+        }
+
+        return null;
     }
 }

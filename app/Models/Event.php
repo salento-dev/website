@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class Event extends Model
 {
@@ -76,6 +77,21 @@ class Event extends Model
     public function partners(): BelongsToMany
     {
         return $this->belongsToMany(Partner::class)->orderBy('name');
+    }
+
+    public function getImageUrlAttribute(): string
+    {
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+        $storage = Storage::disk('public');
+
+        if (filled($this->image_path)) {
+            $path = ltrim((string) $this->image_path, '/');
+            if ($storage->exists($path)) {
+                return $storage->url($path);
+            }
+        }
+
+        return $storage->url('placeholders/events/event-placeholder.jpg');
     }
 
     public function getLocalStartsAtAttribute(): ?Carbon

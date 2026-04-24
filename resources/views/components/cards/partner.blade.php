@@ -2,9 +2,9 @@
 
 <div class="relative border border-border p-5 flex flex-col items-center text-center h-full duration-300">
     <div class="w-full h-32 flex items-center justify-center mb-5 overflow-hidden">
-        @if(!empty($partner->logo_path) && Storage::disk('public')->exists($partner->logo_path))
+        @if($partner->logo_url)
         <img class="max-w-full max-h-full w-auto h-auto object-contain"
-            src="{{ Storage::disk('public')->url($partner->logo_path) }}"
+            src="{{ $partner->logo_url }}"
             alt="{{ $partner->name }}" />
         @else
         <x-heroicon-o-cpu-chip class="size-10" />

@@ -1,10 +1,6 @@
 @props(['event'])
 
 @php
-    $image_url = $event->image_path
-        ? asset('storage/' . ltrim($event->image_path, '/'))
-        : asset('storage/placeholders/events/event-placeholder.jpg');
-
     $dateFormatted = $event->local_starts_at->translatedFormat('l j F Y');
     $timeFormatted = $event->local_starts_at->format('H:i');
     $daysUntil = (int) now('Europe/Rome')->startOfDay()->diffInDays($event->local_starts_at->startOfDay(), false);
@@ -17,7 +13,7 @@
 
     {{-- Background image with overlay --}}
     <div class="absolute inset-0 overflow-hidden">
-        <img src="{{ $image_url }}" alt="{{ $event->title }}" class="size-full object-cover opacity-80 transition-all duration-700 ease-out group-hover:opacity-40 group-hover:scale-105">
+        <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="size-full object-cover opacity-80 transition-all duration-700 ease-out group-hover:opacity-40 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-r from-surface-900 via-surface-900/70 to-surface-900/40"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-surface-900/80 via-transparent to-transparent"></div>
     </div>

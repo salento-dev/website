@@ -2,9 +2,6 @@
 
 @php
     $isFile = $resource->source_type === 'file' && filled($resource->file_path);
-    $url = $isFile
-        ? asset('storage/' . ltrim((string) $resource->file_path, '/'))
-        : (filled($resource->external_url) ? $resource->external_url : '#');
     $authors = $resource->relationLoaded('authors') ? $resource->authors : collect();
 @endphp
 
@@ -95,7 +92,7 @@
 
             {{-- CTA --}}
             <a
-                href="{{ $url }}"
+                href="{{ $resource->resource_url ?? '#' }}"
                 target="_blank"
                 rel="noreferrer noopener"
                 class="flex items-center justify-center gap-2 border border-primary/30 bg-primary/10 px-4 py-3 font-mono text-xs font-bold uppercase tracking-widest text-primary transition-colors hover:bg-primary/20"

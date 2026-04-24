@@ -1,18 +1,12 @@
 @props(['story'])
 
-@php
-    $imageUrl = $story->image_path
-        ? asset('storage/' . ltrim($story->image_path, '/'))
-        : null;
-@endphp
-
 <article class="group flex flex-col bg-surface-900 border border-border transition-all duration-300 hover:border-primary/20 hover:bg-surface-800">
 
     {{-- Image --}}
-    @if ($imageUrl)
+    @if ($story->image_url)
         <a href="{{ route('stories.show', $story) }}" class="block overflow-hidden" tabindex="-1" aria-hidden="true">
             <div class="aspect-video overflow-hidden">
-                <img src="{{ $imageUrl }}" alt="{{ $story->title }}"
+                <img src="{{ $story->image_url }}" alt="{{ $story->title }}"
                     class="w-full h-full object-cover opacity-70 grayscale transition-all duration-500 group-hover:opacity-90 group-hover:grayscale-0 group-hover:scale-105"
                     loading="lazy">
             </div>

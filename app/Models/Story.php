@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Facades\Storage;
 
 class Story extends Model
 {
@@ -56,6 +57,20 @@ class Story extends Model
     public function protagonists(): BelongsToMany
     {
         return $this->belongsToMany(Author::class, 'protagonist_story');
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (filled($this->image_path)) {
+            $path = ltrim((string) $this->image_path, '/');
+            /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+            $storage = Storage::disk('public');
+            if ($storage->exists($path)) {
+                return $storage->url($path);
+            }
+        }
+
+        return null;
     }
 
     /**
