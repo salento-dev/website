@@ -79,7 +79,7 @@
         <x-ui.section-header eyebrow="Scopri anche" title="Storie correlate" size="small">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                 @foreach ($relatedStories as $relatedStory)
-                    <x-stories.story :story="$relatedStory" />
+                    <x-stories.story :story="$relatedStory" variant="simple" />
                 @endforeach
             </div>
         </x-ui.section-header>

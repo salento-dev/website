@@ -1,16 +1,17 @@
-@props(['story'])
+@props(['story', 'variant' => 'default'])
 
-<article class="group flex flex-col bg-surface-900 border border-border transition-all duration-300 hover:border-primary/20 hover:bg-surface-800">
+<a href="{{ route('stories.show', $story) }}"
+    class="group flex flex-col bg-surface-900 border border-border transition-all duration-300 hover:border-primary/20 hover:bg-surface-800">
 
     {{-- Image --}}
-    @if ($story->image_url)
-        <a href="{{ route('stories.show', $story) }}" class="block overflow-hidden" tabindex="-1" aria-hidden="true">
+    @if ($variant === 'default' && $story->image_url)
+        <div class="overflow-hidden">
             <div class="aspect-video overflow-hidden">
                 <img src="{{ $story->image_url }}" alt="{{ $story->title }}"
                     class="w-full h-full object-cover opacity-70 grayscale transition-all duration-500 group-hover:opacity-90 group-hover:grayscale-0 group-hover:scale-105"
                     loading="lazy">
             </div>
-        </a>
+        </div>
     @endif
 
     <div class="flex flex-col flex-1 gap-4 p-5">
@@ -30,11 +31,9 @@
         </div>
 
         {{-- Title --}}
-        <a href="{{ route('stories.show', $story) }}" class="block">
-            <h4 class="font-outfit text-lg font-bold text-surface-50 leading-snug transition-colors duration-300 group-hover:text-primary line-clamp-2">
-                {{ $story->title }}
-            </h4>
-        </a>
+        <h4 class="font-outfit text-lg font-bold text-surface-50 leading-snug transition-colors duration-300 group-hover:text-primary line-clamp-2">
+            {{ $story->title }}
+        </h4>
 
         {{-- Excerpt --}}
         <p class="text-sm leading-relaxed text-surface-400 line-clamp-3 flex-1">
@@ -65,12 +64,10 @@
             @else
                 <span class="min-h-7"></span>
             @endif
-            <a href="{{ route('stories.show', $story) }}"
-                class="font-mono text-2xs uppercase tracking-widest text-primary/60 transition-colors duration-300 hover:text-primary shrink-0"
-                aria-label="Leggi {{ $story->title }}">
+            <span class="font-mono text-2xs uppercase tracking-widest text-primary/60 transition-colors duration-300 group-hover:text-primary shrink-0">
                 Leggi
                 <x-heroicon-o-arrow-top-right-on-square class="inline h-3 ml-0.5" />
-            </a>
+            </span>
         </div>
     </div>
-</article>
+</a>
