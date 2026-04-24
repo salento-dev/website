@@ -50,7 +50,6 @@ class AdminPanelProvider extends PanelProvider
                 TopStoriesWidget::class,
                 TopReferrersWidget::class,
                 AccountWidget::class,
-                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
