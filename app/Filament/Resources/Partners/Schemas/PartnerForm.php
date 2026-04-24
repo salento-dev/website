@@ -20,7 +20,6 @@ class PartnerForm
                     ->maxLength(255),
                 Textarea::make('description')
                     ->label('Descrizione')
-                    ->required()
                     ->rows(4)
                     ->columnSpanFull(),
                 FileUpload::make('logo_path')
