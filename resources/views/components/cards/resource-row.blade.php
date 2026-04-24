@@ -19,6 +19,8 @@
             <div class="flex flex-col gap-0.5">
                 <span class="text-sm transition-colors group-hover:text-primary">{{ $resource->title }}</span>
             </div>
+
+            <span class="hidden text-primary/30 uppercase sm:inline">{{ $resource->created_at?->diffForHumans() }}</span>
         </div>
         <div class="flex items-center gap-2 text-2xs">
             @if($authors->isNotEmpty())
@@ -33,7 +35,7 @@
                     @endforeach
                 </div>
             @endif
-            <span class="hidden text-primary/30 uppercase sm:inline">{{ $resource->created_at?->diffForHumans() }}</span>
+            
             <x-heroicon-o-chevron-right class="size-3 text-primary/40 transition-colors group-hover:text-primary" />
         </div>
     </button>
