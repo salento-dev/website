@@ -29,7 +29,6 @@ class EventForm
                     ->unique(ignoreRecord: true),
                 TextInput::make('location')
                     ->label('Luogo')
-                    ->required()
                     ->maxLength(255),
                 TextInput::make('address')
                     ->label('Indirizzo')
@@ -52,12 +51,10 @@ class EventForm
                     ->columnSpanFull(),
                 MarkdownEditor::make('body')
                     ->label('Corpo')
-                    ->required()
                     ->columnSpanFull(),
                 FileUpload::make('image_path')
                     ->label('Immagine')
                     ->image()
-                    ->required()
                     ->disk('public')
                     ->directory('events')
                     ->visibility('public')
@@ -94,6 +91,7 @@ class EventForm
                     ->collapsed()
                     ->cloneable()
                     ->itemLabel(fn (array $state): ?string => $state['caption'] ?? null)
+                    ->default([])
                     ->schema([
                         Select::make('media_type')
                             ->label('Tipo media')

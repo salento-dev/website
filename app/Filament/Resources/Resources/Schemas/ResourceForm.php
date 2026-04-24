@@ -21,7 +21,6 @@ class ResourceForm
                     ->maxLength(255),
                 Textarea::make('description')
                     ->label('Descrizione')
-                    ->required()
                     ->rows(6)
                     ->columnSpanFull(),
                 Toggle::make('is_published')

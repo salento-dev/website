@@ -89,10 +89,12 @@
         @endif
 
         <div class="prose prose-invert prose-sm md:prose-base max-w-none">
+            @if(!empty($event->body))
             {!! \Illuminate\Support\Str::markdown($event->body, [
                 'html_input' => 'strip',
                 'allow_unsafe_links' => false,
             ]) !!}
+            @endif
         </div>
     </x-slot:article>
 

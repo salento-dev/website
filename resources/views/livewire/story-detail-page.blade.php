@@ -28,10 +28,12 @@
         @endif
 
         <div class="prose prose-invert prose-sm max-w-none md:prose-base">
+            @if(!empty($story->body))
             {!! \Illuminate\Support\Str::markdown($story->body, [
                 'html_input' => 'strip',
                 'allow_unsafe_links' => false,
             ]) !!}
+            @endif
         </div>
 
         {{-- Autori: chip cliccabili con modale dettaglio --}}

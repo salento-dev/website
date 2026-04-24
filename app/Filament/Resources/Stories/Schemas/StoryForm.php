@@ -46,11 +46,9 @@ class StoryForm
                     ->columnSpanFull(),
                 MarkdownEditor::make('excerpt')
                     ->label('Estratto')
-                    ->required()
                     ->columnSpanFull(),
                 MarkdownEditor::make('body')
                     ->label('Corpo')
-                    ->required()
                     ->columnSpanFull(),
                 FileUpload::make('image_path')
                     ->label('Immagine di copertina')
