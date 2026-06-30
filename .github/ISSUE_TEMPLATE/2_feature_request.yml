@@ -1,0 +1,35 @@
+name: ✨ Richiesta di funzionalità
+description: Proponi un miglioramento concreto e attuabile
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: contesto
+    attributes:
+      label: Contesto / problema
+      description: Quale esigenza o problema risolve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Proposta
+      description: Cosa si vuole ottenere? Usa una checklist (- [ ]) per le sotto-attività.
+    validations:
+      required: true
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Alternative considerate
+  - type: input
+    id: dipendenze
+    attributes:
+      label: Dipendenze
+      description: Issue collegate (es. #1)
+  - type: checkboxes
+    id: conferme
+    attributes:
+      label: Conferme
+      options:
+        - label: Ho verificato che non esista già una issue simile
+          required: true

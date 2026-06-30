@@ -1,0 +1,44 @@
+name: 🐛 Bug report
+description: Segnala un malfunzionamento del sito
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie per la segnalazione. Compila i campi sottostanti il più possibile.
+  - type: textarea
+    id: descrizione
+    attributes:
+      label: Descrizione
+      description: Cosa non funziona come dovrebbe?
+    validations:
+      required: true
+  - type: textarea
+    id: riproduzione
+    attributes:
+      label: Passi per riprodurre
+      placeholder: |
+        1. Vai su '...'
+        2. Clicca su '...'
+        3. Osserva '...'
+    validations:
+      required: true
+  - type: textarea
+    id: atteso
+    attributes:
+      label: Comportamento atteso
+    validations:
+      required: true
+  - type: textarea
+    id: ambiente
+    attributes:
+      label: Ambiente
+      description: Browser, dispositivo, pagina/URL coinvolti, eventuali log o screenshot.
+  - type: checkboxes
+    id: conferme
+    attributes:
+      label: Conferme
+      options:
+        - label: Ho cercato tra le issue esistenti e non è un duplicato
+          required: true
