@@ -1,4 +1,4 @@
-# 14 · Analisi dei competitor e community di riferimento
+# 02 · Analisi dei competitor e community di riferimento
 
 Analisi dell'ecosistema in cui opera salento.dev: community **peer locali** (Puglia e Sud Italia), **benchmark nazionali** italiani, e confronto tra le **piattaforme** per community. L'obiettivo è inquadrare il posizionamento di salento.dev e le opportunità di collaborazione.
 
@@ -152,7 +152,7 @@ La distinzione è il principale **vantaggio competitivo** di salento.dev nell'ec
 4. **Coltivare la rete DevFest** — mantenere e ampliare la presenza come community partner (Lecce, Bari, Basilicata) per visibilità verso migliaia di membri GDG.
 5. **Affiliazioni leggere a costo ~0** — catalogazione su Italia Open-Source, adesione a The Communities Bay, listing eventi su Codemotion community.
 
-Le azioni operative derivanti sono in [13 · Attività e strategia](./01_attivita_e_strategia.md).
+Le azioni operative derivanti sono in [Attività e strategia](./01_attivita_e_strategia.md).
 
 ---
 

@@ -2,7 +2,7 @@
 
 Documentazione tecnica e funzionale del sito istituzionale di **salento.dev**, la community di sviluppatori del Salento.
 
-Il sito è un'applicazione **Laravel 12 + Livewire 3 + Filament 5** che gestisce eventi, risorse, storie e partner della community, con un pannello di amministrazione e una sezione pubblica animata.
+Il sito è un'applicazione **Laravel 12 + Livewire 4 + Filament 5** che gestisce eventi, risorse, storie e partner della community, con un pannello di amministrazione e una sezione pubblica animata.
 
 > **Stato della documentazione:** allineata al codice sorgente del branch `main` al momento della stesura. Dove il codice diverge dalle indicazioni storiche (`CLAUDE.md`, `.claude/design.md`) la presente documentazione fa fede e segnala la discrepanza.
 
@@ -46,15 +46,22 @@ La documentazione è organizzata in **5 aree tematiche** (cartelle numerate). Al
 | [01_attivita_e_strategia](./05_community_e_strategia/01_attivita_e_strategia.md) | Attività svolte, nuovi format, apertura ad altre associazioni, uso strategico del sito |
 | [02_analisi_competitor](./05_community_e_strategia/02_analisi_competitor.md) | Peer locali (Puglia), benchmark nazionali, confronto piattaforme, posizionamento |
 
+### 📁 `06_riferimenti_e_approfondimenti/`
+| File | Contenuto |
+|------|-----------|
+| [01_stack_backend](./06_riferimenti_e_approfondimenti/01_stack_backend.md) | PHP, Laravel 12, Livewire 4, Filament 5, PHPUnit, Sail, Pint — novità, best practice e link ufficiali |
+| [02_stack_frontend](./06_riferimenti_e_approfondimenti/02_stack_frontend.md) | Tailwind 4, Alpine, GSAP, Motion One, AutoAnimate, Vite 7 — novità, best practice e link ufficiali |
+
 ---
 
 ## Per iniziare in fretta
 
-- **Vuoi far girare il sito in locale?** → [03 · Ambiente di sviluppo locale](./04_sviluppo_e_qualita/01_ambiente_locale.md)
-- **Vuoi capire come è strutturato il codice?** → [02 · Architettura](./02_architettura/01_architettura.md)
-- **Devi aprire la tua prima Pull Request?** → [11 · Contribuire](./04_sviluppo_e_qualita/03_contribuire.md)
-- **Cerchi lo schema del database?** → [04 · Database](./02_architettura/02_database.md)
-- **Ti interessa la crescita della community e i competitor?** → [13 · Attività e strategia](./05_community_e_strategia/01_attivita_e_strategia.md) · [14 · Analisi dei competitor](./05_community_e_strategia/02_analisi_competitor.md)
+- **Vuoi far girare il sito in locale?** → [Ambiente di sviluppo locale](./04_sviluppo_e_qualita/01_ambiente_locale.md)
+- **Vuoi capire come è strutturato il codice?** → [Architettura](./02_architettura/01_architettura.md)
+- **Devi aprire la tua prima Pull Request?** → [Contribuire](./04_sviluppo_e_qualita/03_contribuire.md)
+- **Cerchi lo schema del database?** → [Database](./02_architettura/02_database.md)
+- **Vuoi approfondire lo stack tecnologico?** → [Stack backend](./06_riferimenti_e_approfondimenti/01_stack_backend.md) · [Stack frontend](./06_riferimenti_e_approfondimenti/02_stack_frontend.md)
+- **Ti interessa la crescita della community e i competitor?** → [Attività e strategia](./05_community_e_strategia/01_attivita_e_strategia.md) · [Analisi dei competitor](./05_community_e_strategia/02_analisi_competitor.md)
 
 ---
 
@@ -63,4 +70,4 @@ La documentazione è organizzata in **5 aree tematiche** (cartelle numerate). Al
 - I **termini tecnici** e gli identificatori di codice restano in inglese (`Event`, `BelongsToMany`, `slug`, ...).
 - I riferimenti al codice usano la notazione `percorso/file.php:riga` quando utile alla navigazione.
 - I **diagrammi** sono in [Mermaid](https://mermaid.js.org/): GitHub li renderizza nativamente nei file Markdown.
-- I blocchi **⚠️ Nota** segnalano incongruenze o aspetti da verificare; sono raccolti anche nel documento [12](./04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).
+- I blocchi **⚠️ Nota** segnalano incongruenze o aspetti da verificare; sono raccolti anche in [Note e debito tecnico](./04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).
