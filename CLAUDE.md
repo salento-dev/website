@@ -115,6 +115,40 @@ Accessibile via `/admin` — gestione di eventi, risorse e partner.
 
 ---
 
+## Project Management su GitHub
+
+Il repository è ospitato su **GitHub** (`salento-dev/website`). Prima di pianificare o iniziare un task, **tieni sempre presente** lo stato della gestione progetto e allinea il lavoro ad esso:
+
+- **Issues** — https://github.com/salento-dev/website/issues
+- **Project (board)** — https://github.com/salento-dev/website/projects
+- **Milestones** — https://github.com/salento-dev/website/milestones
+- **Labels** — https://github.com/salento-dev/website/labels
+
+Queste informazioni sono **dinamiche**: consultale a runtime con la CLI `gh` (già autenticata), non assumerne il contenuto.
+
+```bash
+# Issue aperte (con label e milestone)
+gh issue list -R salento-dev/website --state open
+# Dettaglio di una issue
+gh issue view <numero> -R salento-dev/website
+# Label disponibili (usa SOLO queste per etichettare)
+gh label list -R salento-dev/website
+# Milestone (con stato e conteggio)
+gh api repos/salento-dev/website/milestones --jq '.[] | "\(.number) \(.title) (\(.state))"'
+# Project board dell'organizzazione (Projects v2)
+gh project list --owner salento-dev
+```
+
+Linee guida operative:
+
+- Prima di implementare una feature o un fix, **verifica se esiste già una issue** correlata; se sì, riferiscila nei commit/PR (es. `Closes #N`) e associala a milestone/project pertinenti.
+- **Non inventare label**: usa esclusivamente quelle restituite da `gh label list`. Se manca una label adatta, proponila all'utente invece di crearla d'iniziativa.
+- Associa il lavoro alla **milestone** in corso quando applicabile.
+- Quando apri una **Pull Request**, collegala alla issue e, se previsto, al Project e alla milestone.
+- Esegui tutte le operazioni GitHub (issue, PR, label, milestone, project) con la CLI `gh`. Le azioni che pubblicano contenuti (apertura/chiusura issue, PR, commenti) vanno confermate con l'utente prima di procedere.
+
+---
+
 @.claude/design.md
 
 ===
