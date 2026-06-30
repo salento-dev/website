@@ -39,6 +39,7 @@ La documentazione è organizzata in **5 aree tematiche** (cartelle numerate). Al
 | [02_testing](./04_sviluppo_e_qualita/02_testing.md) | Configurazione PHPUnit, test esistenti, come scrivere ed eseguire test |
 | [03_contribuire](./04_sviluppo_e_qualita/03_contribuire.md) | Workflow Git, branch, Pull Request, code style, convenzioni |
 | [04_note_e_debito_tecnico](./04_sviluppo_e_qualita/04_note_e_debito_tecnico.md) | Incongruenze note, lazy-load non protetti, sicurezza, allineamenti da fare |
+| [05_gestione_task_e_label](./04_sviluppo_e_qualita/05_gestione_task_e_label.md) | Ciclo di vita di issue su GitHub, tassonomia delle label, milestone, project, comandi `gh` |
 
 ### 📁 `05_community_e_strategia/`
 | File | Contenuto |

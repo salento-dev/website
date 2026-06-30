@@ -8,6 +8,8 @@ Linee guida per contribuire al sito di salento.dev. Il repository è su GitHub: 
 
 ## Workflow Git
 
+> Per la gestione dei task a monte del codice (creazione e ciclo di vita delle issue, tassonomia delle **label**, milestone, project e comandi `gh`) vedi [Gestione dei task e delle label](05_gestione_task_e_label.md). Idealmente ogni branch nasce da una issue e la PR la chiude con `Closes #N`.
+
 Il branch `main` è condiviso e protetto: **non si committa mai direttamente su `main`**. Ogni modifica passa da un branch dedicato e da una **Pull Request**.
 
 ```mermaid
