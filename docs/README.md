@@ -40,6 +40,7 @@ La documentazione è organizzata in **5 aree tematiche** (cartelle numerate). Al
 | [03_contribuire](./04_sviluppo_e_qualita/03_contribuire.md) | Workflow Git, branch, Pull Request, code style, convenzioni |
 | [04_note_e_debito_tecnico](./04_sviluppo_e_qualita/04_note_e_debito_tecnico.md) | Incongruenze note, lazy-load non protetti, sicurezza, allineamenti da fare |
 | [05_gestione_task_e_label](./04_sviluppo_e_qualita/05_gestione_task_e_label.md) | Ciclo di vita di issue su GitHub, tassonomia delle label, milestone, project, comandi `gh` |
+| [06_sicurezza_e_privacy](./04_sviluppo_e_qualita/06_sicurezza_e_privacy.md) | Best practice Laravel, OWASP Top 10, GDPR, cookie (Garante), analytics privacy, upload, segreti, checklist hardening |
 
 ### 📁 `05_community_e_strategia/`
 | File | Contenuto |
@@ -52,6 +53,17 @@ La documentazione è organizzata in **5 aree tematiche** (cartelle numerate). Al
 |------|-----------|
 | [01_stack_backend](./06_riferimenti_e_approfondimenti/01_stack_backend.md) | PHP, Laravel 12, Livewire 4, Filament 5, PHPUnit, Sail, Pint — novità, best practice e link ufficiali |
 | [02_stack_frontend](./06_riferimenti_e_approfondimenti/02_stack_frontend.md) | Tailwind 4, Alpine, GSAP, Motion One, AutoAnimate, Vite 7 — novità, best practice e link ufficiali |
+
+### 📁 `07_decisioni_architetturali/`
+Architecture Decision Records (ADR): le scelte architetturali chiave con contesto, conseguenze e alternative. Vedi l'[indice ADR](./07_decisioni_architetturali/README.md).
+| ADR | Decisione |
+|-----|-----------|
+| [0001](./07_decisioni_architetturali/0001_pagine_livewire_full_page.md) | Pagine pubbliche come componenti Livewire full-page |
+| [0002](./07_decisioni_architetturali/0002_admin_filament.md) | Pannello admin con Filament (Server-Driven UI) |
+| [0003](./07_decisioni_architetturali/0003_routing_slug.md) | Routing basato su slug con route model binding |
+| [0004](./07_decisioni_architetturali/0004_analytics_middleware.md) | Analytics server-side nel middleware (privacy-first) |
+| [0005](./07_decisioni_architetturali/0005_dark_theme.md) | Dark theme esclusivo |
+| [0006](./07_decisioni_architetturali/0006_build_asset_versionati.md) | Asset di build versionati nel repository |
 
 ---
 
