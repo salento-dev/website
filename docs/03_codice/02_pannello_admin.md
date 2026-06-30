@@ -38,7 +38,7 @@ I middleware web standard di Filament sono registrati nel provider, con `Authent
 
 Oppure via seeder (`admin@salento.dev` / `password123`), oppure dalla risorsa **Utenti** nel pannello.
 
-> ⚠️ L'assenza di autorizzazione granulare è un punto di attenzione: vedi [12 · Note e debito tecnico](12-note-e-debito-tecnico.md).
+> ⚠️ L'assenza di autorizzazione granulare è un punto di attenzione: vedi [12 · Note e debito tecnico](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).
 
 ---
 

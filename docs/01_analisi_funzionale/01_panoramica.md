@@ -26,7 +26,7 @@ Il sito ruota attorno a cinque entità di dominio:
 
 A supporto esistono le entità **EventCategory**, **StoryCategory**, **EventMedia**, **PageView** (analytics) e **User** (account admin).
 
-> La tabella delle route nel `CLAUDE.md` storico **non** include ancora Storie e Autori: la sezione [06 · Pagine pubbliche](06-pagine-pubbliche.md) e [09 · Funzionalità](09-funzionalita.md) riportano lo stato reale.
+> La tabella delle route nel `CLAUDE.md` storico **non** include ancora Storie e Autori: la sezione [06 · Pagine pubbliche](../03_codice/01_pagine_pubbliche.md) e [09 · Funzionalità](./02_funzionalita.md) riportano lo stato reale.
 
 ---
 
@@ -70,4 +70,4 @@ ublabs/blade-simple-icons   ^0.196.0
 - **Pubblico (anonimo):** sezione vetrina (home, eventi, risorse, storie, partner, pagine legali).
 - **Staff/admin (autenticato):** pannello `/admin` per la gestione completa dei contenuti e le analitiche.
 
-Per i dettagli funzionali completi vedi [09 · Funzionalità](09-funzionalita.md).
+Per i dettagli funzionali completi vedi [09 · Funzionalità](./02_funzionalita.md).

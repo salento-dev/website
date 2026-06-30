@@ -95,7 +95,7 @@ Il conteggio mostrato nelle pagine di dettaglio proviene invece da `->loadCount(
 - `render()`: `$relatedEvents` = 2 altri eventi pubblicati ordinati per `starts_at`.
 - SEO: title = `$event->title`; description = `$event->excerpt ?? $event->body`.
 - Markdown del corpo reso con `Str::markdown(..., ['html_input' => 'strip', 'allow_unsafe_links' => false])` (mitigazione XSS).
-- ⚠️ La view usa `$event->partners` ma `mount()` non lo eager-load né lo guarda con `Schema::hasTable` → lazy-load non protetto (vedi [12](12-note-e-debito-tecnico.md)).
+- ⚠️ La view usa `$event->partners` ma `mount()` non lo eager-load né lo guarda con `Schema::hasTable` → lazy-load non protetto (vedi [12](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md)).
 
 ### `ResourcesPage` — `/resources`
 - Trait `WithPagination`. Proprietà: `sortBy='newest'`, `search=''`.

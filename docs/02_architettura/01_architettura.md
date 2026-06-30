@@ -84,7 +84,7 @@ Le richieste a `/admin/**` sono gestite interamente da **Filament**, che registr
 - **Pages** in `app/Filament/Pages` (oltre alla `Dashboard`)
 - **Widgets** in `app/Filament/Widgets`
 
-L'accesso è protetto dal middleware `Authenticate`; l'autorizzazione è demandata a `User::canAccessPanel()` (vedi [07 · Pannello admin](07-pannello-admin.md)).
+L'accesso è protetto dal middleware `Authenticate`; l'autorizzazione è demandata a `User::canAccessPanel()` (vedi [07 · Pannello admin](../03_codice/02_pannello_admin.md)).
 
 ---
 
@@ -146,4 +146,4 @@ bootstrap/
 - **Slug come chiave di route** per eventi e storie (`{event:slug}`, `{story:slug}`), risolti via model binding. I link usano sempre i **nomi di route** (`route('events.show', $event)`).
 - **Storage `public`** per tutti gli upload (immagini eventi/storie, loghi partner, avatar autori, file risorse). Gli accessor dei modelli (`*_url`) generano gli URL pubblici con fallback a placeholder.
 - **Analytics in middleware** (non in JavaScript di terze parti): privacy-friendly, senza cookie di tracciamento.
-- **Niente API/stato in query string** sulle pagine pubbliche: ricerca/filtri vivono nello stato Livewire lato server (vedi nota in [06](06-pagine-pubbliche.md)).
+- **Niente API/stato in query string** sulle pagine pubbliche: ricerca/filtri vivono nello stato Livewire lato server (vedi nota in [06](../03_codice/01_pagine_pubbliche.md)).

@@ -152,7 +152,7 @@ La distinzione è il principale **vantaggio competitivo** di salento.dev nell'ec
 4. **Coltivare la rete DevFest** — mantenere e ampliare la presenza come community partner (Lecce, Bari, Basilicata) per visibilità verso migliaia di membri GDG.
 5. **Affiliazioni leggere a costo ~0** — catalogazione su Italia Open-Source, adesione a The Communities Bay, listing eventi su Codemotion community.
 
-Le azioni operative derivanti sono in [13 · Attività e strategia](13-attivita-e-strategia.md).
+Le azioni operative derivanti sono in [13 · Attività e strategia](./01_attivita_e_strategia.md).
 
 ---
 

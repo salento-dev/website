@@ -1,6 +1,6 @@
 # 09 · Funzionalità (documentazione funzionale)
 
-Questo documento descrive il comportamento del sito dal punto di vista funzionale, per dominio. Per i dettagli implementativi vedi [06 · Pagine pubbliche](06-pagine-pubbliche.md) e [07 · Pannello admin](07-pannello-admin.md).
+Questo documento descrive il comportamento del sito dal punto di vista funzionale, per dominio. Per i dettagli implementativi vedi [06 · Pagine pubbliche](../03_codice/01_pagine_pubbliche.md) e [07 · Pannello admin](../03_codice/02_pannello_admin.md).
 
 ---
 

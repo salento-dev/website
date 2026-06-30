@@ -1,6 +1,6 @@
 # 13 · Attività della community e strategia di crescita
 
-Questo documento ha taglio **strategico/organizzativo** (non tecnico). Descrive le attività già svolte da salento.dev, come ampliarle, come aprirsi ad altre associazioni e come usare il sito web come strumento di community. Le raccomandazioni derivano da una ricerca su community tech italiane e internazionali; le fonti puntuali sono raccolte in [14 · Analisi dei competitor](14-analisi-competitor.md).
+Questo documento ha taglio **strategico/organizzativo** (non tecnico). Descrive le attività già svolte da salento.dev, come ampliarle, come aprirsi ad altre associazioni e come usare il sito web come strumento di community. Le raccomandazioni derivano da una ricerca su community tech italiane e internazionali; le fonti puntuali sono raccolte in [14 · Analisi dei competitor](./02_analisi_competitor.md).
 
 > Le attività "già svolte" sono ricostruite dai dati reali presenti nei seeder del progetto (`database/seeders/Real*`), che rappresentano gli eventi effettivamente pubblicati sul sito.
 
@@ -117,7 +117,7 @@ La community è **già un nodo** di una rete informale pugliese (partner recipro
 salento.dev ha un vantaggio raro tra le community pugliesi: un **sito proprietario** (la maggior parte usa solo Meetup, Instagram o community.dev). Il sito va sfruttato come **centro di proprietà di dati, SEO e brand**, mentre le piattaforme esterne restano canali di acquisizione.
 
 ### Cosa il sito ha già
-Eventi (con slug, categorie, media, partner, risorse collegate), risorse/documenti, storie con autori, pagina partner, analytics interne (PageView + widget admin), pagine legali. Vedi [09 · Funzionalità](09-funzionalita.md).
+Eventi (con slug, categorie, media, partner, risorse collegate), risorse/documenti, storie con autori, pagina partner, analytics interne (PageView + widget admin), pagine legali. Vedi [09 · Funzionalità](../01_analisi_funzionale/02_funzionalita.md).
 
 ### Funzionalità ad alto valore da aggiungere
 
@@ -232,4 +232,4 @@ Strumenti gratuiti/GDPR-friendly: **Plausible/Fathom** (analytics), **Google Sea
 13. Valutare **APS** + **Open Collective** per sostenibilità e trasparenza.
 14. **Job board** localizzata e **ambassador program**.
 
-> Tutte raccomandazioni: ogni iniziativa va discussa con il team. La ricerca a supporto, con le fonti, è in [14 · Analisi dei competitor](14-analisi-competitor.md).
+> Tutte raccomandazioni: ogni iniziativa va discussa con il team. La ricerca a supporto, con le fonti, è in [14 · Analisi dei competitor](./02_analisi_competitor.md).

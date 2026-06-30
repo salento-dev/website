@@ -111,7 +111,7 @@ Il `DatabaseSeeder` crea automaticamente un utente Filament:
 - **Email:** `admin@salento.dev`
 - **Password:** `password123`
 
-> ⚠️ Credenziali di default solo per sviluppo. In produzione vanno cambiate (vedi [12 · Note e debito tecnico](12-note-e-debito-tecnico.md)).
+> ⚠️ Credenziali di default solo per sviluppo. In produzione vanno cambiate (vedi [12 · Note e debito tecnico](./04_note_e_debito_tecnico.md)).
 
 Per crearne uno manualmente:
 

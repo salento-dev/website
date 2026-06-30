@@ -131,7 +131,7 @@ classDiagram
 - `getDisplayBioAttribute()`, `getDisplayRoleAttribute()`, `getDisplayWebsiteUrlAttribute()`, `getDisplayTwitterUrlAttribute()` → usano il valore locale e, se assente, ricadono sui dati del **profilo GitHub**.
 - `static fetchGithubProfile(string $username): array` → recupera il profilo via `Http::get` all'API GitHub, con **cache 24h** (`Cache::remember`, chiave `github_profile_{username}`).
 
-> ⚠️ Gli accessor `display_*` e gli helperText del form admin innescano chiamate HTTP esterne (mitigate da cache). Vedi [12 · Note e debito tecnico](12-note-e-debito-tecnico.md).
+> ⚠️ Gli accessor `display_*` e gli helperText del form admin innescano chiamate HTTP esterne (mitigate da cache). Vedi [12 · Note e debito tecnico](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).
 
 ---
 
@@ -184,7 +184,7 @@ classDiagram
 - **`casts()`:** `email_verified_at`→datetime, `password`→**hashed**.
 - **`canAccessPanel(Panel $panel): bool`** → ritorna **`true`** per qualunque utente autenticato.
 
-> ⚠️ Nessun sistema di ruoli/policy: ogni record in `users` ha accesso completo all'admin. Vedi [12 · Note e debito tecnico](12-note-e-debito-tecnico.md).
+> ⚠️ Nessun sistema di ruoli/policy: ogni record in `users` ha accesso completo all'admin. Vedi [12 · Note e debito tecnico](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).
 
 ---
 
@@ -210,4 +210,4 @@ classDiagram
 - **`StoryFactory`** — crea anche la `StoryCategory` collegata, `is_published` 80%.
 - **`AuthorFactory`** — `github_username` opzionale da una lista reale.
 
-> ⚠️ `ResourceFactory` genera ancora i campi `slug`/`image_path` **non più presenti** in `resources`: factory disallineata (non nel percorso di seeding attivo). Vedi [12](12-note-e-debito-tecnico.md).
+> ⚠️ `ResourceFactory` genera ancora i campi `slug`/`image_path` **non più presenti** in `resources`: factory disallineata (non nel percorso di seeding attivo). Vedi [12](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).

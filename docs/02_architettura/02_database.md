@@ -71,7 +71,7 @@ Creata in `2026_02_15_195550`, modificata da 3 migrazioni.
 | `is_published` | boolean | no | `true` | |
 | `created_at` / `updated_at` | timestamps | sì | | |
 
-> Le colonne `slug` (`2026_04_20_123158`) e `image_path` (`2026_04_20_122802`) sono state **rimosse**. ⚠️ `ResourceFactory`/`ResourceSeeder` le referenziano ancora (vedi [12](12-note-e-debito-tecnico.md)).
+> Le colonne `slug` (`2026_04_20_123158`) e `image_path` (`2026_04_20_122802`) sono state **rimosse**. ⚠️ `ResourceFactory`/`ResourceSeeder` le referenziano ancora (vedi [12](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md)).
 
 ### `event_media`
 Creata in `2026_02_15_232721`.
@@ -206,5 +206,5 @@ Standard Laravel, create dalle migrazioni `0001_01_01_*`:
 ## Migrazioni: convenzioni
 
 - **Mai** ridefinire una colonna in una migrazione di modifica senza riportarne tutti gli attributi: in Laravel 12 gli attributi omessi vengono **persi**.
-- Le migrazioni di "make nullable" del `2026_04_24` riflettono la scelta di rendere molti campi opzionali nel pannello admin (vedi [07 · Pannello admin](07-pannello-admin.md)).
+- Le migrazioni di "make nullable" del `2026_04_24` riflettono la scelta di rendere molti campi opzionali nel pannello admin (vedi [07 · Pannello admin](../03_codice/02_pannello_admin.md)).
 - Lo storico delle rinomine (`description`→`body`) e delle rimozioni (`slug`/`image_path` su `resources`) è importante per capire eventuali disallineamenti factory/seeder.
