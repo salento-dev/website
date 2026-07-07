@@ -1,0 +1,30 @@
+name: 🏗️ Cantiere delle idee
+description: Proponi un'idea o funzionalità futura da discutere (non ancora pronta per l'implementazione)
+title: "[Idea]: "
+labels: ["Cantiere delle idee"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Spazio di discussione su idee future. Non serve una soluzione definita: raccogliamo requisiti, vincoli e opinioni prima di decidere se/come procedere.
+  - type: textarea
+    id: idea
+    attributes:
+      label: L'idea
+    validations:
+      required: true
+  - type: textarea
+    id: stato
+    attributes:
+      label: Stato attuale
+      description: Da cosa si parte oggi?
+  - type: textarea
+    id: domande
+    attributes:
+      label: Domande aperte
+      description: Cosa va chiarito o deciso? (privacy, identità, effort, ecc.)
+  - type: textarea
+    id: approcci
+    attributes:
+      label: Possibili approcci
+      description: Idee di soluzione, non vincolanti.
