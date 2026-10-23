@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-24T00:00:00Z",
+  "title": "Design System: Salento.dev",
+  "extensions": {
+    "colorMeta": {
+      "signal-cyan": { "role": "primary", "displayName": "Signal Cyan", "canonical": "var(--color-primary)", "tonalRamp": ["oklch(30.2% 0.056 229.695)", "oklch(39.8% 0.07 227.392)", "oklch(45% 0.085 224.283)", "oklch(52% 0.105 223.128)", "oklch(60.9% 0.126 221.723)", "oklch(71.5% 0.143 215.221)", "oklch(86.5% 0.127 207.078)", "oklch(95.6% 0.045 203.388)"] },
+      "signal-cyan-deep": { "role": "primary", "displayName": "Signal Cyan Deep", "canonical": "var(--color-primary-dark)" },
+      "signal-cyan-pale": { "role": "primary", "displayName": "Signal Cyan Pale", "canonical": "var(--color-primary-light)" },
+      "signal-cyan-wash": { "role": "primary", "displayName": "Signal Cyan Wash", "canonical": "var(--color-primary-50)" },
+      "reserve-violet": { "role": "secondary", "displayName": "Reserve Violet", "canonical": "var(--color-secondary)", "tonalRamp": ["oklch(28.3% 0.141 291.089)", "oklch(38% 0.189 293.745)", "oklch(43.2% 0.232 292.759)", "oklch(49.1% 0.27 292.581)", "oklch(60.6% 0.25 292.717)", "oklch(70.2% 0.183 293.541)", "oklch(81.1% 0.111 293.571)", "oklch(94.3% 0.029 294.588)"] },
+      "reserve-fuchsia": { "role": "tertiary", "displayName": "Reserve Fuchsia", "canonical": "var(--color-tertiary)", "tonalRamp": ["oklch(29.3% 0.136 325.661)", "oklch(40.1% 0.17 325.612)", "oklch(45.2% 0.211 324.591)", "oklch(51.8% 0.253 323.949)", "oklch(66.7% 0.295 322.15)", "oklch(74% 0.238 322.16)", "oklch(83.3% 0.145 321.434)", "oklch(95.2% 0.037 318.852)"] },
+      "void-black": { "role": "neutral", "displayName": "Void Black", "canonical": "#000000" },
+      "console-black": { "role": "neutral", "displayName": "Console Black", "canonical": "var(--color-surface)", "tonalRamp": ["oklch(14.8% 0.004 228.8)", "oklch(21.8% 0.008 223.9)", "oklch(27.5% 0.011 216.9)", "oklch(37.8% 0.015 216)", "oklch(45% 0.017 213.2)", "oklch(56% 0.021 213.5)", "oklch(72.3% 0.014 214.4)", "oklch(92.5% 0.005 214.3)"] },
+      "panel-graphite": { "role": "neutral", "displayName": "Panel Graphite", "canonical": "var(--color-surface-900)" },
+      "control-graphite": { "role": "neutral", "displayName": "Control Graphite", "canonical": "var(--color-surface-800)" },
+      "raised-graphite": { "role": "neutral", "displayName": "Raised Graphite", "canonical": "var(--color-surface-700)" },
+      "bracket-grey": { "role": "neutral", "displayName": "Bracket Grey", "canonical": "var(--color-surface-600)" },
+      "muted-mist": { "role": "neutral", "displayName": "Muted Mist", "canonical": "var(--color-surface-400)" },
+      "body-mist": { "role": "neutral", "displayName": "Body Mist", "canonical": "var(--color-surface-300)" },
+      "soft-mist": { "role": "neutral", "displayName": "Soft Mist", "canonical": "var(--color-surface-200)" },
+      "bright-mist": { "role": "neutral", "displayName": "Bright Mist", "canonical": "var(--color-surface-50)" },
+      "whatsapp-green": { "role": "functional", "displayName": "WhatsApp Green", "canonical": "var(--color-green-400)" },
+      "wip-amber": { "role": "functional", "displayName": "WIP Amber", "canonical": "var(--color-amber-500)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero della home; 3rem → 4.5rem, prima riga in cyan." },
+      "display-page": { "displayName": "Display Page", "purpose": "Hero delle pagine interne, maiuscolo black, una parola in cyan." },
+      "headline": { "displayName": "Headline", "purpose": "Titolo di section-header; variante small 1.5–1.875rem." },
+      "title": { "displayName": "Title", "purpose": "Titoli di card e righe di lista." },
+      "body": { "displayName": "Body", "purpose": "Testo corrente in Body Mist." },
+      "body-lead": { "displayName": "Body Lead", "purpose": "Descrizioni hero, max ~42rem." },
+      "eyebrow": { "displayName": "Eyebrow", "purpose": "Sopra i titoli di sezione, maiuscolo, sempre cyan." },
+      "telemetry": { "displayName": "Telemetry", "purpose": "Etichette di sistema mono maiuscole: stati, conteggi, percorsi." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-ui", "value": "cubic-bezier(0, 0, 0.2, 1) 300ms", "purpose": "Transizioni CSS di colore/trasformazione (ease-out duration-300)." },
+      { "name": "gsap-hover", "value": "0.2–0.25s power2.out / circ.out", "purpose": "Staffe d'angolo, freccia CTA, staffe navbar all'hover." },
+      { "name": "gsap-spark", "value": "0.5s power2.out, stagger 0.02s", "purpose": "Scintille del link WhatsApp e shine dei caratteri CTA." },
+      { "name": "button-pulse", "value": "0.7s ease-out", "purpose": "Alone che si espande di 8px dietro la CTA pill all'hover." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "40rem" },
+      { "name": "md", "value": "48rem" },
+      { "name": "nav", "value": "50rem" },
+      { "name": "lg", "value": "64rem" },
+      { "name": "max", "value": "87.5rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "CTA Pill Button",
+      "kind": "button",
+      "refersTo": "button-cta",
+      "description": "CTA principale: pill chiara con cerchio freccia; unica superficie chiara del sistema.",
+      "html": "<a class=\"ds-cta\" href=\"#\"><span>Vedi gli eventi</span><span class=\"ds-cta-icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" width=\"13\" height=\"13\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3\"/></svg></span></a>",
+      "css": ".ds-cta { display: inline-flex; align-items: center; justify-content: space-between; gap: 10px; height: 52px; min-width: 160px; padding: 0 5px 0 20px; border-radius: 9999px; background: var(--color-surface-100, oklch(96.3% 0.002 197.1)); color: var(--color-surface-900, oklch(21.8% 0.008 223.9)); font-family: 'Albert Sans', Verdana, sans-serif; font-weight: 500; text-decoration: none; transition: transform 300ms ease-out; } .ds-cta:hover { transform: scaleY(1.02); } .ds-cta:hover .ds-cta-icon svg { transform: translateX(3px); } .ds-cta:focus-visible { outline: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.5); } .ds-cta-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9999px; background: var(--color-primary-50, oklch(98.4% 0.019 200.873)); } .ds-cta-icon svg { transition: transform 230ms ease-out; }"
+    },
+    {
+      "name": "Utility Button",
+      "kind": "button",
+      "refersTo": "button-utility",
+      "description": "Bottone non-CTA per filtri, paginazione, azioni secondarie (.btn).",
+      "html": "<button class=\"ds-btn\">Filtra</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 40px; min-width: 40px; padding: 0 12px; border: none; border-radius: 0.125rem; background: var(--color-surface-900, oklch(21.8% 0.008 223.9)); color: var(--color-surface-50, oklch(98.7% 0.002 197.1)); font-family: 'Albert Sans', Verdana, sans-serif; cursor: pointer; transition: all 300ms ease-out; } .ds-btn:hover { background: var(--color-surface-800, oklch(27.5% 0.011 216.9)); } .ds-btn:active { transform: scale(.95); } .ds-btn:focus-visible { outline: none; box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--color-primary, oklch(71.5% 0.143 215.221)) 50%, transparent); }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "Ricerca Livewire con lente e messaggio rotante al focus.",
+      "html": "<label class=\"ds-search\"><span class=\"ds-search-lens\"></span><input type=\"search\" placeholder=\"Cerca nello storico...\"></label>",
+      "css": ".ds-search { position: relative; display: block; height: 44px; border-radius: 0.125rem; background: var(--color-surface-800, oklch(27.5% 0.011 216.9)); color: var(--color-surface-50, oklch(98.7% 0.002 197.1)); transition: box-shadow 300ms ease-out; } .ds-search:focus-within { box-shadow: inset 0 0 0 1px rgba(0,0,0,.5); } .ds-search-lens { position: absolute; top: 14px; left: 12px; width: 10px; height: 10px; border-radius: 9999px; box-shadow: 0 0 0 1px currentColor; transition: transform 500ms ease-out; } .ds-search:focus-within .ds-search-lens { transform: scaleX(-1); } .ds-search input { width: 100%; height: 100%; padding: 6px 76px 6px 33px; border: 0; background: transparent; color: inherit; font: 500 0.875rem 'Albert Sans', Verdana, sans-serif; outline: none; } .ds-search input::placeholder { color: var(--color-surface-300, oklch(87.2% 0.007 219.6)); }"
+    },
+    {
+      "name": "Desktop Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Link navbar con staffe cyan che entrano dagli angoli all'hover.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link is-active\" href=\"#\">Eventi</a><a class=\"ds-nav-link\" href=\"#\">Risorse</a><a class=\"ds-nav-link\" href=\"#\">Storie</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 8px; font-family: 'Albert Sans', Verdana, sans-serif; } .ds-nav-link { position: relative; padding: 6px 8px; color: var(--color-surface-300, oklch(87.2% 0.007 219.6)); text-decoration: none; transition: all 300ms ease-out; } .ds-nav-link::before, .ds-nav-link::after { content: ''; position: absolute; width: 7px; height: 7px; opacity: 0; transition: all 250ms cubic-bezier(0, 0.55, 0.45, 1); } .ds-nav-link::before { top: 0; left: 0; border-top: 1px solid var(--color-primary-200, oklch(91.7% 0.08 205.041)); border-left: 1px solid var(--color-primary-200, oklch(91.7% 0.08 205.041)); transform: translate(-6px, -6px); } .ds-nav-link::after { bottom: 0; right: 0; border-bottom: 1px solid var(--color-primary-400, oklch(78.9% 0.154 211.53)); border-right: 1px solid var(--color-primary-400, oklch(78.9% 0.154 211.53)); transform: translate(6px, 6px); } .ds-nav-link:hover, .ds-nav-link.is-active { color: var(--color-surface-50, oklch(98.7% 0.002 197.1)); font-weight: 500; } .ds-nav-link:hover::before, .ds-nav-link:hover::after, .ds-nav-link.is-active::before, .ds-nav-link.is-active::after { opacity: 1; transform: none; } .ds-nav-link:focus-visible { outline: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.5); }"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "status-pill-upcoming",
+      "description": "Stato evento in telemetria mono con puntino pulsante; varianti upcoming / ongoing / wip / past.",
+      "html": "<div style=\"display:flex;gap:8px;flex-wrap:wrap\"><span class=\"ds-status ds-status-upcoming\"><span class=\"ds-dot\"></span>Prossimo evento</span><span class=\"ds-status ds-status-ongoing\"><span class=\"ds-dot\"></span>In corso</span><span class=\"ds-status ds-status-wip\">In pianificazione</span><span class=\"ds-status ds-status-past\">Passato</span></div>",
+      "css": ".ds-status { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: 9999px; border: 1px solid transparent; font: 400 0.625rem/1rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; } .ds-dot { width: 6px; height: 6px; border-radius: 9999px; background: currentColor; animation: ds-ping 1s cubic-bezier(0,0,.2,1) infinite; } @keyframes ds-ping { 75%, 100% { box-shadow: 0 0 0 4px transparent; } 0% { box-shadow: 0 0 0 0 currentColor; } } .ds-status-upcoming { color: var(--color-primary, oklch(71.5% 0.143 215.221)); border-color: color-mix(in oklch, currentColor 30%, transparent); background: color-mix(in oklch, currentColor 10%, transparent); } .ds-status-ongoing { color: oklch(79.2% 0.209 151.711); border-color: color-mix(in oklch, currentColor 40%, transparent); background: color-mix(in oklch, currentColor 10%, transparent); } .ds-status-wip { color: oklch(92.4% 0.12 95.746); border-color: color-mix(in oklch, oklch(76.9% 0.188 70.08) 30%, transparent); background: color-mix(in oklch, oklch(76.9% 0.188 70.08) 20%, transparent); } .ds-status-past { color: var(--color-surface-400, oklch(72.3% 0.014 214.4)); background: var(--color-surface-700, oklch(37.8% 0.015 216)); }"
+    },
+    {
+      "name": "Category Tag",
+      "kind": "chip",
+      "refersTo": "category-tag",
+      "description": "Tag categoria evento, telemetria su Control Graphite.",
+      "html": "<span class=\"ds-tag\">Meetup</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 0.125rem; background: var(--color-surface-800, oklch(27.5% 0.011 216.9)); color: color-mix(in oklch, var(--color-surface-200, oklch(92.5% 0.005 214.3)) 70%, transparent); font: 500 0.625rem/1rem 'Albert Sans', Verdana, sans-serif; letter-spacing: 0.05em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Event Card",
+      "kind": "card",
+      "refersTo": "card-event",
+      "description": "Card evento con staffe d'angolo, miniatura 16:9 e barra d'azione che vira al cyan.",
+      "html": "<a class=\"ds-card\" href=\"#\"><svg class=\"ds-bracket\" viewBox=\"0 0 11 11\" fill=\"none\"><path d=\"M9.5 0.5H0.5V9.5\" stroke=\"currentColor\" stroke-linecap=\"round\"/></svg><div class=\"ds-thumb\"></div><svg class=\"ds-bracket ds-bracket-br\" viewBox=\"0 0 11 11\" fill=\"none\"><path d=\"M9.5 0.5H0.5V9.5\" stroke=\"currentColor\" stroke-linecap=\"round\"/></svg><p class=\"ds-card-title\">AperiDev Galatina</p><p class=\"ds-card-excerpt\">Una serata informale tra sviluppatori del Salento.</p><div class=\"ds-card-bar\"><span>Read</span><span class=\"ds-arrow\">→</span></div></a>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 4px; width: 320px; padding: 20px; border-radius: 0.125rem; background: var(--color-surface-900, oklch(21.8% 0.008 223.9)); color: var(--color-surface-300, oklch(87.2% 0.007 219.6)); text-decoration: none; font-family: 'Albert Sans', Verdana, sans-serif; transition: background 300ms ease-out; } .ds-card:hover { background: color-mix(in oklch, var(--color-primary-500, oklch(71.5% 0.143 215.221)) 5%, var(--color-surface-900, oklch(21.8% 0.008 223.9))); } .ds-bracket { width: 9px; height: 9px; color: var(--color-surface-600, oklch(45% 0.017 213.2)); } .ds-bracket-br { align-self: flex-end; transform: scale(-1,-1); } .ds-thumb { margin: 0 12px; aspect-ratio: 16/9; border-radius: 0.125rem; background: linear-gradient(135deg, oklch(37.8% 0.015 216), oklch(27.5% 0.011 216.9)); box-shadow: 0 0 0 1px var(--color-surface-700, oklch(37.8% 0.015 216)); transition: transform 300ms ease-out; } .ds-card:hover .ds-thumb { transform: scale(1.01); } .ds-card-title { margin: 12px 0 0; font: 700 1rem 'Outfit', sans-serif; color: #fff; transition: all 300ms ease-out; } .ds-card:hover .ds-card-title { color: var(--color-primary, oklch(71.5% 0.143 215.221)); transform: translateX(18px); } .ds-card-excerpt { margin: 0; font-size: 0.875rem; } .ds-card-bar { display: flex; align-items: center; justify-content: space-between; height: 44px; margin-top: 15px; padding: 0 16px; background: var(--color-surface-700, oklch(37.8% 0.015 216)); color: var(--color-surface-50, oklch(98.7% 0.002 197.1)); font-size: 0.875rem; font-weight: 500; transition: background 300ms ease-out; } .ds-card:hover .ds-card-bar { background: var(--color-primary-800, oklch(45% 0.085 224.283)); } .ds-arrow { transition: transform 300ms ease-out; } .ds-card:hover .ds-arrow { transform: translateX(4px); }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Eyebrow cyan, titolo grande, tag telemetria bordato a destra.",
+      "html": "<header class=\"ds-sh\"><div><p class=\"ds-sh-eyebrow\">Confirmed_Active</p><h3 class=\"ds-sh-title\">Prossimi Eventi</h3></div><span class=\"ds-sh-tag\">Upcoming: 3</span></header>",
+      "css": ".ds-sh { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; } .ds-sh-eyebrow { margin: 0 0 12px; font: 600 0.75rem 'Albert Sans', Verdana, sans-serif; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-primary, oklch(71.5% 0.143 215.221)); } .ds-sh-title { margin: 0; font: 700 3rem/1 'Outfit', sans-serif; color: var(--color-surface-50, oklch(98.7% 0.002 197.1)); } .ds-sh-tag { padding: 4px 12px; border: 1px solid var(--color-border, oklch(27.5% 0.011 216.9)); border-radius: 0.125rem; background: var(--color-surface-800, oklch(27.5% 0.011 216.9)); font: 400 0.625rem/1rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary, oklch(71.5% 0.143 215.221)); }"
+    },
+    {
+      "name": "Terminal",
+      "kind": "custom",
+      "refersTo": "card-event",
+      "description": "Contenitore stile terminale con percorso root@salento.dev.",
+      "html": "<div class=\"ds-term\"><div class=\"ds-term-bar\"><div class=\"ds-term-dots\"><i></i><i></i><i></i></div><span>root@salento.dev:~/resources</span></div><pre class=\"ds-term-body\">$ ls slide/\nmeetup-0.pdf  lightning-night.pdf</pre></div>",
+      "css": ".ds-term { overflow: hidden; border: 1px solid var(--color-border, oklch(27.5% 0.011 216.9)); background: #000; } .ds-term-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; border-bottom: 1px solid var(--color-border, oklch(27.5% 0.011 216.9)); background: var(--color-surface-900, oklch(21.8% 0.008 223.9)); } .ds-term-bar span { font: 400 0.625rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary, oklch(71.5% 0.143 215.221)); } .ds-term-dots { display: flex; gap: 8px; } .ds-term-dots i { width: 8px; height: 8px; border-radius: 9999px; background: oklch(57.7% 0.245 27.325); } .ds-term-dots i:nth-child(2) { background: oklch(68.1% 0.162 75.834); } .ds-term-dots i:nth-child(3) { background: oklch(62.7% 0.194 149.214); } .ds-term-body { margin: 0; padding: 24px; font: 0.875rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--color-surface-300, oklch(87.2% 0.007 219.6)); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Console",
+    "overview": "Il sito è un pannello di controllo acceso di notte. Un telaio nero punteggiato fa da banco; sopra, un unico pannello incorniciato da bordi a 1px ospita tutto il contenuto, diviso in moduli da linee sottili e piccoli triangoli di giunzione. Dentro il pannello la luce è una sola: il cyan, usato come spia accesa — un'etichetta, un link, lo stato \"prossimo evento\" che pulsa. Tutto il resto è grafite e nebbia.\n\nLa densità è media e ordinata: titoli grandi in Outfit, testo di lettura in Albert Sans, e una fascia di etichette mono maiuscole e spaziate che leggono come telemetria (`root@salento.dev`, `Upcoming: 3`, `Events // Community`). Le staffe d'angolo SVG sono la firma: marcano le card come mirini, e all'hover si allargano o compaiono. A riposo l'interfaccia è ferma; all'interazione risponde con piccoli movimenti GSAP precisi.\n\nIl sistema è esclusivamente scuro. Non esiste una variante chiara e non va inventata.",
+    "keyCharacteristics": [
+      "Telaio nero a puntini + pannello centrale con bordi 1px e giunzioni triangolari.",
+      "Un solo accento attivo (cyan); violet e fuchsia sono riserva.",
+      "Profondità solo tonale: nessuna ombra.",
+      "Angoli quasi vivi; pill solo per CTA, badge e stati.",
+      "Etichette mono maiuscole come voce \"di sistema\".",
+      "Staffe d'angolo come firma interattiva."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Il cyan è l'unica luce accesa. Va su etichette, link, stati e una parola per titolo, mai su sfondi pieni di grandi superfici. Se una schermata ha più di una manciata di elementi cyan, uno è di troppo.", "section": "colors" },
+      { "name": "The Reserve Rule", "body": "Violet e fuchsia esistono come token ma non sono voci attive. Non introdurli in nuovo lavoro senza una decisione esplicita.", "section": "colors" },
+      { "name": "The Legacy Amber Rule", "body": "Le utility `.text-glow`, `.text-gradient`, `.border-glow`, `.shadow-glow`, `.shadow-glow-purple`, `.shadow-neon*`, `.shadow-card`, `.bg-gradient-radial`, `.bg-gradient-mesh` sono residui ambra/arancio di una palette precedente. Non usarle. `.text-glow` è ancora su sei titoli hero (alone ambra su testo cyan): è drift da rimuovere, non un pattern.", "section": "colors" },
+      { "name": "The Brand-Borrow Rule", "body": "Verde e ambra sono prestiti funzionali (canale WhatsApp, WIP), non accenti di marca. Mai come decorazione.", "section": "colors" },
+      { "name": "The Telemetry Voice Rule", "body": "Le etichette di sistema (stati, conteggi, percorsi, categorie) sono mono maiuscolo spaziato a 0.625rem. Il testo che si legge davvero non è mai mono.", "section": "typography" },
+      { "name": "The One Mono Rule", "body": "Oggi convivono `font-mono` (stack di sistema, ~50 usi) e `font-roboto-mono` (~20 usi), e il token punta a \"Roboto Mono Variable\" mentre il layout carica \"Roboto Mono\": il secondo ricade spesso sul monospace generico. Nuovo lavoro usa `font-mono`; l'allineamento è un debito aperto.", "section": "typography" },
+      { "name": "The Tonal Step Rule", "body": "Un elemento che deve \"salire\" passa al gradino grafite successivo o prende un bordo 1px. Mai un box-shadow.", "section": "elevation" },
+      { "name": "The Hover Tint Rule", "body": "L'hover di una superficie si esprime con un velo cyan al 5% (`primary-500/5`) o un gradino tonale, non con elevazione.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** tenere tutto dentro il pannello bordato: nuove sezioni sono moduli separati da bordi 1px, non blocchi flottanti.",
+      "**Do** usare il cyan per una parola per titolo, eyebrow, link e stati attivi, e basta.",
+      "**Do** dare profondità con gradini grafite (950 → 900 → 800 → 700) e bordi in Control Graphite.",
+      "**Do** usare angoli 0.125rem di default e pill solo per CTA, badge e status.",
+      "**Do** scrivere etichette di sistema in mono maiuscolo 0.625rem spaziato.",
+      "**Do** usare le staffe d'angolo come cornice e segnale d'hover delle superfici cliccabili.",
+      "**Do** animare con GSAP brevi (0.2–0.5s, `power2`/`circ.out`) innescati da hover/focus."
+    ],
+    "donts": [
+      "**Don't** introdurre un tema chiaro o superfici chiare estese (la CTA pill è l'unica eccezione).",
+      "**Don't** usare box-shadow, alone o glow: le utility ambra/arancio di `app.css` sono legacy.",
+      "**Don't** usare `.text-glow`, `.text-gradient` o gradienti ambra nei nuovi titoli.",
+      "**Don't** attivare violet o fuchsia come accenti senza una decisione esplicita.",
+      "**Don't** usare verde o ambra fuori da WhatsApp/live e WIP.",
+      "**Don't** usare `rounded-lg` o raggi maggiori su card e contenitori.",
+      "**Don't** hardcodare colori Tailwind grezzi (`cyan-500`, `zinc-*`): usa i token semantici `primary`, `surface-*`, `border`."
+    ]
+  }
+}
