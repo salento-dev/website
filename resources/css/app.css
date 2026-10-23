@@ -8,11 +8,11 @@
 
 @theme {
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     --font-albert-sans: "Albert Sans", Verdana, sans-serif;
     --font-outfit: "Outfit", "Albert Sans", sans-serif;
-    --font-roboto-mono: "Roboto Mono Variable", monospace;
+    --font-roboto-mono: var(--font-mono);
 
     /* Font aliases */
     --font-headline: var(--font-outfit);

@@ -59,7 +59,7 @@ typography:
     fontWeight: 600
     letterSpacing: "0.05em"
   telemetry:
-    fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontFamily: "Roboto Mono, ui-monospace, monospace"
     fontSize: "0.625rem"
     fontWeight: 400
     lineHeight: 1
@@ -194,7 +194,7 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 
 **Display Font:** Outfit (con Albert Sans, sans-serif)
 **Body Font:** Albert Sans (con Verdana, sans-serif)
-**Label/Mono Font:** monospace di sistema (`font-mono`); `font-roboto-mono` esiste come token
+**Label/Mono Font:** Roboto Mono (`font-mono`, alias `font-roboto-mono`), con ui-monospace
 
 **Character:** Outfit geometrico e compatto per titoli che pesano; Albert Sans morbido e leggibile per il corpo; il mono maiuscolo spaziato aggiunge la voce "da console".
 
@@ -211,7 +211,7 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 ### Named Rules
 **The Telemetry Voice Rule.** Le etichette di sistema (stati, conteggi, percorsi, categorie) sono mono maiuscolo spaziato a 0.625rem. Il testo che si legge davvero non è mai mono.
 
-**The One Mono Rule.** Oggi convivono `font-mono` (stack di sistema, ~50 usi) e `font-roboto-mono` (~20 usi), e il token punta a "Roboto Mono Variable" mentre il layout carica "Roboto Mono": il secondo ricade spesso sul monospace generico. Nuovo lavoro usa `font-mono`; l'allineamento è un debito aperto.
+**The One Mono Rule.** `font-mono` e `font-roboto-mono` puntano entrambi a Roboto Mono (caricato da Google Fonts nel layout). Nuovo lavoro usa `font-mono`; non introdurre altri monospace.
 
 ## Layout
 
