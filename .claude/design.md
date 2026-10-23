@@ -1,54 +1,18 @@
 # Design System — salento.dev
 
-## Principi Generali
+> **Fonte di verità visiva: [`DESIGN.md`](../DESIGN.md)** (token, palette, tipografia, layout, forme, regole).
+> Questo file è solo il catalogo dei componenti Blade e degli helper di animazione.
+
+## Regole Essenziali (dettagli in `DESIGN.md`)
 
 - Dark theme esclusivo — nessuna modalità light
-- Stile "cyber/terminal" con angoli tagliati e decorazioni geometriche
-- Border radius piccolo (`rounded-xs` = 0.25rem) come default — no border radius grandi
-- Pills (`rounded-full`) solo per badge, button CTA e tag
-- Animazioni via **GSAP** (complesse) o **Alpine.js x-transition** (micro-interazioni)
-- Font heading: **Outfit** (`font-outfit`) — Font body: **Albert Sans** (`font-albert-sans`) — Font mono: **Roboto Mono** (`font-roboto-mono`)
-
----
-
-## Palette Colori
-
-### Colori Semantici (da usare sempre)
-
-| Token                  | Valore base     | Uso                                  |
-|------------------------|-----------------|--------------------------------------|
-| `text-primary`         | Cyan-500        | Accenti, icone, link, eyebrow        |
-| `text-primary-dark`    | Cyan-700        | Hover su elementi primary            |
-| `text-secondary`       | Violet-500      | Accenti secondari                    |
-| `text-tertiary`        | Fuchsia-500     | Accenti terziari                     |
-| `text-mist-50`         | Quasi bianco    | Titoli, testo principale             |
-| `text-mist-200`        | Grigio chiaro   | Testo secondario                     |
-| `text-mist-400`        | Grigio medio    | Testo muted, meta info               |
-| `text-mist-600`        | Grigio scuro    | Decorazioni, elementi disabilitati   |
-| `bg-surface`           | #0a0a0a         | Background pagina (più scuro)        |
-| `bg-surface-800`       | Grigio scuro    | Card, input, elementi interattivi    |
-| `bg-surface-900`       | Grigio molto scuro | Card base, sfondo componenti      |
-| `bg-surface-950`       | Quasi nero      | Background sezioni                   |
-| `border-border`        | surface-800     | Bordi standard                       |
-
-### Colori Effetti
-
-| Classe                 | Effetto                                      |
-|------------------------|----------------------------------------------|
-| `.text-glow`           | Text shadow arancio (`accent-orange`)        |
-| `.border-glow`         | Bordo + box-shadow arancio sottile           |
-| `.shadow-glow`         | Box shadow arancio                           |
-| `.shadow-glow-purple`  | Box shadow arancio variante viola            |
-| `.text-gradient`       | Gradient testo amber → orange                |
-
-### Background Decorativi
-
-| Classe                 | Effetto                                      |
-|------------------------|----------------------------------------------|
-| `.bg-dots-pattern`     | Pattern puntini ripetuto                     |
-| `.bg-grid`             | Griglia linee sottili                        |
-| `.bg-gradient-radial`  | Gradiente radiale ambrato dal top            |
-| `.bg-gradient-mesh`    | Gradiente mesh angoli                        |
+- Un solo accento attivo: `primary` (cyan). `secondary` (violet) e `tertiary` (fuchsia) sono di riserva
+- Profondità solo tonale (`surface-950` → `900` → `800` → `700` + bordi `border-border`), nessuna ombra
+- Border radius default `rounded-xs` (0.125rem); `rounded-full` solo per CTA, badge e status pill
+- Font: heading **Outfit** (`font-outfit`), body **Albert Sans** (`font-albert-sans`), etichette mono **Roboto Mono** (`font-roboto-mono`)
+- Verde solo per WhatsApp / stato live, ambra solo per eventi WIP
+- **Legacy, non usare:** `.text-glow`, `.text-gradient`, `.border-glow`, `.shadow-glow*`, `.shadow-neon*`, `.shadow-card`, `.bg-gradient-radial`, `.bg-gradient-mesh` (residui ambra/arancio)
+- Background decorativi ammessi: `.bg-dots-pattern`, `.bg-x-pattern`, `.bg-grid`
 
 ---
 
@@ -208,7 +172,7 @@ Card generiche per contenuti testuali/principi. Usare `$slot` per il contenuto.
 
 Per bottoni non-CTA (es. nei filtri, nell'admin):
 ```html
-<button class="btn bg-surface-800 text-mist-200 hover:bg-surface-700">
+<button class="btn bg-surface-800 text-surface-200 hover:bg-surface-700">
     Filtra
 </button>
 ```
@@ -260,6 +224,6 @@ autoAnimate(document.querySelector('#lista'));
 3. Usa `@props([])` per dichiarare esplicitamente tutte le props con valori default
 4. Usa `rounded-xs` come border radius default — no `rounded-lg` o superiori
 5. Surface scuro di default: `bg-surface-900` per card, `bg-surface-800` per input/elementi interattivi
-6. I testi principali sono `text-mist-50`, quelli secondari `text-mist-400`
+6. I testi principali sono `text-surface-50`, quelli secondari `text-surface-400` (alias semantici della scala `mist`)
 7. Gli accenti usano sempre `text-primary` (cyan) — non hardcodare colori
 8. Le icone vengono da **Heroicons** via `<x-heroicon-o-nome />` o `@svg('heroicon-o-nome', 'classi')`
