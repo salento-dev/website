@@ -1,6 +1,6 @@
 @section('hero')
     <x-sections.page-hero :badge="'Resource Library // Documentation Access'" :description="'Materiali condivisi dalla community: guide, slide e risorse utili per approfondire temi tecnici.'">
-        Documenti & <span class="text-primary text-glow">Slide</span>
+        Documenti & <span class="text-primary">Slide</span>
     </x-sections.page-hero>
 @endsection
 

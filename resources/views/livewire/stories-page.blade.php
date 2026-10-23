@@ -1,6 +1,6 @@
 @section('hero')
     <x-sections.page-hero :badge="'Storie dalla community'" :description="'Il valore degli esperimenti tecnici condivisi: fallimenti, scoperte e codice reale che nasce dal confronto quotidiano tra sviluppatori.'">
-        Cose concrete che <span class="text-primary text-glow">stanno succedendo</span>
+        Cose concrete che <span class="text-primary">stanno succedendo</span>
     </x-sections.page-hero>
 @endsection
 

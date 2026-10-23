@@ -1,6 +1,6 @@
 @section('hero')
     <x-sections.page-hero :badge="'Collaborations // Network protocol'" :description="'Scopri le aziende e le organizzazioni che supportano la nostra comunità.'">
-        I nostri <span class="text-glow text-primary">Partner</span>
+        I nostri <span class="text-primary">Partner</span>
     </x-sections.page-hero>
 @endsection
 

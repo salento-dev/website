@@ -1,6 +1,6 @@
 @section('hero')
     <x-sections.page-hero :badge="'Legal // Data Protection'" :description="'Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR).'">
-        Privacy <span class="text-glow text-primary">Policy</span>
+        Privacy <span class="text-primary">Policy</span>
     </x-sections.page-hero>
 @endsection
 

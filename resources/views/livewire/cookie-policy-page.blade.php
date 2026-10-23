@@ -1,6 +1,6 @@
 @section('hero')
     <x-sections.page-hero :badge="'Legal // Browser Storage'" :description="'Informativa sull\'utilizzo dei cookie sul sito salento.dev ai sensi del Provvedimento del Garante Privacy del 10 giugno 2021.'">
-        Cookie <span class="text-glow text-primary">Policy</span>
+        Cookie <span class="text-primary">Policy</span>
     </x-sections.page-hero>
 @endsection
 
