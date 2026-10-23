@@ -186,7 +186,7 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 
 **The Reserve Rule.** Violet e fuchsia esistono come token ma non sono voci attive. Non introdurli in nuovo lavoro senza una decisione esplicita.
 
-**The Legacy Amber Rule.** Le utility `.text-glow`, `.text-gradient`, `.border-glow`, `.shadow-glow`, `.shadow-glow-purple`, `.shadow-neon*`, `.shadow-card`, `.bg-gradient-radial`, `.bg-gradient-mesh` sono residui ambra/arancio di una palette precedente. Non usarle. `.text-glow` è ancora su sei titoli hero (alone ambra su testo cyan): è drift da rimuovere, non un pattern.
+**The Legacy Amber Rule.** Le utility `.text-glow`, `.text-gradient`, `.border-glow`, `.shadow-glow`, `.shadow-glow-purple`, `.shadow-neon*`, `.shadow-card`, `.bg-gradient-radial`, `.bg-gradient-mesh` sono residui ambra/arancio di una palette precedente. Non usarle.
 
 **The Brand-Borrow Rule.** Verde e ambra sono prestiti funzionali (canale WhatsApp, WIP), non accenti di marca. Mai come decorazione.
 

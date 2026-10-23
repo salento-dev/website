@@ -2,7 +2,7 @@
     <x-sections.page-hero 
         :badge="'Events // Community'" 
         description="Meetup, workshop e momenti di confronto. Esplora i prossimi appuntamenti e lo storico degli eventi {{ config('community.name') }}.">
-        Eventi <span class="text-glow text-primary">Community</span>
+        Eventi <span class="text-primary">Community</span>
     </x-sections.page-hero>
 @endsection
 
