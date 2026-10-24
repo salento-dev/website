@@ -52,10 +52,13 @@
         x-transition:leave-end="opacity-0"
         @click.self="open = false"
         @keydown.escape.window="open = false"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resource-{{ $resource->id }}-title"
         class="fixed inset-0 z-100 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
         style="display: none;"
     >
-        <div class="relative flex w-full max-w-sm flex-col gap-5 border border-border bg-surface-900 p-6">
+        <div x-trap.noscroll="open" class="relative flex w-full max-w-sm flex-col gap-5 border border-border bg-surface-900 p-6">
             <x-ui.corners />
 
             {{-- Close --}}
@@ -72,7 +75,7 @@
                 @else
                     <x-heroicon-o-link class="mt-0.5 size-4 shrink-0 text-primary" />
                 @endif
-                <h2 class="font-outfit text-sm font-semibold leading-snug text-surface-50">{{ $resource->title }}</h2>
+                <h2 id="resource-{{ $resource->id }}-title" class="font-outfit text-sm font-semibold leading-snug text-surface-50">{{ $resource->title }}</h2>
             </div>
 
             {{-- Description --}}
@@ -93,6 +96,7 @@
             @endif
 
             {{-- CTA --}}
+            @if(filled($resource->resource_url))
             <a
                 href="{{ $resource->resource_url ?? '#' }}"
                 target="_blank"
@@ -107,6 +111,7 @@
                     Apri il link
                 @endif
             </a>
+            @endif
         </div>
     </div>
     </template>
