@@ -112,9 +112,10 @@ class EventDetailPage extends Component
 
         $relatedEvents = Event::query()
             ->where('is_published', true)
+            ->where('work_in_progress', false)
             ->whereKeyNot($this->event->getKey())
             ->with('categories:id,name,slug')
-            ->orderBy('starts_at')
+            ->orderByDesc('starts_at')
             ->limit(2)
             ->get();
 
