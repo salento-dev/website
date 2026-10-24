@@ -30,20 +30,20 @@
             <template x-if="days > 0">
                 <div class="flex flex-col items-center">
                     <span class="text-2xl font-bold tabular-nums md:text-3xl" x-text="days"></span>
-                    <span class="text-[9px] uppercase tracking-widest text-primary">g</span>
+                    <span class="text-2xs uppercase tracking-widest text-primary">g</span>
                 </div>
             </template>
             <div class="flex flex-col items-center">
                 <span class="text-2xl font-bold tabular-nums md:text-3xl" x-text="pad(hours)"></span>
-                <span class="text-[9px] uppercase tracking-widest text-primary">h</span>
+                <span class="text-2xs uppercase tracking-widest text-primary">h</span>
             </div>
             <div class="flex flex-col items-center">
                 <span class="text-2xl font-bold tabular-nums md:text-3xl" x-text="pad(minutes)"></span>
-                <span class="text-[9px] uppercase tracking-widest text-primary">min</span>
+                <span class="text-2xs uppercase tracking-widest text-primary">min</span>
             </div>
             <div class="flex flex-col items-center">
                 <span class="text-2xl font-bold tabular-nums md:text-3xl" x-text="pad(seconds)"></span>
-                <span class="text-[9px] uppercase tracking-widest text-primary">sec</span>
+                <span class="text-2xs uppercase tracking-widest text-primary">sec</span>
             </div>
         </div>
     </template>
