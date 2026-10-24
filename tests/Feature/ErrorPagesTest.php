@@ -22,7 +22,7 @@ class ErrorPagesTest extends TestCase
             ->assertSee('href="'.route('events').'"', false)
             ->assertSee('href="'.route('home').'"', false)
             ->assertSee($this->whatsappUrl(), false)
-            ->assertSee('Entra nel gruppo WhatsApp della community');
+            ->assertSee('prima di tutto nel gruppo WhatsApp della community');
     }
 
     public function test_unknown_url_outside_the_routes_shows_the_same_page(): void
@@ -73,7 +73,7 @@ class ErrorPagesTest extends TestCase
         $this->assertStringContainsString('Qualcosa è andato storto', $html);
         $this->assertStringContainsString('href="'.route('home').'"', $html);
         $this->assertStringContainsString($this->whatsappUrl(), $html);
-        $this->assertStringContainsString('Entra nel gruppo WhatsApp della community', $html);
+        $this->assertStringContainsString('prima di tutto nel gruppo WhatsApp della community', $html);
     }
 
     public function test_maintenance_page_renders_with_the_site_shell(): void
@@ -83,7 +83,7 @@ class ErrorPagesTest extends TestCase
         $this->assertStringContainsString('ERR_503', $html);
         $this->assertStringContainsString('Torniamo subito', $html);
         $this->assertStringContainsString($this->whatsappUrl(), $html);
-        $this->assertStringContainsString('Entra nel gruppo WhatsApp della community', $html);
+        $this->assertStringContainsString('prima di tutto nel gruppo WhatsApp della community', $html);
     }
 
     private function whatsappUrl(): string
