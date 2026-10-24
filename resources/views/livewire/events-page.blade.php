@@ -1,7 +1,7 @@
 @section('hero')
     <x-sections.page-hero 
         :badge="'Events // Community'" 
-        description="Meetup, workshop e momenti di confronto. Esplora i prossimi appuntamenti e lo storico degli eventi {{ config('community.name') }}.">
+        description="Meetup, lightning talk, AperiDev e workshop, ogni volta in un comune diverso del Salento. Qui trovi i prossimi e tutti quelli passati.">
         Eventi <span class="text-primary">Community</span>
     </x-sections.page-hero>
 @endsection

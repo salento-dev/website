@@ -1,5 +1,5 @@
 @section('hero')
-    <x-sections.page-hero :badge="'Storie dalla community'" :description="'Il valore degli esperimenti tecnici condivisi: fallimenti, scoperte e codice reale che nasce dal confronto quotidiano tra sviluppatori.'">
+    <x-sections.page-hero :badge="'Storie dalla community'" :description="'Progetti ed esperimenti dei membri, raccontati da chi li ha fatti: cosa ha funzionato, cosa no, e il codice.'">
         Cose concrete che <span class="text-primary">stanno succedendo</span>
     </x-sections.page-hero>
 @endsection
