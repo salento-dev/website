@@ -54,6 +54,9 @@
                     <x-ui.sort-select :options="$sortOptions" :current-value="$sortBy" wire-property="sortBy" />
                     <x-ui.paginator :paginator="$stories" />
                 </div>
+
+                <x-ui.item-count :collection="$stories" label="storie trovate" singular-label="storia trovata"
+                    :visible="false" />
             </div>
 
             {{-- Grid --}}

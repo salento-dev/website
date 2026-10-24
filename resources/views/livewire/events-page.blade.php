@@ -42,7 +42,7 @@
     {{-- ─────────────────────────────────────────────
          SECTION 3 — STORICO EVENTI
     ───────────────────────────────────────────── --}}
-    @if ($pastEvents->isNotEmpty())
+    @if ($pastEvents->isNotEmpty() || filled($search))
         <x-ui.section-header title="Storico Eventi" tag="Passed: {{ $pastEvents->count() }}" size="small">
             <div class="flex flex-col gap-6">
                 <x-ui.input-search wire-model="search" placeholder="Cerca nello storico..."
@@ -52,6 +52,9 @@
                     <x-ui.sort-select :options="$sortOptions" :current-value="$sortBy" wire-property="sortBy" />
                     <x-ui.paginator :paginator="$pastEvents" />
                 </div>
+
+                <x-ui.item-count :collection="$pastEvents" label="eventi trovati" singular-label="evento trovato"
+                    :visible="false" />
 
                 <div class="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] items-start gap-7 transition-opacity duration-300"
                     x-init="autoAnimate($el, { duration: 250 })" aria-label="Storico eventi">
