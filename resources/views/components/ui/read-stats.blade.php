@@ -11,7 +11,7 @@
         @if ($pageViews)
             <span class="flex items-center gap-1.5">
                 <x-heroicon-o-eye class="size-3.5 text-primary/60" />
-                {{ number_format($pageViews) }} visite
+                {{ number_format($pageViews) }} {{ $pageViews === 1 ? 'visita' : 'visite' }}
             </span>
         @endif
     </div>
