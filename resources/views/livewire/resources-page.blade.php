@@ -10,7 +10,7 @@
     <div class="flex flex-wrap items-center justify-between gap-4">
         <div class="flex flex-wrap items-center gap-4">
             <x-ui.sort-select :options="$sortOptions" :current-value="$sortBy" wire-property="sortBy" />
-            <x-ui.item-count :collection="$resources" label="risorse trovate" />
+            <x-ui.item-count :collection="$resources" label="risorse trovate" singular-label="risorsa trovata" />
         </div>
 
         <x-ui.paginator :paginator="$resources" />
