@@ -11,7 +11,7 @@
 - Border radius default `rounded-xs` (0.125rem); `rounded-full` solo per CTA, badge e status pill
 - Font: heading **Outfit** (`font-outfit`), body **Albert Sans** (`font-albert-sans`), etichette mono **Roboto Mono** (`font-roboto-mono`)
 - Verde solo per WhatsApp / stato live, ambra solo per eventi WIP
-- **Legacy, non usare:** `.text-glow`, `.text-gradient`, `.border-glow`, `.shadow-glow*`, `.shadow-neon*`, `.shadow-card`, `.bg-gradient-radial`, `.bg-gradient-mesh` (residui ambra/arancio)
+- Niente glow, gradienti o ombre ambra/arancio (palette precedente, utility rimosse)
 - Background decorativi ammessi: `.bg-dots-pattern`, `.bg-x-pattern`, `.bg-grid`
 
 ---
