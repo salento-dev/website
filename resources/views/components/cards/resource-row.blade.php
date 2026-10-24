@@ -60,7 +60,7 @@
 
             {{-- Close --}}
             <button type="button" @click="open = false"
-                class="absolute top-4 right-4 flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest text-mist-400 transition-colors hover:text-primary">
+                class="absolute top-4 right-4 flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest text-surface-400 transition-colors hover:text-primary">
                 <x-heroicon-o-x-mark class="size-4" />
                 Chiudi
             </button>
@@ -72,12 +72,12 @@
                 @else
                     <x-heroicon-o-link class="mt-0.5 size-4 shrink-0 text-primary" />
                 @endif
-                <h2 class="font-outfit text-sm font-semibold leading-snug text-mist-50">{{ $resource->title }}</h2>
+                <h2 class="font-outfit text-sm font-semibold leading-snug text-surface-50">{{ $resource->title }}</h2>
             </div>
 
             {{-- Description --}}
             @if(filled($resource->description))
-                <p class="text-xs leading-relaxed text-mist-400">{{ $resource->description }}</p>
+                <p class="text-xs leading-relaxed text-surface-400">{{ $resource->description }}</p>
             @endif
 
             {{-- Authors --}}

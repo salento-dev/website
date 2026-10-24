@@ -53,7 +53,7 @@
                     <x-ui.title-indicator />
 
 
-                    <p class="line-clamp-1 font-outfit font-bold text-white group-hover:text-primary">
+                    <p class="line-clamp-1 font-outfit font-bold text-surface-50 group-hover:text-primary">
                         {{ $event->title }}
                     </p>
                 </div>

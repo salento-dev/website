@@ -4,7 +4,7 @@
     <div class="mt-10 border-t border-border pt-8"
          x-data="{ open: false, selected: null }">
 
-        <p class="mb-4 font-mono text-2xs uppercase tracking-widest text-mist-400">
+        <p class="mb-4 font-mono text-2xs uppercase tracking-widest text-surface-400">
             {{ $label ?? ($authors->count() > 1 ? 'Autori' : 'Autore') }}
         </p>
 
@@ -20,7 +20,7 @@
                         alt="{{ $author->name }}"
                         class="size-6 rounded-full object-cover"
                     />
-                    <span class="font-outfit text-sm font-semibold text-mist-50">{{ $author->name }}</span>
+                    <span class="font-outfit text-sm font-semibold text-surface-50">{{ $author->name }}</span>
                 </button>
             @endforeach
         </div>
@@ -54,7 +54,7 @@
                 <button
                     type="button"
                     @click="open = false"
-                    class="absolute right-4 top-4 text-mist-400 transition-colors hover:text-mist-50"
+                    class="absolute right-4 top-4 text-surface-400 transition-colors hover:text-surface-50"
                 >
                     <x-heroicon-o-x-mark class="size-5" />
                 </button>

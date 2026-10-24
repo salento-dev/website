@@ -24,7 +24,7 @@
             <a href="{{ route('home') }}" aria-label="Filament homepage"
                 class="group grid w-full grow place-items-center border-r border-border px-1 pb-0.5 focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset min-[370px]:px-3.5">
                 <div class="relative">
-                    <x-ui.logo class="h-8 w-auto text-white" />
+                    <x-ui.logo class="h-8 w-auto text-surface-50" />
                 </div>
             </a>
 
