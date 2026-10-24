@@ -120,7 +120,7 @@
                     <li class="flex items-center gap-2">
                         <span class="text-primary">›</span>
                         <a href="{{ $url }}" target="_blank" rel="noopener noreferrer"
-                            class="text-primary hover:text-primary-dark transition-colors">{{ $browser }}</a>
+                            class="text-primary hover:text-primary-light transition-colors">{{ $browser }}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -138,9 +138,9 @@
             <div class="border-l-2 border-primary/20 pl-6 text-sm leading-relaxed text-surface-400">
                 <p>
                     Per qualsiasi domanda relativa all'utilizzo dei cookie su questo sito, puoi contattarci all'indirizzo
-                    <a href="mailto:{{ config('community.email') }}" class="text-primary hover:text-primary-dark transition-colors">{{ config('community.email') }}</a>.
+                    <a href="mailto:{{ config('community.email') }}" class="text-primary hover:text-primary-light transition-colors">{{ config('community.email') }}</a>.
                     Per informazioni più ampie sul trattamento dei dati personali, consulta la nostra
-                    <a href="{{ route('privacy-policy') }}" class="text-primary hover:text-primary-dark transition-colors">Privacy Policy</a>.
+                    <a href="{{ route('privacy-policy') }}" class="text-primary hover:text-primary-light transition-colors">Privacy Policy</a>.
                 </p>
             </div>
         </section>

@@ -28,7 +28,7 @@
                 <p>
                     Per esercitare i tuoi diritti o per qualsiasi informazione relativa al trattamento dei dati, puoi contattarci
                     all'indirizzo e-mail:
-                    <a href="mailto:{{ config('community.email') }}" class="text-primary hover:text-primary-dark transition-colors">{{ config('community.email') }}</a>.
+                    <a href="mailto:{{ config('community.email') }}" class="text-primary hover:text-primary-light transition-colors">{{ config('community.email') }}</a>.
                 </p>
             </div>
         </section>
@@ -185,17 +185,17 @@
                         ['art. 21', 'Diritto di opposizione', 'opporti al trattamento basato sul legittimo interesse'],
                     ] as [$article, $name, $desc])
                     <li class="flex items-start gap-2">
-                        <span class="mt-0.5 shrink-0 font-roboto-mono text-xs text-primary/60">{{ $article }}</span>
+                        <span class="mt-0.5 shrink-0 font-roboto-mono text-xs text-primary/80">{{ $article }}</span>
                         <span><strong class="text-surface-200">{{ $name }}</strong> — {{ $desc }}.</span>
                     </li>
                     @endforeach
                 </ul>
                 <p class="mt-4">
                     Per esercitare i tuoi diritti scrivi a
-                    <a href="mailto:{{ config('community.email') }}" class="text-primary hover:text-primary-dark transition-colors">{{ config('community.email') }}</a>.
+                    <a href="mailto:{{ config('community.email') }}" class="text-primary hover:text-primary-light transition-colors">{{ config('community.email') }}</a>.
                     Hai inoltre il diritto di proporre reclamo al
                     <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer"
-                        class="text-primary hover:text-primary-dark transition-colors">Garante per la Protezione dei Dati Personali</a>.
+                        class="text-primary hover:text-primary-light transition-colors">Garante per la Protezione dei Dati Personali</a>.
                 </p>
             </div>
         </section>
