@@ -5,8 +5,7 @@
 
 
 @if (!$event->work_in_progress)
-    <a href="{{ route('events.show', $event) }}" aria-label="View {{ $event->title }} event page"
-        class="block h-full bg-surface-900">
+    <a href="{{ route('events.show', $event) }}" class="block h-full bg-surface-900">
 @endif
 <div class="bg-surface-900 h-full {{ $event->work_in_progress ? 'cursor-not-allowed' : '' }}">
     <article
@@ -25,7 +24,7 @@
                 @if ($variant === 'default')
                     <div
                         class="aspect-video overflow-hidden rounded-xs ring ring-surface-700 transition duration-300 ease-out group-hover:scale-101">
-                        <img src="{{ $event->image_url }}" alt="{{ $event->title }} event thumbnail"
+                        <img src="{{ $event->image_url }}" alt="Immagine dell'evento {{ $event->title }}"
                             class="size-full object-cover" loading="lazy">
                     </div>
                 @else
@@ -69,7 +68,7 @@
         <div
             class="mt-3.75 mb-3 flex h-11 items-stretch {{ $event->work_in_progress ? 'bg-amber-500/20 border border-amber-500/30' : ($event->isPast() ? 'bg-surface-800' : 'bg-surface-700') }} text-sm font-medium {{ $event->work_in_progress ? 'text-amber-200' : 'text-surface-50' }} transition-all duration-300 ease-out {{ !$event->isPast() && !$event->work_in_progress ? 'group-hover:bg-primary-800' : '' }}">
             <div class="inline-flex grow items-center justify-between gap-3 px-4">
-                <span>{{ $event->work_in_progress ? 'Coming Soon' : 'Read' }}</span>
+                <span>{{ $event->work_in_progress ? 'In pianificazione' : 'Read' }}</span>
                 <span
                     class="transition duration-300 ease-out {{ !$event->isPast() && !$event->work_in_progress ? 'group-hover:translate-x-1' : '' }}">
                     @if ($event->work_in_progress)

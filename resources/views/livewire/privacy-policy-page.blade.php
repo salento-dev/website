@@ -10,7 +10,6 @@
     <div class="mb-12 flex items-center gap-3 font-roboto-mono text-xs text-mist-400">
         <span class="text-primary">$</span>
         <span>last_updated: <span class="text-mist-200">10 aprile 2026</span></span>
-        <span class="ml-auto rounded border border-primary/20 bg-primary/5 px-2 py-0.5 text-primary">GDPR Compliant</span>
     </div>
 
     <div class="flex flex-col gap-12">

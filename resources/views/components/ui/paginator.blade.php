@@ -7,9 +7,9 @@
         $rangeStart = max(1, min($currentPage - 2, $lastPage - 4));
         $rangeEnd = min($lastPage, max($currentPage + 2, min(5, $lastPage)));
     @endphp
-    <nav class="flex items-center gap-1" aria-label="Pagination" role="navigation">
+    <nav class="flex items-center gap-1" aria-label="Paginazione" role="navigation">
         <button class="btn btn-sm" type="button" wire:click="previousPage"
-            @if ($paginator->onFirstPage()) disabled aria-disabled="true" @endif aria-label="Previous page">
+            @if ($paginator->onFirstPage()) disabled aria-disabled="true" @endif aria-label="Pagina precedente">
             <x-heroicon-o-chevron-left class="size-3.5" />
         </button>
 
@@ -24,7 +24,7 @@
         </div>
 
         <button class="btn btn-sm" type="button" wire:click="nextPage"
-            @if ($currentPage === $lastPage) disabled aria-disabled="true" @endif aria-label="Next page">
+            @if ($currentPage === $lastPage) disabled aria-disabled="true" @endif aria-label="Pagina successiva">
             <x-heroicon-o-chevron-right class="size-3.5" />
         </button>
     </nav>

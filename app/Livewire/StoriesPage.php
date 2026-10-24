@@ -27,10 +27,10 @@ class StoriesPage extends Component
     public static function sortOptions(): array
     {
         return [
-            'newest' => 'Newest',
-            'oldest' => 'Oldest',
-            'title-asc' => 'Title A-Z',
-            'title-desc' => 'Title Z-A',
+            'newest' => 'Più recenti',
+            'oldest' => 'Meno recenti',
+            'title-asc' => 'Titolo A-Z',
+            'title-desc' => 'Titolo Z-A',
         ];
     }
 

@@ -28,7 +28,7 @@
          SECTION 2 — WORK IN PROGRESS
     ───────────────────────────────────────────── --}}
     @if ($wipEvents->isNotEmpty())
-        <x-ui.section-header title="In Planning" size="small">
+        <x-ui.section-header title="In pianificazione" size="small">
             <div class="grid gap-8 md:grid-cols-2">
                 @foreach ($wipEvents as $event)
                     <x-events.wip-event :event="$event" />
