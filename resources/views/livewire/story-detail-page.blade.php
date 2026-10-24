@@ -1,21 +1,16 @@
 @section('hero')
     @if ($story->category)
-        <div class="mb-6 inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary">
+        <div class="mb-6 inline-block rounded-xs border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary">
             {{ $story->category->name }}
         </div>
     @endif
 
-    <h1 class="mb-6 text-4xl font-black uppercase leading-tight tracking-tighter text-white sm:text-5xl lg:text-6xl">
+    <h1 class="mb-6 text-4xl font-black uppercase leading-tight tracking-tighter text-surface-50 sm:text-5xl lg:text-6xl">
         {{ $story->title }}
     </h1>
 @endsection
 
-<x-ui.detail-layout>
-
-    {{-- Meta mobile --}}
-    <x-slot:mobile-meta>
-        @include('livewire.partials.story-meta-card')
-    </x-slot:mobile-meta>
+<x-ui.detail-layout :reflow-sidebar="true">
 
     {{-- Articolo --}}
     <x-slot:article>
@@ -27,7 +22,7 @@
             </p>
         @endif
 
-        <div class="prose prose-invert prose-sm max-w-none md:prose-base">
+        <div class="prose prose-invert prose-mist prose-sm max-w-none md:prose-base">
             @if(!empty($story->body))
             {!! \Illuminate\Support\Str::markdown($story->body, [
                 'html_input' => 'strip',
@@ -52,9 +47,9 @@
 
         @if ($story->protagonists->isNotEmpty())
             <div class="flex flex-col gap-4 border border-border bg-surface-900 p-5">
-                <h3 class="font-mono text-2xs uppercase tracking-widest text-primary">
+                <h2 class="font-mono text-2xs uppercase tracking-widest text-primary">
                     {{ $story->protagonists->count() > 1 ? 'Protagonisti' : 'Protagonista' }}
-                </h3>
+                </h2>
                 @foreach ($story->protagonists as $protagonist)
                     <x-cards.author :author="$protagonist" />
                     @if (!$loop->last)
@@ -64,7 +59,8 @@
             </div>
         @endif
 
-        @include('livewire.partials.story-meta-card', ['classes' => 'hidden lg:flex'])
+        {{-- Unica scheda meta: sotto lg sale sopra l'articolo via order, su desktop resta nella sidebar --}}
+        @include('livewire.partials.story-meta-card', ['classes' => 'order-first lg:order-none'])
 
         <a href="{{ route('stories') }}"
             class="flex items-center justify-center gap-2 border border-border bg-surface px-6 py-3 text-xs font-bold uppercase tracking-widest text-primary transition-all hover:bg-primary/10">

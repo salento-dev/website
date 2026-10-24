@@ -6,7 +6,7 @@
 <!-- Hero Title - Filament style -->
 <h1 class="mb-6 text-5xl font-bold leading-[1.1] tracking-tight text-surface-50 sm:text-6xl lg:text-7xl">
     <span class="block text-primary">{{ config('community.name') }}</span>
-    <span class="block">la comunity di sviluppatori</span>
+    <span class="block">la community di sviluppatori</span>
 </h1>
 
 <!-- Description -->
@@ -17,9 +17,7 @@
 
 <!-- CTA Buttons - Filament style -->
 <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
-    <a href="{{ route('events') }}" class="btn btn-primary">
-        Scopri gli Eventi
-    </a>
+    <x-ui.button href="{{ route('events') }}" text="Scopri gli Eventi" width="w-56" />
     <a href="{{ route('resources') }}" class="btn">
         Esplora le Risorse
     </a>

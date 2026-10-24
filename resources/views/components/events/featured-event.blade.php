@@ -53,9 +53,9 @@
             <h3 class="mb-3 font-outfit text-3xl font-bold leading-tight text-surface-50 transition-colors duration-300 md:text-4xl lg:text-5xl">
                 {{ $event->title }}
             </h3>
-            @if ($event->excerpt || $event->body)
+            @if ($event->plain_excerpt)
                 <p class="line-clamp-2 text-sm leading-relaxed text-surface-400 md:text-base">
-                    {{ strip_tags($event->excerpt ?: $event->body) }}
+                    {{ $event->plain_excerpt }}
                 </p>
             @endif
         </div>
@@ -89,7 +89,7 @@
                 @endforeach
             </div>
 
-            <span class="inline-flex h-11 items-center gap-3 border border-primary bg-primary/10 px-6 font-medium text-primary transition-all duration-300 ease-out group-hover:bg-primary group-hover:text-surface-900">
+            <span class="inline-flex h-11 items-center gap-3 border border-primary bg-surface-900 bg-linear-to-r from-primary/10 to-primary/10 px-6 font-medium text-primary transition-all duration-300 ease-out group-hover:bg-primary group-hover:text-surface-900">
                 Scopri e partecipa
                 <x-heroicon-o-arrow-right class="h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </span>

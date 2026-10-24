@@ -9,7 +9,7 @@
         @svg('heroicon-' . $icon, 'size-5 text-primary shrink-0 mt-0.5')
         <div>
             @if ($title)
-                <h5 class="text-sm font-semibold text-surface-100 mb-2">{{ $title }}</h5>
+                <h3 class="text-sm font-semibold text-surface-100 mb-2">{{ $title }}</h3>
             @endif
             @if ($description)
                 <p class="text-sm text-surface-300 leading-relaxed">

@@ -1,6 +1,9 @@
-@php $isActive = request()->routeIs($route) @endphp
-<a x-data="{ isActive: {{ $isActive ? 'true' : 'false' }} }" href="{{ route($route) }}" {{ $isActive ? 'aria-current="page"' : '' }}
-    class="group relative inline-grid place-items-center px-2 py-1.5 transition-all duration-300 ease-out will-change-transform focus:outline-none focus-visible:ring focus-visible:ring-black/50 focus-visible:ring-inset {{ $isActive ? 'font-medium text-surface-50' : 'hover:font-medium hover:text-surface-50'}}"
+@php
+    $isCurrentPage = request()->routeIs($route);
+    $isActive = request()->routeIs([$route, $route.'.*']);
+@endphp
+<a x-data="{ isActive: {{ $isActive ? 'true' : 'false' }} }" href="{{ route($route) }}" @if ($isActive) aria-current="{{ $isCurrentPage ? 'page' : 'true' }}" @endif
+    class="group relative inline-grid place-items-center px-2 py-1.5 transition-all duration-300 ease-out will-change-transform focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset {{ $isActive ? 'font-medium text-surface-50' : 'hover:font-medium hover:text-surface-50'}}"
     x-init="() => {
         const animation = gsap.timeline({ paused: true })
     

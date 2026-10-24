@@ -1,6 +1,6 @@
 @section('hero')
     <x-sections.page-hero :badge="'Collaborations // Network protocol'" :description="'Scopri le aziende e le organizzazioni che supportano la nostra comunità.'">
-        I nostri <span class="text-glow text-primary">Partner</span>
+        I nostri <span class="text-primary">Partner</span>
     </x-sections.page-hero>
 @endsection
 
@@ -23,16 +23,14 @@
     <div
         class="bg-surface-800 border border-border/10 p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="relative z-10 text-center md:text-left">
-            <h3 class="font-headline text-3xl font-bold text-white mb-3">Vuoi diventare partner?</h3>
+            <h2 class="font-headline text-3xl font-bold text-surface-50 mb-3">Vuoi diventare partner?</h2>
             <p class="text-surface-300 max-w-md">
                 Unisciti all'ecosistema di {{ config('community.name') }} e contribuisci a far crescere la scena tech salentina.
             </p>
         </div>
-        <a class="relative z-10 flex items-center gap-4 bg-transparent border-2 border-primary text-primary px-8 py-4 font-label font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95 group"
-            href="mailto:{{ config('community.email') }}">
-            Contattaci
-            <x-heroicon-c-arrow-right class="size-6 group-hover:translate-x-1 transition-transform" />
-        </a>
+        <div class="relative z-10 shrink-0">
+            <x-ui.button href="mailto:{{ config('community.email') }}" text="Contattaci" width="w-44" />
+        </div>
         <!-- Technical decoration for CTA background -->
         <div class="absolute right-0 top-0 opacity-5 pointer-events-none">
             <x-heroicon-c-at-symbol class="size-64" />

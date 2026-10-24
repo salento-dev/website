@@ -74,7 +74,6 @@ Questo progetto usa **Laravel Sail** per l'ambiente locale (Docker).
 | Route                  | Componente Livewire             |
 |------------------------|---------------------------------|
 | `/`                    | `App\Livewire\HomePage`         |
-| `/cosa-facciamo`       | Vista statica (`pages.static`)  |
 | `/events`              | `App\Livewire\EventsPage`       |
 | `/events/{event:slug}` | `App\Livewire\EventDetailPage`  |
 | `/resources`           | `App\Livewire\ResourcesPage`    |

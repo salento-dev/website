@@ -1,5 +1,5 @@
 <div class="border border-border bg-surface-900 p-5 flex flex-col gap-3 {{ $classes ?? '' }}">
-    <h3 class="font-mono text-2xs uppercase tracking-widest text-primary">Dettagli</h3>
+    <h2 class="font-mono text-2xs uppercase tracking-widest text-primary">Dettagli</h2>
     @if ($story->published_at)
         <div class="flex items-center gap-3 text-sm text-surface-400">
             <x-heroicon-o-calendar-days class="size-4 text-primary/50 shrink-0" />

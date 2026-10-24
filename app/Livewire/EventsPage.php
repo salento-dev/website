@@ -24,10 +24,10 @@ class EventsPage extends Component
     public static function sortOptions(): array
     {
         return [
-            'newest' => 'Newest',
-            'oldest' => 'Oldest',
-            'title-asc' => 'Title A-Z',
-            'title-desc' => 'Title Z-A',
+            'newest' => 'Più recenti',
+            'oldest' => 'Meno recenti',
+            'title-asc' => 'Titolo A-Z',
+            'title-desc' => 'Titolo Z-A',
         ];
     }
 
@@ -96,7 +96,8 @@ class EventsPage extends Component
                     $subQuery
                         ->where('title', 'like', '%'.$this->search.'%')
                         ->orWhere('location', 'like', '%'.$this->search.'%')
-                        ->orWhere('description', 'like', '%'.$this->search.'%');
+                        ->orWhere('excerpt', 'like', '%'.$this->search.'%')
+                        ->orWhere('body', 'like', '%'.$this->search.'%');
                 }),
             );
 

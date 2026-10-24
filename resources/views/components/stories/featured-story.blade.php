@@ -11,7 +11,7 @@
         @if ($story->image_url)
             <div class="lg:w-1/2 h-64 lg:h-auto lg:max-h-128 relative overflow-hidden">
                 <img src="{{ $story->image_url }}" alt="{{ $story->title }}"
-                    class="w-full h-full object-cover opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105">
+                    class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-linear-to-r from-surface-900 via-surface-900/40 to-transparent hidden lg:block"></div>
             </div>
         @else
@@ -58,7 +58,7 @@
                                 <div class="size-9 rounded-full border-2 border-surface-900 overflow-hidden bg-surface-700 flex items-center justify-center shrink-0"
                                      title="{{ $author->name }}">
                                     @if ($avatarUrl)
-                                        <img src="{{ $avatarUrl }}" alt="{{ $author->name }}" class="size-full object-cover">
+                                        <img loading="lazy" src="{{ $avatarUrl }}" alt="{{ $author->name }}" class="size-full object-cover">
                                     @else
                                         <x-heroicon-o-user class="size-4 text-primary/60" />
                                     @endif
@@ -70,7 +70,7 @@
                                 {{ $story->authors->pluck('name')->join(', ') }}
                             </p>
                             @if ($story->authors->count() === 1 && filled($story->authors->first()->role))
-                                <p class="font-mono text-2xs uppercase tracking-widest text-surface-500">{{ $story->authors->first()->role }}</p>
+                                <p class="font-mono text-2xs uppercase tracking-widest text-surface-400">{{ $story->authors->first()->role }}</p>
                             @endif
                         </div>
                     </div>

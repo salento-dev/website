@@ -8,7 +8,7 @@
     {{-- Thumbnail --}}
     <button type="button" @click="open = true"
         class="group relative block w-full overflow-hidden border border-border bg-surface-900 cursor-zoom-in">
-        <img src="{{ $src }}" alt="{{ $alt }}"
+        <img loading="lazy" src="{{ $src }}" alt="{{ $alt }}"
             class="w-full transition duration-300 ease-out group-hover:scale-105 group-hover:opacity-70">
         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
             <div class="flex items-center gap-2 rounded-xs border border-primary/40 bg-surface-900/80 px-3 py-1.5 font-mono text-2xs uppercase tracking-widest text-primary backdrop-blur-sm">
@@ -39,7 +39,7 @@
             </button>
 
             <img src="{{ $src }}" alt="{{ $alt }}"
-                class="max-h-full max-w-full object-contain shadow-2xl">
+                class="max-h-full max-w-full object-contain">
         </div>
     </template>
 </div>

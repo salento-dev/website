@@ -20,13 +20,13 @@
                 <span class="text-sm transition-colors group-hover:text-primary">{{ $resource->title }}</span>
             </div>
 
-            <span class="hidden text-primary/30 uppercase sm:inline">{{ $resource->created_at?->diffForHumans() }}</span>
+            <span class="hidden shrink-0 whitespace-nowrap font-mono text-2xs uppercase tracking-wider text-surface-400 sm:inline">{{ $resource->created_at?->diffForHumans() }}</span>
         </div>
         <div class="flex items-center gap-2 text-2xs">
             @if($authors->isNotEmpty())
                 <div class="flex items-center">
                     @foreach($authors->take(3) as $author)
-                        <img
+                        <img loading="lazy"
                             src="{{ $author->avatar_url }}"
                             alt="{{ $author->name }}"
                             title="{{ $author->name }}"
@@ -52,15 +52,18 @@
         x-transition:leave-end="opacity-0"
         @click.self="open = false"
         @keydown.escape.window="open = false"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="resource-{{ $resource->id }}-title"
         class="fixed inset-0 z-100 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
         style="display: none;"
     >
-        <div class="relative flex w-full max-w-sm flex-col gap-5 border border-border bg-surface-900 p-6">
+        <div x-trap.noscroll="open" class="relative flex w-full max-w-sm flex-col gap-5 border border-border bg-surface-900 p-6">
             <x-ui.corners />
 
             {{-- Close --}}
             <button type="button" @click="open = false"
-                class="absolute top-4 right-4 flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest text-mist-400 transition-colors hover:text-primary">
+                class="absolute top-4 right-4 flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest text-surface-400 transition-colors hover:text-primary">
                 <x-heroicon-o-x-mark class="size-4" />
                 Chiudi
             </button>
@@ -72,12 +75,12 @@
                 @else
                     <x-heroicon-o-link class="mt-0.5 size-4 shrink-0 text-primary" />
                 @endif
-                <h2 class="font-outfit text-sm font-semibold leading-snug text-mist-50">{{ $resource->title }}</h2>
+                <h2 id="resource-{{ $resource->id }}-title" class="font-outfit text-sm font-semibold leading-snug text-surface-50">{{ $resource->title }}</h2>
             </div>
 
             {{-- Description --}}
             @if(filled($resource->description))
-                <p class="text-xs leading-relaxed text-mist-400">{{ $resource->description }}</p>
+                <p class="text-xs leading-relaxed text-surface-400">{{ $resource->description }}</p>
             @endif
 
             {{-- Authors --}}
@@ -93,6 +96,7 @@
             @endif
 
             {{-- CTA --}}
+            @if(filled($resource->resource_url))
             <a
                 href="{{ $resource->resource_url ?? '#' }}"
                 target="_blank"
@@ -101,12 +105,13 @@
             >
                 @if($isFile)
                     <x-heroicon-o-arrow-down-tray class="size-4" />
-                    Scarica il file
+                    Scarica il file<span class="sr-only">, si apre in una nuova scheda</span>
                 @else
                     <x-heroicon-o-arrow-top-right-on-square class="size-4" />
-                    Apri il link
+                    Apri il link<span class="sr-only">, si apre in una nuova scheda</span>
                 @endif
             </a>
+            @endif
         </div>
     </div>
     </template>

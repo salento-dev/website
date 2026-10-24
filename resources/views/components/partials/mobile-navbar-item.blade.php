@@ -3,8 +3,11 @@
     'routeName' => null,
 ])
 
-@php $isActive = request()->routeIs($route) @endphp
-<a href="{{ route($route) }}" aria-current="{{ $isActive ? 'page' : null }}" x-on:click="showMobileMenu = false"
+@php
+    $isCurrentPage = request()->routeIs($route);
+    $isActive = request()->routeIs([$route, $route.'.*']);
+@endphp
+<a href="{{ route($route) }}" @if ($isActive) aria-current="{{ $isCurrentPage ? 'page' : 'true' }}" @endif x-on:click="showMobileMenu = false"
     class="block py-2 transition duration-300 ease-out {{ $isActive ? 'font-medium text-surface-200' : 'hover:scale-110 hover:font-medium hover:text-surface-200'  }}">
     <span class="relative inline-flex items-center gap-1.5">
         {{ $routeName }}

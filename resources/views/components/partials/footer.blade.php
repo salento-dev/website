@@ -1,21 +1,21 @@
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 py-8">
     <div class="col-span-1 md:col-span-2">
-        <x-ui.logo class="mb-6 h-8 w-auto text-white" />
+        <x-ui.logo class="mb-6 h-8 w-auto text-surface-50" />
         <p class="max-w-md text-sm text-surface-400 leading-relaxed mb-8">
             {{ config('community.description') }}
         </p>
         <div class="flex gap-3">
             @foreach (config('community.social') as $social)
                 <a href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
-                    aria-label="{{ $social['label'] }}"
-                    class="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface-900 text-surface-400 hover:bg-border/20 hover:text-primary hover:border-primary/50 transition-all duration-200">
+                    aria-label="{{ $social['label'] }}, si apre in una nuova scheda"
+                    class="flex h-10 w-10 items-center justify-center rounded-xs border border-border bg-surface-900 text-surface-400 hover:bg-border/20 hover:text-primary hover:border-primary/50 transition-all duration-200">
                     <x-dynamic-component :component="'simpleicon-' . $social['icon']" class="h-5 w-5" />
                 </a>
             @endforeach
         </div>
     </div>
     <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Naviga</h4>
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Naviga</h2>
         <ul class="space-y-3 text-sm text-surface-400">
             @foreach (array_filter(config('navigation.items'), fn($item) => $item['footer']) as $item)
                 <li>
@@ -25,13 +25,13 @@
         </ul>
     </div>
     <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Community</h4>
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Community</h2>
         <ul class="space-y-3 text-sm text-surface-400">
             @foreach (config('community.social') as $social)
                 <li>
                     <a class="hover:text-primary transition-colors duration-200"
                         href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer">
-                        {{ $social['label'] }}
+                        {{ $social['label'] }}<span class="sr-only">, si apre in una nuova scheda</span>
                     </a>
                 </li>
             @endforeach

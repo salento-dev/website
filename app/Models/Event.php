@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Event extends Model
 {
@@ -51,9 +52,14 @@ class Event extends Model
         return $this->morphMany(PageView::class, 'viewable');
     }
 
+    /**
+     * Determine whether the event is over, falling back to the start date when no end date is set.
+     */
     public function isPast(): bool
     {
-        return $this->ends_at <= now();
+        $endsAt = $this->ends_at ?? $this->starts_at;
+
+        return $endsAt !== null && $endsAt->lessThanOrEqualTo(now());
     }
 
     public function media(): HasMany
@@ -92,6 +98,37 @@ class Event extends Model
         }
 
         return $storage->url('placeholders/events/event-placeholder.jpg');
+    }
+
+    /**
+     * Get the town of the event, taken from the last segment of "Venue, Town" locations.
+     */
+    public function getLocationTownAttribute(): ?string
+    {
+        if (blank($this->location)) {
+            return null;
+        }
+
+        $town = trim(Str::afterLast((string) $this->location, ','));
+
+        return $town !== '' ? $town : trim((string) $this->location);
+    }
+
+    /**
+     * Get a plain-text summary for cards: the excerpt, or the Markdown body stripped of markup.
+     */
+    public function getPlainExcerptAttribute(): ?string
+    {
+        $source = filled($this->excerpt) ? $this->excerpt : $this->body;
+
+        if (blank($source)) {
+            return null;
+        }
+
+        $text = Str::of(Str::markdown((string) $source))->stripTags()->squish()->value();
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        return $text !== '' ? $text : null;
     }
 
     public function getLocalStartsAtAttribute(): ?Carbon

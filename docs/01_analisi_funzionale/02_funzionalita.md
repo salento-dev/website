@@ -232,7 +232,6 @@ Nel pannello admin la **dashboard** mostra i widget registrati in `AdminPanelPro
 
 ## Pagine istituzionali e legali
 
-- **`/cosa-facciamo`** (route `services`) — pagina **statica** (`Route::view('/cosa-facciamo', 'pages.static', ...)`), presentazione delle attività.
 - **`/privacy-policy`** (`PrivacyPolicyPage`) — informativa GDPR (Regolamento UE 2016/679).
 - **`/cookie-policy`** (`CookiePolicyPage`) — informativa cookie (solo cookie tecnici, coerente con l'assenza di tracciamento di terze parti).
 

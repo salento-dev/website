@@ -45,7 +45,7 @@
         }
     })
 }"
-    class="group relative px-8 pb-10 text-center focus:outline-none focus-visible:ring focus-visible:ring-black/50"
+    class="group relative px-6 pb-8 md:px-8 md:pb-10 text-center focus:outline-none focus-visible:ring focus-visible:ring-primary/50"
     style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
 
     <div x-ref="background"
@@ -65,7 +65,7 @@
 
 
         <div class="relative z-1 self-center justify-self-center mask-y-from-80% [grid-area:1/-1]">
-            <div x-ref="patternBackground" class="bg-x-pattern h-30 md:h-45 w-40 mask-x-from-35% bg-repeat"
+            <div x-ref="patternBackground" class="bg-x-pattern h-24 md:h-45 w-40 mask-x-from-35% bg-repeat"
                 style="background-position-y: 77px;"></div>
         </div>
     </div>

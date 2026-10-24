@@ -13,7 +13,7 @@
 ])
 
 <div
-    class="group relative grow overflow-hidden rounded-xs bg-surface-800 text-surface-50 transition duration-300 ease-out focus-within:ring focus-within:ring-black/50 focus-within:ring-inset"
+    class="group relative grow overflow-hidden rounded-xs bg-surface-800 text-surface-50 transition duration-300 ease-out focus-within:ring focus-within:ring-primary/50 focus-within:ring-inset"
     x-data="{
         search: {{ $wireModel ? "\$wire.{$wireModel} ?? ''" : "''" }},
         listeningMessages: @js($listeningMessages),
@@ -65,13 +65,13 @@
     <button
         type="button"
         @click="clearSearch()"
-        aria-label="Clear search"
+        aria-label="Cancella ricerca"
         :aria-hidden="search.length === 0"
         :tabindex="search.length === 0 ? -1 : 0"
         class="absolute top-1.5 right-1.5 flex h-7 items-center justify-center gap-0.75 rounded-xs bg-surface-900 pr-1.75 pl-2 text-xs opacity-0 transition-all duration-300 ease-out will-change-transform hover:bg-secondary/60"
         :class="{ 'pointer-events-auto opacity-100 hover:scale-95': search.length > 0, 'opacity-0 scale-50 pointer-events-none': search.length === 0 }"
     >
-        <span>Clear</span>
+        <span>Cancella</span>
         <svg aria-hidden="true" class="size-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 6 6 18"></path>
             <path d="m6 6 12 12"></path>

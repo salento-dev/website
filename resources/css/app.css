@@ -6,13 +6,109 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+/*
+ * Font self-hosted (SIL OFL 1.1, licenze in resources/fonts/OFL-*.txt).
+ * Variable font da Google Fonts, solo sottoinsiemi latin e latin-ext:
+ * il browser scarica un file solo se la pagina usa quello stile e quei caratteri.
+ */
+
+@font-face {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/outfit-latin-ext-wght-normal.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/outfit-latin-wght-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Albert Sans";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/albert-sans-latin-ext-wght-normal.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Albert Sans";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/albert-sans-latin-wght-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Albert Sans";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/albert-sans-latin-ext-wght-italic.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Albert Sans";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/albert-sans-latin-wght-italic.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    font-style: normal;
+    font-weight: 100 700;
+    font-display: swap;
+    src: url("../fonts/roboto-mono-latin-ext-wght-normal.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    font-style: normal;
+    font-weight: 100 700;
+    font-display: swap;
+    src: url("../fonts/roboto-mono-latin-wght-normal.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    font-style: italic;
+    font-weight: 100 700;
+    font-display: swap;
+    src: url("../fonts/roboto-mono-latin-ext-wght-italic.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    font-style: italic;
+    font-weight: 100 700;
+    font-display: swap;
+    src: url("../fonts/roboto-mono-latin-wght-italic.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @theme {
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     --font-albert-sans: "Albert Sans", Verdana, sans-serif;
     --font-outfit: "Outfit", "Albert Sans", sans-serif;
-    --font-roboto-mono: "Roboto Mono Variable", monospace;
+    --font-roboto-mono: var(--font-mono);
 
     /* Font aliases */
     --font-headline: var(--font-outfit);
@@ -108,70 +204,6 @@
             linear-gradient(to right, rgba(38, 38, 38, 0.5) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(38, 38, 38, 0.5) 1px, transparent 1px);
         background-size: 40px 40px;
-    }
-
-    .bg-gradient-radial {
-        background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08), transparent 60%);
-    }
-
-    .bg-gradient-mesh {
-        background:
-            radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.1) 0px, transparent 50%),
-            radial-gradient(at 100% 0%, rgba(249, 115, 22, 0.08) 0px, transparent 50%);
-    }
-
-    .text-gradient {
-        background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .text-glow {
-        text-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
-    }
-
-    .border-glow {
-        border: 1px solid rgba(245, 158, 11, 0.2);
-        box-shadow: 0 0 20px rgba(245, 158, 11, 0.05);
-    }
-
-    /* Filament-style shadows - very subtle */
-    .shadow-soft {
-        box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.05),
-            0 1px 2px 0 rgba(0, 0, 0, 0.1);
-    }
-
-    .shadow-card {
-        box-shadow:
-            0 0 0 1px rgba(245, 158, 11, 0.05),
-            0 1px 3px 0 rgba(0, 0, 0, 0.3);
-    }
-
-    .shadow-glow {
-        box-shadow:
-            0 0 0 1px rgba(245, 158, 11, 0.15),
-            0 4px 16px -4px rgba(245, 158, 11, 0.15);
-    }
-
-    .shadow-glow-purple {
-        box-shadow:
-            0 0 0 1px rgba(249, 115, 22, 0.15),
-            0 4px 16px -4px rgba(249, 115, 22, 0.15);
-    }
-
-    /* Legacy support for existing components */
-    .shadow-neon {
-        box-shadow:
-            0 0 0 1px rgba(245, 158, 11, 0.15),
-            0 4px 16px -4px rgba(245, 158, 11, 0.15);
-    }
-
-    .shadow-neon-purple {
-        box-shadow:
-            0 0 0 1px rgba(249, 115, 22, 0.15),
-            0 4px 16px -4px rgba(249, 115, 22, 0.15);
     }
 
     .item {
@@ -305,6 +337,18 @@
     animation: .7s ease-out button-pulse
 }
 
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 @keyframes button-pulse {
     0% {
         opacity: .75;
@@ -315,4 +359,23 @@
         opacity: 0;
         inset: -8px
     }
+}
+/* Prosa (dettaglio evento/storia) sulla scala surface invece dei grigi di default */
+.prose-mist {
+    --tw-prose-invert-body: var(--color-surface-300);
+    --tw-prose-invert-headings: var(--color-surface-50);
+    --tw-prose-invert-lead: var(--color-surface-400);
+    --tw-prose-invert-links: var(--color-primary);
+    --tw-prose-invert-bold: var(--color-surface-50);
+    --tw-prose-invert-counters: var(--color-surface-400);
+    --tw-prose-invert-bullets: var(--color-surface-600);
+    --tw-prose-invert-hr: var(--color-border);
+    --tw-prose-invert-quotes: var(--color-surface-200);
+    --tw-prose-invert-quote-borders: var(--color-border);
+    --tw-prose-invert-captions: var(--color-surface-400);
+    --tw-prose-invert-code: var(--color-surface-50);
+    --tw-prose-invert-pre-code: var(--color-surface-200);
+    --tw-prose-invert-pre-bg: var(--color-surface-950);
+    --tw-prose-invert-th-borders: var(--color-surface-700);
+    --tw-prose-invert-td-borders: var(--color-border);
 }

@@ -11,7 +11,7 @@
     type="button"
     x-on:click="toggleTag('{{ $safeTag }}')"
     :aria-pressed="isTagSelected('{{ $safeTag }}')"
-    class="inline-flex h-8 shrink-0 cursor-pointer items-center gap-1.25 rounded-xs pr-1.75 pl-2.5 text-sm transition-all duration-300 ease-out select-none focus:outline-none focus-visible:ring focus-visible:ring-black/50 focus-visible:ring-inset active:scale-95"
+    class="inline-flex h-8 shrink-0 cursor-pointer items-center gap-1.25 rounded-xs pr-1.75 pl-2.5 text-sm transition-all duration-300 ease-out select-none focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset active:scale-95"
     :class="isTagSelected('{{ $safeTag }}') ? 'bg-surface-100 font-medium text-surface-800' : 'bg-surface-100 hover:bg-surface-100/50'"
 >
     <span>{{ $label }}</span>

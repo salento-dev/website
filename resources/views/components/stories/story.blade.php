@@ -8,7 +8,7 @@
         <div class="overflow-hidden">
             <div class="aspect-video overflow-hidden">
                 <img src="{{ $story->image_url }}" alt="{{ $story->title }}"
-                    class="w-full h-full object-cover opacity-70 grayscale transition-all duration-500 group-hover:opacity-90 group-hover:grayscale-0 group-hover:scale-105"
+                    class="w-full h-full object-cover opacity-90 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105"
                     loading="lazy">
             </div>
         </div>
@@ -24,16 +24,16 @@
                 </span>
             @endif
             @if ($story->read_time_minutes)
-                <span class="font-mono text-2xs uppercase tracking-widest text-surface-500">
+                <span class="font-mono text-2xs uppercase tracking-widest text-surface-400">
                     {{ $story->read_time_minutes }} min
                 </span>
             @endif
         </div>
 
         {{-- Title --}}
-        <h4 class="font-outfit text-lg font-bold text-surface-50 leading-snug transition-colors duration-300 group-hover:text-primary line-clamp-2">
+        <h3 class="font-outfit text-lg font-bold text-surface-50 leading-snug transition-colors duration-300 group-hover:text-primary line-clamp-2">
             {{ $story->title }}
-        </h4>
+        </h3>
 
         {{-- Excerpt --}}
         <p class="text-sm leading-relaxed text-surface-400 line-clamp-3 flex-1">
@@ -64,9 +64,9 @@
             @else
                 <span class="min-h-7"></span>
             @endif
-            <span class="font-mono text-2xs uppercase tracking-widest text-primary/60 transition-colors duration-300 group-hover:text-primary shrink-0">
+            <span class="font-mono text-2xs uppercase tracking-widest text-primary/80 transition-colors duration-300 group-hover:text-primary shrink-0">
                 Leggi
-                <x-heroicon-o-arrow-top-right-on-square class="inline h-3 ml-0.5" />
+                <x-heroicon-o-arrow-right class="inline h-3 ml-0.5" />
             </span>
         </div>
     </div>

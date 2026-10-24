@@ -1,5 +1,4 @@
-<x-ui.section-header 
-    eyebrow="Regole della Community" 
+<x-ui.section-header
     title='Codice di Condotta'
     description="Promuoviamo un ambiente inclusivo, rispettoso e collaborativo dove ogni membro può crescere professionalmente.">
 

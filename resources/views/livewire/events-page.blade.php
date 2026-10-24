@@ -1,8 +1,8 @@
 @section('hero')
     <x-sections.page-hero 
         :badge="'Events // Community'" 
-        description="Meetup, workshop e momenti di confronto. Esplora i prossimi appuntamenti e lo storico degli eventi {{ config('community.name') }}.">
-        Eventi <span class="text-glow text-primary">Community</span>
+        description="Meetup, lightning talk, AperiDev e workshop, ogni volta in un comune diverso del Salento. Qui trovi i prossimi e tutti quelli passati.">
+        Eventi <span class="text-primary">Community</span>
     </x-sections.page-hero>
 @endsection
 
@@ -22,13 +22,15 @@
                 @endforeach
             </x-ui.slideshow>
         </x-ui.section-header>
+    @else
+        <x-events.no-upcoming />
     @endif
 
     {{-- ─────────────────────────────────────────────
          SECTION 2 — WORK IN PROGRESS
     ───────────────────────────────────────────── --}}
     @if ($wipEvents->isNotEmpty())
-        <x-ui.section-header title="In Planning" size="small">
+        <x-ui.section-header title="In pianificazione" size="small">
             <div class="grid gap-8 md:grid-cols-2">
                 @foreach ($wipEvents as $event)
                     <x-events.wip-event :event="$event" />
@@ -40,8 +42,8 @@
     {{-- ─────────────────────────────────────────────
          SECTION 3 — STORICO EVENTI
     ───────────────────────────────────────────── --}}
-    @if ($pastEvents->isNotEmpty())
-        <x-ui.section-header title="Storico Eventi" tag="Passed: {{ $pastEvents->count() }}" size="small">
+    @if ($pastEvents->isNotEmpty() || filled($search))
+        <x-ui.section-header title="Storico Eventi" tag="Passed: {{ $pastEvents->total() }}" size="small">
             <div class="flex flex-col gap-6">
                 <x-ui.input-search wire-model="search" placeholder="Cerca nello storico..."
                     sr-label="Cerca eventi per titolo, luogo o descrizione" />
@@ -50,6 +52,9 @@
                     <x-ui.sort-select :options="$sortOptions" :current-value="$sortBy" wire-property="sortBy" />
                     <x-ui.paginator :paginator="$pastEvents" />
                 </div>
+
+                <x-ui.item-count :collection="$pastEvents" label="eventi trovati" singular-label="evento trovato"
+                    :visible="false" />
 
                 <div class="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] items-start gap-7 transition-opacity duration-300"
                     x-init="autoAnimate($el, { duration: 250 })" aria-label="Storico eventi">

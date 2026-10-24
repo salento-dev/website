@@ -1,6 +1,6 @@
 @section('hero')
-    <x-sections.page-hero :badge="'Storie dalla community'" :description="'Il valore degli esperimenti tecnici condivisi: fallimenti, scoperte e codice reale che nasce dal confronto quotidiano tra sviluppatori.'">
-        Cose concrete che <span class="text-primary text-glow">stanno succedendo</span>
+    <x-sections.page-hero :badge="'Storie dalla community'" :description="'Progetti ed esperimenti dei membri, raccontati da chi li ha fatti: cosa ha funzionato, cosa no, e il codice.'">
+        Cose concrete che <span class="text-primary">stanno succedendo</span>
     </x-sections.page-hero>
 @endsection
 
@@ -28,14 +28,22 @@
 
                 {{-- Category filter --}}
                 @if ($categories->isNotEmpty() && $categories->count() > 1)
-                    <div class="hidden md:flex flex-wrap gap-2">
-                        <button wire:click="$set('categoryId', null)"
-                            class="rounded-xs border px-3 py-1.5 font-mono text-2xs uppercase tracking-widest transition-colors duration-200 {{ $categoryId === null ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-surface-800 text-surface-400 hover:border-primary/30 hover:text-surface-200' }}">
+                    @php
+                        $chipClasses = 'inline-flex min-h-11 shrink-0 cursor-pointer items-center whitespace-nowrap rounded-xs border px-3 font-mono text-2xs uppercase tracking-widest transition-colors duration-200 focus:outline-none focus-visible:ring focus-visible:ring-primary/50 pointer-fine:min-h-8';
+                        $chipActive = 'border-primary bg-primary/10 text-primary';
+                        $chipIdle = 'border-border bg-surface-800 text-surface-400 hover:border-primary/30 hover:text-surface-200';
+                    @endphp
+                    <div role="group" aria-label="Filtra per categoria"
+                        class="-mx-6 flex snap-x scroll-px-6 gap-2 overflow-x-auto px-6 [scrollbar-width:none] md:mx-0 md:flex-wrap md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden">
+                        <button type="button" wire:click="$set('categoryId', null)"
+                            aria-pressed="{{ $categoryId === null ? 'true' : 'false' }}"
+                            class="{{ $chipClasses }} snap-start {{ $categoryId === null ? $chipActive : $chipIdle }}">
                             Tutte
                         </button>
                         @foreach ($categories as $category)
-                            <button wire:click="$set('categoryId', {{ $category->id }})"
-                                class="rounded-xs border px-3 py-1.5 font-mono text-2xs uppercase tracking-widest transition-colors duration-200 {{ $categoryId === $category->id ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-surface-800 text-surface-400 hover:border-primary/30 hover:text-surface-200' }}">
+                            <button type="button" wire:click="$set('categoryId', {{ $category->id }})"
+                                aria-pressed="{{ $categoryId === $category->id ? 'true' : 'false' }}"
+                                class="{{ $chipClasses }} snap-start {{ $categoryId === $category->id ? $chipActive : $chipIdle }}">
                                 {{ $category->name }}
                             </button>
                         @endforeach
@@ -46,6 +54,9 @@
                     <x-ui.sort-select :options="$sortOptions" :current-value="$sortBy" wire-property="sortBy" />
                     <x-ui.paginator :paginator="$stories" />
                 </div>
+
+                <x-ui.item-count :collection="$stories" label="storie trovate" singular-label="storia trovata"
+                    :visible="false" />
             </div>
 
             {{-- Grid --}}

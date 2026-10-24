@@ -11,6 +11,11 @@
     $uid = 'spark_' . uniqid();
     $hasText = !empty($text);
 
+    $accessibleName = $ariaLabel ?: $text;
+    if ($target === '_blank' && $accessibleName !== '') {
+        $accessibleName .= ', si apre in una nuova scheda';
+    }
+
     $iconSizeClass = match ($iconSize) {
         '3' => 'size-3',
         '5' => 'size-5',
@@ -18,7 +23,7 @@
         default => 'size-4',
     };
 
-    $linkClasses = 'group flex items-center whitespace-nowrap transition-all duration-300 ease-out focus:outline-none focus-visible:ring focus-visible:ring-black/50 focus-visible:ring-inset hover:bg-green-500/10';
+    $linkClasses = 'group flex items-center whitespace-nowrap transition-all duration-300 ease-out focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset hover:bg-green-500/10';
     $linkClasses .= $hasText
         ? ' gap-2.5 pr-4 pb-0.5 pl-3.5 hover:pr-5'
         : ' justify-center px-3.5';
@@ -28,7 +33,7 @@
     href="{{ $href }}"
     target="{{ $target }}"
     rel="{{ $rel }}"
-    aria-label="{{ $ariaLabel ?: $text }}"
+    aria-label="{{ $accessibleName }}"
     {{ $attributes->merge(['class' => $linkClasses]) }}
     x-init="
         () => {

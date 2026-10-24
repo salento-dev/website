@@ -34,8 +34,12 @@ $skills = [
         const loop = window.FilamentAnimations.horizontalLoop(items, {
             repeat: -1,
             speed: 0.3,
+            paused: window.prefersReducedMotion(),
         })
-        loop.play()
+
+        if (!window.prefersReducedMotion()) {
+            loop.play()
+        }
 
         return loop
     }

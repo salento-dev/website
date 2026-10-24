@@ -1,14 +1,16 @@
 <div class="relative z-40 nav:hidden">
 
     <button type="button" x-on:click="showMobileMenu = true"
-        class="grid h-full w-22 place-items-center overflow-hidden transition duration-300 ease-out hover:bg-border/30 focus:ring-0 focus:outline-none min-[370px]:w-25 2xs:w-30 nav:hidden nav:w-auto"
-        aria-label="Open menu" aria-expanded="false" x-bind:aria-expanded="showMobileMenu">
+        x-init="$watch('showMobileMenu', (isOpen) => { if (! isOpen) $nextTick(() => $el.focus({ preventScroll: true })) })"
+        class="grid h-full w-22 place-items-center overflow-hidden transition duration-300 ease-out hover:bg-border/30 focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset min-[370px]:w-25 2xs:w-30 nav:hidden nav:w-auto"
+        aria-label="Apri menu" aria-expanded="false" x-bind:aria-expanded="showMobileMenu">
         <div>Menu</div>
     </button>
 
 
     <div x-show="showMobileMenu" class="fixed inset-0 z-50 nav:hidden" role="dialog" aria-modal="true"
-        aria-labelledby="mobile-menu-title" x-on:click.self="showMobileMenu = false" x-init="$nextTick(() => initMobileMenu($el, $refs, $watch, () => showMobileMenu = false))"
+        aria-labelledby="mobile-menu-title" x-trap.noscroll.noreturn="showMobileMenu"
+        x-on:keydown.escape.window="showMobileMenu = false" x-on:click.self="showMobileMenu = false" x-init="$nextTick(() => initMobileMenu($el, $refs, $watch, () => showMobileMenu = false))"
         style="display: none;">
 
         <div x-ref="overlay" x-on:click="showMobileMenu = false"
@@ -18,7 +20,7 @@
 
         <div class="pointer-events-none relative flex h-full flex-col px-5" x-on:click="showMobileMenu = false">
             <span id="mobile-menu-title" class="sr-only">
-                Navigation menu
+                Menu di navigazione
             </span>
 
 
@@ -31,8 +33,8 @@
 
                 <div x-ref="closeBtn">
                     <button type="button" x-on:click="showMobileMenu = false"
-                        class="group pointer-events-auto flex h-10 items-center justify-center rounded-md bg-surface pr-3.5 pl-3 text-surface-200 transition duration-300 ease-out hover:bg-surface-100 focus:outline-none"
-                        aria-label="Close menu">
+                        class="group pointer-events-auto flex h-10 items-center justify-center rounded-xs bg-surface pr-3.5 pl-3 text-surface-200 transition duration-300 ease-out hover:bg-surface-800 focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset"
+                        aria-label="Chiudi menu">
                         <x-heroicon-o-x-mark class="mr-1.25 size-3.5 shrink-0 transition duration-300 ease-out will-change-transform group-hover:rotate-90" />
                         <span>Close</span>
                         <span
@@ -49,12 +51,12 @@
 
 
             <div class="pointer-events-none mt-auto flex justify-center pb-6">
-                <nav x-ref="menuPanel" class="pointer-events-auto relative z-10 w-full rounded-xl bg-surface"
-                    aria-label="Main navigation" x-on:click.stop="">
+                <nav x-ref="menuPanel" class="pointer-events-auto relative z-10 w-full rounded-xs bg-surface"
+                    aria-label="Navigazione principale" x-on:click.stop="">
 
                     <div x-ref="dragHandle"
                         class="-mt-5 flex cursor-grab touch-none flex-col items-center pt-8 pb-8 select-none active:cursor-grabbing"
-                        aria-label="Drag to close menu">
+                        aria-hidden="true">
                         <div class="h-1.25 w-12 rounded-full bg-surface-400/40"></div>
                     </div>
 
@@ -139,13 +141,13 @@
                                 const fillWidth = fillProgress * 100;
 
                                 gsap.set(dragHandle.querySelector('div'), {
-                                    background: `linear-gradient(to right, rgb(120 113 108) ${fillWidth}%, rgb(120 113 108 / 0.4) ${fillWidth}%)`,
+                                    background: `linear-gradient(to right, rgb(156 168 171) ${fillWidth}%, rgb(156 168 171 / 0.4) ${fillWidth}%)`,
                                 });
                             },
                             onRelease: function() {
                                 gsap.to(dragHandle.querySelector('div'), {
                                     width: 48,
-                                    background: 'rgb(120 113 108 / 0.4)',
+                                    background: 'rgb(156 168 171 / 0.4)',
                                     duration: 0.3,
                                     ease: 'power2.out',
                                 });
@@ -183,7 +185,7 @@
 
                                 gsap.to(dragHandle.querySelector('div'), {
                                     width: 48,
-                                    background: 'rgb(120 113 108 / 0.4)',
+                                    background: 'rgb(156 168 171 / 0.4)',
                                     duration: 0.3,
                                     ease: 'power2.out',
                                 });

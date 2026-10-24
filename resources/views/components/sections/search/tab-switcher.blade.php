@@ -44,7 +44,7 @@
             <label
                 for="{{ $inputId }}"
                 :class="{ 'font-medium text-surface-800': {{ $model }} === '{{ $escapedValue }}', 'hover:bg-primary-400/50 hover:font-medium hover:text-surface-800': {{ $model }} !== '{{ $escapedValue }}' }"
-                class="relative z-10 flex h-9 cursor-pointer items-center justify-center px-3 text-sm transition-all duration-400 ease-out select-none peer-focus-visible:ring peer-focus-visible:ring-black/50 peer-focus-visible:ring-inset first:rounded-l-xs last:rounded-r-xs"
+                class="relative z-10 flex h-9 cursor-pointer items-center justify-center px-3 text-sm transition-all duration-400 ease-out select-none peer-focus-visible:ring peer-focus-visible:ring-primary/50 peer-focus-visible:ring-inset first:rounded-l-xs last:rounded-r-xs"
             >
                 @if (! $loop->last)
                     <svg

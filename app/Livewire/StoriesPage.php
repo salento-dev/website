@@ -27,10 +27,10 @@ class StoriesPage extends Component
     public static function sortOptions(): array
     {
         return [
-            'newest' => 'Newest',
-            'oldest' => 'Oldest',
-            'title-asc' => 'Title A-Z',
-            'title-desc' => 'Title Z-A',
+            'newest' => 'Più recenti',
+            'oldest' => 'Meno recenti',
+            'title-asc' => 'Titolo A-Z',
+            'title-desc' => 'Titolo Z-A',
         ];
     }
 
@@ -72,7 +72,7 @@ class StoriesPage extends Component
         $stories = $this->buildStoriesQuery(null)->paginate(12);
 
         $categories = Schema::hasTable('story_categories')
-            ? StoryCategory::query()->where('is_active', true)->whereHas('stories')->orderBy('sort_order')->orderBy('name')->get()
+            ? StoryCategory::query()->where('is_active', true)->whereHas('stories', fn (Builder $query): Builder => $query->where('is_published', true))->orderBy('sort_order')->orderBy('name')->get()
             : new Collection;
 
         return view('livewire.stories-page', [
@@ -97,7 +97,7 @@ class StoriesPage extends Component
                 fn (Builder $q) => $q->where(function (Builder $sub): void {
                     $sub->where('title', 'like', '%'.$this->search.'%')
                         ->orWhere('excerpt', 'like', '%'.$this->search.'%')
-                        ->orWhere('author', 'like', '%'.$this->search.'%');
+                        ->orWhereHas('authors', fn (Builder $authors): Builder => $authors->where('name', 'like', '%'.$this->search.'%'));
                 }),
             )
             ->when(

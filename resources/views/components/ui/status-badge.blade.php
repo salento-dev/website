@@ -15,7 +15,7 @@
 
     $classes = match ($status) {
         'ongoing'  => 'border border-green-500/40 bg-green-500/10 text-green-400',
-        'past'     => 'bg-surface-700 text-surface-400',
+        'past'     => 'bg-surface-700 text-surface-300',
         'wip'      => 'border border-amber-500/30 bg-amber-500/20 text-amber-200',
         default    => 'border border-primary/30 bg-primary/10 text-primary', // upcoming
     };
