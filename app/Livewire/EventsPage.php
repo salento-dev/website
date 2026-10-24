@@ -96,7 +96,8 @@ class EventsPage extends Component
                     $subQuery
                         ->where('title', 'like', '%'.$this->search.'%')
                         ->orWhere('location', 'like', '%'.$this->search.'%')
-                        ->orWhere('description', 'like', '%'.$this->search.'%');
+                        ->orWhere('excerpt', 'like', '%'.$this->search.'%')
+                        ->orWhere('body', 'like', '%'.$this->search.'%');
                 }),
             );
 
