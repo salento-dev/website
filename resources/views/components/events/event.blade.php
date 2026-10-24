@@ -3,6 +3,10 @@
     'variant' => 'default', // 'default' or 'simple'
 ])
 
+@php
+    $startsAt = $event->local_starts_at;
+@endphp
+
 
 @if (!$event->work_in_progress)
     <a href="{{ route('events.show', $event) }}" class="block h-full bg-surface-900">
@@ -28,11 +32,12 @@
                             class="size-full object-cover" loading="lazy">
                     </div>
                 @else
-                    <div class="flex min-h-18 items-center justify-center px-3 text-center">
+                    <div class="flex min-h-18 flex-col items-center justify-center gap-1.5 px-3 text-center">
                         <h3
                             class="line-clamp-2 font-outfit text-lg font-medium text-surface-200 transition duration-300 ease-out group-hover:-translate-y-0.5">
                             {{ $event->title }}
                         </h3>
+                        <x-events.meta :event="$event" class="justify-center" />
                     </div>
                 @endif
             </div>
@@ -58,6 +63,8 @@
                     </p>
                 </div>
 
+
+                <x-events.meta :event="$event" class="mb-1" />
 
                 <p class="line-clamp-2 text-sm">
                     {{ strip_tags($event->excerpt ?: $event->body) }}
@@ -97,9 +104,11 @@
 
             <div class="grow"></div>
 
-            <span class="text-xs" title="{{ $event->local_starts_at->format('M d, Y') }}">
-                {{ $event->local_starts_at->diffForHumans() }}
-            </span>
+            @if ($startsAt)
+                <time class="text-xs" datetime="{{ $startsAt->toIso8601String() }}">
+                    {{ $startsAt->diffForHumans() }}
+                </time>
+            @endif
 
         </div>
 

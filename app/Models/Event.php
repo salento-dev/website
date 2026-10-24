@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Event extends Model
 {
@@ -97,6 +98,20 @@ class Event extends Model
         }
 
         return $storage->url('placeholders/events/event-placeholder.jpg');
+    }
+
+    /**
+     * Get the town of the event, taken from the last segment of "Venue, Town" locations.
+     */
+    public function getLocationTownAttribute(): ?string
+    {
+        if (blank($this->location)) {
+            return null;
+        }
+
+        $town = trim(Str::afterLast((string) $this->location, ','));
+
+        return $town !== '' ? $town : trim((string) $this->location);
     }
 
     public function getLocalStartsAtAttribute(): ?Carbon
