@@ -14,7 +14,7 @@
 
     {{-- Articolo --}}
     <x-slot:article>
-        <x-ui.read-stats :read-time="$story->read_time_minutes" :page-views="$story->page_views_count" />
+        <x-ui.read-stats :read-time="$story->read_time_minutes" :page-views="$story->totalPageViews()" />
 
         @if (!empty($story->excerpt))
             <p class="mb-8 border-l-2 border-primary pl-5 text-base leading-relaxed text-surface-300 md:text-lg">

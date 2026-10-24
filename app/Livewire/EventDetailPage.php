@@ -31,7 +31,7 @@ class EventDetailPage extends Component
             $relations[] = 'resources';
         }
 
-        $this->event = $event->load($relations)->loadCount('pageViews');
+        $this->event = $event->load($relations)->loadTotalPageViews();
 
         if (! in_array('media', $relations, true)) {
             $this->event->setRelation('media', new Collection);

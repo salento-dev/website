@@ -1,4 +1,5 @@
 import './bootstrap';
+import './analytics';
 import autoAnimate from '@formkit/auto-animate';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';

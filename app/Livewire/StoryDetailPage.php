@@ -14,7 +14,7 @@ class StoryDetailPage extends Component
     {
         abort_unless($story->is_published, 404);
 
-        $this->story = $story->load(['category', 'authors', 'protagonists'])->loadCount('pageViews');
+        $this->story = $story->load(['category', 'authors', 'protagonists'])->loadTotalPageViews();
     }
 
     public function render(): View

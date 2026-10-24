@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasAnalytics;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Event extends Model
 {
+    use HasAnalytics;
     use HasFactory;
 
     /**
@@ -45,11 +47,6 @@ class Event extends Model
             'work_in_progress' => 'boolean',
             'is_community_event' => 'boolean',
         ];
-    }
-
-    public function pageViews(): MorphMany
-    {
-        return $this->morphMany(PageView::class, 'viewable');
     }
 
     /**
@@ -87,7 +84,7 @@ class Event extends Model
 
     public function getImageUrlAttribute(): string
     {
-        /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+        /** @var FilesystemAdapter $storage */
         $storage = Storage::disk('public');
 
         if (filled($this->image_path)) {

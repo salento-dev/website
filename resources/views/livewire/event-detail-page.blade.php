@@ -80,7 +80,7 @@
 
     {{-- Articolo --}}
     <x-slot:article>
-        <x-ui.read-stats :read-time="$event->read_time_minutes" :page-views="$event->page_views_count" />
+        <x-ui.read-stats :read-time="$event->read_time_minutes" :page-views="$event->totalPageViews()" />
 
         @if (!empty($event->excerpt))
             <p class="mb-8 text-base md:text-lg leading-relaxed text-surface-300 border-l-2 border-primary pl-5">

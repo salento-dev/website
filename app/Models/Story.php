@@ -2,16 +2,20 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasAnalytics;
+use Database\Factories\StoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
 
 class Story extends Model
 {
-    /** @use HasFactory<\Database\Factories\StoryFactory> */
+    use HasAnalytics;
+
+    /** @use HasFactory<StoryFactory> */
     use HasFactory;
 
     /**
@@ -39,11 +43,6 @@ class Story extends Model
         ];
     }
 
-    public function pageViews(): MorphMany
-    {
-        return $this->morphMany(PageView::class, 'viewable');
-    }
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(StoryCategory::class, 'story_category_id');
@@ -63,7 +62,7 @@ class Story extends Model
     {
         if (filled($this->image_path)) {
             $path = ltrim((string) $this->image_path, '/');
-            /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+            /** @var FilesystemAdapter $storage */
             $storage = Storage::disk('public');
             if ($storage->exists($path)) {
                 return $storage->url($path);
