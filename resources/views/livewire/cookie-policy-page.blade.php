@@ -10,7 +10,7 @@
     <div class="mb-12 flex items-center gap-3 font-roboto-mono text-xs text-mist-400">
         <span class="text-primary">$</span>
         <span>last_updated: <span class="text-mist-200">10 aprile 2026</span></span>
-        <span class="ml-auto rounded border border-primary/20 bg-primary/5 px-2 py-0.5 text-primary">Solo cookie tecnici</span>
+        <span class="ml-auto rounded-xs border border-primary/20 bg-primary/5 px-2 py-0.5 text-primary">Solo cookie tecnici</span>
     </div>
 
     <div class="flex flex-col gap-12">
@@ -47,7 +47,7 @@
                 </p>
 
                 {{-- Cookie table --}}
-                <div class="mt-6 overflow-x-auto rounded border border-border">
+                <div class="mt-6 overflow-x-auto rounded-xs border border-border">
                     <table class="w-full text-xs">
                         <thead>
                             <tr class="border-b border-border bg-surface-900">

@@ -31,7 +31,7 @@
 
                 <div x-ref="closeBtn">
                     <button type="button" x-on:click="showMobileMenu = false"
-                        class="group pointer-events-auto flex h-10 items-center justify-center rounded-md bg-surface pr-3.5 pl-3 text-surface-200 transition duration-300 ease-out hover:bg-surface-100 focus:outline-none"
+                        class="group pointer-events-auto flex h-10 items-center justify-center rounded-xs bg-surface pr-3.5 pl-3 text-surface-200 transition duration-300 ease-out hover:bg-surface-800 focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset"
                         aria-label="Close menu">
                         <x-heroicon-o-x-mark class="mr-1.25 size-3.5 shrink-0 transition duration-300 ease-out will-change-transform group-hover:rotate-90" />
                         <span>Close</span>
@@ -49,7 +49,7 @@
 
 
             <div class="pointer-events-none mt-auto flex justify-center pb-6">
-                <nav x-ref="menuPanel" class="pointer-events-auto relative z-10 w-full rounded-xl bg-surface"
+                <nav x-ref="menuPanel" class="pointer-events-auto relative z-10 w-full rounded-xs bg-surface"
                     aria-label="Main navigation" x-on:click.stop="">
 
                     <div x-ref="dragHandle"

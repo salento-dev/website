@@ -32,7 +32,7 @@
             x-transition:leave="transition duration-150 ease-in"
             x-transition:leave-start="translate-y-0 opacity-100"
             x-transition:leave-end="-translate-y-1 opacity-0"
-            class="absolute top-full left-0 z-20 mt-1 min-w-35 overflow-hidden rounded-xs border border-black/20 bg-surface-950 shadow-lg"
+            class="absolute top-full left-0 z-20 mt-1 min-w-35 overflow-hidden rounded-xs border border-border bg-surface-950"
             role="listbox" aria-label="Sort options" style="display: none;">
             @foreach ($options as $value => $optionLabel)
                 <button type="button" role="option"
