@@ -71,7 +71,7 @@ Il layout è il guscio condiviso da tutte le pagine pubbliche.
 - `<html class="dark scrollbar-thin">` (riga 2): **dark theme forzato**, nessuna modalità light. La classe `dark` è statica nel markup.
 - `<meta name="description" content="{{ $metaDescription ?? '' }}">` (riga 7): la description SEO arriva dalla variabile `$metaDescription` iniettata dal componente via `->layout(...)`.
 - `<title>{{ $pageTitle ?? config('app.name') }} - {{ config('app.name') }}</title>` (riga 9): pattern `"{pageTitle} - {app.name}"`. Se manca `pageTitle` si ripiega su `config('app.name')`.
-- Tre Google Fonts caricati con `preconnect` (righe 11‑17): **Outfit** (`100..900`), **Albert Sans** (italico + pesi) e **Roboto Mono**.
+- `<link rel="preload">` del solo woff2 di **Outfit** latin via `Vite::asset()`. I tre font (**Outfit**, **Albert Sans**, **Roboto Mono**) sono self-hosted in `resources/fonts/` e dichiarati con `@font-face` in `app.css`: nessuna richiesta a Google Fonts.
 - `@vite([...])` (righe 19‑21) è **condizionato**: viene emesso solo se esiste `public/build/manifest.json` **oppure** `public/hot`. Questo evita la `ViteException` quando gli asset non sono ancora compilati (utile in CI/migrazioni).
 - `@livewireStyles` (riga 22).
 
