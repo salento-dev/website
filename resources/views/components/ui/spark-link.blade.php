@@ -18,7 +18,7 @@
         default => 'size-4',
     };
 
-    $linkClasses = 'group flex items-center whitespace-nowrap transition-all duration-300 ease-out focus:outline-none focus-visible:ring focus-visible:ring-black/50 focus-visible:ring-inset hover:bg-green-500/10';
+    $linkClasses = 'group flex items-center whitespace-nowrap transition-all duration-300 ease-out focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset hover:bg-green-500/10';
     $linkClasses .= $hasText
         ? ' gap-2.5 pr-4 pb-0.5 pl-3.5 hover:pr-5'
         : ' justify-center px-3.5';
