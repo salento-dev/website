@@ -1,5 +1,4 @@
 <x-ui.section-header
-    eyebrow="Le Nostre Attività"
     title='Cosa Facciamo'
     description="Alterniamo momenti strutturati di formazione, spazi aperti per confrontarsi e occasioni informali per fare rete."
 >
