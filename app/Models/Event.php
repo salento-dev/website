@@ -51,9 +51,14 @@ class Event extends Model
         return $this->morphMany(PageView::class, 'viewable');
     }
 
+    /**
+     * Determine whether the event is over, falling back to the start date when no end date is set.
+     */
     public function isPast(): bool
     {
-        return $this->ends_at <= now();
+        $endsAt = $this->ends_at ?? $this->starts_at;
+
+        return $endsAt !== null && $endsAt->lessThanOrEqualTo(now());
     }
 
     public function media(): HasMany
