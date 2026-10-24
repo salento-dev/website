@@ -126,4 +126,35 @@ class EventCardTest extends TestCase
         $this->assertStringNotContainsString(route('events.show', $event), $html);
         $this->assertStringContainsString('In pianificazione', $html);
     }
+
+    public function test_plain_excerpt_prefers_excerpt_and_strips_markdown_from_body(): void
+    {
+        $withExcerpt = Event::factory()->make(['excerpt' => 'AI & Coding a Lecce', 'body' => '## Ignorato']);
+        $withBodyOnly = Event::factory()->make(['excerpt' => null, 'body' => "## Programma\n\nTalk su **Laravel** e [Livewire](https://livewire.laravel.com)."]);
+        $empty = Event::factory()->make(['excerpt' => '', 'body' => null]);
+
+        $this->assertSame('AI & Coding a Lecce', $withExcerpt->plain_excerpt);
+        $this->assertSame('Programma Talk su Laravel e Livewire.', $withBodyOnly->plain_excerpt);
+        $this->assertNull($empty->plain_excerpt);
+    }
+
+    public function test_card_without_excerpt_and_body_renders_no_empty_paragraph(): void
+    {
+        $event = Event::factory()->create(['excerpt' => null, 'body' => null]);
+
+        $html = Blade::render('<x-events.event :event="$event" />', ['event' => $event]);
+
+        $this->assertStringNotContainsString('line-clamp-2 text-sm', $html);
+    }
+
+    public function test_card_handles_long_title_without_image(): void
+    {
+        $title = str_repeat('Titolo lunghissimo senza fine ', 8);
+        $event = Event::factory()->create(['title' => $title, 'image_path' => null]);
+
+        $html = Blade::render('<x-events.event :event="$event" />', ['event' => $event]);
+
+        $this->assertStringContainsString(e(trim($title)), $html);
+        $this->assertStringContainsString('placeholders/events/event-placeholder.jpg', $html);
+    }
 }

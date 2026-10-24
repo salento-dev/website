@@ -53,9 +53,9 @@
             <h3 class="mb-3 font-outfit text-3xl font-bold leading-tight text-surface-50 transition-colors duration-300 md:text-4xl lg:text-5xl">
                 {{ $event->title }}
             </h3>
-            @if ($event->excerpt || $event->body)
+            @if ($event->plain_excerpt)
                 <p class="line-clamp-2 text-sm leading-relaxed text-surface-400 md:text-base">
-                    {{ strip_tags($event->excerpt ?: $event->body) }}
+                    {{ $event->plain_excerpt }}
                 </p>
             @endif
         </div>

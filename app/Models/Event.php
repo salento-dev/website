@@ -114,6 +114,23 @@ class Event extends Model
         return $town !== '' ? $town : trim((string) $this->location);
     }
 
+    /**
+     * Get a plain-text summary for cards: the excerpt, or the Markdown body stripped of markup.
+     */
+    public function getPlainExcerptAttribute(): ?string
+    {
+        $source = filled($this->excerpt) ? $this->excerpt : $this->body;
+
+        if (blank($source)) {
+            return null;
+        }
+
+        $text = Str::of(Str::markdown((string) $source))->stripTags()->squish()->value();
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        return $text !== '' ? $text : null;
+    }
+
     public function getLocalStartsAtAttribute(): ?Carbon
     {
         return $this->starts_at?->tz('Europe/Rome');
