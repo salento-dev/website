@@ -21,7 +21,7 @@
     </p>
     @endif
     <div class="mt-auto pt-5 border-t border-border w-full flex justify-center">
-        <a class="inline-flex items-center gap-2 font-label text-sm uppercase tracking-tighter text-surface-500 hover:text-primary transition-colors"
+        <a class="inline-flex items-center gap-2 font-label text-sm uppercase tracking-wider text-surface-300 hover:text-primary transition-colors"
             href="{{ $partner->website_url }}"
             target="_blank" rel="noopener">
             Visit Website
