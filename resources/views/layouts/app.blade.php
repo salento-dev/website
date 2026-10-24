@@ -41,26 +41,28 @@
         Vai al contenuto
     </a>
 
-    <main class="relative mx-auto w-full max-w-350 overflow-x-clip border-x border-b border-border bg-surface">
+    <div class="relative mx-auto w-full max-w-350 overflow-x-clip border-x border-b border-border bg-surface">
         <x-partials.header />
 
-        <section id="contenuto" tabindex="-1" data-triangle-decoration="bottom" class="relative overflow-hidden border-b border-border focus:outline-none">
-            <div class="px-6 py-24 sm:px-12 lg:px-20 lg:py-32">
-                <div class="mx-auto max-w-4xl text-center">
-                    @yield('hero')
+        <main id="contenuto" tabindex="-1" class="focus:outline-none">
+            <section data-triangle-decoration="bottom" class="relative overflow-hidden border-b border-border">
+                <div class="px-6 py-24 sm:px-12 lg:px-20 lg:py-32">
+                    <div class="mx-auto max-w-4xl text-center">
+                        @yield('hero')
+                    </div>
                 </div>
-            </div>
-            @yield('hero-footer')
-        </section>
+                @yield('hero-footer')
+            </section>
 
-        <div class="px-6 md:px-8 lg:px-16 py-12 md:py-16 lg:py-20">
-            {{ $slot }}
-        </div>
+            <div class="px-6 md:px-8 lg:px-16 py-12 md:py-16 lg:py-20">
+                {{ $slot }}
+            </div>
+        </main>
 
         <footer data-triangle-decoration="top" class="px-6 md:px-8 lg:px-16 py-16 border-t border-border">
             <x-partials.footer />
         </footer>
-    </main>
+    </div>
 
     @livewireScripts
 </body>

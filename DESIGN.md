@@ -217,7 +217,7 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 ## Layout
 
 - **Telaio:** body nero con pattern a puntini, padding laterale 0 / 1.25rem / 2.5rem (mobile / sm / lg).
-- **Pannello:** un unico `main` centrato, larghezza max 87.5rem (`max-w-350`, = breakpoint `max`), con bordi sinistro/destro/inferiore a 1px. Tutto vive dentro.
+- **Pannello:** un unico contenitore centrato, larghezza max 87.5rem (`max-w-350`, = breakpoint `max`), con bordi sinistro/destro/inferiore a 1px. Tutto vive dentro, diviso nei landmark `header` (banner, con la `nav`), `main#contenuto` (hero + contenuto, target dello skip link) e `footer` (contentinfo).
 - **Moduli:** header sticky (altezza 4rem), hero, contenuto, footer separati da bordi orizzontali a 1px con giunzioni triangolari 5px (`data-triangle-decoration`).
 - **Padding pagina:** orizzontale 1.5rem → 2rem → 4rem; verticale contenuto 3rem → 4rem → 5rem. Hero 6rem → 8rem verticale, testo centrato in max 56rem.
 - **Ritmo:** sezioni separate da 5rem (`gap-20`); header di sezione 2rem sopra il contenuto.

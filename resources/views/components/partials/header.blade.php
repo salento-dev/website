@@ -4,8 +4,8 @@
     $whatsappIcon = Blade::render('<x-simpleicon-whatsapp class="size-full" />');
 @endphp
 
-<nav class="sticky top-0 z-10 border-b border-border bg-surface">
-    <header data-triangle-decoration="bottom" class="flex h-16 w-full items-stretch justify-between nav:gap-3">
+<header class="sticky top-0 z-10 border-b border-border bg-surface">
+    <div data-triangle-decoration="bottom" class="flex h-16 w-full items-stretch justify-between nav:gap-3">
 
         <div class="flex w-22 items-stretch border-r border-border min-[370px]:w-25 nav:hidden">
             <x-ui.spark-link
@@ -51,5 +51,5 @@
 
             <x-partials.mobile-navbar />
         </div>
-    </header>
-</nav>
+    </div>
+</header>
