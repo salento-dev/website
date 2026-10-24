@@ -12,7 +12,8 @@
                     Entra nella community
                 </h2>
                 <p class="leading-relaxed text-surface-400">
-                    Il prossimo incontro viene annunciato prima di tutto nel gruppo WhatsApp della community.
+                    Prima volta? Scegli un evento e presentati: nella scheda trovi luogo, orario e se serve registrarsi.
+                    Non serve un talk pronto. Tra un incontro e l'altro, ci sentiamo nel gruppo WhatsApp.
                 </p>
             </div>
 
