@@ -20,7 +20,7 @@
         <div class="flex grow basis-56 items-center gap-3 bg-surface-950 px-6 py-5">
             <x-heroicon-o-calendar-days class="size-5 shrink-0 text-primary" />
             <div class="text-left">
-                <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-mist-600">
+                <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-surface-400">
                     {{ $event->local_ends_at && !$event->local_starts_at->isSameDay($event->local_ends_at) ? 'Inizio' : 'Data' }}
                 </div>
                 <div class="font-outfit font-bold text-mist-50">
@@ -37,7 +37,7 @@
             <div class="flex grow basis-56 items-center gap-3 bg-surface-950 px-6 py-5">
                 <x-heroicon-o-flag class="size-5 shrink-0 text-primary/60" />
                 <div class="text-left">
-                    <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-mist-600">Fine</div>
+                    <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-surface-400">Fine</div>
                     <div class="font-outfit font-bold text-mist-200">
                         {{ $event->local_ends_at->translatedFormat('j F Y') }}
                     </div>
@@ -53,7 +53,7 @@
             <div class="flex grow basis-56 items-center gap-3 bg-surface-950 px-6 py-5">
                 <x-heroicon-o-map-pin class="size-5 shrink-0 text-primary" />
                 <div class="text-left">
-                    <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-mist-600">Luogo</div>
+                    <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-surface-400">Luogo</div>
                     <div class="font-outfit font-bold text-mist-50">{{ $event->location }}</div>
                     @if ($event->address)
                         <div class="text-xs text-mist-400">{{ $event->address }}</div>
@@ -68,8 +68,8 @@
                 <x-ui.logo class="h-3 w-auto shrink-0 text-primary" />
                 <span class="font-mono text-2xs uppercase tracking-widest text-primary">Evento della community</span>
             @else
-                <x-heroicon-o-user-group class="size-3.5 shrink-0 text-mist-600" />
-                <span class="font-mono text-2xs uppercase tracking-widest text-mist-600">Evento esterno</span>
+                <x-heroicon-o-user-group class="size-3.5 shrink-0 text-surface-400" />
+                <span class="font-mono text-2xs uppercase tracking-widest text-surface-400">Evento esterno</span>
             @endif
         </div>
 
@@ -120,7 +120,7 @@
                             <p class="font-outfit font-bold text-surface-50 truncate">{{ $partner->name }}</p>
                             @if (filled($partner->website_url))
                                 <a href="{{ $partner->website_url }}" target="_blank" rel="noreferrer noopener"
-                                    class="mt-1 inline-flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest text-surface-500 transition-colors hover:text-primary">
+                                    class="mt-1 inline-flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest text-surface-400 transition-colors hover:text-primary">
                                     <x-heroicon-o-globe-alt class="size-3" />
                                     Sito web
                                 </a>
