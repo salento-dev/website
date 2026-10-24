@@ -1,4 +1,4 @@
-<x-ui.section-header eyebrow="I Nostri Valori" title='Principi Fondamentali'
+<x-ui.section-header title='Principi Fondamentali'
     description="Una community che intende innescare un circolo virtuoso, sancito da principi fondanti.">
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         <!-- Principio 1: Qualità e rigore -->

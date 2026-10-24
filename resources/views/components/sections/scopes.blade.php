@@ -1,5 +1,4 @@
-<x-ui.section-header 
-    eyebrow="Chi Siamo" 
+<x-ui.section-header
     title='Ambiti di Appartenenza'
     description="Una community di sviluppatori per sviluppatori. Accogliamo figure tecniche che contribuiscono alla pratica dello sviluppo.">
 

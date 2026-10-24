@@ -144,7 +144,7 @@
     {{-- Sezioni aggiuntive --}}
 
     @if ($event->media->isNotEmpty())
-        <x-ui.section-header eyebrow="Media" title="Galleria">
+        <x-ui.section-header title="Galleria">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 @foreach ($event->media as $media)
                     <div class="border border-border bg-surface overflow-hidden">
