@@ -9,7 +9,7 @@
     {{-- Last updated --}}
     <div class="mb-12 flex items-center gap-3 font-roboto-mono text-xs text-surface-400">
         <span class="text-primary">$</span>
-        <span>last_updated: <span class="text-surface-200">10 aprile 2026</span></span>
+        <span>last_updated: <span class="text-surface-200">24 ottobre 2026</span></span>
     </div>
 
     <div class="flex flex-col gap-12">
@@ -132,17 +132,6 @@
                 <h2 class="font-outfit text-xl font-bold uppercase tracking-tight text-surface-50">Servizi di Terze Parti</h2>
             </div>
             <div class="border-l-2 border-primary/20 pl-6 text-sm leading-relaxed text-surface-400 space-y-6">
-
-                <div>
-                    <h3 class="mb-2 font-semibold text-surface-200">Google Fonts</h3>
-                    <p>
-                        Il sito utilizza Google Fonts per il caricamento dei caratteri tipografici. Questo servizio è gestito da
-                        Google LLC e può comportare il trasferimento dell'indirizzo IP del visitatore ai server di Google negli
-                        Stati Uniti. Google tratta questi dati secondo la propria informativa privacy. Per maggiori informazioni:
-                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer"
-                            class="text-primary hover:text-primary-dark transition-colors">policies.google.com/privacy</a>.
-                    </p>
-                </div>
 
                 <div>
                     <h3 class="mb-2 font-semibold text-surface-200">Social Media</h3>
