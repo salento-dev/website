@@ -37,4 +37,17 @@ class EventsPageSearchTest extends TestCase
             ->assertSee($byBody->title)
             ->assertDontSee($byLocation->title);
     }
+
+    public function test_past_events_tag_shows_the_total_not_the_page_count(): void
+    {
+        Event::factory()->count(14)->create([
+            'is_published' => true,
+            'work_in_progress' => false,
+            'starts_at' => now()->subMonth(),
+            'ends_at' => null,
+        ]);
+
+        Livewire::test(EventsPage::class)
+            ->assertSee('Passed: 14');
+    }
 }
