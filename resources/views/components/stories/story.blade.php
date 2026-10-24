@@ -8,7 +8,7 @@
         <div class="overflow-hidden">
             <div class="aspect-video overflow-hidden">
                 <img src="{{ $story->image_url }}" alt="{{ $story->title }}"
-                    class="w-full h-full object-cover opacity-70 grayscale transition-all duration-500 group-hover:opacity-90 group-hover:grayscale-0 group-hover:scale-105"
+                    class="w-full h-full object-cover opacity-90 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105"
                     loading="lazy">
             </div>
         </div>
