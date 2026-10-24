@@ -1,6 +1,6 @@
 @section('hero')
     @if ($story->category)
-        <div class="mb-6 inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary">
+        <div class="mb-6 inline-block rounded-xs border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary">
             {{ $story->category->name }}
         </div>
     @endif

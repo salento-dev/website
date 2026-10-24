@@ -2,7 +2,7 @@
     @if ($event->categories->isNotEmpty())
         <div class="mb-6 flex flex-wrap justify-center gap-2">
             @foreach ($event->categories as $category)
-                <div class="inline-block rounded border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary">
+                <div class="inline-block rounded-xs border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary">
                     {{ $category->name }}
                 </div>
             @endforeach

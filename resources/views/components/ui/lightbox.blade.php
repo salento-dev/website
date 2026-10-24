@@ -39,7 +39,7 @@
             </button>
 
             <img src="{{ $src }}" alt="{{ $alt }}"
-                class="max-h-full max-w-full object-contain shadow-2xl">
+                class="max-h-full max-w-full object-contain">
         </div>
     </template>
 </div>
