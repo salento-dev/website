@@ -15,7 +15,7 @@
         </div>
     </div>
     <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Naviga</h4>
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Naviga</h2>
         <ul class="space-y-3 text-sm text-surface-400">
             @foreach (array_filter(config('navigation.items'), fn($item) => $item['footer']) as $item)
                 <li>
@@ -25,7 +25,7 @@
         </ul>
     </div>
     <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Community</h4>
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-surface-300 mb-4">Community</h2>
         <ul class="space-y-3 text-sm text-surface-400">
             @foreach (config('community.social') as $social)
                 <li>
