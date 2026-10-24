@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Livewire\EventsPage;
 use App\Livewire\StoriesPage;
 use App\Models\Event;
+use App\Models\Partner;
 use App\Models\Story;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -116,5 +117,18 @@ class AccessibilityTest extends TestCase
         $this->assertStringContainsString('role="listbox" tabindex="-1" aria-labelledby="sort-select-sortby-label"', $html);
         $this->assertStringContainsString('id="sort-select-sortby-option-0" role="option"', $html);
         $this->assertStringNotContainsString('Sort options', $html);
+    }
+
+    public function test_partner_links_name_the_partner_and_announce_the_new_tab(): void
+    {
+        $partner = Partner::factory()->create([
+            'name' => 'GDG Lecce',
+            'is_published' => true,
+            'website_url' => 'https://gdg.community.dev/gdg-lecce/',
+        ]);
+
+        $this->get(route('partners'))
+            ->assertOk()
+            ->assertSee('Visit Website<span class="sr-only"> – '.$partner->name.', si apre in una nuova scheda</span>', false);
     }
 }

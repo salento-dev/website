@@ -122,7 +122,7 @@
                                 <a href="{{ $partner->website_url }}" target="_blank" rel="noreferrer noopener"
                                     class="mt-1 inline-flex items-center gap-1.5 font-mono text-2xs uppercase tracking-widest text-surface-400 transition-colors hover:text-primary">
                                     <x-heroicon-o-globe-alt class="size-3" />
-                                    Sito web
+                                    Sito web<span class="sr-only"> – {{ $partner->name }}, si apre in una nuova scheda</span>
                                 </a>
                             @endif
                         </div>
@@ -171,7 +171,7 @@
                             @else
                                 <a href="{{ $media->external_url }}" target="_blank" rel="noreferrer noopener"
                                     class="flex aspect-video items-center justify-center px-4 text-center text-sm text-primary transition-colors hover:text-primary/80">
-                                    Apri video esterno
+                                    Apri video esterno<span class="sr-only">, si apre in una nuova scheda</span>
                                 </a>
                             @endif
                         @endif
