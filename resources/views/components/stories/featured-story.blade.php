@@ -11,7 +11,7 @@
         @if ($story->image_url)
             <div class="lg:w-1/2 h-64 lg:h-auto lg:max-h-128 relative overflow-hidden">
                 <img src="{{ $story->image_url }}" alt="{{ $story->title }}"
-                    class="w-full h-full object-cover opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105">
+                    class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-linear-to-r from-surface-900 via-surface-900/40 to-transparent hidden lg:block"></div>
             </div>
         @else
