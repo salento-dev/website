@@ -1,13 +1,13 @@
 @section('hero')
-    @if ($event->categories->isNotEmpty())
-        <div class="mb-6 flex flex-wrap justify-center gap-2">
-            @foreach ($event->categories as $category)
-                <div class="inline-block rounded-xs border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary">
-                    {{ $category->name }}
-                </div>
-            @endforeach
-        </div>
-    @endif
+    <div class="mb-6 flex flex-wrap items-center justify-center gap-2">
+        <x-ui.status-badge :status="$eventStatus" :label="$eventStatus === 'past' ? 'Evento concluso' : null" />
+
+        @foreach ($event->categories as $category)
+            <div class="inline-block rounded-xs border border-primary/20 bg-primary/5 px-4 py-1 text-2xs font-bold uppercase tracking-[0.3em] text-primary">
+                {{ $category->name }}
+            </div>
+        @endforeach
+    </div>
 
     <h1 class="mb-10 text-4xl font-black uppercase leading-tight tracking-tighter text-surface-50 sm:text-5xl lg:text-6xl">
         {{ $event->title }}
@@ -132,6 +132,10 @@
                     @endif
                 @endforeach
             </div>
+        @endif
+
+        @if ($eventStatus === 'past')
+            <x-events.past-event-next :next-event="$nextEvent" />
         @endif
 
         <a href="{{ route('events') }}"
