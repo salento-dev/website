@@ -109,7 +109,7 @@
                     <div class="flex items-center gap-4">
                         <div class="size-12 overflow-hidden bg-surface-800 border border-border flex items-center justify-center shrink-0">
                             @if ($partner->logo_url)
-                                <img src="{{ $partner->logo_url }}"
+                                <img loading="lazy" src="{{ $partner->logo_url }}"
                                     alt="{{ $partner->name }}"
                                     class="size-full object-contain p-1.5">
                             @else
@@ -154,7 +154,7 @@
                                     <source src="{{ $media->file_url }}">
                                 </video>
                             @else
-                                <img src="{{ $media->file_url }}"
+                                <img loading="lazy" src="{{ $media->file_url }}"
                                     alt="{{ $media->caption ?: $event->title }}"
                                     class="w-full aspect-video object-cover">
                             @endif

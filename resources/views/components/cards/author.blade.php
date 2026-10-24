@@ -11,7 +11,7 @@
 <div class="flex items-start gap-4">
     <div class="{{ $avatarSize }} shrink-0 overflow-hidden rounded-full border border-primary/20 bg-surface-700">
         @if ($author->avatar_url)
-            <img src="{{ $author->avatar_url }}" alt="{{ $author->name }}" class="size-full object-cover" />
+            <img loading="lazy" src="{{ $author->avatar_url }}" alt="{{ $author->name }}" class="size-full object-cover" />
         @else
             <x-heroicon-o-user class="size-6 text-primary/60" />
         @endif

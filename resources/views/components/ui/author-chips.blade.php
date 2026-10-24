@@ -15,7 +15,7 @@
                     @click="selected = {{ $index }}; open = true"
                     class="flex cursor-pointer items-center gap-2 rounded-full border border-border bg-surface-900 px-3 py-1.5 transition-colors hover:border-primary/40 hover:bg-surface-800"
                 >
-                    <img
+                    <img loading="lazy"
                         src="{{ $author->avatar_url }}"
                         alt="{{ $author->name }}"
                         class="size-6 rounded-full object-cover"

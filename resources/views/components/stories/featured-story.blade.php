@@ -58,7 +58,7 @@
                                 <div class="size-9 rounded-full border-2 border-surface-900 overflow-hidden bg-surface-700 flex items-center justify-center shrink-0"
                                      title="{{ $author->name }}">
                                     @if ($avatarUrl)
-                                        <img src="{{ $avatarUrl }}" alt="{{ $author->name }}" class="size-full object-cover">
+                                        <img loading="lazy" src="{{ $avatarUrl }}" alt="{{ $author->name }}" class="size-full object-cover">
                                     @else
                                         <x-heroicon-o-user class="size-4 text-primary/60" />
                                     @endif
