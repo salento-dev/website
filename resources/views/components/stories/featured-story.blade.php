@@ -70,7 +70,7 @@
                                 {{ $story->authors->pluck('name')->join(', ') }}
                             </p>
                             @if ($story->authors->count() === 1 && filled($story->authors->first()->role))
-                                <p class="font-mono text-2xs uppercase tracking-widest text-surface-500">{{ $story->authors->first()->role }}</p>
+                                <p class="font-mono text-2xs uppercase tracking-widest text-surface-400">{{ $story->authors->first()->role }}</p>
                             @endif
                         </div>
                     </div>

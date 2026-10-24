@@ -10,7 +10,7 @@
         <x-heroicon-o-clock class="mb-5 h-8 text-surface-600" />
         <h3 class="mb-2 font-outfit text-xl font-bold text-surface-200">{{ $event->title }}</h3>
         @if ($event->body)
-            <p class="line-clamp-3 text-sm leading-relaxed text-surface-500">
+            <p class="line-clamp-3 text-sm leading-relaxed text-surface-400">
                 {{ strip_tags($event->body) }}
             </p>
         @endif
@@ -18,15 +18,15 @@
 
     <div class="mt-8 flex items-center justify-between">
         @if ($event->local_starts_at)
-            <span class="font-mono text-xs italic text-primary/70">
+            <span class="font-mono text-xs italic text-primary/80">
                 Target: {{ $event->local_starts_at->translatedFormat('M Y') }}
             </span>
         @else
-            <span class="font-mono text-xs italic text-surface-600">Data TBD</span>
+            <span class="font-mono text-xs italic text-surface-400">Data TBD</span>
         @endif
 
         @if ($event->location)
-            <span class="flex items-center gap-1 font-mono text-2xs uppercase tracking-widest text-surface-500">
+            <span class="flex items-center gap-1 font-mono text-2xs uppercase tracking-widest text-surface-400">
                 <x-heroicon-o-map-pin class="h-3" />
                 {{ $event->location }}
             </span>

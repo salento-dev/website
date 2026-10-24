@@ -156,8 +156,8 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 
 ### Primary
 - **Signal Cyan** (`primary`, cyan-500): eyebrow di sezione, parola chiave nei titoli hero, link d'azione, icone, punto pulsante del badge, testo dello stato "prossimo evento", staffe d'angolo delle card in evidenza.
-- **Signal Cyan Deep** (`primary-dark`, cyan-700): hover dei link primary; `primary-800` riempie la barra "Read" della card evento all'hover.
-- **Signal Cyan Pale** (`primary-light`, cyan-300) e **Signal Cyan Wash** (cyan-50): staffe della navbar e cerchio icona della CTA. Usi minori, mai su grandi aree.
+- **Signal Cyan Deep** (`primary-dark`, cyan-700): non per testo su grafite (3.3–3.7:1, sotto AA); `primary-800` riempie la barra "Read" della card evento all'hover.
+- **Signal Cyan Pale** (`primary-light`, cyan-300) e **Signal Cyan Wash** (cyan-50): hover dei link primary (cyan-300, ~13:1 su Console Black: l'hover schiarisce, non abbassa il contrasto), staffe della navbar e cerchio icona della CTA. Usi minori, mai su grandi aree.
 
 ### Secondary
 - **Reserve Violet** (`secondary`, violet-500): riserva. Oggi appare solo nell'hover del bottone "Clear" della ricerca.

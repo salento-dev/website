@@ -28,7 +28,7 @@
                 </div>
             @endif
             @if ($link)
-                <a class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors duration-200"
+                <a class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light transition-colors duration-200"
                     href="{{ $link['href'] }}">
                     {{ $link['text'] }}
                     <x-heroicon-o-chevron-right class="h-4 w-4" />
