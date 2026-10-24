@@ -5,7 +5,7 @@
         </div>
     @endif
 
-    <h1 class="mb-6 text-4xl font-black uppercase leading-tight tracking-tighter text-white sm:text-5xl lg:text-6xl">
+    <h1 class="mb-6 text-4xl font-black uppercase leading-tight tracking-tighter text-surface-50 sm:text-5xl lg:text-6xl">
         {{ $story->title }}
     </h1>
 @endsection

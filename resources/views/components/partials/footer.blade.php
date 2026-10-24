@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 py-8">
     <div class="col-span-1 md:col-span-2">
-        <x-ui.logo class="mb-6 h-8 w-auto text-white" />
+        <x-ui.logo class="mb-6 h-8 w-auto text-surface-50" />
         <p class="max-w-md text-sm text-surface-400 leading-relaxed mb-8">
             {{ config('community.description') }}
         </p>

@@ -1,7 +1,7 @@
 @props(['readTime' => null, 'pageViews' => null])
 
 @if ($readTime || $pageViews)
-    <div class="mb-6 flex items-center gap-4 font-mono text-xs text-mist-400">
+    <div class="mb-6 flex items-center gap-4 font-mono text-xs text-surface-400">
         @if ($readTime)
             <span class="flex items-center gap-1.5">
                 <x-heroicon-o-clock class="size-3.5 text-primary/60" />

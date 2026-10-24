@@ -11,7 +11,7 @@
         @endif
     </div>
     @if($partner->name)
-    <h2 class="font-headline text-xl font-bold text-white mb-2 transition-colors">
+    <h2 class="font-headline text-xl font-bold text-surface-50 mb-2 transition-colors">
         {{ $partner->name }}
     </h2>
     @endif

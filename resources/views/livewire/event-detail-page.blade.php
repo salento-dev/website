@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <h1 class="mb-10 text-4xl font-black uppercase leading-tight tracking-tighter text-white sm:text-5xl lg:text-6xl">
+    <h1 class="mb-10 text-4xl font-black uppercase leading-tight tracking-tighter text-surface-50 sm:text-5xl lg:text-6xl">
         {{ $event->title }}
     </h1>
 
@@ -23,7 +23,7 @@
                 <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-surface-400">
                     {{ $event->local_ends_at && !$event->local_starts_at->isSameDay($event->local_ends_at) ? 'Inizio' : 'Data' }}
                 </div>
-                <div class="font-outfit font-bold text-mist-50">
+                <div class="font-outfit font-bold text-surface-50">
                     {{ $event->local_starts_at->translatedFormat('j F Y') }}
                 </div>
                 @if ($event->local_starts_at->format('H:i') !== '00:00')
@@ -38,11 +38,11 @@
                 <x-heroicon-o-flag class="size-5 shrink-0 text-primary/60" />
                 <div class="text-left">
                     <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-surface-400">Fine</div>
-                    <div class="font-outfit font-bold text-mist-200">
+                    <div class="font-outfit font-bold text-surface-200">
                         {{ $event->local_ends_at->translatedFormat('j F Y') }}
                     </div>
                     @if ($event->local_ends_at->format('H:i') !== '00:00')
-                        <div class="font-mono text-xs text-mist-400">{{ $event->local_ends_at->format('H:i') }}</div>
+                        <div class="font-mono text-xs text-surface-400">{{ $event->local_ends_at->format('H:i') }}</div>
                     @endif
                 </div>
             </div>
@@ -54,9 +54,9 @@
                 <x-heroicon-o-map-pin class="size-5 shrink-0 text-primary" />
                 <div class="text-left">
                     <div class="mb-0.5 font-mono text-2xs uppercase tracking-widest text-surface-400">Luogo</div>
-                    <div class="font-outfit font-bold text-mist-50">{{ $event->location }}</div>
+                    <div class="font-outfit font-bold text-surface-50">{{ $event->location }}</div>
                     @if ($event->address)
-                        <div class="text-xs text-mist-400">{{ $event->address }}</div>
+                        <div class="text-xs text-surface-400">{{ $event->address }}</div>
                     @endif
                 </div>
             </div>
@@ -172,7 +172,7 @@
                             @endif
                         @endif
                         @if (filled($media->caption))
-                            <div class="border-t border-border px-4 py-3 text-sm text-white/60">
+                            <div class="border-t border-border px-4 py-3 text-sm text-surface-400">
                                 {{ $media->caption }}
                             </div>
                         @endif

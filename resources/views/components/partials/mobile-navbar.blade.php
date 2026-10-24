@@ -139,13 +139,13 @@
                                 const fillWidth = fillProgress * 100;
 
                                 gsap.set(dragHandle.querySelector('div'), {
-                                    background: `linear-gradient(to right, rgb(120 113 108) ${fillWidth}%, rgb(120 113 108 / 0.4) ${fillWidth}%)`,
+                                    background: `linear-gradient(to right, rgb(156 168 171) ${fillWidth}%, rgb(156 168 171 / 0.4) ${fillWidth}%)`,
                                 });
                             },
                             onRelease: function() {
                                 gsap.to(dragHandle.querySelector('div'), {
                                     width: 48,
-                                    background: 'rgb(120 113 108 / 0.4)',
+                                    background: 'rgb(156 168 171 / 0.4)',
                                     duration: 0.3,
                                     ease: 'power2.out',
                                 });
@@ -183,7 +183,7 @@
 
                                 gsap.to(dragHandle.querySelector('div'), {
                                     width: 48,
-                                    background: 'rgb(120 113 108 / 0.4)',
+                                    background: 'rgb(156 168 171 / 0.4)',
                                     duration: 0.3,
                                     ease: 'power2.out',
                                 });
