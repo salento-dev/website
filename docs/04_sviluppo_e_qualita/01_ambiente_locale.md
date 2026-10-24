@@ -139,12 +139,19 @@ In alternativa ai passi 3–7, dopo aver creato `.env` e popolato `vendor/`, lo 
 
 ## Utente amministratore
 
-Il `DatabaseSeeder` crea automaticamente un utente Filament invocando `make:filament-user`:
+Il `DatabaseSeeder` crea un utente Filament tramite `AdminUserSeeder`, con le credenziali lette dal file `.env`:
 
-- **Email:** `admin@salento.dev`
-- **Password:** `password123`
+```dotenv
+ADMIN_NAME=Admin
+ADMIN_EMAIL=admin@salento.dev
+ADMIN_PASSWORD=        # lascia vuoto per farne generare una casuale
+```
 
-> ⚠️ Credenziali di default **solo per sviluppo**. In produzione vanno cambiate o disabilitate, e va introdotta un'autorizzazione granulare (oggi `canAccessPanel()` ritorna sempre `true`). Vedi [Note e debito tecnico](./04_note_e_debito_tecnico.md).
+- Se `ADMIN_PASSWORD` è vuota, il seeder genera una password casuale e la **mostra una sola volta** nel terminale.
+- Rilanciando il seeder l'utente viene aggiornato, non duplicato.
+- In **produzione** il seeder non crea nessun utente: usa `make:filament-user`.
+
+> ⚠️ Oggi `canAccessPanel()` ritorna sempre `true`: ogni utente registrato è di fatto super‑admin. Vedi [Note e debito tecnico](./04_note_e_debito_tecnico.md).
 
 Per crearne uno manualmente:
 

@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,13 +24,7 @@ class DatabaseSeeder extends Seeder
             // ResourceSeeder::class,
             StoryCategorySeeder::class,
             RealStoriesSeeder::class,
-        ]);
-
-        Artisan::call('make:filament-user', [
-            '--name' => 'Admin User',
-            '--email' => 'admin@salento.dev',
-            '--password' => 'password123',
-            '--no-interaction' => true,
+            AdminUserSeeder::class,
         ]);
     }
 }

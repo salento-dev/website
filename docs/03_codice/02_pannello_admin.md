@@ -44,7 +44,7 @@ I middleware web standard sono elencati esplicitamente in `->middleware([...])` 
 ./vendor/bin/sail artisan make:filament-user
 ```
 
-In alternativa: via seeder (`admin@salento.dev` / `password123`), oppure dalla risorsa **Utenti** nel pannello.
+In alternativa: via seeder (`AdminUserSeeder`, credenziali da `ADMIN_EMAIL` / `ADMIN_PASSWORD` nel `.env`), oppure dalla risorsa **Utenti** nel pannello.
 
 > ⚠️ L'assenza di autorizzazione granulare (ogni utente è di fatto super‑admin) è un punto di attenzione: vedi [Note e debito tecnico](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).
 

@@ -357,13 +357,7 @@ $this->call([
     // ResourceSeeder::class,   // disattivato
     StoryCategorySeeder::class,
     RealStoriesSeeder::class,
-]);
-
-Artisan::call('make:filament-user', [
-    '--name' => 'Admin User',
-    '--email' => 'admin@salento.dev',
-    '--password' => 'password123',
-    '--no-interaction' => true,
+    AdminUserSeeder::class,     // admin da ADMIN_* nel .env, mai in produzione
 ]);
 ```
 
