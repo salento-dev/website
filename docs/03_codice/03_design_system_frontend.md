@@ -201,7 +201,6 @@ Tutti i percorsi sono relativi a `resources/views/components/`. Le props sono ri
 | `category-tag` | `name` | Pill uppercase per il nome di una categoria. |
 | `corners` | `hover=false`, `color='text-surface-400'`, `size='h-2.5'`, `offset=8` | Quattro bracket SVG d'angolo; se `hover` animano verso l'esterno via GSAP (`motion.hover` sul `.group` genitore). Decorativo. |
 | `countdown` | `timestamp` | Countdown live g/h/min/sec (Alpine `setInterval`); mostra "Oggi" a fine. |
-| `countdown-bars` | `timestamp` | Variante countdown con barre di avanzamento sotto ogni unità. |
 | `countdown-minimal` | `timestamp` | Countdown compatto g/h/m (senza secondi). |
 | `detail-layout` | `stickyTop='lg:top-22'` | Layout di dettaglio a due colonne (article + sidebar sticky) con slot `mobileMeta`, `article`, `sidebar` e `$slot` extra. |
 | `empty-state` | `message='Nessun risultato'`, `icon='o-magnifying-glass'` | Placeholder "nessun risultato" con bordo tratteggiato e Heroicon. |
@@ -213,7 +212,6 @@ Tutti i percorsi sono relativi a `resources/views/components/`. Le props sono ri
 | `paginator` | `paginator` | Navigazione paginazione Livewire (`wire:click="gotoPage(n)"`, finestra di pagine). |
 | `read-stats` | `readTime=null`, `pageViews=null` | Minuti di lettura + numero visite (`number_format`). |
 | `section-header` | `eyebrow=null`, `title=null`, `description=null`, `link=null`, `info=null`, `tag=null`, `bordered=false`, `size='default'` | Header di sezione; `title` reso come **HTML raw** (`{!! !!}`), `link` è un array `['href','text']`. Wrappa `$slot`. |
-| `section-title` | `title`, `icon`, `actionLabel=null`, `actionHref='#'` | Titolo sezione con Heroicon, linea decorativa e link azione. |
 | `slideshow` | `count=1`, `interval=6000` | Carosello auto‑avanzante (Alpine: `current`, dot, frecce); espone `current`/`start`/`stop` agli slide. |
 | `slideshow-slide` | `index=0` | Singolo slide; visibile quando `current === index`; in hover mette in pausa l'autoplay. Da usare dentro `<x-ui.slideshow>`. |
 | `sort-select` | `options`, `currentValue`, `wireProperty='sortBy'`, `label='Sort by:'` | Dropdown custom che imposta una proprietà di ordinamento Livewire (`$wire.set`). |
@@ -332,7 +330,7 @@ Le `sections/` sono per lo più wrapper statici che compongono componenti `ui/`/
 | Liste reattive | griglie eventi/storie nelle view Livewire | `autoAnimate` |
 | Scroll‑trigger | hero / sezioni animate | `motion.inView` |
 
-> ⚠️ `.claude/design.md` non elenca diversi componenti realmente presenti (tutta la cartella `stories/`, `events/wip-event`, vari `ui/` come `countdown-bars`, `countdown-minimal`, `detail-layout`, `read-stats`, `spark-link`, `status-badge`, `title-indicator`, `author-chips`, `lightbox`, `event-meta`, `category-tag`): vedi [Note e debito tecnico](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).
+> ⚠️ `.claude/design.md` non elenca diversi componenti realmente presenti (tutta la cartella `stories/`, `events/wip-event`, vari `ui/` come `countdown-minimal`, `detail-layout`, `read-stats`, `spark-link`, `status-badge`, `title-indicator`, `author-chips`, `lightbox`, `event-meta`, `category-tag`): vedi [Note e debito tecnico](../04_sviluppo_e_qualita/04_note_e_debito_tecnico.md).
 
 ---
 

@@ -137,7 +137,7 @@ Raccolta delle incongruenze e dei punti di attenzione emersi dall'analisi del co
 
 ### D2 — `.claude/design.md` incompleto
 
-- **Dettaglio:** non elenca diversi componenti realmente presenti: l'intera cartella `stories/`, `events/wip-event`, e vari `ui/` (`author-chips`, `category-tag`, `countdown-bars`, `countdown-minimal`, `detail-layout`, `empty-state`, `event-meta`, `lightbox`, `read-stats`, `spark-link`, `status-badge`, `title-indicator`).
+- **Dettaglio:** non elenca diversi componenti realmente presenti: l'intera cartella `stories/`, `events/wip-event`, e vari `ui/` (`author-chips`, `category-tag`, `countdown-minimal`, `detail-layout`, `empty-state`, `event-meta`, `lightbox`, `read-stats`, `spark-link`, `status-badge`, `title-indicator`).
 - **Fix proposto:** completare il catalogo componenti o linkare [Design system](../03_codice/03_design_system_frontend.md) come riferimento aggiornato.
 
 ### D3 — Semantica del token `surface`
