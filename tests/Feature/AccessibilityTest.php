@@ -59,4 +59,31 @@ class AccessibilityTest extends TestCase
             ->set('search', 'nessun risultato possibile')
             ->assertSeeHtml('<span class="sr-only" role="status">0 storie trovate</span>');
     }
+
+    public function test_navigation_marks_the_exact_page_as_current(): void
+    {
+        $html = $this->get(route('events'))->assertOk()->getContent();
+
+        $this->assertSame(2, substr_count($html, 'aria-current="page"'));
+        $this->assertStringNotContainsString('aria-current="true"', $html);
+        $this->assertMatchesRegularExpression('/href="'.preg_quote(route('events'), '/').'"\s+aria-current="page"/', $html);
+    }
+
+    public function test_navigation_keeps_the_section_active_on_detail_pages(): void
+    {
+        $event = Event::factory()->create([
+            'is_published' => true,
+            'work_in_progress' => false,
+            'starts_at' => now()->subMonth(),
+        ]);
+        $story = Story::factory()->create(['is_published' => true]);
+
+        foreach ([route('events.show', $event) => route('events'), route('stories.show', $story) => route('stories')] as $detailUrl => $sectionUrl) {
+            $html = $this->get($detailUrl)->assertOk()->getContent();
+
+            $this->assertStringNotContainsString('aria-current="page"', $html);
+            $this->assertSame(2, preg_match_all('/href="'.preg_quote($sectionUrl, '/').'"\s+aria-current="true"/', $html));
+            $this->assertSame(2, substr_count($html, 'aria-current="true"'));
+        }
+    }
 }
