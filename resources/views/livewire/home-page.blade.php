@@ -2,6 +2,10 @@
     <x-sections.home-hero />
 @endsection
 
+@section('hero-footer')
+    <x-partials.skills-loop />
+@endsection
+
 <div class="flex flex-col gap-20">
 
     <!-- Upcoming Event -->
