@@ -9,6 +9,8 @@
     <title>{{ $pageTitle ?? config('app.name') }} - {{ config('app.name') }}</title>
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        <link rel="preload" href="{{ Vite::asset('resources/fonts/outfit-latin-wght-normal.woff2') }}" as="font"
+            type="font/woff2" crossorigin>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
     @livewireStyles
