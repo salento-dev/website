@@ -22,6 +22,8 @@
                 @endforeach
             </x-ui.slideshow>
         </x-ui.section-header>
+    @else
+        <x-events.no-upcoming />
     @endif
 
     {{-- ─────────────────────────────────────────────

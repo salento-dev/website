@@ -9,23 +9,23 @@
 <div class="flex flex-col gap-20">
 
     <!-- Upcoming Event -->
-    @if ($nextEvent || $pastEvents->isNotEmpty())
-        <div class="flex flex-col gap-12">
-            @if ($nextEvent)
+    <div class="flex flex-col gap-12">
+        @if ($nextEvent)
             <x-events.featured-event :event="$nextEvent" />
-            @endif
+        @else
+            <x-events.no-upcoming />
+        @endif
 
-            @if ($pastEvents->isNotEmpty())
-                <x-ui.section-header eyebrow="Eventi passati" :link="['href' => route('events'), 'text' => 'Full Schedule']">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        @foreach ($pastEvents as $event)
-                            <x-events.event :event="$event" :variant="'simple'" />
-                        @endforeach
-                    </div>
-                </x-ui.section-header>
-            @endif
-        </div>
-    @endif
+        @if ($pastEvents->isNotEmpty())
+            <x-ui.section-header eyebrow="Eventi passati" :link="['href' => route('events'), 'text' => 'Full Schedule']">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    @foreach ($pastEvents as $event)
+                        <x-events.event :event="$event" :variant="'simple'" />
+                    @endforeach
+                </div>
+            </x-ui.section-header>
+        @endif
+    </div>
 
 
 
