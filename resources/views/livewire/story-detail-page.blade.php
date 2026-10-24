@@ -10,12 +10,7 @@
     </h1>
 @endsection
 
-<x-ui.detail-layout>
-
-    {{-- Meta mobile --}}
-    <x-slot:mobile-meta>
-        @include('livewire.partials.story-meta-card')
-    </x-slot:mobile-meta>
+<x-ui.detail-layout :reflow-sidebar="true">
 
     {{-- Articolo --}}
     <x-slot:article>
@@ -52,9 +47,9 @@
 
         @if ($story->protagonists->isNotEmpty())
             <div class="flex flex-col gap-4 border border-border bg-surface-900 p-5">
-                <h3 class="font-mono text-2xs uppercase tracking-widest text-primary">
+                <h2 class="font-mono text-2xs uppercase tracking-widest text-primary">
                     {{ $story->protagonists->count() > 1 ? 'Protagonisti' : 'Protagonista' }}
-                </h3>
+                </h2>
                 @foreach ($story->protagonists as $protagonist)
                     <x-cards.author :author="$protagonist" />
                     @if (!$loop->last)
@@ -64,7 +59,8 @@
             </div>
         @endif
 
-        @include('livewire.partials.story-meta-card', ['classes' => 'hidden lg:flex'])
+        {{-- Unica scheda meta: sotto lg sale sopra l'articolo via order, su desktop resta nella sidebar --}}
+        @include('livewire.partials.story-meta-card', ['classes' => 'order-first lg:order-none'])
 
         <a href="{{ route('stories') }}"
             class="flex items-center justify-center gap-2 border border-border bg-surface px-6 py-3 text-xs font-bold uppercase tracking-widest text-primary transition-all hover:bg-primary/10">
