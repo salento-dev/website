@@ -13,22 +13,20 @@ Tutte le rotte sono registrate in `routes/web.php` e mappano direttamente la cla
 | # | Metodo | URI | Target | Nome route | Model binding |
 |---|--------|-----|--------|------------|---------------|
 | 1 | GET | `/` | `HomePage` | `home` | — |
-| 2 | GET | `/cosa-facciamo` | `Route::view` → `pages.static` | `services` | — (vista statica) |
-| 3 | GET | `/events` | `EventsPage` | `events` | — |
-| 4 | GET | `/events/{event:slug}` | `EventDetailPage` | `events.show` | `Event` via `slug` |
-| 5 | GET | `/resources` | `ResourcesPage` | `resources` | — |
-| 6 | GET | `/partners` | `PartnersPage` | `partners` | — |
-| 7 | GET | `/stories` | `StoriesPage` | `stories` | — |
-| 8 | GET | `/stories/{story:slug}` | `StoryDetailPage` | `stories.show` | `Story` via `slug` |
-| 9 | GET | `/privacy-policy` | `PrivacyPolicyPage` | `privacy-policy` | — |
-| 10 | GET | `/cookie-policy` | `CookiePolicyPage` | `cookie-policy` | — |
+| 2 | GET | `/events` | `EventsPage` | `events` | — |
+| 3 | GET | `/events/{event:slug}` | `EventDetailPage` | `events.show` | `Event` via `slug` |
+| 4 | GET | `/resources` | `ResourcesPage` | `resources` | — |
+| 5 | GET | `/partners` | `PartnersPage` | `partners` | — |
+| 6 | GET | `/stories` | `StoriesPage` | `stories` | — |
+| 7 | GET | `/stories/{story:slug}` | `StoryDetailPage` | `stories.show` | `Story` via `slug` |
+| 8 | GET | `/privacy-policy` | `PrivacyPolicyPage` | `privacy-policy` | — |
+| 9 | GET | `/cookie-policy` | `CookiePolicyPage` | `cookie-policy` | — |
 
 Le rotte di dettaglio usano l'**implicit model binding con chiave personalizzata** (`{event:slug}`, `{story:slug}` — `routes/web.php:22` e `:29`): Laravel risolve il modello cercando per colonna `slug` invece che per `id`, in linea con la convenzione di progetto «le route usano sempre lo slug per gli eventi».
 
 Oltre alle rotte applicative:
 
 - **Health check** `/up` — configurato in `bootstrap/app.php:11` (`health: '/up'`).
-- La rotta `/cosa-facciamo` (`routes/web.php:16-19`) è l'**unica** pagina che NON è un componente Livewire e NON usa `layouts.app`: è una `Route::view` verso `resources/views/pages/static.blade.php`, a cui passa `pageTitle` e `metaDescription` come dati statici. La view è un placeholder minimale (un `<h1>` con il titolo): di fatto è una pagina segnaposto.
 
 ### Middleware globale di gruppo
 
@@ -53,7 +51,6 @@ flowchart TD
     MW --> S["/stories — StoriesPage"]
     MW --> SD["/stories/{slug} — StoryDetailPage"]
     MW --> L["/privacy-policy · /cookie-policy"]
-    MW --> ST["/cosa-facciamo (static)"]
 
     ED -->|"!is_published OR work_in_progress"| X[abort 404]
     SD -->|"!is_published"| X
@@ -67,7 +64,7 @@ flowchart TD
 
 ## Layout principale (`resources/views/layouts/app.blade.php`)
 
-Il layout è il guscio condiviso da tutte le pagine Livewire (la pagina statica `/cosa-facciamo` ne è esclusa).
+Il layout è il guscio condiviso da tutte le pagine pubbliche.
 
 ### `<head>` (righe 4‑23)
 

@@ -338,12 +338,11 @@ Due file di config sono specifici del dominio frontend e non fanno parte dello s
 
 ## Rotte pubbliche
 
-Le rotte sono dichiarate in `routes/web.php` e usano sempre componenti Livewire full-page o `Route::view`, mai controller di dominio. Tutte sono **nomate** (`routes/web.php:14-32`):
+Le rotte sono dichiarate in `routes/web.php` e usano sempre componenti Livewire full-page, mai controller di dominio. Tutte sono **nomate** (`routes/web.php:14-32`):
 
 | Route | Nome | Componente / vista |
 |-------|------|--------------------|
 | `/` | `home` | `HomePage` |
-| `/cosa-facciamo` | `services` | `Route::view('pages.static')` |
 | `/events` | `events` | `EventsPage` |
 | `/events/{event:slug}` | `events.show` | `EventDetailPage` |
 | `/resources` | `resources` | `ResourcesPage` |

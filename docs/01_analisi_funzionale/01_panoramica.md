@@ -9,7 +9,7 @@ Il sito assolve a quattro funzioni principali:
 1. **Vetrina pubblica** — presenta la community, i suoi eventi, le risorse condivise, le storie dei membri e i partner. È la parte navigata dagli utenti anonimi.
 2. **Gestione dei contenuti (CMS)** — un pannello di amministrazione costruito con **Filament** consente allo staff di creare e curare eventi, risorse, storie, autori, partner e categorie, senza toccare il codice.
 3. **Analytics interne** — un middleware proprietario (`app/Http/Middleware/TrackPageView.php`) registra le visite alle pagine pubbliche, alimentando i widget statistici della dashboard admin, **senza** cookie né servizi di tracciamento di terze parti.
-4. **Pagine istituzionali e legali** — presentazione delle attività (`/cosa-facciamo`) e informative GDPR/cookie.
+4. **Pagine legali** — informative GDPR/cookie. La presentazione delle attività vive nelle sezioni della home.
 
 Il sito adotta un'estetica **dark/cyber-terminal** con animazioni curate (GSAP, Alpine.js, Motion One) ed è interamente in **lingua italiana** per i contenuti rivolti all'utenza. Il dominio di riferimento e le coordinate della community sono centralizzati in `config/community.php`.
 
