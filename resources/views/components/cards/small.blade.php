@@ -9,7 +9,7 @@
     $variants = [
         'default' => [
             'corner' => 'text-surface-400',
-            'icon' => 'text-primary',
+            'icon' => 'text-surface-300',
         ],
         'danger' => [
             'corner' => 'text-red-900',

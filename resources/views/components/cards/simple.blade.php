@@ -10,8 +10,8 @@
         'default' => [
             'card'      => 'hover:bg-primary-800/25',
             'corner'    => 'text-surface-400',
-            'iconText'  => 'text-primary',
-            'iconHover' => 'group-hover:bg-primary-900',
+            'iconText'  => 'text-surface-300',
+            'iconHover' => 'group-hover:bg-primary-900 group-hover:text-primary',
         ],
         'danger' => [
             'card'      => 'hover:bg-red-950/30',
