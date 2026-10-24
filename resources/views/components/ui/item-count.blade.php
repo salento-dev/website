@@ -1,4 +1,4 @@
-@props(['collection', 'label' => 'items found'])
+@props(['collection', 'label' => 'risultati'])
 
 @php
     $count = $collection instanceof \Illuminate\Contracts\Pagination\LengthAwarePaginator
@@ -6,7 +6,7 @@
         : $collection->count();
 @endphp
 
-<div class="hidden md:d-flex items-center gap-1 text-xs">
+<div class="hidden md:flex items-center gap-1 text-xs">
     <span aria-hidden="true">{{ ucfirst($label) }}:</span>
     <span class="item min-w-9 font-medium" aria-label="{{ $count }} {{ $label }}" role="status">
         {{ $count }}
