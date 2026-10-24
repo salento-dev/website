@@ -17,7 +17,7 @@
         @endif
 
         @if ($pastEvents->isNotEmpty())
-            <x-ui.section-header eyebrow="Eventi passati" :link="['href' => route('events'), 'text' => 'Full Schedule']">
+            <x-ui.section-header eyebrow="Eventi passati" title="Gli ultimi incontri" :link="['href' => route('events'), 'text' => 'Full Schedule']">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     @foreach ($pastEvents as $event)
                         <x-events.event :event="$event" :variant="'simple'" />
