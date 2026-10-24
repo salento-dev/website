@@ -23,7 +23,7 @@ class EventDetailPageTest extends TestCase
             ->assertSee('href="'.route('events.show', $next).'"', false)
             ->assertSee('Lightning Night futura')
             ->assertSee($this->whatsappUrl(), false)
-            ->assertSee('Entra nel gruppo WhatsApp della community');
+            ->assertSee('prima di tutto nel gruppo WhatsApp della community');
     }
 
     public function test_past_event_without_upcoming_events_still_points_to_whatsapp(): void
@@ -35,7 +35,7 @@ class EventDetailPageTest extends TestCase
             ->assertSee('Evento concluso')
             ->assertSee('Nessun evento in programma, per ora')
             ->assertSee($this->whatsappUrl(), false)
-            ->assertSee('Entra nel gruppo WhatsApp della community');
+            ->assertSee('prima di tutto nel gruppo WhatsApp della community');
     }
 
     public function test_past_event_does_not_point_to_work_in_progress_or_unpublished_events(): void
@@ -60,7 +60,7 @@ class EventDetailPageTest extends TestCase
             ->assertSee('Prossimo evento')
             ->assertDontSee('Evento concluso')
             ->assertDontSee('past-event-next-title', false)
-            ->assertDontSee('Entra nel gruppo WhatsApp della community')
+            ->assertDontSee('prima di tutto nel gruppo WhatsApp della community')
             ->assertDontSee('Iscriviti');
     }
 

@@ -30,7 +30,7 @@
                 <x-ui.spark-link
                     :href="$whatsapp['url']"
                     text="Join WhatsApp"
-                    aria-label="Entra nel gruppo WhatsApp della community"
+                    aria-label="Join WhatsApp – gruppo della community"
                     class="h-full"
                 >
                     <x-slot:icon><x-simpleicon-whatsapp class="size-full" /></x-slot:icon>

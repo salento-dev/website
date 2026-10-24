@@ -11,6 +11,11 @@
     $uid = 'spark_' . uniqid();
     $hasText = !empty($text);
 
+    $accessibleName = $ariaLabel ?: $text;
+    if ($target === '_blank' && $accessibleName !== '') {
+        $accessibleName .= ', si apre in una nuova scheda';
+    }
+
     $iconSizeClass = match ($iconSize) {
         '3' => 'size-3',
         '5' => 'size-5',
@@ -28,7 +33,7 @@
     href="{{ $href }}"
     target="{{ $target }}"
     rel="{{ $rel }}"
-    aria-label="{{ $ariaLabel ?: $text }}"
+    aria-label="{{ $accessibleName }}"
     {{ $attributes->merge(['class' => $linkClasses]) }}
     x-init="
         () => {

@@ -10,7 +10,7 @@
         <div class="flex w-22 items-stretch border-r border-border min-[370px]:w-25 nav:hidden">
             <x-ui.spark-link
                 :href="$whatsappUrl"
-                aria-label="Open WhatsApp group"
+                aria-label="Join WhatsApp – gruppo della community"
                 icon-size="5"
                 class="w-full"
             >
@@ -40,7 +40,7 @@
                     <x-ui.spark-link
                         :href="$whatsappUrl"
                         text="Join WhatsApp"
-                        aria-label="Open WhatsApp group"
+                        aria-label="Join WhatsApp – gruppo della community"
                         class="h-full"
                     >
                         <x-slot:icon>{!! $whatsappIcon !!}</x-slot:icon>
