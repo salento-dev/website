@@ -43,7 +43,7 @@
          SECTION 3 — STORICO EVENTI
     ───────────────────────────────────────────── --}}
     @if ($pastEvents->isNotEmpty() || filled($search))
-        <x-ui.section-header title="Storico Eventi" tag="Passed: {{ $pastEvents->count() }}" size="small">
+        <x-ui.section-header title="Storico Eventi" tag="Passed: {{ $pastEvents->total() }}" size="small">
             <div class="flex flex-col gap-6">
                 <x-ui.input-search wire-model="search" placeholder="Cerca nello storico..."
                     sr-label="Cerca eventi per titolo, luogo o descrizione" />
