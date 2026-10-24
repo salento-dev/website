@@ -1,12 +1,52 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-Xi6Wcvbw.css",
+    "file": "assets/app-P1tW74fn.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
     "names": [
       "app.css"
     ]
+  },
+  "resources/fonts/albert-sans-latin-ext-wght-italic.woff2": {
+    "file": "assets/albert-sans-latin-ext-wght-italic-C07uU66k.woff2",
+    "src": "resources/fonts/albert-sans-latin-ext-wght-italic.woff2"
+  },
+  "resources/fonts/albert-sans-latin-ext-wght-normal.woff2": {
+    "file": "assets/albert-sans-latin-ext-wght-normal-Cilgyi0P.woff2",
+    "src": "resources/fonts/albert-sans-latin-ext-wght-normal.woff2"
+  },
+  "resources/fonts/albert-sans-latin-wght-italic.woff2": {
+    "file": "assets/albert-sans-latin-wght-italic-CWOR3MJ-.woff2",
+    "src": "resources/fonts/albert-sans-latin-wght-italic.woff2"
+  },
+  "resources/fonts/albert-sans-latin-wght-normal.woff2": {
+    "file": "assets/albert-sans-latin-wght-normal-BifFJOWk.woff2",
+    "src": "resources/fonts/albert-sans-latin-wght-normal.woff2"
+  },
+  "resources/fonts/outfit-latin-ext-wght-normal.woff2": {
+    "file": "assets/outfit-latin-ext-wght-normal-BMnJGVZj.woff2",
+    "src": "resources/fonts/outfit-latin-ext-wght-normal.woff2"
+  },
+  "resources/fonts/outfit-latin-wght-normal.woff2": {
+    "file": "assets/outfit-latin-wght-normal-D6ftewdU.woff2",
+    "src": "resources/fonts/outfit-latin-wght-normal.woff2"
+  },
+  "resources/fonts/roboto-mono-latin-ext-wght-italic.woff2": {
+    "file": "assets/roboto-mono-latin-ext-wght-italic-CErTcBzw.woff2",
+    "src": "resources/fonts/roboto-mono-latin-ext-wght-italic.woff2"
+  },
+  "resources/fonts/roboto-mono-latin-ext-wght-normal.woff2": {
+    "file": "assets/roboto-mono-latin-ext-wght-normal-CSSVNFqV.woff2",
+    "src": "resources/fonts/roboto-mono-latin-ext-wght-normal.woff2"
+  },
+  "resources/fonts/roboto-mono-latin-wght-italic.woff2": {
+    "file": "assets/roboto-mono-latin-wght-italic-D_P-kX1t.woff2",
+    "src": "resources/fonts/roboto-mono-latin-wght-italic.woff2"
+  },
+  "resources/fonts/roboto-mono-latin-wght-normal.woff2": {
+    "file": "assets/roboto-mono-latin-wght-normal-BAKpfWyj.woff2",
+    "src": "resources/fonts/roboto-mono-latin-wght-normal.woff2"
   },
   "resources/images/dots-pattern-15.png": {
     "file": "assets/dots-pattern-15-DFKBKF-Z.png",
