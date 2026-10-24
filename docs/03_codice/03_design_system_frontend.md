@@ -181,7 +181,7 @@ gsap.registerPlugin(Draggable, SplitText);
 
 **Inclusione nel layout:** `layouts/app.blade.php:19-21` emette `@vite(['resources/css/app.css', 'resources/js/app.js'])` **solo** se esiste `public/build/manifest.json` o `public/hot` (evita la `ViteException` quando gli asset non sono compilati).
 
-**Font:** caricati da Google Fonts con `preconnect` (Outfit, Albert Sans, Roboto Mono). **Icone:** Heroicons via `<x-heroicon-o-*>` o `@svg('heroicon-…')`; icone social via `ublabs/blade-simple-icons` (`<x-simpleicon-*>` o `<x-dynamic-component :component="'simpleicon-'.$icon">`).
+**Font:** self-hosted in `resources/fonts/` (woff2 variable, subset latin e latin-ext, licenza OFL), dichiarati con `@font-face` in `resources/css/app.css` e serviti da Vite; nessuna richiesta a Google Fonts. Il layout precarica solo Outfit latin (Outfit, Albert Sans, Roboto Mono). **Icone:** Heroicons via `<x-heroicon-o-*>` o `@svg('heroicon-…')`; icone social via `ublabs/blade-simple-icons` (`<x-simpleicon-*>` o `<x-dynamic-component :component="'simpleicon-'.$icon">`).
 
 **Comandi:** `vendor/bin/sail npm run build` (produzione), `vendor/bin/sail npm run dev` (HMR), `vendor/bin/sail composer run dev` (server + queue + log + vite via `concurrently`).
 
