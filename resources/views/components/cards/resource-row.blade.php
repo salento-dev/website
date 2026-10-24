@@ -26,7 +26,7 @@
             @if($authors->isNotEmpty())
                 <div class="flex items-center">
                     @foreach($authors->take(3) as $author)
-                        <img
+                        <img loading="lazy"
                             src="{{ $author->avatar_url }}"
                             alt="{{ $author->name }}"
                             title="{{ $author->name }}"

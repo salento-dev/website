@@ -3,7 +3,7 @@
 <div class="relative border border-border p-5 flex flex-col items-center text-center h-full duration-300">
     <div class="w-full h-32 flex items-center justify-center mb-5 overflow-hidden">
         @if($partner->logo_url)
-        <img class="max-w-full max-h-full w-auto h-auto object-contain"
+        <img loading="lazy" class="max-w-full max-h-full w-auto h-auto object-contain"
             src="{{ $partner->logo_url }}"
             alt="{{ $partner->name }}" />
         @else
