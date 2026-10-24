@@ -5,11 +5,14 @@
 
 @php
     $startsAt = $event->local_starts_at;
+    $titleId = "event-card-{$event->id}-{$variant}-title";
+    $metaId = "event-card-{$event->id}-{$variant}-meta";
 @endphp
 
 
 @if (!$event->work_in_progress)
-    <a href="{{ route('events.show', $event) }}" class="block h-full bg-surface-900">
+    <a href="{{ route('events.show', $event) }}" aria-labelledby="{{ $titleId }} {{ $metaId }}"
+        class="block h-full bg-surface-900 focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset">
 @endif
 <div class="bg-surface-900 h-full {{ $event->work_in_progress ? 'cursor-not-allowed' : '' }}">
     <article
@@ -28,16 +31,16 @@
                 @if ($variant === 'default')
                     <div
                         class="aspect-video overflow-hidden rounded-xs ring ring-surface-700 transition duration-300 ease-out group-hover:scale-101">
-                        <img src="{{ $event->image_url }}" alt="Immagine dell'evento {{ $event->title }}"
+                        <img src="{{ $event->image_url }}" alt=""
                             class="size-full object-cover" loading="lazy">
                     </div>
                 @else
                     <div class="flex min-h-18 flex-col items-center justify-center gap-1.5 px-3 text-center">
-                        <h3
+                        <h3 id="{{ $titleId }}"
                             class="line-clamp-2 font-outfit text-lg font-medium text-surface-200 transition duration-300 ease-out group-hover:-translate-y-0.5">
                             {{ $event->title }}
                         </h3>
-                        <x-events.meta :event="$event" class="justify-center" />
+                        <x-events.meta :event="$event" :id="$metaId" class="justify-center" />
                     </div>
                 @endif
             </div>
@@ -58,13 +61,13 @@
                     <x-ui.title-indicator />
 
 
-                    <p class="line-clamp-1 font-outfit font-bold text-surface-50 group-hover:text-primary">
+                    <h3 id="{{ $titleId }}" class="line-clamp-1 font-outfit font-bold text-surface-50 group-hover:text-primary">
                         {{ $event->title }}
-                    </p>
+                    </h3>
                 </div>
 
 
-                <x-events.meta :event="$event" class="mb-1" />
+                <x-events.meta :event="$event" :id="$metaId" class="mb-1" />
 
                 <p class="line-clamp-2 text-sm">
                     {{ strip_tags($event->excerpt ?: $event->body) }}
@@ -79,9 +82,9 @@
                 <span
                     class="transition duration-300 ease-out {{ !$event->isPast() && !$event->work_in_progress ? 'group-hover:translate-x-1' : '' }}">
                     @if ($event->work_in_progress)
-                        <x-heroicon-o-clock class="h-3" />
+                        <x-heroicon-o-clock class="h-3" aria-hidden="true" />
                     @else
-                        <x-heroicon-o-arrow-right class="h-3" />
+                        <x-heroicon-o-arrow-right class="h-3" aria-hidden="true" />
                     @endif
                 </span>
             </div>
@@ -90,8 +93,10 @@
         <div class="flex flex-wrap items-center gap-1.5">
 
             @if ($event->is_community_event)
-                <span class="inline-flex h-7 shrink-0 items-center rounded-xs bg-surface-800 px-2">
-                    <x-ui.logo class="h-3.5 w-auto text-primary-400" />
+                <span class="inline-flex h-7 shrink-0 items-center rounded-xs bg-surface-800 px-2"
+                    title="Organizzato da Salento.dev">
+                    <x-ui.logo class="h-3.5 w-auto text-primary-400" aria-hidden="true" />
+                    <span class="sr-only">Organizzato da Salento.dev</span>
                 </span>
             @endif
 

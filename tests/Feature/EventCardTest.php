@@ -92,4 +92,38 @@ class EventCardTest extends TestCase
         $this->assertStringContainsString('2 apr 2026', $withoutLocationHtml);
         $this->assertStringNotContainsString(self::MAP_PIN_PATH, $withoutLocationHtml);
     }
+
+    public function test_card_title_is_a_heading_that_names_the_link(): void
+    {
+        $event = Event::factory()->create(['title' => 'Meetup accessibile', 'work_in_progress' => false]);
+
+        $html = Blade::render('<x-events.event :event="$event" />', ['event' => $event]);
+
+        $titleId = "event-card-{$event->id}-default-title";
+        $this->assertMatchesRegularExpression('/<h3 id="'.$titleId.'"[^>]*>\s*Meetup accessibile\s*<\/h3>/', $html);
+        $this->assertStringContainsString('aria-labelledby="'.$titleId.' event-card-'.$event->id.'-default-meta"', $html);
+        $this->assertStringContainsString('id="event-card-'.$event->id.'-default-meta"', $html);
+    }
+
+    public function test_community_event_is_labelled_for_screen_readers(): void
+    {
+        $communityEvent = Event::factory()->create(['is_community_event' => true]);
+        $externalEvent = Event::factory()->create(['is_community_event' => false]);
+
+        $communityHtml = Blade::render('<x-events.event :event="$event" variant="simple" />', ['event' => $communityEvent]);
+        $externalHtml = Blade::render('<x-events.event :event="$event" variant="simple" />', ['event' => $externalEvent]);
+
+        $this->assertStringContainsString('<span class="sr-only">Organizzato da Salento.dev</span>', $communityHtml);
+        $this->assertStringNotContainsString('Organizzato da Salento.dev', $externalHtml);
+    }
+
+    public function test_work_in_progress_card_is_not_a_link(): void
+    {
+        $event = Event::factory()->create(['work_in_progress' => true, 'starts_at' => now()->addMonth()]);
+
+        $html = Blade::render('<x-events.event :event="$event" />', ['event' => $event]);
+
+        $this->assertStringNotContainsString(route('events.show', $event), $html);
+        $this->assertStringContainsString('In pianificazione', $html);
+    }
 }
