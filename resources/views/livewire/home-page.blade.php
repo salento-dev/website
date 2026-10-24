@@ -36,7 +36,7 @@
                 @forelse ($resources as $resource)
                     <x-cards.resource-row :resource="$resource" />
                 @empty
-                    <p class="p-4 text-sm text-primary/60">Nessuna risorsa pubblicata al momento.</p>
+                    <p class="p-4 text-sm text-surface-400">Nessuna risorsa pubblicata al momento.</p>
                 @endforelse
             </div>
         </x-ui.terminal>
