@@ -37,7 +37,7 @@
                 @else
                     <div class="flex min-h-18 flex-col items-center justify-center gap-1.5 px-3 text-center">
                         <h3 id="{{ $titleId }}"
-                            class="line-clamp-2 font-outfit text-lg font-medium text-surface-200 transition duration-300 ease-out group-hover:-translate-y-0.5">
+                            class="line-clamp-2 font-outfit text-lg font-medium wrap-anywhere text-surface-200 transition duration-300 ease-out group-hover:-translate-y-0.5">
                             {{ $event->title }}
                         </h3>
                         <x-events.meta :event="$event" :id="$metaId" class="justify-center" />
@@ -61,7 +61,7 @@
                     <x-ui.title-indicator />
 
 
-                    <h3 id="{{ $titleId }}" class="line-clamp-1 font-outfit font-bold text-surface-50 group-hover:text-primary">
+                    <h3 id="{{ $titleId }}" class="line-clamp-2 font-outfit font-bold wrap-anywhere text-surface-50 group-hover:text-primary">
                         {{ $event->title }}
                     </h3>
                 </div>
@@ -69,9 +69,11 @@
 
                 <x-events.meta :event="$event" :id="$metaId" class="mb-1" />
 
-                <p class="line-clamp-2 text-sm">
-                    {{ strip_tags($event->excerpt ?: $event->body) }}
-                </p>
+                @if ($event->plain_excerpt)
+                    <p class="line-clamp-2 text-sm wrap-break-word">
+                        {{ $event->plain_excerpt }}
+                    </p>
+                @endif
             </div>
         @endif
 
@@ -102,8 +104,8 @@
 
             @foreach ($event->categories as $category)
                 <span
-                    class="inline-flex h-7 shrink-0 items-center rounded-xs bg-surface-800 px-2 text-xs font-medium text-surface-200">
-                    {{ $category->name }}
+                    class="inline-flex h-7 max-w-full min-w-0 items-center rounded-xs bg-surface-800 px-2 text-xs font-medium text-surface-200">
+                    <span class="truncate">{{ $category->name }}</span>
                 </span>
             @endforeach
 
