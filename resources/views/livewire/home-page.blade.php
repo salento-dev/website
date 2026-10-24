@@ -23,7 +23,7 @@
         @endif
     </div>
 
-
+    <x-sections.activities />
 
     <!-- Documents Feed / Resources -->
     <x-ui.section-header eyebrow="FETCHING_RESOURCES" title="Le ultime risorse" :link="['href' => route('resources'), 'text' => 'View All Resources']">
@@ -39,8 +39,6 @@
     </x-ui.section-header>
 
     <x-sections.principles />
-
-    <x-sections.activities />
 
     <x-sections.scopes />
 
