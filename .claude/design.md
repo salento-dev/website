@@ -51,17 +51,6 @@ Header di sezione con eyebrow, titolo, descrizione e link opzionale. Wrappa il `
 </x-ui.section-header>
 ```
 
-### `<x-ui.section-title>`
-Titolo sezione con icona Heroicon, linea decorativa e link azione.
-```blade
-<x-ui.section-title
-    title="EVENTI"
-    icon="calendar"           {{-- nome icona heroicon senza prefisso --}}
-    actionLabel="Vedi tutti"  {{-- opzionale --}}
-    actionHref="{{ route('events') }}"
-/>
-```
-
 ### `<x-ui.input-search>`
 Input di ricerca con Alpine.js, debounce 250ms, integrazione Livewire.
 ```blade
