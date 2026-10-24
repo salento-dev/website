@@ -186,7 +186,7 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 
 **The Reserve Rule.** Violet e fuchsia esistono come token ma non sono voci attive. Non introdurli in nuovo lavoro senza una decisione esplicita.
 
-**The Legacy Amber Rule.** Le utility `.text-glow`, `.text-gradient`, `.border-glow`, `.shadow-glow`, `.shadow-glow-purple`, `.shadow-neon*`, `.shadow-card`, `.bg-gradient-radial`, `.bg-gradient-mesh` sono residui ambra/arancio di una palette precedente. Non usarle.
+**The Legacy Amber Rule.** Ambra e arancio appartenevano a una palette precedente: le relative utility glow, gradient e ombra sono state rimosse da `app.css`. Non reintrodurre glow, gradienti o ombre ambra/arancio.
 
 **The Brand-Borrow Rule.** Verde e ambra sono prestiti funzionali (canale WhatsApp, WIP), non accenti di marca. Mai come decorazione.
 
@@ -225,7 +225,7 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 
 ## Elevation & Depth
 
-Piatto, solo toni. La profondità nasce dalla scala nero → mist-950 → 900 → 800 → 700 e dai bordi a 1px in Control Graphite. Nessuna ombra nel sistema attivo; le utility d'ombra in `app.css` sono legacy ambra (vedi The Legacy Amber Rule). Le immagini in evidenza si separano con overlay a gradiente verso Panel Graphite, non con ombre.
+Piatto, solo toni. La profondità nasce dalla scala nero → mist-950 → 900 → 800 → 700 e dai bordi a 1px in Control Graphite. Nessuna ombra nel sistema (vedi The Legacy Amber Rule). Le immagini in evidenza si separano con overlay a gradiente verso Panel Graphite, non con ombre.
 
 ### Named Rules
 **The Tonal Step Rule.** Un elemento che deve "salire" passa al gradino grafite successivo o prende un bordo 1px. Mai un box-shadow.
@@ -284,8 +284,8 @@ Eyebrow cyan, titolo Headline in Bright Mist, a destra un link cyan con chevron 
 
 ### Don't:
 - **Don't** introdurre un tema chiaro o superfici chiare estese (la CTA pill è l'unica eccezione).
-- **Don't** usare box-shadow, alone o glow: le utility ambra/arancio di `app.css` sono legacy.
-- **Don't** usare `.text-glow`, `.text-gradient` o gradienti ambra nei nuovi titoli.
+- **Don't** usare box-shadow, alone o glow.
+- **Don't** usare gradienti o glow sui titoli: l'accento è una parola in cyan pieno.
 - **Don't** attivare violet o fuchsia come accenti senza una decisione esplicita.
 - **Don't** usare verde o ambra fuori da WhatsApp/live e WIP.
 - **Don't** usare `rounded-lg` o raggi maggiori su card e contenitori.

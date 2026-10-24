@@ -136,7 +136,7 @@
     "rules": [
       { "name": "The One Signal Rule", "body": "Il cyan è l'unica luce accesa. Va su etichette, link, stati e una parola per titolo, mai su sfondi pieni di grandi superfici. Se una schermata ha più di una manciata di elementi cyan, uno è di troppo.", "section": "colors" },
       { "name": "The Reserve Rule", "body": "Violet e fuchsia esistono come token ma non sono voci attive. Non introdurli in nuovo lavoro senza una decisione esplicita.", "section": "colors" },
-      { "name": "The Legacy Amber Rule", "body": "Le utility `.text-glow`, `.text-gradient`, `.border-glow`, `.shadow-glow`, `.shadow-glow-purple`, `.shadow-neon*`, `.shadow-card`, `.bg-gradient-radial`, `.bg-gradient-mesh` sono residui ambra/arancio di una palette precedente. Non usarle.", "section": "colors" },
+      { "name": "The Legacy Amber Rule", "body": "Ambra e arancio appartenevano a una palette precedente: le relative utility glow, gradient e ombra sono state rimosse da `app.css`. Non reintrodurre glow, gradienti o ombre ambra/arancio.", "section": "colors" },
       { "name": "The Brand-Borrow Rule", "body": "Verde e ambra sono prestiti funzionali (canale WhatsApp, WIP), non accenti di marca. Mai come decorazione.", "section": "colors" },
       { "name": "The Telemetry Voice Rule", "body": "Le etichette di sistema (stati, conteggi, percorsi, categorie) sono mono maiuscolo spaziato a 0.625rem. Il testo che si legge davvero non è mai mono.", "section": "typography" },
       { "name": "The One Mono Rule", "body": "`font-mono` e `font-roboto-mono` puntano entrambi a Roboto Mono (caricato da Google Fonts nel layout). Nuovo lavoro usa `font-mono`; non introdurre altri monospace.", "section": "typography" },
@@ -154,8 +154,8 @@
     ],
     "donts": [
       "**Don't** introdurre un tema chiaro o superfici chiare estese (la CTA pill è l'unica eccezione).",
-      "**Don't** usare box-shadow, alone o glow: le utility ambra/arancio di `app.css` sono legacy.",
-      "**Don't** usare `.text-glow`, `.text-gradient` o gradienti ambra nei nuovi titoli.",
+      "**Don't** usare box-shadow, alone o glow.",
+      "**Don't** usare gradienti o glow sui titoli: l'accento è una parola in cyan pieno.",
       "**Don't** attivare violet o fuchsia come accenti senza una decisione esplicita.",
       "**Don't** usare verde o ambra fuori da WhatsApp/live e WIP.",
       "**Don't** usare `rounded-lg` o raggi maggiori su card e contenitori.",
