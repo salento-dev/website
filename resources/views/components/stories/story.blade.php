@@ -31,9 +31,9 @@
         </div>
 
         {{-- Title --}}
-        <h4 class="font-outfit text-lg font-bold text-surface-50 leading-snug transition-colors duration-300 group-hover:text-primary line-clamp-2">
+        <h3 class="font-outfit text-lg font-bold text-surface-50 leading-snug transition-colors duration-300 group-hover:text-primary line-clamp-2">
             {{ $story->title }}
-        </h4>
+        </h3>
 
         {{-- Excerpt --}}
         <p class="text-sm leading-relaxed text-surface-400 line-clamp-3 flex-1">

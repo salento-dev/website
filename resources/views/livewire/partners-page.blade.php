@@ -23,7 +23,7 @@
     <div
         class="bg-surface-800 border border-border/10 p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="relative z-10 text-center md:text-left">
-            <h3 class="font-headline text-3xl font-bold text-white mb-3">Vuoi diventare partner?</h3>
+            <h2 class="font-headline text-3xl font-bold text-white mb-3">Vuoi diventare partner?</h2>
             <p class="text-surface-300 max-w-md">
                 Unisciti all'ecosistema di {{ config('community.name') }} e contribuisci a far crescere la scena tech salentina.
             </p>
