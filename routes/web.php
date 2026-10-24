@@ -9,12 +9,9 @@ use App\Livewire\PrivacyPolicyPage;
 use App\Livewire\ResourcesPage;
 use App\Livewire\StoriesPage;
 use App\Livewire\StoryDetailPage;
-use App\Livewire\WhatWeDoPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePage::class)->name('home');
-
-Route::get('/cosa-facciamo', WhatWeDoPage::class)->name('services');
 
 Route::get('/events', EventsPage::class)->name('events');
 Route::get('/events/{event:slug}', EventDetailPage::class)->name('events.show');
