@@ -1,6 +1,7 @@
 <div class="relative z-40 nav:hidden">
 
     <button type="button" x-on:click="showMobileMenu = true"
+        x-init="$watch('showMobileMenu', (isOpen) => { if (! isOpen) $nextTick(() => $el.focus({ preventScroll: true })) })"
         class="grid h-full w-22 place-items-center overflow-hidden transition duration-300 ease-out hover:bg-border/30 focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset min-[370px]:w-25 2xs:w-30 nav:hidden nav:w-auto"
         aria-label="Apri menu" aria-expanded="false" x-bind:aria-expanded="showMobileMenu">
         <div>Menu</div>
@@ -8,7 +9,8 @@
 
 
     <div x-show="showMobileMenu" class="fixed inset-0 z-50 nav:hidden" role="dialog" aria-modal="true"
-        aria-labelledby="mobile-menu-title" x-on:click.self="showMobileMenu = false" x-init="$nextTick(() => initMobileMenu($el, $refs, $watch, () => showMobileMenu = false))"
+        aria-labelledby="mobile-menu-title" x-trap.noscroll.noreturn="showMobileMenu"
+        x-on:keydown.escape.window="showMobileMenu = false" x-on:click.self="showMobileMenu = false" x-init="$nextTick(() => initMobileMenu($el, $refs, $watch, () => showMobileMenu = false))"
         style="display: none;">
 
         <div x-ref="overlay" x-on:click="showMobileMenu = false"
@@ -18,7 +20,7 @@
 
         <div class="pointer-events-none relative flex h-full flex-col px-5" x-on:click="showMobileMenu = false">
             <span id="mobile-menu-title" class="sr-only">
-                Navigation menu
+                Menu di navigazione
             </span>
 
 
