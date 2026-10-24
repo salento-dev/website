@@ -42,4 +42,16 @@ class StoriesPageCategoryFilterTest extends TestCase
         Livewire::test(StoriesPage::class)
             ->assertDontSeeHtml('aria-label="Filtra per categoria"');
     }
+
+    public function test_category_filter_ignores_categories_with_only_unpublished_stories(): void
+    {
+        $experiment = StoryCategory::factory()->create(['name' => 'Esperimento', 'is_active' => true]);
+        $draftOnly = StoryCategory::factory()->create(['name' => 'Solo bozze', 'is_active' => true]);
+        Story::factory()->for($experiment, 'category')->create(['is_published' => true]);
+        Story::factory()->for($draftOnly, 'category')->create(['is_published' => false]);
+
+        Livewire::test(StoriesPage::class)
+            ->assertDontSeeHtml('aria-label="Filtra per categoria"')
+            ->assertDontSee('Solo bozze');
+    }
 }
