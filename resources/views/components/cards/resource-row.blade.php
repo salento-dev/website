@@ -20,7 +20,7 @@
                 <span class="text-sm transition-colors group-hover:text-primary">{{ $resource->title }}</span>
             </div>
 
-            <span class="hidden text-surface-400 uppercase sm:inline">{{ $resource->created_at?->diffForHumans() }}</span>
+            <span class="hidden shrink-0 whitespace-nowrap font-mono text-2xs uppercase tracking-wider text-surface-400 sm:inline">{{ $resource->created_at?->diffForHumans() }}</span>
         </div>
         <div class="flex items-center gap-2 text-2xs">
             @if($authors->isNotEmpty())
