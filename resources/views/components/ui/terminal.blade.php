@@ -10,7 +10,7 @@
             <div class="size-2 rounded-full bg-yellow-600"></div>
             <div class="size-2 rounded-full bg-green-600"></div>
         </div>
-        <span class="text-[0.625rem] font-mono text-primary tracking-widest uppercase">
+        <span class="text-2xs font-mono text-primary tracking-widest uppercase">
             {{ 'root@' . config('community.name') }}<span class="hidden md:inline">{{ ':~' . $path }}</span>
         </span>
     </div>
