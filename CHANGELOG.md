@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-24
+
 Design system, accessibility and UX overhaul of the public site ([#8](https://github.com/salento-dev/website/pull/8)).
 
 ### Added
@@ -128,7 +130,8 @@ First version of the site.
 - Search filters, paginator, terminal and countdown components.
 - Event form with timezone support.
 
-[Unreleased]: https://github.com/salento-dev/website/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/salento-dev/website/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/salento-dev/website/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/salento-dev/website/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/salento-dev/website/compare/v0.2.0...v1.0.0
 [0.2.0]: https://github.com/salento-dev/website/compare/v0.1.0...v0.2.0
