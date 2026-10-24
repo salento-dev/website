@@ -43,4 +43,6 @@
     <x-sections.scopes />
 
     <x-sections.code-of-conduct />
+
+    <x-sections.join-community />
 </div>
