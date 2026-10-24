@@ -264,3 +264,22 @@
         inset: -8px
     }
 }
+/* Prosa (dettaglio evento/storia) sulla scala surface invece dei grigi di default */
+.prose-mist {
+    --tw-prose-invert-body: var(--color-surface-300);
+    --tw-prose-invert-headings: var(--color-surface-50);
+    --tw-prose-invert-lead: var(--color-surface-400);
+    --tw-prose-invert-links: var(--color-primary);
+    --tw-prose-invert-bold: var(--color-surface-50);
+    --tw-prose-invert-counters: var(--color-surface-400);
+    --tw-prose-invert-bullets: var(--color-surface-600);
+    --tw-prose-invert-hr: var(--color-border);
+    --tw-prose-invert-quotes: var(--color-surface-200);
+    --tw-prose-invert-quote-borders: var(--color-border);
+    --tw-prose-invert-captions: var(--color-surface-400);
+    --tw-prose-invert-code: var(--color-surface-50);
+    --tw-prose-invert-pre-code: var(--color-surface-200);
+    --tw-prose-invert-pre-bg: var(--color-surface-950);
+    --tw-prose-invert-th-borders: var(--color-surface-700);
+    --tw-prose-invert-td-borders: var(--color-border);
+}

@@ -204,6 +204,7 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 - **Headline** (700, 2.25rem → 3rem): titolo di `section-header`; variante small 1.5rem → 1.875rem.
 - **Title** (500–700, 1.125rem): titoli di card evento e liste.
 - **Body** (400, 1rem, 1.5): testo corrente in Body Mist; estratti card a 0.875rem.
+- **Prosa lunga** (dettaglio evento e storia): `prose prose-invert prose-mist`, che mappa i colori del plugin typography sui token surface/primary.
 - **Body Lead** (300–400, 1.125rem, 1.625): descrizioni hero, max ~42rem (`max-w-2xl`).
 - **Eyebrow** (600, 0.75rem, maiuscolo, tracking 0.05em): sopra i titoli di sezione, sempre in cyan.
 - **Telemetry** (mono, 0.625rem, maiuscolo, tracking 0.1em): status pill, tag di sezione, header del terminale, badge `page-hero` (qui con tracking 0.3em).
