@@ -212,7 +212,7 @@ Grafite fredda appena tinta di blu (famiglia Tailwind `mist`), con una sola spia
 ### Named Rules
 **The Telemetry Voice Rule.** Le etichette di sistema (stati, conteggi, percorsi, categorie) sono mono maiuscolo spaziato a 0.625rem. Il testo che si legge davvero non è mai mono.
 
-**The One Mono Rule.** `font-mono` e `font-roboto-mono` puntano entrambi a Roboto Mono (caricato da Google Fonts nel layout). Nuovo lavoro usa `font-mono`; non introdurre altri monospace.
+**The One Mono Rule.** `font-mono` e `font-roboto-mono` puntano entrambi a Roboto Mono (self-hosted in `resources/fonts/`, dichiarato con `@font-face` in `app.css`). Nuovo lavoro usa `font-mono`; non introdurre altri monospace.
 
 ## Layout
 
