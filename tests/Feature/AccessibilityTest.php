@@ -86,4 +86,23 @@ class AccessibilityTest extends TestCase
             $this->assertSame(2, substr_count($html, 'aria-current="true"'));
         }
     }
+
+    public function test_header_and_footer_are_landmarks_outside_the_single_main(): void
+    {
+        foreach ([$this->get(route('events'))->assertOk(), $this->get('/pagina-che-non-esiste')->assertNotFound()] as $response) {
+            $html = $response->getContent();
+
+            $this->assertSame(1, substr_count($html, '<main'));
+            $this->assertSame(1, substr_count($html, '<header'));
+            $this->assertSame(1, substr_count($html, '<footer'));
+
+            $mainStart = strpos($html, '<main');
+            $mainEnd = strpos($html, '</main>');
+            $this->assertMatchesRegularExpression('/<main id="contenuto" tabindex="-1"/', $html);
+            $this->assertStringContainsString('href="#contenuto"', $html);
+            $this->assertLessThan($mainStart, strpos($html, '</header>'));
+            $this->assertGreaterThan($mainEnd, strpos($html, '<footer'));
+            $this->assertStringNotContainsString('<nav class="sticky', $html);
+        }
+    }
 }
