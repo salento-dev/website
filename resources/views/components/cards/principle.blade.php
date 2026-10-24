@@ -45,7 +45,7 @@
         }
     })
 }"
-    class="group relative px-8 pb-10 text-center focus:outline-none focus-visible:ring focus-visible:ring-black/50"
+    class="group relative px-8 pb-10 text-center focus:outline-none focus-visible:ring focus-visible:ring-primary/50"
     style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
 
     <div x-ref="background"

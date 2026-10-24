@@ -1,7 +1,7 @@
 <div class="relative z-40 nav:hidden">
 
     <button type="button" x-on:click="showMobileMenu = true"
-        class="grid h-full w-22 place-items-center overflow-hidden transition duration-300 ease-out hover:bg-border/30 focus:ring-0 focus:outline-none min-[370px]:w-25 2xs:w-30 nav:hidden nav:w-auto"
+        class="grid h-full w-22 place-items-center overflow-hidden transition duration-300 ease-out hover:bg-border/30 focus:outline-none focus-visible:ring focus-visible:ring-primary/50 focus-visible:ring-inset min-[370px]:w-25 2xs:w-30 nav:hidden nav:w-auto"
         aria-label="Open menu" aria-expanded="false" x-bind:aria-expanded="showMobileMenu">
         <div>Menu</div>
     </button>

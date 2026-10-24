@@ -13,7 +13,7 @@
 ])
 
 <div
-    class="group relative grow overflow-hidden rounded-xs bg-surface-800 text-surface-50 transition duration-300 ease-out focus-within:ring focus-within:ring-black/50 focus-within:ring-inset"
+    class="group relative grow overflow-hidden rounded-xs bg-surface-800 text-surface-50 transition duration-300 ease-out focus-within:ring focus-within:ring-primary/50 focus-within:ring-inset"
     x-data="{
         search: {{ $wireModel ? "\$wire.{$wireModel} ?? ''" : "''" }},
         listeningMessages: @js($listeningMessages),
