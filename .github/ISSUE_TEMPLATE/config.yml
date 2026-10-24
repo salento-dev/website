@@ -3,3 +3,6 @@ contact_links:
   - name: 💬 Community salento.dev
     url: https://salento.dev
     about: Per domande generali sulla community (non bug o richieste sul sito)
+  - name: 🔒 Segnala una vulnerabilità
+    url: https://github.com/salento-dev/website/security/advisories/new
+    about: Le vulnerabilità di sicurezza vanno segnalate in privato, non con una issue pubblica
