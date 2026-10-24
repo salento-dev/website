@@ -2,7 +2,7 @@
     'options',
     'currentValue',
     'wireProperty' => 'sortBy',
-    'label' => 'Sort by:',
+    'label' => 'Ordina:',
 ])
 
 @php
@@ -14,7 +14,7 @@
     <div class="relative" x-data="{ open: false }" @click.outside="open = false"
         @keydown.escape.window="open = false">
         <label for="{{ $selectId }}" class="sr-only">
-            Sort articles by
+            Ordina per
         </label>
         <button id="{{ $selectId }}" type="button" @click="open = !open" :aria-expanded="open"
             aria-haspopup="listbox" class="btn btn-sm group" aria-expanded="false">
