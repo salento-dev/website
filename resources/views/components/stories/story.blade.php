@@ -66,7 +66,7 @@
             @endif
             <span class="font-mono text-2xs uppercase tracking-widest text-primary/60 transition-colors duration-300 group-hover:text-primary shrink-0">
                 Leggi
-                <x-heroicon-o-arrow-top-right-on-square class="inline h-3 ml-0.5" />
+                <x-heroicon-o-arrow-right class="inline h-3 ml-0.5" />
             </span>
         </div>
     </div>

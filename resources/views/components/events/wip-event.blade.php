@@ -8,7 +8,7 @@
 
     <div>
         <x-heroicon-o-clock class="mb-5 h-8 text-surface-600" />
-        <h4 class="mb-2 font-outfit text-xl font-bold text-surface-200">{{ $event->title }}</h4>
+        <h3 class="mb-2 font-outfit text-xl font-bold text-surface-200">{{ $event->title }}</h3>
         @if ($event->body)
             <p class="line-clamp-3 text-sm leading-relaxed text-surface-500">
                 {{ strip_tags($event->body) }}

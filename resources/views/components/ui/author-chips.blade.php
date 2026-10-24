@@ -35,6 +35,9 @@
             x-transition:leave-start="opacity-100"
             x-transition:leave-end="opacity-0"
             class="fixed inset-0 z-50 flex items-center justify-center p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Autori"
             @keydown.escape.window="open = false"
             style="display: none"
         >
@@ -48,12 +51,14 @@
                 x-transition:leave="transition duration-150 ease-in"
                 x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-95"
+                x-trap.noscroll="open"
                 class="relative z-10 w-full max-w-sm border border-border bg-surface-900 p-6"
                 style="display: none"
             >
                 <button
                     type="button"
                     @click="open = false"
+                    aria-label="Chiudi"
                     class="absolute right-4 top-4 text-surface-400 transition-colors hover:text-surface-50"
                 >
                     <x-heroicon-o-x-mark class="size-5" />
