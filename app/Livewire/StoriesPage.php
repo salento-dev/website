@@ -97,7 +97,7 @@ class StoriesPage extends Component
                 fn (Builder $q) => $q->where(function (Builder $sub): void {
                     $sub->where('title', 'like', '%'.$this->search.'%')
                         ->orWhere('excerpt', 'like', '%'.$this->search.'%')
-                        ->orWhere('author', 'like', '%'.$this->search.'%');
+                        ->orWhereHas('authors', fn (Builder $authors): Builder => $authors->where('name', 'like', '%'.$this->search.'%'));
                 }),
             )
             ->when(
