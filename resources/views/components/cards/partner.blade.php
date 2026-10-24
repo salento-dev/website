@@ -23,8 +23,8 @@
     <div class="mt-auto pt-5 border-t border-border w-full flex justify-center">
         <a class="inline-flex items-center gap-2 font-label text-sm uppercase tracking-wider text-surface-300 hover:text-primary transition-colors"
             href="{{ $partner->website_url }}"
-            target="_blank" rel="noopener">
-            Visit Website
+            target="_blank" rel="noopener noreferrer">
+            Visit Website<span class="sr-only"> – {{ $partner->name }}, si apre in una nuova scheda</span>
             <x-heroicon-o-arrow-top-right-on-square class="size-4" />
         </a>
     </div>

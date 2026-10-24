@@ -120,7 +120,7 @@
                     <li class="flex items-center gap-2">
                         <span class="text-primary">›</span>
                         <a href="{{ $url }}" target="_blank" rel="noopener noreferrer"
-                            class="text-primary hover:text-primary-light transition-colors">{{ $browser }}</a>
+                            class="text-primary hover:text-primary-light transition-colors">{{ $browser }}<span class="sr-only">, si apre in una nuova scheda</span></a>
                     </li>
                     @endforeach
                 </ul>

@@ -195,7 +195,7 @@
                     <a href="mailto:{{ config('community.email') }}" class="text-primary hover:text-primary-light transition-colors">{{ config('community.email') }}</a>.
                     Hai inoltre il diritto di proporre reclamo al
                     <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer"
-                        class="text-primary hover:text-primary-light transition-colors">Garante per la Protezione dei Dati Personali</a>.
+                        class="text-primary hover:text-primary-light transition-colors">Garante per la Protezione dei Dati Personali<span class="sr-only">, si apre in una nuova scheda</span></a>.
                 </p>
             </div>
         </section>

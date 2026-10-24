@@ -105,10 +105,10 @@
             >
                 @if($isFile)
                     <x-heroicon-o-arrow-down-tray class="size-4" />
-                    Scarica il file
+                    Scarica il file<span class="sr-only">, si apre in una nuova scheda</span>
                 @else
                     <x-heroicon-o-arrow-top-right-on-square class="size-4" />
-                    Apri il link
+                    Apri il link<span class="sr-only">, si apre in una nuova scheda</span>
                 @endif
             </a>
             @endif
