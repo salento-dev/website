@@ -82,3 +82,7 @@ window.SplitText = SplitText;
 window.motion = { inView, hover };
 window.FilamentAnimations = { horizontalLoop };
 window.autoAnimate = autoAnimate;
+
+// Rispetta la preferenza di sistema "riduci movimento"
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+window.prefersReducedMotion = () => reducedMotionQuery.matches;
