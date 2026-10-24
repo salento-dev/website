@@ -105,4 +105,16 @@ class AccessibilityTest extends TestCase
             $this->assertStringNotContainsString('<nav class="sticky', $html);
         }
     }
+
+    public function test_sort_control_is_a_labelled_select_only_combobox(): void
+    {
+        $html = $this->get(route('resources'))->assertOk()->getContent();
+
+        $this->assertStringContainsString('<span id="sort-select-sortby-label" class="sr-only md:not-sr-only">Ordina:</span>', $html);
+        $this->assertMatchesRegularExpression('/role="combobox"\s+aria-haspopup="listbox" aria-controls="sort-select-sortby-listbox"/', $html);
+        $this->assertStringContainsString('aria-labelledby="sort-select-sortby-label sort-select-sortby"', $html);
+        $this->assertStringContainsString('role="listbox" tabindex="-1" aria-labelledby="sort-select-sortby-label"', $html);
+        $this->assertStringContainsString('id="sort-select-sortby-option-0" role="option"', $html);
+        $this->assertStringNotContainsString('Sort options', $html);
+    }
 }
