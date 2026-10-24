@@ -88,7 +88,7 @@
             </p>
         @endif
 
-        <div class="prose prose-invert prose-sm md:prose-base max-w-none">
+        <div class="prose prose-invert prose-mist prose-sm md:prose-base max-w-none">
             @if(!empty($event->body))
             {!! \Illuminate\Support\Str::markdown($event->body, [
                 'html_input' => 'strip',
