@@ -3,7 +3,7 @@
     title='Ambiti di Appartenenza'
     description="Una community di sviluppatori per sviluppatori. Accogliamo figure tecniche che contribuiscono alla pratica dello sviluppo.">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         <x-cards.simple icon="o-code-bracket" title="Web Dev" description="Frontend, backend, full-stack" />
         <x-cards.simple icon="o-device-phone-mobile" title="Mobile & Gaming" description="Mobile, game, embedded/IoT" />
         <x-cards.simple icon="o-cpu-chip" title="AI & Data" description="AI/ML developer, Data Scientist" />

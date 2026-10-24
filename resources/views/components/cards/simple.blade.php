@@ -24,15 +24,15 @@
     $v = $variants[$variant];
 @endphp
 
-<div {{ $attributes->class(['group relative px-8 pb-10 pt-8 text-center bg-surface-900 transition-colors duration-300 ease-in-out', $v['card']]) }}>
+<div {{ $attributes->class(['group relative px-4 pb-6 pt-6 sm:px-8 sm:pb-10 sm:pt-8 text-center bg-surface-900 transition-colors duration-300 ease-in-out', $v['card']]) }}>
     @if ($variant === 'danger')
         <x-ui.corners :color="$v['corner']" :hover="false" size="h-2.5" offset="4" />
     @endif
 
-    <div class="inline-flex size-14 items-center justify-center rounded-full bg-surface-800 {{ $v['iconText'] }} mb-5 {{ $v['iconHover'] }} transition-colors duration-300 ease-in-out">
+    <div class="inline-flex size-12 sm:size-14 items-center justify-center rounded-full bg-surface-800 {{ $v['iconText'] }} mb-4 sm:mb-5 {{ $v['iconHover'] }} transition-colors duration-300 ease-in-out">
         @svg('heroicon-' . $icon, 'size-6')
     </div>
 
-    <p class="font-outfit text-xl font-medium text-surface-200 mb-2">{{ $title }}</p>
+    <p class="font-outfit text-lg sm:text-xl font-medium text-surface-200 mb-2">{{ $title }}</p>
     <p class="text-sm text-surface-400 leading-relaxed">{{ $description }}</p>
 </div>
