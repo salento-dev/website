@@ -1,3 +1,10 @@
+@props([
+    'telemetryLabel' => 'Next_Event',
+    'telemetryValue' => 'TBD',
+    'title' => 'Nessun evento in programma, per ora',
+    'description' => 'Il prossimo incontro viene annunciato prima di tutto nel gruppo WhatsApp della community.',
+])
+
 @php
     $whatsapp = collect(config('community.social'))->firstWhere('key', 'whatsapp');
 @endphp
@@ -8,13 +15,13 @@
     <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div class="flex max-w-2xl flex-col gap-3">
             <span class="font-mono text-2xs uppercase tracking-widest text-surface-400">
-                Next_Event: <span class="text-primary">TBD</span>
+                {{ $telemetryLabel }}: <span class="text-primary">{{ $telemetryValue }}</span>
             </span>
             <h2 class="font-outfit text-2xl font-bold text-surface-50 md:text-3xl">
-                Nessun evento in programma, per ora
+                {{ $title }}
             </h2>
             <p class="leading-relaxed text-surface-400">
-                Il prossimo incontro viene annunciato prima di tutto nel gruppo WhatsApp della community.
+                {{ $description }}
             </p>
         </div>
 
