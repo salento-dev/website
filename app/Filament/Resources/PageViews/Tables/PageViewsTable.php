@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\PageViews\Tables;
 
+use App\Support\Analytics\UserAgent;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
@@ -19,11 +20,25 @@ class PageViewsTable
                     ->label('Pagina')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('referrer')
-                    ->label('Referrer')
+                TextColumn::make('referrer_host')
+                    ->label('Provenienza')
+                    ->searchable()
+                    ->placeholder('Diretto')
+                    ->toggleable(),
+                TextColumn::make('utm_campaign')
+                    ->label('Campagna')
                     ->searchable()
                     ->placeholder('—')
                     ->toggleable(),
+                TextColumn::make('device')
+                    ->label('Dispositivo')
+                    ->formatStateUsing(fn (?string $state): string => UserAgent::DEVICE_LABELS[$state] ?? '—')
+                    ->toggleable(),
+                TextColumn::make('referrer')
+                    ->label('Referrer completo')
+                    ->placeholder('—')
+                    ->limit(50)
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('user_agent')
                     ->label('User Agent')
                     ->placeholder('—')

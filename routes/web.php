@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StoreAnalyticsEventController;
 use App\Livewire\CookiePolicyPage;
 use App\Livewire\EventDetailPage;
 use App\Livewire\EventsPage;
@@ -25,3 +26,7 @@ Route::get('/stories/{story:slug}', StoryDetailPage::class)->name('stories.show'
 
 Route::get('/privacy-policy', PrivacyPolicyPage::class)->name('privacy-policy');
 Route::get('/cookie-policy', CookiePolicyPage::class)->name('cookie-policy');
+
+Route::post('/analytics/events', StoreAnalyticsEventController::class)
+    ->middleware('throttle:60,1')
+    ->name('analytics.events.store');

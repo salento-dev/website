@@ -99,6 +99,8 @@
             @if(filled($resource->resource_url))
             <a
                 href="{{ $resource->resource_url ?? '#' }}"
+                data-track="resource"
+                data-track-label="{{ $resource->title }}"
                 target="_blank"
                 rel="noreferrer noopener"
                 class="flex items-center justify-center gap-2 border border-primary/30 bg-primary/10 px-4 py-3 font-mono text-xs font-bold uppercase tracking-widest text-primary transition-colors hover:bg-primary/20"

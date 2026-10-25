@@ -4,31 +4,26 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Models\Event;
 use App\Models\PageView;
+use App\Models\Story;
+use App\Support\Analytics\ReferrerSource;
+use App\Support\Analytics\UserAgent;
+use App\Support\Analytics\VisitorHash;
 use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class TrackPageView
 {
-    private const DEDUP_MINUTES = 30;
-
-    private const SESSION_KEY = 'pv_seen';
-
     private const REQUEST_KEY = '_track_pv';
 
     /** @var array<string, class-string<Model>> */
     private const VIEWABLE_PARAMS = [
-        'event' => \App\Models\Event::class,
-        'story' => \App\Models\Story::class,
-    ];
-
-    private const BOT_PATTERNS = [
-        'bot', 'crawl', 'spider', 'slurp', 'facebookexternalhit',
-        'twitterbot', 'linkedinbot', 'whatsapp', 'telegrambot',
-        'googlebot', 'bingbot', 'yandexbot', 'duckduckbot',
-        'lighthouse', 'headlesschrome', 'puppeteer', 'playwright',
+        'event' => Event::class,
+        'story' => Story::class,
     ];
 
     public function handle(Request $request, Closure $next): Response
@@ -39,16 +34,8 @@ class TrackPageView
             return $response;
         }
 
-        $path = $request->path() === '/' ? '/' : '/'.$request->path();
-
-        if ($this->recentlyVisited($request, $path)) {
-            return $response;
-        }
-
-        $this->markVisited($request, $path);
-
         $request->attributes->set(self::REQUEST_KEY, [
-            'path' => $path,
+            'path' => $request->path() === '/' ? '/' : '/'.$request->path(),
             'viewable' => $this->resolveViewable($request),
         ]);
 
@@ -63,17 +50,50 @@ class TrackPageView
             return;
         }
 
+        $visitorHash = VisitorHash::fromRequest($request);
+
+        if ($this->recentlyViewed($visitorHash, $data['path'])) {
+            return;
+        }
+
         /** @var Model|null $viewable */
         $viewable = $data['viewable'];
+        $referrer = $request->headers->get('referer');
 
         PageView::create([
-            'path' => $data['path'],
+            'path' => Str::limit($data['path'], 255, ''),
             'url' => $request->fullUrl(),
-            'referrer' => $request->headers->get('referer'),
-            'user_agent' => $request->userAgent(),
-            'viewable_type' => $viewable ? $viewable->getMorphClass() : null,
+            'visitor_hash' => $visitorHash,
+            'referrer' => $referrer !== null ? Str::limit($referrer, 255, '') : null,
+            'referrer_host' => ReferrerSource::fromReferrer($referrer, $request->getHost()),
+            'utm_source' => $this->utm($request, 'utm_source'),
+            'utm_medium' => $this->utm($request, 'utm_medium'),
+            'utm_campaign' => $this->utm($request, 'utm_campaign'),
+            'user_agent' => Str::limit((string) $request->userAgent(), 255, ''),
+            'device' => UserAgent::device($request->userAgent()),
+            'viewable_type' => $viewable?->getMorphClass(),
             'viewable_id' => $viewable?->getKey(),
         ]);
+    }
+
+    private function recentlyViewed(string $visitorHash, string $path): bool
+    {
+        return PageView::query()
+            ->where('visitor_hash', $visitorHash)
+            ->where('path', $path)
+            ->where('created_at', '>=', now()->subMinutes((int) config('analytics.dedup_minutes')))
+            ->exists();
+    }
+
+    private function utm(Request $request, string $key): ?string
+    {
+        $value = $request->query($key);
+
+        if (! is_string($value) || trim($value) === '') {
+            return null;
+        }
+
+        return Str::limit(Str::lower(trim($value)), 100, '');
     }
 
     private function resolveViewable(Request $request): ?Model
@@ -86,21 +106,6 @@ class TrackPageView
         }
 
         return null;
-    }
-
-    private function recentlyVisited(Request $request, string $path): bool
-    {
-        $seen = $request->session()->get(self::SESSION_KEY, []);
-        $lastSeen = $seen[$path] ?? null;
-
-        return $lastSeen !== null && (time() - $lastSeen) < self::DEDUP_MINUTES * 60;
-    }
-
-    private function markVisited(Request $request, string $path): void
-    {
-        $seen = $request->session()->get(self::SESSION_KEY, []);
-        $seen[$path] = time();
-        $request->session()->put(self::SESSION_KEY, $seen);
     }
 
     private function shouldTrack(Request $request, Response $response): bool
@@ -121,14 +126,6 @@ class TrackPageView
             return false;
         }
 
-        $userAgent = strtolower($request->userAgent() ?? '');
-
-        foreach (self::BOT_PATTERNS as $pattern) {
-            if (str_contains($userAgent, $pattern)) {
-                return false;
-            }
-        }
-
-        return true;
+        return ! UserAgent::isBot($request->userAgent());
     }
 }

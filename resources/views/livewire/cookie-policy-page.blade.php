@@ -9,7 +9,7 @@
     {{-- Last updated --}}
     <div class="mb-12 flex items-center gap-3 font-roboto-mono text-xs text-surface-400">
         <span class="text-primary">$</span>
-        <span>last_updated: <span class="text-surface-200">10 aprile 2026</span></span>
+        <span>last_updated: <span class="text-surface-200">25 ottobre 2026</span></span>
         <span class="ml-auto rounded-xs border border-primary/20 bg-primary/5 px-2 py-0.5 text-primary">Solo cookie tecnici</span>
     </div>
 
@@ -45,6 +45,12 @@
                     Non vengono utilizzati cookie di profilazione, cookie analitici o cookie di terze parti a scopo pubblicitario.
                     Per i cookie tecnici non è richiesto il consenso dell'utente.
                 </p>
+                <p>
+                    Le statistiche di utilizzo del sito sono raccolte <strong class="text-surface-200">senza cookie</strong> e senza
+                    altre forme di memorizzazione nel browser: i cookie elencati qui sotto non vengono usati per contare le visite.
+                    Come funzionano le statistiche è spiegato nella
+                    <a href="{{ route('privacy-policy') }}" class="text-primary hover:text-primary-light transition-colors">Privacy Policy</a>.
+                </p>
 
                 {{-- Cookie table --}}
                 <div class="mt-6 overflow-x-auto rounded-xs border border-border">
@@ -58,9 +64,15 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-border/50">
+                            @php
+                                $sessionMinutes = (int) config('session.lifetime');
+                                $sessionDuration = $sessionMinutes % 60 === 0
+                                    ? trans_choice(':count ora|:count ore', intdiv($sessionMinutes, 60))
+                                    : $sessionMinutes.' minuti';
+                            @endphp
                             @foreach ([
-                                ['XSRF-TOKEN', 'Tecnico / Sicurezza', 'Protezione contro attacchi CSRF (Cross-Site Request Forgery). Generato automaticamente dal framework Laravel.', 'Sessione'],
-                                [config('session.cookie', 'laravel_session'), 'Tecnico / Sessione', 'Mantiene lo stato della sessione dell\'utente durante la navigazione. Necessario per il corretto funzionamento del sito.', '2 ore'],
+                                ['XSRF-TOKEN', 'Tecnico / Sicurezza', 'Protezione contro attacchi CSRF (Cross-Site Request Forgery). Generato automaticamente dal framework Laravel.', $sessionDuration],
+                                [config('session.cookie', 'laravel_session'), 'Tecnico / Sessione', 'Mantiene lo stato della sessione dell\'utente durante la navigazione. Necessario per il corretto funzionamento del sito.', $sessionDuration],
                             ] as [$name, $type, $purpose, $duration])
                             <tr class="hover:bg-surface-900/50 transition-colors">
                                 <td class="px-4 py-3 font-roboto-mono text-primary">{{ $name }}</td>
