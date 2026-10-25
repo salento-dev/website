@@ -7,10 +7,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-25
+
+Cookie-free analytics ([#10](https://github.com/salento-dev/website/pull/10)), automatic event covers ([#13](https://github.com/salento-dev/website/pull/13)) and repository preparation for open source ([#12](https://github.com/salento-dev/website/pull/12)).
+
+Before deploying: run `php artisan migrate`, make sure the scheduler runs (`php artisan schedule:run` via cron) and, behind a proxy or Cloudflare, configure `trustProxies` so visitors are not all counted with the same IP.
+
 ### Added
 
+- Cookie-free unique visitors: a hash of IP and user agent with a salt that rotates daily. The IP is not stored.
+- Traffic sources: referrer normalized by domain (`l.instagram.com` → `instagram.com`), `utm_source`/`utm_medium`/`utm_campaign` parameters and device type.
+- Outbound click tracking (WhatsApp, Instagram, LinkedIn, email, resources and external links) via `sendBeacon` on `POST /analytics/events`, linked to the event or story the click came from.
+- 404 tracking by path with the last referrer, to find broken or outdated links.
+- Bot detection with `jaybizzle/crawler-detect`.
+- `analytics:prune` (daily at 03:30) rolls up data older than 12 months into `analytics_daily_stats` and deletes the raw rows.
+- Analytics dashboard with a period filter and comparison with the previous period, summary cards (visits, visitors, bounce rate, WhatsApp conversion) and Overview, Sources, Content and 404 tabs.
 - Automatic covers for community events, rendered from Blade templates that match the Figma frames: website (16:9, can be saved as the event image), post (4:5) and story (9:16). Previewed and exported as PNG from the new "Copertine" page in the admin, in the browser (no Node or Chromium needed on the hosting).
 - Cover fields on events (`cover_title`, `edition`, `subtitle`, `cover_note`) and a white "cover logo" on partners (`cover_logo_path`).
+- `LICENSE` (MIT) and `LICENSE-ASSETS.md` aligned with [`salento-dev/brand`](https://github.com/salento-dev/brand): logo and name reserved, third-party content excluded, `docs/` under CC BY 4.0.
+- Project `README.md`, `CODE_OF_CONDUCT.md` and `SECURITY.md` with private vulnerability reporting.
+- CI on GitHub Actions: PHPUnit on MySQL 8.4 and Pint on changed files, on every pull request and push to `main`.
+- Dependabot: weekly Composer and npm updates, monthly GitHub Actions updates; Vite, `laravel-vite-plugin` and `@tailwindcss/vite` are grouped.
+
+### Changed
+
+- Privacy and cookie policies describe what analytics collect, the legal basis and retention periods; statistics use no cookies.
+- Admin dashboard: removed the welcome widget and the 60-second polling.
+- Build tooling: Vite 8, `laravel-vite-plugin` 3, `@tailwindcss/vite` 4.3 and `concurrently` 10.
+- Dependencies updated: Filament 5.10, `laravel/tinker` 3 and minor/patch updates for Composer and npm packages.
+- The page scrollbar is thinner: the existing `scrollbar-thin` class now produces CSS with Tailwind 4.3.
+- `composer.json` has the project name, description and support links.
+- Whole codebase formatted with Pint.
+
+### Fixed
+
+- Admin login failed after the Filament update: the published Filament assets were outdated and `password-reveal.js` was missing ([#24](https://github.com/salento-dev/website/pull/24)).
+- `EventCardTest` failed intermittently: `EventFactory` now decides `work_in_progress` from the actual `starts_at`.
+
+### Security
+
+- `AdminUserSeeder` no longer creates the admin with a hardcoded password: it reads `ADMIN_NAME`, `ADMIN_EMAIL` and `ADMIN_PASSWORD`, generates a random password when none is set and never runs in production.
+- `follow-redirects` updated to 1.16.1 and `esbuild` removed from the lockfile, fixing two high and one low severity advisory.
 
 ## [1.2.0] - 2026-10-24
 
@@ -135,7 +172,8 @@ First version of the site.
 - Search filters, paginator, terminal and countdown components.
 - Event form with timezone support.
 
-[Unreleased]: https://github.com/salento-dev/website/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/salento-dev/website/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/salento-dev/website/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/salento-dev/website/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/salento-dev/website/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/salento-dev/website/compare/v0.2.0...v1.0.0
