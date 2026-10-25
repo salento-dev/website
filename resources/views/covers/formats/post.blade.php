@@ -1,0 +1,1 @@
+@include('covers.partials.vertical')
