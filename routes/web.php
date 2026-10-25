@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventCoverController;
 use App\Http\Controllers\StoreAnalyticsEventController;
 use App\Livewire\CookiePolicyPage;
 use App\Livewire\EventDetailPage;
@@ -30,3 +31,7 @@ Route::get('/cookie-policy', CookiePolicyPage::class)->name('cookie-policy');
 Route::post('/analytics/events', StoreAnalyticsEventController::class)
     ->middleware('throttle:60,1')
     ->name('analytics.events.store');
+
+Route::get('/admin/covers/events/{event:slug}/{format}', EventCoverController::class)
+    ->middleware('signed')
+    ->name('events.cover');

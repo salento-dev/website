@@ -38,8 +38,8 @@ classDiagram
 ## `Event`
 
 - **Trait:** `HasFactory`.
-- **`$fillable`** (`app/Models/Event.php:20-33`): `title, slug, location, address, starts_at, ends_at, body, excerpt, image_path, is_published, work_in_progress, is_community_event`.
-- **`casts()`** (`Event.php:38-47`): `starts_at`→datetime, `ends_at`→datetime, `is_published`→boolean, `work_in_progress`→boolean, `is_community_event`→boolean.
+- **`$fillable`** (`app/Models/Event.php`): `title, slug, location, address, starts_at, ends_at, body, excerpt, image_path, cover_title, edition, subtitle, cover_note, is_published, work_in_progress, is_community_event`.
+- **`casts()`** (`Event.php`): `starts_at`→datetime, `ends_at`→datetime, `edition`→integer, `is_published`→boolean, `work_in_progress`→boolean, `is_community_event`→boolean.
 
 **Relazioni**
 
@@ -169,10 +169,10 @@ Logica: se la risorsa è di tipo `file` e il file esiste, restituisce l'URL del 
 ## `Partner`
 
 - **Trait:** `HasFactory`.
-- **`$fillable`:** `name, description, logo_path, website_url, is_published`.
+- **`$fillable`:** `name, description, logo_path, cover_logo_path, website_url, is_published`.
 - **`casts()`:** `is_published`→boolean.
 - **Relazione:** `events()` → `belongsToMany(Event::class)`.
-- **Accessor:** `getLogoUrlAttribute(): ?string` (`Partner.php:40-52`) → URL del logo dal disk `public` se esiste, altrimenti `null`.
+- **Accessor:** `getLogoUrlAttribute(): ?string` e `getCoverLogoUrlAttribute(): ?string` → URL di `logo_path` / `cover_logo_path` dal disk `public` se il file esiste, altrimenti `null`.
 
 > Ricorda che `partners.is_published` ha default `false` a livello di DB: un partner è una bozza nascosta finché non viene pubblicato. La pagina pubblica filtra su `is_published = true`.
 

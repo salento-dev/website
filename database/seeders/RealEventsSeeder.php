@@ -111,7 +111,7 @@ class RealEventsSeeder extends Seeder
                 $resourceData,
             );
 
-            if(! empty($author_names)) {
+            if (! empty($author_names)) {
                 $author_ids = Author::whereIn('name', $author_names)->get()->pluck('id') ?? [];
                 $resource->authors()->sync($author_ids);
             }

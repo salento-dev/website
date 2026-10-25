@@ -10,6 +10,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 
 class EventForm
@@ -69,7 +71,37 @@ class EventForm
                 Toggle::make('is_community_event')
                     ->label('Evento della community')
                     ->default(true)
+                    ->live()
                     ->helperText('Attiva se l\'evento è organizzato direttamente da salento.dev'),
+                Section::make('Copertina')
+                    ->description('Testi delle copertine generate per il sito e i social. Le copertine si generano dalla pagina «Copertine» dell\'evento.')
+                    ->visible(fn (Get $get): bool => (bool) $get('is_community_event'))
+                    ->collapsible()
+                    ->columns(2)
+                    ->columnSpanFull()
+                    ->schema([
+                        TextInput::make('cover_title')
+                            ->label('Titolo copertina')
+                            ->placeholder('Meetup')
+                            ->helperText('Testo breve in grande. Se vuoto, viene usato il titolo dell\'evento.')
+                            ->maxLength(40),
+                        TextInput::make('edition')
+                            ->label('Edizione')
+                            ->prefix('#')
+                            ->numeric()
+                            ->minValue(1)
+                            ->maxValue(9999),
+                        Textarea::make('subtitle')
+                            ->label('Sottotitolo')
+                            ->placeholder('Lightning talks')
+                            ->helperText('Vai a capo per spezzare la riga in copertina.')
+                            ->rows(2)
+                            ->maxLength(60),
+                        TextInput::make('cover_note')
+                            ->label('Nota accanto all\'orario')
+                            ->placeholder('Gradita conferma')
+                            ->maxLength(40),
+                    ]),
                 Select::make('categories')
                     ->label('Categorie')
                     ->relationship('categories', 'name', fn ($query) => $query->where('is_active', true)->orderBy('sort_order')->orderBy('name'))

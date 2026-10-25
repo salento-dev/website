@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Story;
 use App\Models\StoryCategory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
@@ -54,7 +55,7 @@ class StoriesPage extends Component
         if (! Schema::hasTable('stories')) {
             return view('livewire.stories-page', [
                 'featuredStory' => null,
-                'stories' => new \Illuminate\Pagination\LengthAwarePaginator([], 0, 9),
+                'stories' => new LengthAwarePaginator([], 0, 9),
                 'categories' => new Collection,
                 'sortOptions' => self::sortOptions(),
             ])->layout('layouts.app', [

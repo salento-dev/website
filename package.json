@@ -19,6 +19,7 @@
         "@formkit/auto-animate": "^0.10.0",
         "@motionone/dom": "^10.18.0",
         "alpinejs": "^3.17.5",
-        "gsap": "^3.15.0"
+        "gsap": "^3.15.0",
+        "modern-screenshot": "^4.7.0"
     }
 }

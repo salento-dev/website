@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\StoryCategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class StoryCategory extends Model
 {
-    /** @use HasFactory<\Database\Factories\StoryCategoryFactory> */
+    /** @use HasFactory<StoryCategoryFactory> */
     use HasFactory;
 
     /**

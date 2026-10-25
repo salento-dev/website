@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\StoryCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\StoryCategory>
+ * @extends Factory<StoryCategory>
  */
 class StoryCategoryFactory extends Factory
 {
@@ -22,7 +24,7 @@ class StoryCategoryFactory extends Factory
 
         return [
             'name' => $name,
-            'slug' => \Illuminate\Support\Str::slug($name),
+            'slug' => Str::slug($name),
             'is_active' => true,
             'sort_order' => fake()->numberBetween(0, 100),
         ];

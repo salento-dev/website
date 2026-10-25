@@ -67,6 +67,18 @@ Un evento può avere: **categorie** (molti-a-molti, ordinate per `sort_order`), 
 
 Lo staff crea/modifica gli eventi tramite `EventResource`. La tabella espone azioni inline **Edit** e **Delete**, più la **DeleteBulkAction**. I flag `is_published`, `work_in_progress`, `is_community_event` governano gli stati descritti sopra; categorie, media, risorse e partner si gestiscono nello schema del form / relation manager.
 
+### Copertine degli eventi della community
+
+Per gli eventi con `is_community_event` il form ha la sezione **Copertina** (titolo breve, edizione, sottotitolo, nota accanto all'orario) e la pagina di modifica ha l'azione **Copertine** (`/admin/events/{id}/covers`). La pagina mostra l'anteprima di tre formati, ripresi dai frame Figma della community:
+
+| Formato | Misure | Uso |
+|---|---|---|
+| Sito | 1920×1080 (16:9) | immagine dell'evento sul sito |
+| Post | 1080×1350 (4:5) | Instagram, LinkedIn, gruppi WhatsApp |
+| Storia | 1080×1920 (9:16) | storie Instagram, stato WhatsApp |
+
+Le copertine sono template Blade (`resources/views/covers/`) serviti da una route firmata (`events.cover`); il PNG lo genera il browser dell'admin con `modern-screenshot`, perché l'hosting non ha Node né Chromium. **Scarica PNG** salva il file, **Usa come immagine del sito** carica la 16:9 in `image_path` (sostituendo la copertina generata in precedenza, mai un'immagine caricata a mano). Lo sfondo è il pittogramma del logo con il gradiente del brand; il logo di un partner compare solo se ha il **Logo per copertine** (bianco, sfondo trasparente).
+
 ---
 
 ## Risorse

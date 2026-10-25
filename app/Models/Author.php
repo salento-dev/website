@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\AuthorFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Author extends Model
 {
-    /** @use HasFactory<\Database\Factories\AuthorFactory> */
+    /** @use HasFactory<AuthorFactory> */
     use HasFactory;
 
     /**
