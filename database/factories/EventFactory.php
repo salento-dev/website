@@ -2,11 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
+ * @extends Factory<Event>
  */
 class EventFactory extends Factory
 {
@@ -19,7 +21,6 @@ class EventFactory extends Factory
     {
         $title = fake()->sentence(4);
         $startsAt = fake()->dateTimeBetween('-6 months', '+2 months');
-        $work_in_progress = ($startsAt > now()) ? fake()->boolean(20) : false;
 
         return [
             'title' => $title,
@@ -32,7 +33,7 @@ class EventFactory extends Factory
             'body' => $this->markdownBody(),
             'image_path' => null,
             'is_published' => fake()->boolean(85),
-            'work_in_progress' => $work_in_progress,
+            'work_in_progress' => fn (array $attributes): bool => Carbon::parse($attributes['starts_at'])->isFuture() && fake()->boolean(20),
         ];
     }
 

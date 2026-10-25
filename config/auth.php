@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 return [
 
     /*
@@ -62,7 +64,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => env('AUTH_MODEL', User::class),
         ],
 
         // 'users' => [
@@ -111,5 +113,22 @@ return [
     */
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Seeded Admin User
+    |--------------------------------------------------------------------------
+    |
+    | Credentials of the admin user created by the DatabaseSeeder outside of
+    | production. When no password is set, a random one is generated and
+    | printed once in the console.
+    |
+    */
+
+    'seed_admin' => [
+        'name' => env('ADMIN_NAME', 'Admin'),
+        'email' => env('ADMIN_EMAIL', 'admin@salento.dev'),
+        'password' => env('ADMIN_PASSWORD'),
+    ],
 
 ];

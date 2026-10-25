@@ -28,7 +28,7 @@ Usare `$fillable` minimale su ogni modello; mai `$guarded = []` né `Model::ungu
 
 ### 1.3 Autenticazione e autorizzazione
 - ⚠️ **CRITICO**: `User::canAccessPanel()` ritorna sempre `true` → qualunque utente accede all'intero admin.
-- ⚠️ **CRITICO**: il `DatabaseSeeder` crea l'admin con password `password123` hardcoded.
+- ✓ Il seeder dell'admin legge le credenziali dall'ambiente e non crea utenti in produzione (`AdminUserSeeder`).
 - Nessuna Policy per i Resource Filament.
 
 ```php
@@ -141,17 +141,16 @@ Per contenuti non pubblici, usare `->visibility('private')` con download autenti
 ## 7. Gestione segreti e .env
 
 - ✓ `.env` (e `.env.backup`, `.env.production`) esclusi da git; presente `.env.example`.
-- ⚠️ **CRITICO**: credenziali admin hardcoded nel `DatabaseSeeder` (tracciato da git).
+- ✓ Nessuna credenziale nel codice: l'admin di sviluppo usa `ADMIN_EMAIL` / `ADMIN_PASSWORD` dal `.env`.
 - **Verifica una tantum**: `git log --all -- .env*` per accertarsi che nessun segreto sia mai stato committato.
 
 ```php
-// DatabaseSeeder.php — niente segreti hardcoded
-Artisan::call('make:filament-user', [
-    '--email' => env('ADMIN_EMAIL', 'admin@salento.dev'),
-    '--password' => env('ADMIN_PASSWORD'),
-    '--name' => env('ADMIN_NAME', 'Admin'),
-    '--no-interaction' => true,
-]);
+// config/auth.php
+'seed_admin' => [
+    'name' => env('ADMIN_NAME', 'Admin'),
+    'email' => env('ADMIN_EMAIL', 'admin@salento.dev'),
+    'password' => env('ADMIN_PASSWORD'), // vuota = generata a caso
+],
 ```
 
 In produzione: `chmod 600 .env`; bloccare i dotfile in Nginx (`location ~ /\. { deny all; }`); backup dell'`APP_KEY` in un vault esterno. — [Laravel security best practices](https://benjamincrozat.com/laravel-security-best-practices)
@@ -184,8 +183,9 @@ Implementazione attuale (`return true`) = rischio di sicurezza più grave del pr
 
 **🔴 Critici (subito)**
 - [ ] `canAccessPanel()` con logica reale (ruolo / dominio email / `is_admin`).
-- [ ] Cambiare la password admin di produzione; rimuovere `password123` dal seeder.
-- [ ] Guardia `app()->environment('production')` nel `DatabaseSeeder`.
+- [ ] Cambiare la password admin di produzione se coincide con quella di sviluppo usata in passato.
+- [x] Rimuovere la password fissa dal seeder.
+- [x] Guardia sulla produzione nel seeder dell'admin (`AdminUserSeeder`).
 
 **🟠 Alti (breve periodo)**
 - [ ] `APP_DEBUG=false` e `APP_ENV=production` verificati.

@@ -2,6 +2,8 @@
 
 Grazie per voler contribuire al sito della community! Questo file è una **guida rapida**; la documentazione completa è nella cartella [`docs/`](docs/README.md).
 
+Partecipando ti impegni a rispettare il [Codice di condotta](CODE_OF_CONDUCT.md). Le vulnerabilità di sicurezza non vanno segnalate con una issue pubblica: segui [`SECURITY.md`](SECURITY.md).
+
 ## In breve
 
 1. **Branch dedicati da `main`** — mai commit diretti su `main`. Nome `tipo/descrizione` (`feat/`, `fix/`, `docs/`, `refactor/`, `chore/`).
@@ -18,7 +20,7 @@ Grazie per voler contribuire al sito della community! Questo file è una **guida
 ```bash
 git clone git@github.com:salento-dev/website.git
 cd website
-cp .env.example .env
+cp .env.example .env            # imposta DB_CONNECTION=mysql e DB_HOST=mysql; ADMIN_PASSWORD facoltativa
 ./vendor/bin/sail up -d
 ./vendor/bin/sail artisan migrate --seed
 ./vendor/bin/sail npm install && ./vendor/bin/sail npm run build
@@ -50,3 +52,7 @@ Dettagli e troubleshooting: [`docs/04_sviluppo_e_qualita/01_ambiente_locale.md`]
 - Pagine pubbliche come **componenti Livewire**; admin con **Filament Resources**; link via **nome della route**.
 
 Per i dettagli completi vedi [`docs/04_sviluppo_e_qualita/03_contribuire.md`](docs/04_sviluppo_e_qualita/03_contribuire.md).
+
+## Licenza dei contributi
+
+Inviando una pull request accetti che il tuo contributo sia rilasciato con le licenze del progetto: [MIT](LICENSE) per il codice, CC BY 4.0 per la documentazione in `docs/` (vedi [`LICENSE-ASSETS.md`](LICENSE-ASSETS.md)). Non aggiungere loghi, foto o testi di terzi senza averne il permesso.

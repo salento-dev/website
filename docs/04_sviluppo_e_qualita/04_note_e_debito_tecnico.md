@@ -25,17 +25,11 @@ Raccolta delle incongruenze e dei punti di attenzione emersi dall'analisi del co
 
   Affiancare Policy per le Resource sensibili (almeno `UserResource`).
 
-### S2 — Credenziali di default in chiaro
+### S2 — Credenziali di default in chiaro ✅ risolto
 
-- **Dove:** `database/seeders/DatabaseSeeder.php:31-36` crea `admin@salento.dev` / `password123` via `make:filament-user`.
-- **Impatto:** accettabile in sviluppo, **pericoloso** se il seed gira in ambienti esposti.
-- **Fix proposto:** leggere le credenziali da variabili d'ambiente con fallback solo in `local`, oppure non creare l'utente in `production`:
-
-  ```php
-  if (app()->environment('local')) {
-      Artisan::call('make:filament-user', [/* ... */]);
-  }
-  ```
+- **Era:** il `DatabaseSeeder` creava `admin@salento.dev` con una password fissa scritta nel codice.
+- **Ora:** `database/seeders/AdminUserSeeder.php` legge nome, email e password da `config('auth.seed_admin')` (variabili `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`). Senza password ne genera una casuale e la mostra una volta; in `production` non crea nessun utente.
+- **Resta da fare:** se in produzione esiste ancora un utente con la vecchia password, va cambiata.
 
 ### S3 — Chiamate HTTP esterne in fase di editing/rendering
 
