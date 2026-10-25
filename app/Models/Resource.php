@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
 
 class Resource extends Model
@@ -47,7 +48,7 @@ class Resource extends Model
     {
         if ($this->source_type === 'file' && filled($this->file_path)) {
             $path = ltrim((string) $this->file_path, '/');
-            /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+            /** @var FilesystemAdapter $storage */
             $storage = Storage::disk('public');
             if ($storage->exists($path)) {
                 return $storage->url($path);

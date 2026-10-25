@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 
 class RealAuthorsSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      */

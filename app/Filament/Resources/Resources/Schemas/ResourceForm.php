@@ -43,8 +43,8 @@ class ResourceForm
                     ->label('Link')
                     ->url()
                     ->maxLength(2048)
-                    ->visible(fn($get): bool => $get('source_type') === 'link')
-                    ->required(fn($get): bool => $get('source_type') === 'link')
+                    ->visible(fn ($get): bool => $get('source_type') === 'link')
+                    ->required(fn ($get): bool => $get('source_type') === 'link')
                     ->columnSpanFull(),
                 FileUpload::make('file_path')
                     ->label('File')
@@ -73,8 +73,8 @@ class ResourceForm
                         'application/x-tar',
                     ])
                     ->helperText('Formati supportati: PDF, TXT/RTF, DOC/DOCX/ODT, XLS/XLSX/ODS, PPT/PPTX/ODP, ZIP/RAR/7Z/TAR/GZ.')
-                    ->visible(fn($get): bool => $get('source_type') === 'file')
-                    ->required(fn($get): bool => $get('source_type') === 'file')
+                    ->visible(fn ($get): bool => $get('source_type') === 'file')
+                    ->required(fn ($get): bool => $get('source_type') === 'file')
                     ->columnSpanFull(),
                 Select::make('authors')
                     ->label('Autori')
