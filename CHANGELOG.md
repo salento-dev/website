@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Automatic covers for community events, rendered from Blade templates that match the Figma frames: website (16:9, can be saved as the event image), post (4:5) and story (9:16). Previewed and exported as PNG from the new "Copertine" page in the admin, in the browser (no Node or Chromium needed on the hosting).
+- Cover fields on events (`cover_title`, `edition`, `subtitle`, `cover_note`) and a white "cover logo" on partners (`cover_logo_path`).
+
 ## [1.2.0] - 2026-10-24
 
 Design system, accessibility and UX overhaul of the public site ([#8](https://github.com/salento-dev/website/pull/8)).

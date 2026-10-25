@@ -80,7 +80,11 @@ Creata in `2026_02_15_195547`, modificata da 6 migrazioni successive. Lo stato i
 | `ends_at` | dateTime | sì | null | |
 | `body` | text | sì | | originariamente `description` (not null) → rinominata `body` (`2026_04_10_162306`) → resa nullable (`2026_04_24_132600`) |
 | `excerpt` | text | sì | null | aggiunta `2026_04_10_161743` |
-| `image_path` | string | sì | null | path relativo sul disk `public` |
+| `image_path` | string | sì | null | path relativo sul disk `public`; può contenere la copertina 16:9 generata (`events/covers/…`) |
+| `cover_title` | string | sì | null | aggiunta `2026_10_24_233451` — titolo breve delle copertine (es. «Meetup»); se vuoto si usa `title` |
+| `edition` | unsigned smallint | sì | null | aggiunta `2026_10_24_233451` — numero dell'edizione mostrato come `#N` |
+| `subtitle` | string | sì | null | aggiunta `2026_10_24_233451` — sottotitolo delle copertine, gli a capo sono mantenuti |
+| `cover_note` | string | sì | null | aggiunta `2026_10_24_233451` — nota accanto all'orario (es. «Gradita conferma») |
 | `is_published` | boolean | no | `true` | |
 | `work_in_progress` | boolean | no | `false` | aggiunta `2026_04_04_094620` |
 | `is_community_event` | boolean | no | `true` | aggiunta `2026_04_21_185948` — distingue eventi organizzati dalla community vs. promossi |
@@ -169,6 +173,7 @@ Creata in `2026_04_04_170844`, modificata in `2026_04_24_094600` (description nu
 | `name` | string | no | | |
 | `description` | text | sì | | inizialmente not null → reso nullable |
 | `logo_path` | string | sì | null | |
+| `cover_logo_path` | string | sì | null | aggiunta `2026_10_25_095339` — logo bianco su sfondo trasparente per le copertine degli eventi |
 | `website_url` | string | sì | null | |
 | `is_published` | boolean | no | **`false`** | unico modello di dominio con default `false`: i partner sono bozze finché non pubblicati esplicitamente |
 | `created_at` / `updated_at` | timestamps | sì | | |
