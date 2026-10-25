@@ -14,6 +14,8 @@ updates:
     schedule:
       interval: weekly
     groups:
+      vite:
+        patterns: ['vite', 'laravel-vite-plugin', '@tailwindcss/vite']
       npm:
         patterns: ['*']
         update-types: [minor, patch]

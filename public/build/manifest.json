@@ -1,11 +1,25 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-DR0IQdHi.css",
-    "src": "resources/css/app.css",
-    "isEntry": true,
+    "file": "assets/app-DWYbMMcH.css",
     "name": "app",
     "names": [
       "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "assets": [
+      "assets/x-pattern-15-BqXeCXcU.png",
+      "assets/dots-pattern-15-DFKBKF-Z.png",
+      "assets/outfit-latin-ext-wght-normal-BMnJGVZj.woff2",
+      "assets/outfit-latin-wght-normal-D6ftewdU.woff2",
+      "assets/albert-sans-latin-ext-wght-normal-Cilgyi0P.woff2",
+      "assets/albert-sans-latin-wght-normal-BifFJOWk.woff2",
+      "assets/albert-sans-latin-ext-wght-italic-C07uU66k.woff2",
+      "assets/albert-sans-latin-wght-italic-CWOR3MJ-.woff2",
+      "assets/roboto-mono-latin-ext-wght-normal-CSSVNFqV.woff2",
+      "assets/roboto-mono-latin-wght-normal-BAKpfWyj.woff2",
+      "assets/roboto-mono-latin-ext-wght-italic-CErTcBzw.woff2",
+      "assets/roboto-mono-latin-wght-italic-D_P-kX1t.woff2"
     ]
   },
   "resources/fonts/albert-sans-latin-ext-wght-italic.woff2": {
@@ -57,7 +71,7 @@
     "src": "resources/images/x-pattern-15.png"
   },
   "resources/js/app.js": {
-    "file": "assets/app-Cr3cqp3a.js",
+    "file": "assets/app-C9nPSj6h.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
