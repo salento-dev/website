@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
 
 class Partner extends Model
@@ -18,6 +19,7 @@ class Partner extends Model
         'name',
         'description',
         'logo_path',
+        'cover_logo_path',
         'website_url',
         'is_published',
     ];
@@ -39,9 +41,22 @@ class Partner extends Model
 
     public function getLogoUrlAttribute(): ?string
     {
-        if (filled($this->logo_path)) {
-            $path = ltrim((string) $this->logo_path, '/');
-            /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+        return $this->publicUrl($this->logo_path);
+    }
+
+    /**
+     * Get the white, transparent logo used on the event covers.
+     */
+    public function getCoverLogoUrlAttribute(): ?string
+    {
+        return $this->publicUrl($this->cover_logo_path);
+    }
+
+    private function publicUrl(?string $path): ?string
+    {
+        if (filled($path)) {
+            $path = ltrim($path, '/');
+            /** @var FilesystemAdapter $storage */
             $storage = Storage::disk('public');
             if ($storage->exists($path)) {
                 return $storage->url($path);

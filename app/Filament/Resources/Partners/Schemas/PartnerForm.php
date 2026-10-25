@@ -27,6 +27,12 @@ class PartnerForm
                     ->image()
                     ->disk('public')
                     ->directory('partners/logos'),
+                FileUpload::make('cover_logo_path')
+                    ->label('Logo per copertine')
+                    ->helperText('Versione bianca su sfondo trasparente (SVG o PNG), mostrata nelle copertine degli eventi. Se manca, il partner non compare in copertina.')
+                    ->acceptedFileTypes(['image/svg+xml', 'image/png', 'image/webp'])
+                    ->disk('public')
+                    ->directory('partners/logos'),
                 TextInput::make('website_url')
                     ->label('Sito web')
                     ->url()

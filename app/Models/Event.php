@@ -30,6 +30,10 @@ class Event extends Model
         'body',
         'excerpt',
         'image_path',
+        'cover_title',
+        'edition',
+        'subtitle',
+        'cover_note',
         'is_published',
         'work_in_progress',
         'is_community_event',
@@ -43,6 +47,7 @@ class Event extends Model
         return [
             'starts_at' => 'datetime',
             'ends_at' => 'datetime',
+            'edition' => 'integer',
             'is_published' => 'boolean',
             'work_in_progress' => 'boolean',
             'is_community_event' => 'boolean',
